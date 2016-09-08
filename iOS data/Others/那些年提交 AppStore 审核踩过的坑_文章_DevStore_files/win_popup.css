@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+/*信息弹窗*/
+.info_popup_window{ width:285px; height:195px; position:fixed; bottom:0px; right:0px;  box-shadow: 0 3px 8px 3px rgba(0,0,0,0.1); font-family:'Hiragino Sans GB',\5b8b\4f53,sans-serif; font-size:12px; background:#fff;}
+.info_popup_window .info_tit{ height:30px; background:#69c2f5; line-height:30px; padding:0px 10px;}
+.info_popup_window .info_tit em{ font-size:18px; font-family:"Microsoft YaHei"; font-weight:400; color:#fff; float:left; display:block; line-height:28px;}
+.info_popup_window .info_tit .info_close{ float:right; display:inline-block; height:30px; line-height:30px; width:20px;
+ background:url(/images/cssimg/info_popup/info_popup_close.png) no-repeat center center; cursor:pointer;}
+.info_popup_window .info_tit .text01{ font-family:'Hiragino Sans GB',\5b8b\4f53,sans-serif; font-size:12px; color:#fff;}
+.info_popup_window .info_con .div01{ margin-top:15px;  padding:0px 25px; padding-bottom:13px; background:url(/images/cssimg/info_popup/xian_bg.jpg) no-repeat bottom center;}
+.info_popup_window .info_con .div01 .l{ float:left; display:inline; position:relative; width:37px; margin-right:10px; top:2px; height:37px; border:1px solid #dadfea; border-radius:2px;}
+.info_popup_window .info_con .div01 .r{ font-family:'Hiragino Sans GB',\5b8b\4f53,sans-serif; font-size:12px; color:#333332; line-height:20px; height:40px; overflow:hidden;}
+.info_popup_window .info_con .div01 .r span{ color:#0085d0;}
+.info_popup_window .info_con .div01 .r a{ color:#0085d0;}
+.info_popup_window .info_con .div01 .r a:hover{ color:#8dc11e;}
+.info_popup_window .info_con .div02{ margin:10px 0px; padding:0px 25px; line-height:22px; color:#333332; height:44px; overflow:hidden; }
+.info_chakan{ text-align:right; padding:0px 25px; padding-bottom:20px;}
+.info_chakan a{ display:inline-block; padding-left:20px; line-height:20px; background:url(/images/cssimg/info_popup/chakan_icon.jpg) no-repeat left center; color:#0085d0;}
+.info_popup_window .info_con .div02 a.title{ color:#0085d0;}
+.info_popup_window .info_con .div02 a.title:hover{ color:#8dc11e;}
+.info_chakan a:hover{}
+.info_popup_window .info_con .text01{ margin-top:15px; padding:0px 25px; padding-bottom:13px; background:url(/images/cssimg/info_popup/xian_bg.jpg) no-repeat bottom center; color:#333332;}
+.info_popup_window .info_con .text01 p{ padding:7px 0px;}
+.info_popup_window .info_con .text01 span{ color:#0085d0;}
+.info_popup_window .info_con .text01 a{ color:#0085d0;}
+.info_popup_window .info_con .text01 a:hover{ color:#8dc11e;}
+.info_popup_window .info_con .div03{ padding:15px 25px;}
+.info_popup_window .info_con .div03 .l{ float:left; display:inline; width:190px; height:62px; overflow:hidden; }
+.info_popup_window .info_con .div03 .l tr td{ color:#333332; line-height:22px;}
+.info_popup_window .info_con .div03 .l tr td:first-child{ text-align:right;}
+.info_popup_window .info_con .div03 .r{ float:right; width:38px; margin-top:10px; }
+.info_popup_window .info_con .div03 .r .a01{ display:block; width:38px; height:20px; background:#0085d0; color:#fff; text-align:center; line-height:20px;}
+.info_popup_window .info_con .div03 .r .a01:hover{ background:#0273b2;}
+.info_popup_window .info_con .div03 .r .a02{ display:block; width:38px; height:20px; background:#f1f4f6; border:1px solid #e4e7ea; color:#768696; text-align:center; line-height:18px; margin-top:10px;}
+.info_popup_window .info_con .div03 .r .a02:hover{ background:#d6d9dc; border:1px solid #d6d9dc; }

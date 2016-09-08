@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<!-- saved from url=(0101)http://one9398.com/2016/08/28/WWDC%E4%B9%8B%E4%BC%98%E5%8C%96App%E5%90%AF%E5%8A%A8%E9%80%9F%E5%BA%A6/ -->
+<html class="theme-next pisces use-motion"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="./WWDC之优化App启动速度 _ One Word_files/jquery.fancybox.css" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="./WWDC之优化App启动速度 _ One Word_files/css" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="./WWDC之优化App启动速度 _ One Word_files/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<link href="./WWDC之优化App启动速度 _ One Word_files/main.css" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="iOS,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="http://one9398.com/favicon.ico?v=5.0.1">
+
+
+
+
+
+
+<meta name="description" content="前言
+在WWDC 2016上首次提到了关于App应用启动速度优化的话题:Session 406 Optimizing App Startup Time .该Session上Apple建议一个App完整的启动时间应该保证400ms之内,而若超过20s后还未完全启动App,那么App进程就会被系统杀死.而如何Debug和优化应用启动的时间,官方提出一系列方法来关注应用启动时执行main()前究竟干了些">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WWDC之优化App启动速度">
+<meta property="og:url" content="http://www.yoursite.com/2016/08/28/WWDC之优化App启动速度/index.html">
+<meta property="og:site_name" content="One Word">
+<meta property="og:description" content="前言
+在WWDC 2016上首次提到了关于App应用启动速度优化的话题:Session 406 Optimizing App Startup Time .该Session上Apple建议一个App完整的启动时间应该保证400ms之内,而若超过20s后还未完全启动App,那么App进程就会被系统杀死.而如何Debug和优化应用启动的时间,官方提出一系列方法来关注应用启动时执行main()前究竟干了些">
+<meta property="og:image" content="http://www.yoursite.com/media/screenshot-6.png">
+<meta property="og:image" content="http://www.yoursite.com/media/14723544941522.png">
+<meta property="og:updated_time" content="2016-08-28T12:02:38.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WWDC之优化App启动速度">
+<meta name="twitter:description" content="前言
+在WWDC 2016上首次提到了关于App应用启动速度优化的话题:Session 406 Optimizing App Startup Time .该Session上Apple建议一个App完整的启动时间应该保证400ms之内,而若超过20s后还未完全启动App,那么App进程就会被系统杀死.而如何Debug和优化应用启动的时间,官方提出一系列方法来关注应用启动时执行main()前究竟干了些">
+<meta name="twitter:image" content="http://www.yoursite.com/media/screenshot-6.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://www.yoursite.com/2016/08/28/WWDC%E4%B9%8B%E4%BC%98%E5%8C%96App%E5%90%AF%E5%8A%A8%E9%80%9F%E5%BA%A6/">
+
+  <title> WWDC之优化App启动速度 | One Word </title>
+<style type="text/css">.fancybox-margin{margin-right:15px;}</style></head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="http://one9398.com/" class="brand" rel="start" style="opacity: 1;">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title" style="opacity: 1; top: 0px;">One Word</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle" style="opacity: 1; top: 0px;">Never too old to learn.</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home" style="opacity: 1; transform: translateY(0px);">
+          <a href="http://one9398.com/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags" style="opacity: 1; transform: translateY(0px);">
+          <a href="http://one9398.com/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories" style="opacity: 1; transform: translateY(0px);">
+          <a href="http://one9398.com/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives" style="opacity: 1; transform: translateY(0px);">
+          <a href="http://one9398.com/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article" style="opacity: 1; display: block; transform: translateY(0px);">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                WWDC之优化App启动速度
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-28T12:26:54+08:00" content="2016-08-28">
+              2016-08-28
+            </time>
+          </span>
+
+          
+            <span class="post-category">
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope="" itemtype="https://schema.org/Thing">
+                  <a href="http://one9398.com/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="http://one9398.com/2016/08/28/WWDC%E4%B9%8B%E4%BC%98%E5%8C%96App%E5%90%AF%E5%8A%A8%E9%80%9F%E5%BA%A6/#前言" class="headerlink" title="前言"></a>前言</h2><p><a href="./WWDC之优化App启动速度 _ One Word_files/screenshot-6.png" class="fancybox" rel="group"><img src="./WWDC之优化App启动速度 _ One Word_files/screenshot-6.png" alt="title-pic"></a></p>
+<p>在WWDC 2016上首次提到了关于App应用启动速度优化的话题:<a href="https://developer.apple.com/videos/play/wwdc2016/406/" target="_blank" rel="external">Session 406 Optimizing App Startup Time</a> .该Session上Apple建议一个App完整的启动时间应该保证400ms之内,而若超过20s后还未完全启动App,那么App进程就会被系统杀死.而如何Debug和优化应用启动的时间,官方提出一系列方法来关注应用启动时执行<code>main()</code>前究竟干了些什么.而通过这个Session,你会了解到以下内容:</p>
+<ul>
+<li>如何获得应用加载的时间</li>
+<li>执行程序入门的代码前App加载过程中的流程</li>
+<li>如何优化App的加载时间</li>
+</ul>
+<a id="more"></a>
+<h2 id="测量Pre-main-Time"><a href="http://one9398.com/2016/08/28/WWDC%E4%B9%8B%E4%BC%98%E5%8C%96App%E5%90%AF%E5%8A%A8%E9%80%9F%E5%BA%A6/#测量Pre-main-Time" class="headerlink" title="测量Pre-main Time"></a>测量Pre-main Time</h2><p>一个App在执行main函数前包括app delegate的系列方法如<code>applicationWillFinishLaunching</code>时,会做许多系统级别的准备.而在iOS10之前,开发者很难清楚自己App为何启动加载慢.而通过在工程的scheme中添加环境变量<strong>DYLD_PRINT_STATISTICS</strong>,设置Value为1,App启动加载时就会有启动过程的日志输出. 现在<em>(iOS 10之后)</em>Apple对DYLD_PRINT_STATISTICS的日志输出结果进行了简化,使得更容易让开发者理解.<br><a href="./WWDC之优化App启动速度 _ One Word_files/14723544941522.png" class="fancybox" rel="group"><img src="./WWDC之优化App启动速度 _ One Word_files/14723544941522.png" alt="指定Scheme上添加DYLD_PRINT_STATISTICS环境变量"></a></p>
+<p>尝试在iPad (使用iOS10 beta 3)上对一个纯OC项目设置该环境变量后,有了以下输出信息.</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Total pre-main time:  <span class="number">74.37</span> milliseconds (<span class="number">100.0</span>%)</span><br><span class="line">       dylib loading time:  <span class="number">41.05</span> milliseconds (<span class="number">55.2</span>%)</span><br><span class="line">      rebase/binding time:   <span class="number">8.10</span> milliseconds (<span class="number">10.9</span>%)</span><br><span class="line">          ObjC setup time:   <span class="number">9.87</span> milliseconds (<span class="number">13.2</span>%)</span><br><span class="line">         initializer time:  <span class="number">15.23</span> milliseconds (<span class="number">20.4</span>%)</span><br><span class="line">         slowest intializers :</span><br><span class="line">           libSystem.B.dylib :   <span class="number">6.58</span> milliseconds (<span class="number">8.8</span>%)</span><br><span class="line"> libBacktraceRecording.dylib :   <span class="number">6.27</span> milliseconds (<span class="number">8.4</span>%)</span><br></pre></td></tr></tbody></table></figure>
+<p>输出内容展示了系统调用main()函前主要进行的工作内容和时间花费,Session上也对每一阶段加载过程具体内容进行了详细的叙述,有兴趣地可观看该Session.</p>
+<h2 id="启动优化"><a href="http://one9398.com/2016/08/28/WWDC%E4%B9%8B%E4%BC%98%E5%8C%96App%E5%90%AF%E5%8A%A8%E9%80%9F%E5%BA%A6/#启动优化" class="headerlink" title="启动优化"></a>启动优化</h2><p>那么如何尽可能的减少pre-main花费的时间呢,主要就从输出日志给出的四个阶段下手:</p>
+<ul>
+<li><p><strong>对动态库加载的时间优化.</strong>每个App都进行动态库加载,其中系统级别的动态库占据了绝大数,而针对系统级别的动态库都是经过系统高度优化的,不用担心时间的花费.开发者应该关注于自己集成到App的那些动态库,这也是最能消耗加载时间的地方.对此Apple建议<strong>减少在App里开发者的动态库集成或者有可能地将其多个动态库最终集成一个动态库后进行导入, 尽量保证将App现有的非系统级的动态库个数保证在6个以内</strong>.</p>
+</li>
+<li><p><strong>减少Appp的Objective-C类,分类和的唯一Selector的个数.</strong>这样做主要是为了加快程序的整个动态链接, 在进行动态库的重定位和绑定<em>(Rebase/binding)</em>过程中减少指针修正的使用,加快程序机器码的生成.</p>
+</li>
+<li><p><strong>减少Objc运行初始化的时间花费.</strong>主要是类的注册,分类的注册,唯一选择器的存在,以及涉及子父类内存布局的<code>Non Fragile ivars</code>偏移的更新,都会影响Objective-C运行时初始化的时间消耗.</p>
+</li>
+<li><p><strong>使用initialize方法</strong>进行必要的初始化工作.用<code>+initialize</code>方法替换调用原先在OC的<code>+load</code>方法中执行初始代码工作,从而加快所有类文件的加载速度.</p>
+</li>
+</ul>
+<h2 id="结尾"><a href="http://one9398.com/2016/08/28/WWDC%E4%B9%8B%E4%BC%98%E5%8C%96App%E5%90%AF%E5%8A%A8%E9%80%9F%E5%BA%A6/#结尾" class="headerlink" title="结尾"></a>结尾</h2><p>最后演讲者对加载启动优化的整体概括了Session所要传达的内容:</p>
+<ul>
+<li>使用<strong>DYLD_PRINT_STATISTICS</strong>测试启动加载时间</li>
+<li>减少自定义的动态库集成</li>
+<li>精简原有的Objective-C类和代码</li>
+<li>移除静态的初始化操作</li>
+<li>使用更多的Swift代码</li>
+</ul>
+<h2 id="拓展"><a href="http://one9398.com/2016/08/28/WWDC%E4%B9%8B%E4%BC%98%E5%8C%96App%E5%90%AF%E5%8A%A8%E9%80%9F%E5%BA%A6/#拓展" class="headerlink" title="拓展"></a>拓展</h2><ul>
+<li><a href="https://developer.apple.com/videos/play/wwdc2016/406/" target="_blank" rel="external">WWDC 2016 Session 406 Optimizing App Startup Time</a></li>
+<li><a href="http://yulingtianxia.com/blog/2014/11/05/objective-c-runtime/" target="_blank" rel="external">Objective-C Runtime
+</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="http://one9398.com/tags/iOS/" rel="tag">#iOS</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="http://one9398.com/2016/08/21/2016-08-21/" rel="next" title="Swift时代下的Objective-C新特性">
+                <i class="fa fa-chevron-left"></i> Swift时代下的Objective-C新特性
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar" style="margin-top: 294px; display: block;">
+    <div class="sidebar-inner affix">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="./WWDC之优化App启动速度 _ One Word_files/17493209" alt="One">
+          <p class="site-author-name" itemprop="name">One</p>
+          <p class="site-description motion-element" itemprop="description">Keep learning, keep going.</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="http://one9398.com/archives">
+              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="http://one9398.com/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="http://one9398.com/tags">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc" style="max-height: 659px; width: calc(100% + 15px);">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2 active active-current"><a class="nav-link" href="http://one9398.com/2016/08/28/WWDC%E4%B9%8B%E4%BC%98%E5%8C%96App%E5%90%AF%E5%8A%A8%E9%80%9F%E5%BA%A6/#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="http://one9398.com/2016/08/28/WWDC%E4%B9%8B%E4%BC%98%E5%8C%96App%E5%90%AF%E5%8A%A8%E9%80%9F%E5%BA%A6/#测量Pre-main-Time"><span class="nav-number">2.</span> <span class="nav-text">测量Pre-main Time</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="http://one9398.com/2016/08/28/WWDC%E4%B9%8B%E4%BC%98%E5%8C%96App%E5%90%AF%E5%8A%A8%E9%80%9F%E5%BA%A6/#启动优化"><span class="nav-number">3.</span> <span class="nav-text">启动优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="http://one9398.com/2016/08/28/WWDC%E4%B9%8B%E4%BC%98%E5%8C%96App%E5%90%AF%E5%8A%A8%E9%80%9F%E5%BA%A6/#结尾"><span class="nav-number">4.</span> <span class="nav-text">结尾</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="http://one9398.com/2016/08/28/WWDC%E4%B9%8B%E4%BC%98%E5%8C%96App%E5%90%AF%E5%8A%A8%E9%80%9F%E5%BA%A6/#拓展"><span class="nav-number">5.</span> <span class="nav-text">拓展</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  © 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">One</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io/">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top back-to-top-on">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="./WWDC之优化App启动速度 _ One Word_files/index.js"></script>
+
+  
+  <script type="text/javascript" src="./WWDC之优化App启动速度 _ One Word_files/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="./WWDC之优化App启动速度 _ One Word_files/jquery.lazyload.js"></script>
+
+  
+  <script type="text/javascript" src="./WWDC之优化App启动速度 _ One Word_files/velocity.min.js"></script>
+
+  
+  <script type="text/javascript" src="./WWDC之优化App启动速度 _ One Word_files/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="./WWDC之优化App启动速度 _ One Word_files/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="./WWDC之优化App启动速度 _ One Word_files/utils.js"></script>
+
+  <script type="text/javascript" src="./WWDC之优化App启动速度 _ One Word_files/motion.js"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="./WWDC之优化App启动速度 _ One Word_files/affix.js"></script>
+
+  <script type="text/javascript" src="./WWDC之优化App启动速度 _ One Word_files/pisces.js"></script>
+
+
+
+  
+  <script type="text/javascript" src="./WWDC之优化App启动速度 _ One Word_files/scrollspy.js"></script>
+<script type="text/javascript" src="./WWDC之优化App启动速度 _ One Word_files/post-details.js"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="./WWDC之优化App启动速度 _ One Word_files/bootstrap.js"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+
+
+</body></html>

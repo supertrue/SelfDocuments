@@ -1,0 +1,1790 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)http://www.jianshu.com/p/225947454abe -->
+<html class=" js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="description" content="这篇文章是用UILabel配合模型来实现不同宽度的标签、今后我会出一篇用UICollectionView来实现同样的效果源码地址：https://github.com/chenfanfang/CollectionsOfExample附上几张效果图gif效果图不同宽度的标签.gifpng效果图不同宽度的标签1.png不同宽度的标签2.png实现思路1、模型中的主要思路模型的属性如下：#import&amp;lt;Foundation/Foundation.h&amp;gt;/***不同...">
+  <meta property="wb:webmaster" content="294ec9de89e7fadb">
+  <meta property="qc:admins" content="104102651453316562112116375">
+  <meta property="qc:admins" content="11635613706305617">
+  <meta property="qc:admins" content="1163561616621163056375">
+  <meta name="google-site-verification" content="cV4-qkUJZR6gmFeajx_UyPe47GW9vY6cnCrYtCHYNh4">
+  <meta name="google-site-verification" content="HF7lfF8YEGs1qtCE-kPml8Z469e2RHhGajy6JPVy5XI">
+  <meta http-equiv="mobile-agent" content="format=html5; url=http://www.jianshu.com/p/225947454abe">
+    <!--  Meta for Smart App Banner -->
+  <meta name="apple-itunes-app" content="app-id=888237539, app-argument=jianshu://notes/5038455">
+  <!-- End -->
+
+  <!--  Meta for Twitter Card -->
+  <meta content="summary" property="twitter:card">
+  <meta content="@jianshucom" property="twitter:site">
+  <meta content="iOS不同宽度的标签(用简单的UILabel来实现)" property="twitter:title">
+  <meta content="这篇文章是用UILabel配合模型来实现不同宽度的标签、今后我会出一篇用UICollectionView来实现同样的效果源码地址：https://github.com/chenfanfang/CollectionsOfExample附上几张效果图gif效果图不同宽度的标签.gifpng效果图不同宽度的标签1.png不同宽度的标签2.png实现思路1、模型中的主要思路模型的属性如下：#import&amp;lt;Foundation/Foundation.h&amp;gt;/***不同..." property="twitter:description">
+  <meta content="http://www.jianshu.com/p/225947454abe" property="twitter:url">
+  <!-- End -->
+
+  <!--  Meta for OpenGraph -->
+  <meta property="fb:app_id" content="865829053512461">
+  <meta property="og:site_name" content="简书">
+  <meta property="og:title" content="iOS不同宽度的标签(用简单的UILabel来实现)">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="http://www.jianshu.com/p/225947454abe">
+  <meta property="og:description" content="这篇文章是用UILabel配合模型来实现不同宽度的标签、今后我会出一篇用UICollectionView来实现同样的效果源码地址：https://github.com/chenfanfang/C...">
+  <!-- End -->
+
+  <!--  Meta for Facebook Applinks -->
+  <meta property="al:ios:url" content="jianshu://notes/5038455">
+  <meta property="al:ios:app_store_id" content="888237539">
+  <meta property="al:ios:app_name" content="简书">
+
+  <meta property="al:android:url" content="jianshu://notes/5038455">
+  <meta property="al:android:package" content="com.jianshu.haruki">
+  <meta property="al:android:app_name" content="简书">
+  <!-- End -->
+
+  <title>iOS不同宽度的标签(用简单的UILabel来实现) - 简书</title>
+  <meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="cvWfy398H+es7581RGUVvIJZhZ9ldfZq3nfnaen9BHmGUqXUM294kQPx5ft+Xszjk0FdwcvdpyHPfYnN5QWv2Q==">
+  <!--[if lte IE 8]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <link rel="stylesheet" media="all" href="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/base-28859e35d389885d08837bc971ff742c.css">
+
+    <link rel="stylesheet" media="all" href="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/reading-note-cc35f3caf1b79498ea4800b856bcf8a6.css">
+  <link rel="stylesheet" media="all" href="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/base-read-mode-64acccf6966299cfa3d580140a2582fe.css">
+  <script type="text/javascript" async="" src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/ga.js"></script><script type="text/javascript" async="" src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/vds.js"></script><script src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/modernizr-613ea63b5aa2f0e2a1946e9c28c8eedb.js"></script>
+  <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+  <!--[if IE 8]><link rel="stylesheet" media="all" href="http://cdn-qn0.jianshu.io/assets/scaffolding/for_ie-7f1c477ffedc13c11315103e8787dc6c.css" /><![endif]-->
+  <!--[if lt IE 9]><link rel="stylesheet" media="all" href="http://cdn-qn0.jianshu.io/assets/scaffolding/for_ie-7f1c477ffedc13c11315103e8787dc6c.css" /><![endif]-->
+  <link href="http://baijii-common.b0.upaiyun.com/icons/favicon.ico" rel="icon">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn-qn0.jianshu.io/assets/apple-touch-icons/57-b426758a1fcfb30486f20fd073c3b8ec.png" sizes="57x57">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn-qn0.jianshu.io/assets/apple-touch-icons/72-feca4b183b9d29fd188665785dc7a7f1.png" sizes="72x72">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn-qn0.jianshu.io/assets/apple-touch-icons/76-ba757f1ad3421192ce7192170393d2b0.png" sizes="76x76">
+      <link rel="apple-touch-icon-precomposed" href="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/114-8dae53b3bcea3f06bb139e329d1edab3.png" sizes="114x114">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn-qn0.jianshu.io/assets/apple-touch-icons/120-fa315ee0177dba4c55d4f66d4129b47f.png" sizes="120x120">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn-qn0.jianshu.io/assets/apple-touch-icons/152-052f5799bec8fb3aa624bdc72ef5bd1d.png" sizes="152x152">
+
+    <meta id="current_user_id" value="80164">
+    <meta id="current_user_slug" value="8237e1754864">
+
+  <!-- Growing.io -->
+    <script type="text/javascript">
+    var _vds = _vds || [];
+    window._vds = _vds;
+    (function(){
+      _vds.push(['setAccountId', '81aa392bc97abf45']);
+      (function() {
+        var vds = document.createElement('script');
+        vds.type='text/javascript';
+        vds.async = true;
+        vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(vds, s);
+      })();
+    })();
+  </script>
+
+<style type="text/css"></style></head>
+
+<body class="post output zh cn mac reader-day-mode reader-font2" data-js-module="note-show" data-locale="zh-CN">
+  
+  <div class="navbar navbar-jianshu shrink hide-wrap-btn" style="">
+  <div class="dropdown">
+    <a class="dropdown-toggle logo" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="javascript:void(0)">
+      简
+    </a>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+      <li><a href="http://www.jianshu.com/"><i class="fa fa-home"></i> 首页</a></li>
+      <li><a href="http://www.jianshu.com/collections"><i class="fa fa-th"></i> 专题</a></li>
+      <li><a href="http://www.jianshu.com/user_invitations"><i class="fa fa-money"></i> 发钱啦</a></li>
+        <li><a href="http://www.jianshu.com/timeline"><i class="fa fa-users"></i> 简友圈</a></li>
+        <li><a href="http://www.jianshu.com/writer#/"><i class="fa fa-pencil"></i> 写文章</a></li>
+    </ul>
+  </div>
+</div>
+<div class="navbar-user">
+    <a class="user avatar" data-toggle="dropdown" href="javascript:void(0)">
+      <img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/a97d9a23365b" alt="100"> <b class="caret"></b>
+</a>    <ul class="dropdown-menu arrow-top" role="menu" aria-labelledby="dLabel">
+      <li>
+  <a href="http://www.jianshu.com/writer#/"><i class="fa fa-pencil"></i> 写文章</a>
+</li>
+<li>
+  <a target="_blank" href="http://www.jianshu.com/users/8237e1754864"><i class="fa fa-user"></i> 我的主页</a>
+</li>
+  <li>
+    <a href="http://www.jianshu.com/favourites">
+      <i class="fa fa-heart"></i> 我喜欢的
+</a>  </li>
+  <li>
+    <a href="http://www.jianshu.com/bookmarks">
+      <i class="fa fa-bookmark"></i> 我的收藏
+</a>  </li>
+  <li>
+    <a href="http://www.jianshu.com/notifications">
+      <i class="fa fa-bell"></i> 提醒
+</a>  </li>
+  <li>
+    <a href="http://www.jianshu.com/chats">
+      <i class="fa fa-envelope"></i> 简信
+</a>  </li>
+  <li><a href="http://www.jianshu.com/settings"><i class="fa fa-cogs"></i> 设置</a></li>
+  <li>
+    <a href="http://www.jianshu.com/wallet">
+      <i class="fa fa-credit-card"></i> 钱包
+</a>  </li>
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="http://www.jianshu.com/p/225947454abe#"><i class="fa fa-question-circle"></i> 帮助</a>
+    <ul class="dropdown-menu">
+      <li><a href="http://www.jianshu.com/notebooks/547/latest" target="_blank">帮助中心</a></li>
+      <li><a target="_blank" href="http://www.jianshu.com/contact">联系我们</a></li>
+    </ul>
+  </li>
+  <li>
+    <a rel="nofollow" data-method="DELETE" href="http://www.jianshu.com/sign_out">
+      <i class="fa fa-sign-out"></i> 登 出
+</a>  </li>
+
+    </ul>
+    <a class="daytime set-view-mode pull-right" href="javascript:void(0)"><i class="fa fa-moon-o"></i></a>
+</div>
+<div class="navbar navbar-jianshu expanded">
+  <div class="dropdown">
+      <a class="active logo" role="button" data-original-title="个人主页" data-container="div.expanded" href="http://www.jianshu.com/">
+        <b>简</b><i class="fa fa-home"></i><span class="title">首页</span>
+</a>      <a data-toggle="tooltip" data-placement="right" data-original-title="专题" data-container="div.expanded" href="http://www.jianshu.com/collections">
+        <i class="fa fa-th"></i><span class="title">专题</span>
+</a>        <a data-toggle="tooltip" data-placement="right" data-original-title="简友圈" data-container="div.expanded" href="http://www.jianshu.com/timeline">
+          <i class="fa fa-users"></i><span class="title">简友圈</span>
+</a>        <a data-toggle="tooltip" data-placement="right" data-original-title="写文章" data-container="div.expanded" href="http://www.jianshu.com/writer#/">
+          <i class="fa fa-pencil"></i><span class="title">写文章</span>
+</a>    <a class="ad-selector" href="http://www.jianshu.com/apps">
+      <i class="fa fa-mobile"></i><span class="title">下载手机应用</span>
+</a>    <div class="ad-container ad-container-signed">
+      <div class="ad-pop">
+        <img class="ad-logo" src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/114-8dae53b3bcea3f06bb139e329d1edab3.png" alt="114">
+        <p class="ad-title">简书</p>
+        <p class="ad-subtitle">交流故事，沟通想法</p>
+        <img class="ad-qrcode" src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/download-app-qrcode-053849fa25f9b44573ef8dd3c118a20f.png" alt="Download app qrcode">
+        <div>
+          <a class="ad-link" href="https://itunes.apple.com/cn/app/jian-shu/id888237539?ls=1&amp;mt=8">iOS</a>·
+          <a class="ad-link" href="http://downloads.jianshu.io/apps/haruki/JianShu-1.11.1.apk">Android</a>
+        </div>
+      </div> 
+    </div>
+  </div>
+  <div class="nav-user">
+      <a data-toggle="tooltip" data-placement="right" data-original-title="我的主页" data-container="div.expanded" href="http://www.jianshu.com/users/8237e1754864">
+        <i class="fa fa-user"></i><span class="title">我的主页</span>
+</a>
+        <a data-toggle="tooltip" data-placement="right" data-original-title="我的收藏" data-container="div.expanded" href="http://www.jianshu.com/bookmarks">
+          <i class="fa fa-bookmark"></i><span class="title">我的收藏</span>
+</a>
+        <a data-toggle="tooltip" data-placement="right" data-original-title="提醒" data-container="div.expanded" href="http://www.jianshu.com/notifications">
+
+          <i id="notify-icon" class="fa fa-bell"></i><span class="title">提醒</span>
+</a>
+        <a data-toggle="tooltip" data-placement="right" data-original-title="简信" data-container="div.expanded" href="http://www.jianshu.com/chats">
+            <i id="chat-message-icon" class="fa fa-envelope"></i><span class="title">简信</span>
+</a>
+        <a href="http://www.jianshu.com/p/225947454abe#view-mode-modal" data-toggle="modal"><i class="fa fa-font"></i><span class="title">显示模式</span></a>
+
+        <a data-toggle="tooltip" data-placement="right" data-original-title="设置" data-container="div.expanded" href="http://www.jianshu.com/settings">
+          <i class="fa fa-cogs"></i><span class="title">设置</span>
+</a>
+        <a data-toggle="tooltip" data-placement="right" data-original-title="登 出" data-container="div.expanded" rel="nofollow" data-method="delete" href="http://www.jianshu.com/sign_out">
+          <i class="fa fa-sign-out"></i><span class="title">登 出</span>
+</a>
+          </div>
+  </div>
+
+  
+    <div class="fixed-btn">
+    <a class="go-top" href="http://www.jianshu.com/p/225947454abe#"> <i class="fa fa-angle-up"></i></a>
+    <a class="qrcode" data-target="#bottom-qrcode" data-toggle="modal" href="javascript:void(0)"><i class="fa fa-qrcode"></i></a>
+    <a class="writer" href="http://www.jianshu.com/writer#/" data-toggle="tooltip" data-placement="left" title="" data-original-title="写篇文章"><i class="fa fa-pencil"></i></a>
+    <!-- qrcode modal -->
+    <div id="bottom-qrcode" class="modal panel-modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+      <h4>下载简书移动应用</h4>
+      <div class="panel-body"><img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/download-app-qrcode-053849fa25f9b44573ef8dd3c118a20f.png" alt="Download app qrcode"></div>
+    </div>
+  </div>
+
+
+  <div id="show-note-container" class="imagebubble-container imagebubble-mode-off">
+    
+<div class="post-bg" id="flag">
+  <div class="wrap-btn hide-wrap-btn" style="top: -1px;">
+    <!-- Notebook and collections button upper left -->
+      <div class="article-related pull-left">
+          <a class="collection-menu-btn" data-toggle="modal" data-target="#collection-menu" href="javascript:void(null);">
+            <i class="fa fa-th"></i>
+</a>          <a class="notebooks-menu-btn" data-toggle="modal" data-target="#notebooks-menu" href="javascript:void(null);"><i class="fa fa-list-ul"></i></a>
+        <div class="related-avatar-group activities"></div>
+      </div>
+    <!-- ******* -->
+
+      <a class="user avatar" data-toggle="dropdown" href="javascript:void(0)">
+    <img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/a97d9a23365b" alt="100"> <b class="caret"></b>
+</a>  <ul class="dropdown-menu arrow-top" role="menu" aria-labelledby="dLabel">
+    <li>
+  <a href="http://www.jianshu.com/writer#/"><i class="fa fa-pencil"></i> 写文章</a>
+</li>
+<li>
+  <a target="_blank" href="http://www.jianshu.com/users/8237e1754864"><i class="fa fa-user"></i> 我的主页</a>
+</li>
+  <li>
+    <a href="http://www.jianshu.com/favourites">
+      <i class="fa fa-heart"></i> 我喜欢的
+</a>  </li>
+  <li>
+    <a href="http://www.jianshu.com/bookmarks">
+      <i class="fa fa-bookmark"></i> 我的收藏
+</a>  </li>
+  <li>
+    <a href="http://www.jianshu.com/notifications">
+      <i class="fa fa-bell"></i> 提醒
+</a>  </li>
+  <li>
+    <a href="http://www.jianshu.com/chats">
+      <i class="fa fa-envelope"></i> 简信
+</a>  </li>
+  <li><a href="http://www.jianshu.com/settings"><i class="fa fa-cogs"></i> 设置</a></li>
+  <li>
+    <a href="http://www.jianshu.com/wallet">
+      <i class="fa fa-credit-card"></i> 钱包
+</a>  </li>
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="http://www.jianshu.com/p/225947454abe#"><i class="fa fa-question-circle"></i> 帮助</a>
+    <ul class="dropdown-menu">
+      <li><a href="http://www.jianshu.com/notebooks/547/latest" target="_blank">帮助中心</a></li>
+      <li><a target="_blank" href="http://www.jianshu.com/contact">联系我们</a></li>
+    </ul>
+  </li>
+  <li>
+    <a rel="nofollow" data-method="DELETE" href="http://www.jianshu.com/sign_out">
+      <i class="fa fa-sign-out"></i> 登 出
+</a>  </li>
+
+  </ul>
+
+
+    <!-- Buttons upper right -->
+      <div class="btn-group editor-article">
+                  <a class="daytime set-view-mode" href="javascript:void(0)"><i class="fa fa-moon-o"></i></a>
+        <span>
+          
+          
+          
+
+            <a data-type="json" data-mcomponent="easy-bookmark" class="bookmark" data-remote="true" rel="nofollow" data-method="post" href="http://www.jianshu.com/notes/5038455/bookmark" data-original-title="" title="">
+    <i class="fa fa-bookmark-o"></i><span>收藏文章</span>
+</a>
+        <a href="javascript:void(null)" data-toggle="dropdown" id="top-share-button" data-original-title="" title=""><i class="fa fa-share-square-o"></i></a><ul class="dropdown-menu top-share-dropdown arrow-top"><li><a data-toggle="modal" href="http://www.jianshu.com/p/225947454abe#share-weixin-modal"><img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/weixin.png"> 分享到微信</a></li><li><a href="javascript:void((function(s,d,e,r,l,p,t,z,c){var%20f=&#39;http://v.t.sina.com.cn/share/share.php?appkey=1881139527&#39;,u=z||d.location,p=[&#39;&amp;url=&#39;,e(u),&#39;&amp;title=&#39;,e(t||d.title),&#39;&amp;source=&#39;,e(r),&#39;&amp;sourceUrl=&#39;,e(l),&#39;&amp;content=&#39;,c||&#39;gb2312&#39;,&#39;&amp;pic=&#39;,e(p||&#39;&#39;)].join(&#39;&#39;);function%20a(){if(!window.open([f,p].join(&#39;&#39;),&#39;mb&#39;,[&#39;toolbar=0,status=0,resizable=1,width=440,height=430,left=&#39;,(s.width-440)/2,&#39;,top=&#39;,(s.height-430)/2].join(&#39;&#39;)))u.href=[f,p].join(&#39;&#39;);};if(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else%20a();})(screen,document,encodeURIComponent,&#39;&#39;,&#39;&#39;,&#39;http://cwb.assets.jianshu.io/notes/images/5038455/weibo/image_5aa02c8a0411.jpg&#39;, &#39;推荐 chenfanfang 的文章《iOS不同宽度的标签(用简单的UILabel来实现)》（ 分享自 @简书 ）&#39;,&#39;http://www.jianshu.com/p/225947454abe&#39;,&#39;页面编码gb2312|utf-8默认gb2312&#39;));"><img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/weibo.png"> 分享到微博</a></li><li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;http://share.v.t.qq.com/index.php?c=share&amp;a=index&amp;url=&#39;+e(&#39;http://www.jianshu.com/p/225947454abe&#39;)+&#39;&amp;title=&#39;+e(&#39;推荐 chenfanfang 的文章《iOS不同宽度的标签(用简单的UILabel来实现)》（ 分享自 @jianshuio ）&#39;),x=function(){if(!window.open(r,&#39;tweibo&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();"><img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/tweibo.png"> 分享到腾讯微博</a></li><li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=&#39;+e(&#39;http://www.jianshu.com/p/225947454abe&#39;)+&#39;&amp;title=&#39;+e(&#39;推荐 chenfanfang 的文章《iOS不同宽度的标签(用简单的UILabel来实现)》&#39;),x=function(){if(!window.open(r,&#39;qzone&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();"><img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/qzone.png"> 分享到QQ空间</a></li><li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;https://twitter.com/share?url=&#39;+e(&#39;http://www.jianshu.com/p/225947454abe&#39;)+&#39;&amp;text=&#39;+e(&#39;推荐 chenfanfang 的文章《iOS不同宽度的标签(用简单的UILabel来实现)》（ 分享自 @jianshucom ）&#39;)+&#39;&amp;related=&#39;+e(&#39;jianshucom&#39;),x=function(){if(!window.open(r,&#39;twitter&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();"><img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/twitter.png"> 分享到Twitter</a></li><li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,s1=window.getSelection,s2=d.getSelection,s3=d.selection,s=s1?s1():s2?s2():s3?s3.createRange().text:&#39;&#39;,r=&#39;http://www.douban.com/recommend/?url=&#39;+e(&#39;http://www.jianshu.com/p/225947454abe&#39;)+&#39;&amp;title=&#39;+e(&#39;iOS不同宽度的标签(用简单的UILabel来实现)&#39;)+&#39;&amp;sel=&#39;+e(s)+&#39;&amp;v=1&#39;,x=function(){if(!window.open(r,&#39;douban&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330&#39;))location.href=r+&#39;&amp;r=1&#39;};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})()"><img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/douban.png"> 分享到豆瓣</a></li><li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;https://www.facebook.com/dialog/share?app_id=483126645039390&amp;display=popup&amp;href=http://www.jianshu.com/p/225947454abe&#39;,x=function(){if(!window.open(r,&#39;facebook&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();"><img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/facebook.png"> 分享到Facebook</a></li><li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;https://plus.google.com/share?url=&#39;+e(&#39;http://www.jianshu.com/p/225947454abe&#39;),x=function(){if(!window.open(r,&#39;google_plus&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();"><img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/google_plus.png"> 分享到Google+</a></li><li><a href="http://cwb.assets.jianshu.io/notes/images/5038455/weibo/image_5aa02c8a0411.jpg" target="_blank"><i class="fa fa-arrow-circle-o-down"></i>下载长微博图片</a></li></ul></span>
+      </div>
+    <!-- ******* -->
+  </div>
+
+  <div class="container">
+    <!-- Article activities for width under 768px -->
+    <div class="related-avatar-group activities"></div>
+      <div class="article">
+        <div class="preview">
+          <div class="author-info">
+              <div class="btn btn-small btn-success follow" id="follow_user_1594675">
+    <a data-type="json" data-user-slug="80fadb71940d" data-remote="true" rel="nofollow" data-method="post" href="http://www.jianshu.com/users/80fadb71940d/toggle_like"><i class="fa fa-plus"></i>  <span>添加关注</span></a>
+  </div>
+
+            <a class="avatar" href="http://www.jianshu.com/users/80fadb71940d">
+              <img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/b8c3a1f091e3.jpg" alt="100">
+</a>            <span class="label">
+                作者
+            </span>
+            <a class="author-name blue-link" href="http://www.jianshu.com/users/80fadb71940d">
+              <span>chenfanfang</span>
+</a>              <span data-toggle="tooltip" data-original-title="最后编辑于 2016.07.31 02:07">2016.07.31 02:04*</span>
+            <div>
+              <span>写了4242字</span>，<span>被59人关注</span>，<span>获得了135个喜欢</span>
+            </div>
+          </div>
+          <h1 class="title">iOS不同宽度的标签(用简单的UILabel来实现)</h1>
+          <div class="meta-top">
+            <span class="wordage">字数2123</span>
+            <span class="views-count">阅读1047</span>
+            <span class="comments-count">评论19</span>
+            <span class="likes-count">喜欢62</span>
+          </div>
+
+          <!-- Collection/Bookmark/Share for width under 768px -->
+          <div class="article-share"></div>
+          <!-- -->
+
+          <div class="show-content"><p>这篇文章是用UILabel配合模型来实现不同宽度的标签、今后我会出一篇用UICollectionView来实现同样的效果</p>
+<p>源码地址：<a href="https://github.com/chenfanfang/CollectionsOfExample" target="_blank">https://github.com/chenfanfang/CollectionsOfExample</a></p>
+<h2>附上几张效果图</h2>
+<p>gif效果图<br></p><div class="image-package imagebubble" widget="ImageBubble">
+<img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/1594675-e44259ed3174464a.gif" data-original-src="http://upload-images.jianshu.io/upload_images/1594675-e44259ed3174464a.gif?imageMogr2/auto-orient/strip" class="imagebubble-image"><br><div class="image-caption">不同宽度的标签.gif</div>
+</div>
+<p>png效果图</p>
+<div class="image-package imagebubble" widget="ImageBubble">
+<img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/1594675-d5e5924230307fc0.png" data-original-src="http://upload-images.jianshu.io/upload_images/1594675-d5e5924230307fc0.png?imageMogr2/auto-orient/strip%7CimageView2/2" class="imagebubble-image"><br><div class="image-caption">不同宽度的标签1.png</div>
+</div>
+<div class="image-package imagebubble" widget="ImageBubble">
+<img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/1594675-3bd093a18ce5ed8b.png" data-original-src="http://upload-images.jianshu.io/upload_images/1594675-3bd093a18ce5ed8b.png?imageMogr2/auto-orient/strip%7CimageView2/2" class="imagebubble-image"><br><div class="image-caption">不同宽度的标签2.png</div>
+</div>
+<h1>实现思路</h1>
+<h5>1、模型中的主要思路</h5>
+<p>模型的属性如下：</p>
+<pre class="hljs objectivec"><code class="objectivec"><span class="hljs-preprocessor">#import <span class="hljs-title">&lt;Foundation/Foundation.h&gt;</span></span>
+
+<span class="hljs-comment">/**
+ *  不同宽度标签的模型
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">FFDifferentWidthTagModel</span> : <span class="hljs-title">NSObject</span></span>
+
+<span class="hljs-comment">/** 标签数组 */</span>
+<span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>, <span class="hljs-keyword">strong</span>) <span class="hljs-built_in">NSMutableArray</span>&lt;<span class="hljs-built_in">NSString</span> *&gt; *tagsArrM;
+
+<span class="hljs-comment">/** 标签数组对应label的frame 数组 */</span>
+<span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>, <span class="hljs-keyword">strong</span>) <span class="hljs-built_in">NSMutableArray</span>&lt;<span class="hljs-built_in">NSValue</span> *&gt; *tagsLabelFramesM;
+
+<span class="hljs-comment">/** 名字 */</span>
+<span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>, <span class="hljs-keyword">copy</span>) <span class="hljs-built_in">NSString</span> *name;
+
+<span class="hljs-comment">/** cell的高度 */</span>
+<span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>, <span class="hljs-keyword">assign</span>) <span class="hljs-built_in">CGFloat</span> cellHeight;
+
+<span class="hljs-keyword">@end</span> *tagsArrM;</code></pre>
+<p>在给模型标签数组属性tagsArrM赋值的时候，在模型里计算出标签内容对应UILabel的frame,并且将frame保存到模型的tagsLabelFramesM数组中。<br>并且在模型的.m文件中写cellHeight属性的get方法，这样，控制器就可以获取到对应cell的高度</p>
+<pre class="hljs objectivec"><code class="objectivec"><span class="hljs-comment">//cellHeight的get方法</span>
+- (<span class="hljs-built_in">CGFloat</span>)cellHeight {
+    <span class="hljs-built_in">NSValue</span> *frameValue = <span class="hljs-keyword">self</span><span class="hljs-variable">.tagsLabelFramesM</span><span class="hljs-variable">.lastObject</span>;
+    <span class="hljs-built_in">CGRect</span> frame = [frameValue <span class="hljs-built_in">CGRectValue</span>];
+    <span class="hljs-built_in">CGFloat</span> maxY = <span class="hljs-built_in">CGRectGetMaxY</span>(frame);
+    <span class="hljs-keyword">return</span> maxY + cellMarginY;
+
+}</code></pre>
+<h5>2、cell中的思路</h5>
+<p>cell的.h有一个模型属性</p>
+<pre class="hljs objectivec"><code class="objectivec"><span class="hljs-comment">/** 不同宽度标签的模型 */</span>
+<span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>, <span class="hljs-keyword">strong</span>)FFDifferentWidthTagModel *tagModel;</code></pre>
+<p>在cell.m文件里写tagModel的set方法，根据模型的标签数组中标签的个数产生对应UILabel的个数，并且进行frame、text的赋值。主要代码如下：</p>
+<pre class="hljs objectivec"><code class="objectivec">- (<span class="hljs-keyword">void</span>)setTagModel:(FFDifferentWidthTagModel *)tagModel {
+
+    <span class="hljs-keyword">if</span> (tagModel == _tagModel || tagModel == <span class="hljs-literal">nil</span>) {
+        <span class="hljs-keyword">return</span>;
+    }
+
+    _tagModel = tagModel;
+
+    <span class="hljs-comment">//移除所有标签label</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">UILabel</span> *label <span class="hljs-keyword">in</span> <span class="hljs-keyword">self</span><span class="hljs-variable">.labelArrM</span>) {
+        [label removeFromSuperview];
+    }
+
+    <span class="hljs-keyword">self</span><span class="hljs-variable">.labelArrM</span> = <span class="hljs-literal">nil</span>;
+
+
+    <span class="hljs-comment">//创建label</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; tagModel<span class="hljs-variable">.tagsArrM</span><span class="hljs-variable">.count</span>; i++) {
+        <span class="hljs-built_in">NSValue</span> *frameValue = tagModel<span class="hljs-variable">.tagsLabelFramesM</span>[i];
+        <span class="hljs-built_in">CGRect</span> frame = [frameValue <span class="hljs-built_in">CGRectValue</span>];
+        <span class="hljs-built_in">NSString</span> *title = tagModel<span class="hljs-variable">.tagsArrM</span>[i];
+
+        <span class="hljs-built_in">UILabel</span> *label = [<span class="hljs-built_in">UILabel</span> new];
+        label<span class="hljs-variable">.textAlignment</span> = <span class="hljs-built_in">NSTextAlignmentCenter</span>;
+        label<span class="hljs-variable">.textColor</span> = [<span class="hljs-built_in">UIColor</span> whiteColor];
+        label<span class="hljs-variable">.font</span> = FFFont(<span class="hljs-number">17</span>);
+        label<span class="hljs-variable">.frame</span> = frame;
+        label<span class="hljs-variable">.layer</span><span class="hljs-variable">.cornerRadius</span> = frame<span class="hljs-variable">.size</span><span class="hljs-variable">.height</span> * <span class="hljs-number">0.5</span>;
+        label<span class="hljs-variable">.clipsToBounds</span> = <span class="hljs-literal">YES</span>;
+        label<span class="hljs-variable">.text</span> = title;
+
+        <span class="hljs-built_in">NSInteger</span> randamNumber = arc4random_uniform((<span class="hljs-keyword">int</span>)<span class="hljs-keyword">self</span><span class="hljs-variable">.colorArrM</span><span class="hljs-variable">.count</span>);
+        label<span class="hljs-variable">.backgroundColor</span> = <span class="hljs-keyword">self</span><span class="hljs-variable">.colorArrM</span>[randamNumber];
+        [<span class="hljs-keyword">self</span> addSubview:label];
+        [<span class="hljs-keyword">self</span><span class="hljs-variable">.labelArrM</span> addObject:label];
+    }
+}</code></pre>
+<h5>3、控制器的主要思路</h5>
+<p>控制器没有什么思路，就是产生一些数据源。附上控制器的tableView的数据源方法、代理方法代码</p>
+<pre class="hljs markdown"><code class="markdown">/<span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span>UITableViewDataSource<span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span>/
+<span class="hljs-header">#pragma mark - UITableViewDataSource</span>
+<span class="hljs-bullet">- </span>(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+<span class="hljs-code">    return self.dataSourceArr.count;</span>
+}
+
+<span class="hljs-bullet">- </span>(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+<span class="hljs-code">    return 1;</span>
+}
+
+<span class="hljs-bullet">- </span>(UITableViewCell <span class="hljs-emphasis">*)tableView:(UITableView *</span>)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+<span class="hljs-code">    FFDifferentWidthTagCell *cell = [tableView dequeueReusableCellWithIdentifier:FFDifferentWidthTagCellID];</span>
+<span class="hljs-code">    cell.tagModel = self.dataSourceArr[indexPath.section];</span>
+<span class="hljs-code">    cell.selectionStyle = UITableViewCellSelectionStyleNone;</span>
+<span class="hljs-code">    return cell;</span>
+}
+
+/<span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span>UITableViewDelegate<span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span>/
+<span class="hljs-header">#pragma mark - UITableViewDelegate</span>
+<span class="hljs-bullet">- </span>(UIView <span class="hljs-emphasis">*)tableView:(UITableView *</span>)tableView viewForHeaderInSection:(NSInteger)section {
+<span class="hljs-code">    FFTableSectionHeaderView *headerView = [FFTableSectionHeaderView new];</span>
+<span class="hljs-code">    [headerView setTitleColor:[UIColor purpleColor]];</span>
+<span class="hljs-code">    FFDifferentWidthTagModel *model = self.dataSourceArr[section];</span>
+<span class="hljs-code">    headerView.title = [NSString stringWithFormat:@"对%@的印象",model.name];</span>
+<span class="hljs-code">    return headerView;</span>
+}
+
+<span class="hljs-bullet">- </span>(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+<span class="hljs-code">    return 36;</span>
+}
+
+<span class="hljs-bullet">- </span>(CGFloat)tableView:(UITableView <span class="hljs-emphasis">*)tableView heightForRowAtIndexPath:(NSIndexPath *</span>)indexPath {
+<span class="hljs-code">    FFDifferentWidthTagModel *model = self.dataSourceArr[indexPath.section];</span>
+<span class="hljs-code">    return model.cellHeight;</span>
+}</code></pre>
+<h1>附上所有代码：</h1>
+<p>也可以下载源码查看<br>源码地址：<a href="https://github.com/chenfanfang/CollectionsOfExample" target="_blank">https://github.com/chenfanfang/CollectionsOfExample</a></p>
+<p>//模型.h文件</p>
+<pre class="hljs objectivec"><code class="objectivec"><span class="hljs-comment">//</span>
+<span class="hljs-comment">//  FFDifferentWidthTagModel.h</span>
+<span class="hljs-comment">//  CollectionsOfExample</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">//  Created by mac on 16/7/17.</span>
+<span class="hljs-comment">//  Copyright © 2016年 chenfanfang. All rights reserved.</span>
+<span class="hljs-comment">//</span>
+
+<span class="hljs-preprocessor">#import <span class="hljs-title">&lt;Foundation/Foundation.h&gt;</span></span>
+
+<span class="hljs-comment">/**
+ *  不同宽度标签的模型
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">FFDifferentWidthTagModel</span> : <span class="hljs-title">NSObject</span></span>
+
+<span class="hljs-comment">/** 标签数组 */</span>
+<span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>, <span class="hljs-keyword">strong</span>) <span class="hljs-built_in">NSMutableArray</span>&lt;<span class="hljs-built_in">NSString</span> *&gt; *tagsArrM;
+
+<span class="hljs-comment">/** 标签数组对应label的frame 数组 */</span>
+<span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>, <span class="hljs-keyword">strong</span>) <span class="hljs-built_in">NSMutableArray</span>&lt;<span class="hljs-built_in">NSValue</span> *&gt; *tagsLabelFramesM;
+
+<span class="hljs-comment">/** 名字 */</span>
+<span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>, <span class="hljs-keyword">copy</span>) <span class="hljs-built_in">NSString</span> *name;
+
+<span class="hljs-comment">/** cell的高度 */</span>
+<span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>, <span class="hljs-keyword">assign</span>) <span class="hljs-built_in">CGFloat</span> cellHeight;
+
+<span class="hljs-keyword">@end</span></code></pre>
+<p>//模型.m文件</p>
+<pre class="hljs objectivec"><code class="objectivec"><span class="hljs-comment">//</span>
+<span class="hljs-comment">//  FFDifferentWidthTagModel.m</span>
+<span class="hljs-comment">//  CollectionsOfExample</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">//  Created by mac on 16/7/17.</span>
+<span class="hljs-comment">//  Copyright © 2016年 chenfanfang. All rights reserved.</span>
+<span class="hljs-comment">//</span>
+
+<span class="hljs-preprocessor">#import <span class="hljs-title">"FFDifferentWidthTagModel.h"</span></span>
+
+<span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">FFDifferentWidthTagModel</span></span>
+
+<span class="hljs-keyword">static</span> <span class="hljs-built_in">CGFloat</span> cellMarginY = <span class="hljs-number">16</span>;
+
+<span class="hljs-comment">/**
+ *  重写标签数组，根据字符串的内容，计算出字符串的size,再根据size计算出对应UILabel的frame,
+ *  将计算好的frame存放到数组 tagsLabelFramesM中
+ *
+ */</span>
+- (<span class="hljs-keyword">void</span>)setTagsArrM:(<span class="hljs-built_in">NSMutableArray</span>&lt;<span class="hljs-built_in">NSString</span> *&gt; *)tagsArrM {
+    _tagsArrM = tagsArrM;
+
+    <span class="hljs-built_in">CGFloat</span> basedWidth = <span class="hljs-number">37</span>;
+    <span class="hljs-built_in">CGFloat</span> basedHeight = <span class="hljs-number">30</span>;
+    <span class="hljs-comment">//x坐标的边距</span>
+    <span class="hljs-built_in">CGFloat</span> marginX = <span class="hljs-number">16</span>;
+    <span class="hljs-comment">//y坐标的边距</span>
+    <span class="hljs-built_in">CGFloat</span> marginY = cellMarginY;
+
+    <span class="hljs-built_in">CGFloat</span> x = marginX; <span class="hljs-comment">//x</span>
+    <span class="hljs-built_in">CGFloat</span> y = marginY; <span class="hljs-comment">//y</span>
+    <span class="hljs-built_in">CGFloat</span> w; <span class="hljs-comment">//宽</span>
+    <span class="hljs-built_in">CGFloat</span> h = basedHeight; <span class="hljs-comment">//高</span>
+
+    _tagsLabelFramesM = <span class="hljs-literal">nil</span>; <span class="hljs-comment">//为了安全起见，将UILabel的frame置空</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; tagsArrM<span class="hljs-variable">.count</span>; i++) {
+        <span class="hljs-built_in">NSString</span> *str = tagsArrM[i]; <span class="hljs-comment">//取出标签的内容</span>
+
+        <span class="hljs-comment">//FFFont是字体大小的宏 可以下载源码查看</span>
+        <span class="hljs-comment">//FFScreenW是屏幕宽度的宏</span>
+
+        <span class="hljs-comment">//计算标签内容的大小</span>
+        <span class="hljs-built_in">CGSize</span> size = [str sizeWithFont:FFFont(<span class="hljs-number">17</span>) maxSize:<span class="hljs-built_in">CGSizeMake</span>(FFScreenW, <span class="hljs-number">22</span>)];
+        w = basedWidth + size<span class="hljs-variable">.width</span>;
+        <span class="hljs-built_in">CGFloat</span> maxX = x + w;
+
+        <span class="hljs-comment">//maxX 超出这行所允许的范围，另起一行</span>
+        <span class="hljs-keyword">if</span> (maxX &gt;= (FFScreenW - marginX)) {
+            x = marginX;
+            y = y + marginY + basedHeight;
+        }
+
+        <span class="hljs-built_in">CGRect</span> frame = <span class="hljs-built_in">CGRectMake</span>(x, y, w, h);
+        <span class="hljs-comment">//CGrect是结构体，不能保存到数组，可以将CGrect转换成NSValue</span>
+        <span class="hljs-built_in">NSValue</span> *frameValue = [<span class="hljs-built_in">NSValue</span> valueWith<span class="hljs-built_in">CGRect</span>:frame];
+        <span class="hljs-comment">//将转换好的frame存到数组中</span>
+        [<span class="hljs-keyword">self</span><span class="hljs-variable">.tagsLabelFramesM</span> addObject:frameValue];
+
+        x = x + marginX + w;
+    }
+
+}
+
+<span class="hljs-comment">/***********************************懒加载***********************************/</span>
+<span class="hljs-preprocessor">#pragma mark - 懒加载</span>
+- (<span class="hljs-built_in">NSMutableArray</span> *)tagsLabelFramesM {
+    <span class="hljs-keyword">if</span> (_tagsLabelFramesM == <span class="hljs-literal">nil</span>) {
+        _tagsLabelFramesM = [<span class="hljs-built_in">NSMutableArray</span> array];
+    }
+    <span class="hljs-keyword">return</span> _tagsLabelFramesM;
+}
+
+<span class="hljs-comment">//cellHeight的get方法</span>
+- (<span class="hljs-built_in">CGFloat</span>)cellHeight {
+    <span class="hljs-built_in">NSValue</span> *frameValue = <span class="hljs-keyword">self</span><span class="hljs-variable">.tagsLabelFramesM</span><span class="hljs-variable">.lastObject</span>;
+    <span class="hljs-built_in">CGRect</span> frame = [frameValue <span class="hljs-built_in">CGRectValue</span>];
+    <span class="hljs-built_in">CGFloat</span> maxY = <span class="hljs-built_in">CGRectGetMaxY</span>(frame);
+    <span class="hljs-keyword">return</span> maxY + cellMarginY;
+
+}
+
+<span class="hljs-keyword">@end</span></code></pre>
+<p>cell.h文件</p>
+<pre class="hljs objectivec"><code class="objectivec"><span class="hljs-comment">//</span>
+<span class="hljs-comment">//  FFDifferentWidthTagCell.h</span>
+<span class="hljs-comment">//  CollectionsOfExample</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">//  Created by mac on 16/7/17.</span>
+<span class="hljs-comment">//  Copyright © 2016年 chenfanfang. All rights reserved.</span>
+<span class="hljs-comment">//</span>
+
+<span class="hljs-preprocessor">#import <span class="hljs-title">&lt;UIKit/UIKit.h&gt;</span></span>
+<span class="hljs-class"><span class="hljs-keyword">@class</span> <span class="hljs-title">FFDifferentWidthTagModel</span>;</span>
+
+<span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">FFDifferentWidthTagCell</span> : <span class="hljs-title">UITableViewCell</span></span>
+
+<span class="hljs-comment">/** 不同宽度标签的模型 */</span>
+<span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>, <span class="hljs-keyword">strong</span>)FFDifferentWidthTagModel *tagModel;
+
+<span class="hljs-keyword">@end</span></code></pre>
+<p>cell.m文件</p>
+<pre class="hljs objectivec"><code class="objectivec"><span class="hljs-comment">//</span>
+<span class="hljs-comment">//  FFDifferentWidthTagCell.m</span>
+<span class="hljs-comment">//  CollectionsOfExample</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">//  Created by mac on 16/7/17.</span>
+<span class="hljs-comment">//  Copyright © 2016年 chenfanfang. All rights reserved.</span>
+<span class="hljs-comment">//</span>
+
+<span class="hljs-preprocessor">#import <span class="hljs-title">"FFDifferentWidthTagCell.h"</span></span>
+
+<span class="hljs-comment">//model</span>
+<span class="hljs-preprocessor">#import <span class="hljs-title">"FFDifferentWidthTagModel.h"</span></span>
+
+<span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">FFDifferentWidthTagCell</span>()</span>
+
+<span class="hljs-comment">/** label的数组 */</span>
+<span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>, <span class="hljs-keyword">strong</span>) <span class="hljs-built_in">NSMutableArray</span>&lt;<span class="hljs-built_in">UILabel</span> *&gt; *labelArrM;
+
+<span class="hljs-comment">/** 颜色的数组 */</span>
+<span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>, <span class="hljs-keyword">strong</span>) <span class="hljs-built_in">NSMutableArray</span>&lt;<span class="hljs-built_in">UIColor</span> *&gt; *colorArrM;
+
+<span class="hljs-keyword">@end</span>
+
+<span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">FFDifferentWidthTagCell</span></span>
+
+<span class="hljs-comment">/***********************************set方法***********************************/</span>
+<span class="hljs-preprocessor">#pragma mark - set方法</span>
+
+- (<span class="hljs-keyword">void</span>)setTagModel:(FFDifferentWidthTagModel *)tagModel {
+
+    <span class="hljs-keyword">if</span> (tagModel == _tagModel || tagModel == <span class="hljs-literal">nil</span>) {
+        <span class="hljs-keyword">return</span>;
+    }
+
+    _tagModel = tagModel;
+
+    <span class="hljs-comment">//移除所有标签label</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">UILabel</span> *label <span class="hljs-keyword">in</span> <span class="hljs-keyword">self</span><span class="hljs-variable">.labelArrM</span>) {
+        [label removeFromSuperview];
+    }
+
+    <span class="hljs-keyword">self</span><span class="hljs-variable">.labelArrM</span> = <span class="hljs-literal">nil</span>;
+
+
+    <span class="hljs-comment">//创建label</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; tagModel<span class="hljs-variable">.tagsArrM</span><span class="hljs-variable">.count</span>; i++) {
+        <span class="hljs-built_in">NSValue</span> *frameValue = tagModel<span class="hljs-variable">.tagsLabelFramesM</span>[i];
+        <span class="hljs-built_in">CGRect</span> frame = [frameValue <span class="hljs-built_in">CGRectValue</span>];
+        <span class="hljs-built_in">NSString</span> *title = tagModel<span class="hljs-variable">.tagsArrM</span>[i];
+
+        <span class="hljs-built_in">UILabel</span> *label = [<span class="hljs-built_in">UILabel</span> new];
+        label<span class="hljs-variable">.textAlignment</span> = <span class="hljs-built_in">NSTextAlignmentCenter</span>;
+        label<span class="hljs-variable">.textColor</span> = [<span class="hljs-built_in">UIColor</span> whiteColor];
+        label<span class="hljs-variable">.font</span> = FFFont(<span class="hljs-number">17</span>);
+        label<span class="hljs-variable">.frame</span> = frame;
+        label<span class="hljs-variable">.layer</span><span class="hljs-variable">.cornerRadius</span> = frame<span class="hljs-variable">.size</span><span class="hljs-variable">.height</span> * <span class="hljs-number">0.5</span>;
+        label<span class="hljs-variable">.clipsToBounds</span> = <span class="hljs-literal">YES</span>;
+        label<span class="hljs-variable">.text</span> = title;
+
+        <span class="hljs-built_in">NSInteger</span> randamNumber = arc4random_uniform((<span class="hljs-keyword">int</span>)<span class="hljs-keyword">self</span><span class="hljs-variable">.colorArrM</span><span class="hljs-variable">.count</span>);
+        label<span class="hljs-variable">.backgroundColor</span> = <span class="hljs-keyword">self</span><span class="hljs-variable">.colorArrM</span>[randamNumber];
+        [<span class="hljs-keyword">self</span> addSubview:label];
+        [<span class="hljs-keyword">self</span><span class="hljs-variable">.labelArrM</span> addObject:label];
+    }
+}
+
+<span class="hljs-comment">/***********************************懒加载***********************************/</span>
+<span class="hljs-preprocessor">#pragma mark - 懒加载</span>
+- (<span class="hljs-built_in">NSMutableArray</span>&lt;<span class="hljs-built_in">UILabel</span> *&gt; *)labelArrM {
+    <span class="hljs-keyword">if</span> (_labelArrM == <span class="hljs-literal">nil</span>) {
+        _labelArrM = [<span class="hljs-built_in">NSMutableArray</span> array];
+    }
+    <span class="hljs-keyword">return</span> _labelArrM;
+}
+
+- (<span class="hljs-built_in">NSMutableArray</span>&lt;<span class="hljs-built_in">UIColor</span> *&gt; *)colorArrM {
+    <span class="hljs-keyword">if</span> (_colorArrM == <span class="hljs-literal">nil</span>) {
+        _colorArrM = [<span class="hljs-built_in">NSMutableArray</span> array];
+        <span class="hljs-built_in">UIColor</span> *redColor = FFColor(<span class="hljs-number">214</span>, <span class="hljs-number">67</span>, <span class="hljs-number">67</span>);
+        <span class="hljs-built_in">UIColor</span> *blueColor = FFColor(<span class="hljs-number">74</span>, <span class="hljs-number">144</span>, <span class="hljs-number">226</span>);
+        <span class="hljs-built_in">UIColor</span> *yellowColor = FFColor(<span class="hljs-number">245</span>, <span class="hljs-number">166</span>, <span class="hljs-number">35</span>);
+        <span class="hljs-built_in">UIColor</span> *greenColor = FFColor(<span class="hljs-number">68</span>, <span class="hljs-number">186</span>, <span class="hljs-number">119</span>);
+        <span class="hljs-built_in">UIColor</span> *purpleColor = [<span class="hljs-built_in">UIColor</span> purpleColor];
+        [_colorArrM addObject:redColor];
+        [_colorArrM addObject:blueColor];
+        [_colorArrM addObject:yellowColor];
+        [_colorArrM addObject:greenColor];
+        [_colorArrM addObject:purpleColor];
+    }
+    <span class="hljs-keyword">return</span> _colorArrM;
+}
+
+<span class="hljs-keyword">@end</span></code></pre>
+<p>控制器.m文件</p>
+<pre class="hljs objectivec"><code class="objectivec"><span class="hljs-comment">//</span>
+<span class="hljs-comment">//  FFDifferentWidthTagVC.m</span>
+<span class="hljs-comment">//  CollectionsOfExample</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">//  Created by mac on 16/7/17.</span>
+<span class="hljs-comment">//  Copyright © 2016年 chenfanfang. All rights reserved.</span>
+<span class="hljs-comment">//</span>
+
+<span class="hljs-preprocessor">#import <span class="hljs-title">"FFDifferentWidthTagVC.h"</span></span>
+
+<span class="hljs-comment">//model</span>
+<span class="hljs-preprocessor">#import <span class="hljs-title">"FFDifferentWidthTagModel.h"</span></span>
+
+<span class="hljs-comment">//cell</span>
+<span class="hljs-preprocessor">#import <span class="hljs-title">"FFDifferentWidthTagCell.h"</span></span>
+
+<span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">FFDifferentWidthTagVC</span> ()&lt;<span class="hljs-title">UITableViewDataSource</span>, <span class="hljs-title">UITableViewDelegate</span>&gt;</span>
+
+<span class="hljs-comment">/** 数据源数组 */</span>
+<span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>, <span class="hljs-keyword">strong</span>) <span class="hljs-built_in">NSMutableArray</span>&lt;FFDifferentWidthTagModel *&gt; *dataSourceArr;
+
+<span class="hljs-comment">/** section头部标题数组 */</span>
+<span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>, <span class="hljs-keyword">strong</span>) <span class="hljs-built_in">NSArray</span> *sectionHeaderTitleArr;
+
+<span class="hljs-comment">/** 存放标签的数组 */</span>
+<span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>, <span class="hljs-keyword">strong</span>) <span class="hljs-built_in">NSArray</span> *tagArr;
+
+<span class="hljs-keyword">@end</span>
+
+<span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">FFDifferentWidthTagVC</span></span>
+
+<span class="hljs-comment">/***********************************生命周期***********************************/</span>
+<span class="hljs-preprocessor">#pragma mark - 生命周期</span>
+- (<span class="hljs-keyword">void</span>)viewDidLoad {
+    [<span class="hljs-keyword">super</span> viewDidLoad];
+
+    [<span class="hljs-keyword">self</span> setup];
+}
+
+<span class="hljs-comment">/***********************************初始化***********************************/</span>
+<span class="hljs-preprocessor">#pragma mark - 初始化</span>
+
+<span class="hljs-keyword">static</span> <span class="hljs-built_in">NSString</span> *<span class="hljs-keyword">const</span> FFDifferentWidthTagCellID = <span class="hljs-string">@"FFDifferentWidthTagCell"</span>;
+- (<span class="hljs-keyword">void</span>)setup {
+    <span class="hljs-comment">//navTitle</span>
+    <span class="hljs-keyword">self</span><span class="hljs-variable">.navigationItem</span><span class="hljs-variable">.title</span> = <span class="hljs-string">@"不同宽度的标签"</span>;
+
+    <span class="hljs-built_in">UITableView</span> *tableView = [[<span class="hljs-built_in">UITableView</span> alloc] init];
+    tableView<span class="hljs-variable">.frame</span> = <span class="hljs-keyword">self</span><span class="hljs-variable">.view</span><span class="hljs-variable">.bounds</span>;
+    tableView<span class="hljs-variable">.delegate</span> = <span class="hljs-keyword">self</span>;
+    tableView<span class="hljs-variable">.dataSource</span> = <span class="hljs-keyword">self</span>;
+    tableView<span class="hljs-variable">.separatorStyle</span> = <span class="hljs-built_in">UITableViewCellSeparatorStyleNone</span>;
+
+    <span class="hljs-comment">//注册cell  FFRegisterCellClass是自定义的宏，具体可以下载源码查看</span>
+    FFRegisterCellClass(tableView, FFDifferentWidthTagCell, FFDifferentWidthTagCellID);
+
+    [<span class="hljs-keyword">self</span><span class="hljs-variable">.view</span> addSubview:tableView];
+}
+
+<span class="hljs-comment">/***********************************懒加载***********************************/</span>
+<span class="hljs-preprocessor">#pragma mark - 懒加载</span>
+- (<span class="hljs-built_in">NSMutableArray</span>&lt;FFDifferentWidthTagModel *&gt; *)dataSourceArr {
+    <span class="hljs-keyword">if</span> (_dataSourceArr == <span class="hljs-literal">nil</span>) {
+        _dataSourceArr = [<span class="hljs-built_in">NSMutableArray</span> array];
+
+        <span class="hljs-comment">//以下for循环是为了产生随机个数、随机标签的数据源，读者不必研究以下for循环代码</span>
+
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">4</span>; i++) {
+            FFDifferentWidthTagModel *model = [FFDifferentWidthTagModel new];
+            model<span class="hljs-variable">.name</span> = <span class="hljs-keyword">self</span><span class="hljs-variable">.sectionHeaderTitleArr</span>[i];
+
+            <span class="hljs-comment">//产生一个不为0的随机数</span>
+            <span class="hljs-keyword">int</span> tagNum = <span class="hljs-number">0</span>;
+            <span class="hljs-keyword">while</span> (tagNum == <span class="hljs-number">0</span>) {
+                tagNum = arc4random_uniform((<span class="hljs-keyword">int</span>)<span class="hljs-keyword">self</span><span class="hljs-variable">.tagArr</span><span class="hljs-variable">.count</span>);
+            }
+            <span class="hljs-built_in">NSMutableArray</span> *tagsArrM = [<span class="hljs-built_in">NSMutableArray</span> array];
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; tagNum; j++) {
+                <span class="hljs-keyword">int</span> randomTagIndex = arc4random_uniform((<span class="hljs-keyword">int</span>)<span class="hljs-keyword">self</span><span class="hljs-variable">.tagArr</span><span class="hljs-variable">.count</span>);
+                [tagsArrM addObject:<span class="hljs-keyword">self</span><span class="hljs-variable">.tagArr</span>[randomTagIndex]];
+            }
+            model<span class="hljs-variable">.tagsArrM</span> = tagsArrM;
+            [_dataSourceArr addObject:model];
+        }
+    }
+    <span class="hljs-keyword">return</span> _dataSourceArr;
+}
+
+- (<span class="hljs-built_in">NSArray</span> *)tagArr {
+    <span class="hljs-keyword">if</span> (_tagArr == <span class="hljs-literal">nil</span>) {
+        _tagArr = @[
+                    <span class="hljs-string">@"乖巧"</span>,
+                    <span class="hljs-string">@"喜欢你"</span>,
+                    <span class="hljs-string">@"纯洁"</span>,
+                    <span class="hljs-string">@"好漂亮"</span>,
+                    <span class="hljs-string">@"脱俗、大方、机灵"</span>,
+                    <span class="hljs-string">@"淑女、秀外慧中、慧指兰心"</span>,
+                    <span class="hljs-string">@"清水芙蓉、活泼机灵"</span>,
+                    <span class="hljs-string">@"古怪、可爱"</span>,
+                    <span class="hljs-string">@"乐观开朗"</span>,
+                    <span class="hljs-string">@"嫁给我"</span>,
+                    <span class="hljs-string">@"大义凛然"</span>,
+                    <span class="hljs-string">@"母仪天下"</span>,
+                    <span class="hljs-string">@"眉清目秀、可爱"</span>,
+                    <span class="hljs-string">@"亭亭玉立"</span>,
+                    <span class="hljs-string">@"闭月羞花"</span>,
+                    <span class="hljs-string">@"楚楚动人"</span>,
+                    <span class="hljs-string">@"国色天香"</span>,
+                    <span class="hljs-string">@"花容月貌"</span>,
+                    <span class="hljs-string">@"美如冠玉"</span>,
+                    <span class="hljs-string">@"冰清玉洁"</span>,
+                    <span class="hljs-string">@"尊重典雅"</span>,
+                    <span class="hljs-string">@"温柔贤慧"</span>,
+                    <span class="hljs-string">@"娴淑善良"</span>,
+                    <span class="hljs-string">@"纤纤有礼"</span>,
+                    <span class="hljs-string">@"上得厅房 下得厨房"</span>,
+                    <span class="hljs-string">@"沉鱼落雁 委婉大方"</span>
+                    ];
+    }
+    <span class="hljs-keyword">return</span> _tagArr;
+}
+
+- (<span class="hljs-built_in">NSArray</span> *)sectionHeaderTitleArr {
+    <span class="hljs-keyword">if</span> (_sectionHeaderTitleArr == <span class="hljs-literal">nil</span>) {
+        _sectionHeaderTitleArr = @[
+                                   <span class="hljs-string">@"Abby"</span>,
+                                   <span class="hljs-string">@"ever"</span>,
+                                   <span class="hljs-string">@"Rose"</span>,
+                                   <span class="hljs-string">@"Alisa"</span>,
+                                   <span class="hljs-string">@"Angelia"</span>,
+                                   <span class="hljs-string">@"Amanda"</span>,
+                                   <span class="hljs-string">@"Anne"</span>,
+                                   <span class="hljs-string">@"Carrie"</span>,
+                                   <span class="hljs-string">@"Cassie"</span>
+                                   ];
+    }
+    <span class="hljs-keyword">return</span> _sectionHeaderTitleArr;
+}
+
+<span class="hljs-comment">/***********************************UITableViewDataSource***********************************/</span>
+<span class="hljs-preprocessor">#pragma mark - UITableViewDataSource</span>
+- (<span class="hljs-built_in">NSInteger</span>)numberOfSectionsInTableView:(<span class="hljs-built_in">UITableView</span> *)tableView {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span><span class="hljs-variable">.dataSourceArr</span><span class="hljs-variable">.count</span>;
+}
+
+- (<span class="hljs-built_in">NSInteger</span>)tableView:(<span class="hljs-built_in">UITableView</span> *)tableView numberOfRowsInSection:(<span class="hljs-built_in">NSInteger</span>)section {
+    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+}
+
+- (<span class="hljs-built_in">UITableViewCell</span> *)tableView:(<span class="hljs-built_in">UITableView</span> *)tableView cellForRowAtIndexPath:(<span class="hljs-built_in">NSIndexPath</span> *)indexPath {
+    FFDifferentWidthTagCell *cell = [tableView dequeueReusableCellWithIdentifier:FFDifferentWidthTagCellID];
+    cell<span class="hljs-variable">.tagModel</span> = <span class="hljs-keyword">self</span><span class="hljs-variable">.dataSourceArr</span>[indexPath<span class="hljs-variable">.section</span>];
+    cell<span class="hljs-variable">.selectionStyle</span> = <span class="hljs-built_in">UITableViewCellSelectionStyleNone</span>;
+    <span class="hljs-keyword">return</span> cell;
+}
+
+<span class="hljs-comment">/***********************************UITableViewDelegate***********************************/</span>
+<span class="hljs-preprocessor">#pragma mark - UITableViewDelegate</span>
+- (<span class="hljs-built_in">UIView</span> *)tableView:(<span class="hljs-built_in">UITableView</span> *)tableView viewForHeaderInSection:(<span class="hljs-built_in">NSInteger</span>)section {
+    FFTableSectionHeaderView *headerView = [FFTableSectionHeaderView new];
+    [headerView setTitleColor:[<span class="hljs-built_in">UIColor</span> purpleColor]];
+    FFDifferentWidthTagModel *model = <span class="hljs-keyword">self</span><span class="hljs-variable">.dataSourceArr</span>[section];
+    headerView<span class="hljs-variable">.title</span> = [<span class="hljs-built_in">NSString</span> stringWithFormat:<span class="hljs-string">@"对%@的印象"</span>,model<span class="hljs-variable">.name</span>];
+    <span class="hljs-keyword">return</span> headerView;
+}
+
+- (<span class="hljs-built_in">CGFloat</span>)tableView:(<span class="hljs-built_in">UITableView</span> *)tableView heightForHeaderInSection:(<span class="hljs-built_in">NSInteger</span>)section {
+    <span class="hljs-keyword">return</span> <span class="hljs-number">36</span>;
+}
+
+- (<span class="hljs-built_in">CGFloat</span>)tableView:(<span class="hljs-built_in">UITableView</span> *)tableView heightForRowAtIndexPath:(<span class="hljs-built_in">NSIndexPath</span> *)indexPath {
+    FFDifferentWidthTagModel *model = <span class="hljs-keyword">self</span><span class="hljs-variable">.dataSourceArr</span>[indexPath<span class="hljs-variable">.section</span>];
+    <span class="hljs-keyword">return</span> model<span class="hljs-variable">.cellHeight</span>;
+}
+
+<span class="hljs-keyword">@end</span></code></pre>
+</div>
+        </div>
+      </div>
+
+      <div class="visitor_edit">
+        <!-- further readings -->
+        <div id="further-readings" data-user-slug="b7657b896758" data-user-nickname="三月_麦田">
+          <div id="further-reading-line" class="hide further-reading-line"></div>
+          <ul id="further-readings-list" class="reading-list unstyled"></ul>
+          <div id="further-reading-new" class="reading-edit">
+              <a id="further-reading-new-prompt" href="javascript:void(null)">
+                <i class="fa fa-plus-circle"></i> 推荐拓展阅读
+</a>            <div id="further-reading-form"></div>
+          </div>
+        </div>
+        <div class="pull-right">
+          <!-- abuse report -->
+          <div id="abuse-report" class="report_article dropdown pull-right" data-js-module="report">
+              <a data-toggle="dropdown" href="http://www.jianshu.com/p/225947454abe#"><i class="fa fa-flag-o"></i> 举报文章</a>
+              <ul class="dropdown-menu arrow-top">
+                <li><a data-type="json" data-remote="true" rel="nofollow" data-method="post" href="http://www.jianshu.com/notes/5038455/abuse_reports?type=ad">广告及垃圾信息</a></li>
+                <li><a data-type="json" data-remote="true" rel="nofollow" data-method="post" href="http://www.jianshu.com/notes/5038455/abuse_reports?type=plagiarism">抄袭或未授权转载</a></li>
+                <li><a data-toggle="modal" data-url="/notes/5038455/abuse_reports" href="http://www.jianshu.com/p/225947454abe#report-modal">其他</a></li>
+              </ul>
+          </div>
+          <!-- copyright -->
+          <div class="author-copyright pull-right" data-toggle="tooltip" data-html="true" title="" data-original-title="转载请联系作者获得授权，并标注“简书作者”。">
+            <a><i class="fa fa-copyright"></i> 著作权归作者所有</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reward / Support Author -->
+        <div class="support-author">
+          <p>如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作！</p>
+            <a class="btn btn-pay" data-toggle="modal" href="http://www.jianshu.com/p/225947454abe#pay-modal">¥ 打赏支持</a>
+          <div class="avatar-list"></div>
+        </div>
+
+      <!-- article meta bottom -->
+      <div class="meta-bottom clearfix">
+        <!--  Like Button -->
+        <div class="like ">
+            <div class="like-button">
+              <a class="like-content" data-remote="true" rel="nofollow" data-method="post" href="http://www.jianshu.com/notes/5038455/like">
+                <i class="fa fa-heart-o"></i>  喜欢
+</a></div>          <span id="likes-count" data-toggle="tooltip" data-placement="right" title="" data-original-title="查看所有喜欢的用户">62</span>        </div>
+        <!--  share group -->
+        <div class="share-group pull-right">
+          <a href="javascript:void((function(s,d,e,r,l,p,t,z,c){var%20f=&#39;http://v.t.sina.com.cn/share/share.php?appkey=1881139527&#39;,u=z||d.location,p=[&#39;&amp;url=&#39;,e(u),&#39;&amp;title=&#39;,e(t||d.title),&#39;&amp;source=&#39;,e(r),&#39;&amp;sourceUrl=&#39;,e(l),&#39;&amp;content=&#39;,c||&#39;gb2312&#39;,&#39;&amp;pic=&#39;,e(p||&#39;&#39;)].join(&#39;&#39;);function%20a(){if(!window.open([f,p].join(&#39;&#39;),&#39;mb&#39;,[&#39;toolbar=0,status=0,resizable=1,width=440,height=430,left=&#39;,(s.width-440)/2,&#39;,top=&#39;,(s.height-430)/2].join(&#39;&#39;)))u.href=[f,p].join(&#39;&#39;);};if(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else%20a();})(screen,document,encodeURIComponent,&#39;&#39;,&#39;&#39;,&#39;http://cwb.assets.jianshu.io/notes/images/5038455/weibo/image_5aa02c8a0411.jpg&#39;, &#39;推荐 chenfanfang 的文章《iOS不同宽度的标签(用简单的UILabel来实现)》（ 分享自 @简书 ）&#39;,&#39;http://www.jianshu.com/p/225947454abe&#39;,&#39;页面编码gb2312|utf-8默认gb2312&#39;));" data-name="weibo">
+            <i class="fa fa-weibo"></i><span>分享到微博</span>
+          </a>
+          <a data-toggle="modal" href="http://www.jianshu.com/p/225947454abe#share-weixin-modal" data-name="weixin">
+            <i class="fa fa-weixin"></i><span>分享到微信</span>
+          </a>
+          <div class="more">
+            <a href="javascript:void(0)" data-toggle="dropdown">更多分享<i class="fa fa-caret-down"></i></a>
+            <ul class="dropdown-menu arrow-top">
+                <li><a href="http://cwb.assets.jianshu.io/notes/images/5038455/weibo/image_5aa02c8a0411.jpg" target="_blank" data-name="changweibo"><i class="fa fa-arrow-circle-o-down"></i> 下载长微博图片</a></li>
+                <li>
+                  <a data-name="tweibo" href="javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;http://share.v.t.qq.com/index.php?c=share&amp;a=index&amp;url=&#39;+e(&#39;http://www.jianshu.com/p/225947454abe&#39;)+&#39;&amp;title=&#39;+e(&#39;推荐 chenfanfang 的文章《iOS不同宽度的标签(用简单的UILabel来实现)》（ 分享自 @jianshuio ）&#39;),x=function(){if(!window.open(r,&#39;tweibo&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();">
+                    <img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/tweibo.png" alt="Tweibo"> 分享到腾讯微博
+</a>                </li>
+                <li>
+                  <a data-name="qzone" href="javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=&#39;+e(&#39;http://www.jianshu.com/p/225947454abe&#39;)+&#39;&amp;title=&#39;+e(&#39;推荐 chenfanfang 的文章《iOS不同宽度的标签(用简单的UILabel来实现)》&#39;),x=function(){if(!window.open(r,&#39;qzone&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();">
+                    <img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/qzone.png" alt="Qzone"> 分享到QQ空间
+</a>                </li>
+                <li>
+                  <a data-name="twitter" href="javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;https://twitter.com/share?url=&#39;+e(&#39;http://www.jianshu.com/p/225947454abe&#39;)+&#39;&amp;text=&#39;+e(&#39;推荐 chenfanfang 的文章《iOS不同宽度的标签(用简单的UILabel来实现)》（ 分享自 @jianshucom ）&#39;)+&#39;&amp;related=&#39;+e(&#39;jianshucom&#39;),x=function(){if(!window.open(r,&#39;twitter&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();">
+                    <img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/twitter.png" alt="Twitter"> 分享到Twitter
+</a>                </li>
+                <li>
+                  <a data-name="facebook" href="javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;https://www.facebook.com/dialog/share?app_id=483126645039390&amp;display=popup&amp;href=http://www.jianshu.com/p/225947454abe&#39;,x=function(){if(!window.open(r,&#39;facebook&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();">
+                    <img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/facebook.png" alt="Facebook"> 分享到Facebook
+</a>                </li>
+                <li>
+                  <a data-name="google_plus" href="javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;https://plus.google.com/share?url=&#39;+e(&#39;http://www.jianshu.com/p/225947454abe&#39;),x=function(){if(!window.open(r,&#39;google_plus&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();">
+                    <img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/google_plus.png" alt="Google plus"> 分享到Google+
+</a>                </li>
+                <li>
+                  <a data-name="douban" href="javascript:void(function(){var d=document,e=encodeURIComponent,s1=window.getSelection,s2=d.getSelection,s3=d.selection,s=s1?s1():s2?s2():s3?s3.createRange().text:&#39;&#39;,r=&#39;http://www.douban.com/recommend/?url=&#39;+e(&#39;http://www.jianshu.com/p/225947454abe&#39;)+&#39;&amp;title=&#39;+e(&#39;iOS不同宽度的标签(用简单的UILabel来实现)&#39;)+&#39;&amp;sel=&#39;+e(s)+&#39;&amp;v=1&#39;,x=function(){if(!window.open(r,&#39;douban&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330&#39;))location.href=r+&#39;&amp;r=1&#39;};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})()">
+                    <img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/douban.png" alt="Douban"> 分享到豆瓣
+</a>                </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modals -->
+      <div id="share-weixin-modal" class="modal hide fade share-weixin-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+  </div>
+  <div class="modal-body" title="http://www.jianshu.com/p/225947454abe?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=weixin">
+    <h5>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</h5>
+  <canvas width="170" height="170" style="display: none;"></canvas><img src="data:image/png;base64,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" style="display: block;"></div>
+</div>
+
+      <div id="contribute-modal" tabindex="-1" class="arrow-top user-editor-actions modal hide fade">
+  <div class="modal-header">
+    <b>
+      添加到我管理的专题
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    </b>
+  </div>
+  <div class="modal-body">
+    <div class="search">
+      <input type="text" name="search_term" id="search_term" class="input-large search-query" placeholder="搜索我管理的专题" data-search-collections-url="/collections/search?note_id=5038455">
+    </div>
+    <ul class="add-list"></ul>
+  </div>
+</div>
+
+      <div id="notebooks-menu" class="panel notebooks-menu arrow-top modal hide fade"><img class="loader-tiny" src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/tiny.gif" alt="Tiny"></div>
+      <div id="collection-menu" class="panel collection-menu arrow-top modal hide fade"><img class="loader-tiny" src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/tiny.gif" alt="Tiny"></div>
+      
+      <div id="likes-modal" class="modal modal_new support_list-modal fullscreen hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3>喜欢的用户</h3>
+      </div>
+      <div class="modal-body">
+        <ul class="unstyled users">
+        <li data-user-id="1801147"> <a class="avatar" href="http://www.jianshu.com/users/a3c619581c4f"> <img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/a146d2ac0c86"> </a> <a class="blue-link" href="http://www.jianshu.com/users/a3c619581c4f">Prospero</a> <span class="time">2016.08.01 21:04</span></li><li data-user-id="1689303"> <a class="avatar" href="http://www.jianshu.com/users/674d14cb3bde"> <img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/b8aa9eae27c2.jpg"> </a> <a class="blue-link" href="http://www.jianshu.com/users/674d14cb3bde">八皇后</a> <span class="time">2016.08.01 19:34</span></li><li data-user-id="667926"> <a class="avatar" href="http://www.jianshu.com/users/0ac35a54a491"> <img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/3275dc964eaf.jpg"> </a> <a class="blue-link" href="http://www.jianshu.com/users/0ac35a54a491">小楼东风</a> <span class="time">2016.08.01 19:23</span></li><li data-user-id="1038388"> <a class="avatar" href="http://www.jianshu.com/users/16981440c6a6"> <img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/2f3db480df4a.jpg"> </a> <a class="blue-link" href="http://www.jianshu.com/users/16981440c6a6">小辉辉___</a> <span class="time">2016.08.01 14:37</span></li><li data-user-id="1722799"> <a class="avatar" href="http://www.jianshu.com/users/316b98129b68"> <img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/13-8072fce67829ce128ba5df823205516c.jpg"> </a> <a class="blue-link" href="http://www.jianshu.com/users/316b98129b68">巷子里的童年Cc</a> <span class="time">2016.08.01 14:22</span></li><li data-user-id="1319767"> <a class="avatar" href="http://www.jianshu.com/users/055e71babdfc"> <img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/f742485c4c90.jpg"> </a> <a class="blue-link" href="http://www.jianshu.com/users/055e71babdfc">单面相反面</a> <span class="time">2016.08.01 14:05</span></li><li data-user-id="1281928"> <a class="avatar" href="http://www.jianshu.com/users/bfa3e8165ec5"> <img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/ca3589b07fcf"> </a> <a class="blue-link" href="http://www.jianshu.com/users/bfa3e8165ec5">来宝</a> <span class="time">2016.08.01 11:54</span></li><li data-user-id="1071552"> <a class="avatar" href="http://www.jianshu.com/users/a87425640e95"> <img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/6eda2d515cef"> </a> <a class="blue-link" href="http://www.jianshu.com/users/a87425640e95">Metoo33</a> <span class="time">2016.08.01 11:15</span></li><li data-user-id="1697508"> <a class="avatar" href="http://www.jianshu.com/users/af0352baed07"> <img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/21d3882fef9e.jpeg"> </a> <a class="blue-link" href="http://www.jianshu.com/users/af0352baed07">奇怪的螃蟹</a> <span class="time">2016.08.01 10:07</span></li><li data-user-id="1755151"> <a class="avatar" href="http://www.jianshu.com/users/b54fa9da8714"> <img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/13-8072fce67829ce128ba5df823205516c.jpg"> </a> <a class="blue-link" href="http://www.jianshu.com/users/b54fa9da8714">eliyan</a> <span class="time">2016.08.01 09:39</span></li><li data-user-id="2166725"> <a class="avatar" href="http://www.jianshu.com/users/e9cc069c4f8f"> <img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/79d6467e14b9.jpg"> </a> <a class="blue-link" href="http://www.jianshu.com/users/e9cc069c4f8f">七秒小鱼人</a> <span class="time">2016.08.01 09:12</span></li><li data-user-id="1323848"> <a class="avatar" href="http://www.jianshu.com/users/4022d464ba9c"> <img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/340717062cd2.jpeg"> </a> <a class="blue-link" href="http://www.jianshu.com/users/4022d464ba9c">胖子程</a> <span class="time">2016.08.01 09:11</span></li><li data-user-id="1448864"> <a class="avatar" href="http://www.jianshu.com/users/b0de41781027"> <img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/be572e5e0732.jpg"> </a> <a class="blue-link" href="http://www.jianshu.com/users/b0de41781027">斑叔乱翻书</a> <span class="time">2016.08.01 09:05</span></li><li data-user-id="1369486"> <a class="avatar" href="http://www.jianshu.com/users/ce79c4b04739"> <img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/962bc3ef51f2.jpg"> </a> <a class="blue-link" href="http://www.jianshu.com/users/ce79c4b04739">桃花流水鳜鱼肥</a> <span class="time">2016.08.01 09:04</span></li><li data-user-id="976255"> <a class="avatar" href="http://www.jianshu.com/users/a210774d028a"> <img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/b50a2fc266fd.jpg"> </a> <a class="blue-link" href="http://www.jianshu.com/users/a210774d028a">耿杰</a> <span class="time">2016.08.01 08:58</span></li><a class="more hidden" data-max-id="26943870" href="javascript:void(null);"><i class="fa fa-ellipsis-h"></i></a></ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+    <!-- Comments -->
+    <div id="comments" class="comment-list clearfix">
+        <div class="comment-head clearfix">
+          19条评论
+          <span class="order">
+            （
+            <a data-order="asc" class="active" href="javascript:void(0)">按时间正序</a>·
+            <a data-order="desc" href="javascript:void(0)">按时间倒序</a>·
+            <a data-order="likes_count" href="javascript:void(0)">按喜欢排序</a>
+            ）
+          </span>
+            <a href="javascript:void(null)" class="goto-comment pull-right"><i class="fa fa-pencil"></i>添加新评论</a>
+        </div>
+        <div id="comment-list">
+
+
+<div class="note-comment clearfix" id="comment-3378573">
+  <div class="content">
+      <div class="meta-top">
+        <a class="avatar" href="http://www.jianshu.com/users/ae4d01a800dc">
+          <img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/1-cd1d6dd91a96ca16fafcc8896bbc7b32.jpg" alt="1">
+</a>        <p>
+          <a class="author-name" href="http://www.jianshu.com/users/ae4d01a800dc">锋少8676</a>
+        </p>
+        <span class="reply-time">
+          <small>2 楼 · </small>
+          <a href="http://www.jianshu.com/p/225947454abe/comments/3378573#comment-3378573">2016.07.31 14:49</a></span>
+      </div>
+      <p>然并卵</p>
+      <div class="comment-footer clearfix text-right">
+        <a data-id="3378573" class="like pull-left" href="javascript:void(0)">
+          <i class="fa fa-heart-o"></i>喜欢<span>(0)</span>
+</a>        <div class="dropdown report" data-commenter-id="1695369">
+          <a class="report_comment" href="javascript:void(0)" data-toggle="dropdown">举报</a>
+          <ul class="dropdown-menu arrow-top">
+            <li><a data-type="json" data-remote="true" rel="nofollow" data-method="post" href="http://www.jianshu.com/comments/3378573/abuse_reports?type=ad">广告及垃圾信息</a></li>
+            <li><a data-toggle="modal" data-url="/comments/3378573/abuse_reports" href="http://www.jianshu.com/p/225947454abe#report-modal">其他</a></li>
+          </ul>
+        </div>
+
+        <a data-id="3378573" data-nickname="锋少8676" class="reply" href="javascript:void(0)">回复</a>
+        
+        
+      </div>
+    <div class="child-comment-list ">
+        <div class="child-comment" id="comment-3379379" data-id="3379379">
+    <p>
+      <a class="blue-link" href="http://www.jianshu.com/users/80fadb71940d">chenfanfang</a>：
+      <a href="http://www.jianshu.com/users/ae4d01a800dc" class="maleskine-author" target="_blank" data-user-slug="ae4d01a800dc">@锋少8676</a>  <img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/grin.png" alt=":grin:" title=":grin:" class="emoji" width="20" height="20">  <img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/grin.png" alt=":grin:" title=":grin:" class="emoji" width="20" height="20"> 
+    </p>
+    <div class="child-comment-footer text-right clearfix">
+      <div class="dropdown report" data-commenter-id="1594675">
+        <a class="report_comment" href="javascript:void(0)" data-toggle="dropdown">举报</a>
+        <ul class="dropdown-menu arrow-top">
+          <li><a data-type="json" data-remote="true" rel="nofollow" data-method="post" href="http://www.jianshu.com/comments/3379379/abuse_reports?type=ad">广告及垃圾信息</a></li>
+          <li><a data-toggle="modal" data-url="/comments/3379379/abuse_reports" href="http://www.jianshu.com/p/225947454abe#report-modal">其他</a></li>
+        </ul>
+      </div>
+      <a data-id="3378573" data-nickname="chenfanfang" class="reply" href="javascript:void(null)">回复</a>
+      
+      
+      <span class="reply-time pull-left">
+        <a href="http://www.jianshu.com/p/225947454abe/comments/3379379#comment-3379379">2016.07.31 15:55</a></span>
+      
+    </div>
+  </div>
+
+      <div data-state="remaining-child-comments"></div>
+        <div class="comment-toolbar clearfix">
+          <span class="pull-right">
+            <a data-id="3378573" class="reply" href="javascript:void(null)"><i class="fa fa-pencil"></i> 添加新回复</a>
+          </span>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="note-comment clearfix" id="comment-3378690">
+  <div class="content">
+      <div class="meta-top">
+        <a class="avatar" href="http://www.jianshu.com/users/ca3b847017ef">
+          <img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/d537d67243aa.jpg" alt="100">
+</a>        <p>
+          <a class="author-name" href="http://www.jianshu.com/users/ca3b847017ef">满嘴跑火车</a>
+        </p>
+        <span class="reply-time">
+          <small>3 楼 · </small>
+          <a href="http://www.jianshu.com/p/225947454abe/comments/3378690#comment-3378690">2016.07.31 15:01</a></span>
+      </div>
+      <p>喜欢钻研技术</p>
+      <div class="comment-footer clearfix text-right">
+        <a data-id="3378690" class="like pull-left" href="javascript:void(0)">
+          <i class="fa fa-heart-o"></i>喜欢<span>(0)</span>
+</a>        <div class="dropdown report" data-commenter-id="2465673">
+          <a class="report_comment" href="javascript:void(0)" data-toggle="dropdown">举报</a>
+          <ul class="dropdown-menu arrow-top">
+            <li><a data-type="json" data-remote="true" rel="nofollow" data-method="post" href="http://www.jianshu.com/comments/3378690/abuse_reports?type=ad">广告及垃圾信息</a></li>
+            <li><a data-toggle="modal" data-url="/comments/3378690/abuse_reports" href="http://www.jianshu.com/p/225947454abe#report-modal">其他</a></li>
+          </ul>
+        </div>
+
+        <a data-id="3378690" data-nickname="满嘴跑火车" class="reply" href="javascript:void(0)">回复</a>
+        
+        
+      </div>
+    <div class="child-comment-list ">
+        <div class="child-comment" id="comment-3379418" data-id="3379418">
+    <p>
+      <a class="blue-link" href="http://www.jianshu.com/users/80fadb71940d">chenfanfang</a>：
+      <a href="http://www.jianshu.com/users/ca3b847017ef" class="maleskine-author" target="_blank" data-user-slug="ca3b847017ef">@满嘴跑火车</a> 嗯嗯，一起互相交流 
+    </p>
+    <div class="child-comment-footer text-right clearfix">
+      <div class="dropdown report" data-commenter-id="1594675">
+        <a class="report_comment" href="javascript:void(0)" data-toggle="dropdown">举报</a>
+        <ul class="dropdown-menu arrow-top">
+          <li><a data-type="json" data-remote="true" rel="nofollow" data-method="post" href="http://www.jianshu.com/comments/3379418/abuse_reports?type=ad">广告及垃圾信息</a></li>
+          <li><a data-toggle="modal" data-url="/comments/3379418/abuse_reports" href="http://www.jianshu.com/p/225947454abe#report-modal">其他</a></li>
+        </ul>
+      </div>
+      <a data-id="3378690" data-nickname="chenfanfang" class="reply" href="javascript:void(null)">回复</a>
+      
+      
+      <span class="reply-time pull-left">
+        <a href="http://www.jianshu.com/p/225947454abe/comments/3379418#comment-3379418">2016.07.31 15:58</a></span>
+      
+    </div>
+  </div>
+
+      <div data-state="remaining-child-comments"></div>
+        <div class="comment-toolbar clearfix">
+          <span class="pull-right">
+            <a data-id="3378690" class="reply" href="javascript:void(null)"><i class="fa fa-pencil"></i> 添加新回复</a>
+          </span>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="note-comment clearfix" id="comment-3379149">
+  <div class="content">
+      <div class="meta-top">
+        <a class="avatar" href="http://www.jianshu.com/users/e0d9d34fe19d">
+          <img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/14-75d944a989bbbd5b92a639698c9b4a3c.jpg" alt="14">
+</a>        <p>
+          <a class="author-name" href="http://www.jianshu.com/users/e0d9d34fe19d">airron</a>
+        </p>
+        <span class="reply-time">
+          <small>4 楼 · </small>
+          <a href="http://www.jianshu.com/p/225947454abe/comments/3379149#comment-3379149">2016.07.31 15:37</a></span>
+      </div>
+      <p>用不着这么复杂，一个tableview加些许collectionview以及自动布局轻松搞定。</p>
+      <div class="comment-footer clearfix text-right">
+        <a data-id="3379149" class="like pull-left" href="javascript:void(0)">
+          <i class="fa fa-heart-o"></i>喜欢<span>(0)</span>
+</a>        <div class="dropdown report" data-commenter-id="1284564">
+          <a class="report_comment" href="javascript:void(0)" data-toggle="dropdown">举报</a>
+          <ul class="dropdown-menu arrow-top">
+            <li><a data-type="json" data-remote="true" rel="nofollow" data-method="post" href="http://www.jianshu.com/comments/3379149/abuse_reports?type=ad">广告及垃圾信息</a></li>
+            <li><a data-toggle="modal" data-url="/comments/3379149/abuse_reports" href="http://www.jianshu.com/p/225947454abe#report-modal">其他</a></li>
+          </ul>
+        </div>
+
+        <a data-id="3379149" data-nickname="airron" class="reply" href="javascript:void(0)">回复</a>
+        
+        
+      </div>
+    <div class="child-comment-list ">
+        <div class="child-comment" id="comment-3379403" data-id="3379403">
+    <p>
+      <a class="blue-link" href="http://www.jianshu.com/users/80fadb71940d">chenfanfang</a>：
+      <a href="http://www.jianshu.com/users/e0d9d34fe19d" class="maleskine-author" target="_blank" data-user-slug="e0d9d34fe19d">@airron</a> UICollectionView的确可以更简单，在后面的博客会加上，在文章开头也说了哈 <img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/relaxed.png" alt=":relaxed:" title=":relaxed:" class="emoji" width="20" height="20">  <img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/relaxed.png" alt=":relaxed:" title=":relaxed:" class="emoji" width="20" height="20"> 谢谢指点
+    </p>
+    <div class="child-comment-footer text-right clearfix">
+      <div class="dropdown report" data-commenter-id="1594675">
+        <a class="report_comment" href="javascript:void(0)" data-toggle="dropdown">举报</a>
+        <ul class="dropdown-menu arrow-top">
+          <li><a data-type="json" data-remote="true" rel="nofollow" data-method="post" href="http://www.jianshu.com/comments/3379403/abuse_reports?type=ad">广告及垃圾信息</a></li>
+          <li><a data-toggle="modal" data-url="/comments/3379403/abuse_reports" href="http://www.jianshu.com/p/225947454abe#report-modal">其他</a></li>
+        </ul>
+      </div>
+      <a data-id="3379149" data-nickname="chenfanfang" class="reply" href="javascript:void(null)">回复</a>
+      
+      
+      <span class="reply-time pull-left">
+        <a href="http://www.jianshu.com/p/225947454abe/comments/3379403#comment-3379403">2016.07.31 15:57</a></span>
+      
+    </div>
+  </div>
+  <div class="child-comment" id="comment-3383823" data-id="3383823">
+    <p>
+      <a class="blue-link" href="http://www.jianshu.com/users/7bcf2b8aec25">Unc1eWang</a>：
+      <a href="http://www.jianshu.com/users/e0d9d34fe19d" class="maleskine-author" target="_blank" data-user-slug="e0d9d34fe19d">@airron</a> collection要自定义flow layout啊
+    </p>
+    <div class="child-comment-footer text-right clearfix">
+      <div class="dropdown report" data-commenter-id="1511170">
+        <a class="report_comment" href="javascript:void(0)" data-toggle="dropdown">举报</a>
+        <ul class="dropdown-menu arrow-top">
+          <li><a data-type="json" data-remote="true" rel="nofollow" data-method="post" href="http://www.jianshu.com/comments/3383823/abuse_reports?type=ad">广告及垃圾信息</a></li>
+          <li><a data-toggle="modal" data-url="/comments/3383823/abuse_reports" href="http://www.jianshu.com/p/225947454abe#report-modal">其他</a></li>
+        </ul>
+      </div>
+      <a data-id="3379149" data-nickname="Unc1eWang" class="reply" href="javascript:void(null)">回复</a>
+      
+      
+      <span class="reply-time pull-left">
+        <a href="http://www.jianshu.com/p/225947454abe/comments/3383823#comment-3383823">2016.07.31 21:39</a></span>
+      
+    </div>
+  </div>
+  <div class="child-comment" id="comment-3384912" data-id="3384912">
+    <p>
+      <a class="blue-link" href="http://www.jianshu.com/users/80fadb71940d">chenfanfang</a>：
+      <a href="http://www.jianshu.com/users/7bcf2b8aec25" class="maleskine-author" target="_blank" data-user-slug="7bcf2b8aec25">@Unc1eWang</a> 是的，需要自定义layout，  流水布局，瀑布流都可以用collectionview.但是还是需要计算
+    </p>
+    <div class="child-comment-footer text-right clearfix">
+      <div class="dropdown report" data-commenter-id="1594675">
+        <a class="report_comment" href="javascript:void(0)" data-toggle="dropdown">举报</a>
+        <ul class="dropdown-menu arrow-top">
+          <li><a data-type="json" data-remote="true" rel="nofollow" data-method="post" href="http://www.jianshu.com/comments/3384912/abuse_reports?type=ad">广告及垃圾信息</a></li>
+          <li><a data-toggle="modal" data-url="/comments/3384912/abuse_reports" href="http://www.jianshu.com/p/225947454abe#report-modal">其他</a></li>
+        </ul>
+      </div>
+      <a data-id="3379149" data-nickname="chenfanfang" class="reply" href="javascript:void(null)">回复</a>
+      
+      
+      <span class="reply-time pull-left">
+        <a href="http://www.jianshu.com/p/225947454abe/comments/3384912#comment-3384912">2016.07.31 22:35</a></span>
+      
+    </div>
+  </div>
+
+      <div data-state="remaining-child-comments"></div>
+        <div class="comment-toolbar clearfix">
+          <span class="pull-right">
+            <a data-id="3379149" class="reply" href="javascript:void(null)"><i class="fa fa-pencil"></i> 添加新回复</a>
+          </span>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="note-comment clearfix" id="comment-3383962">
+  <div class="content">
+      <div class="meta-top">
+        <a class="avatar" href="http://www.jianshu.com/users/535edd0efada">
+          <img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/08da91a33e5c.jpeg" alt="100">
+</a>        <p>
+          <a class="author-name" href="http://www.jianshu.com/users/535edd0efada">LLVKS</a>
+        </p>
+        <span class="reply-time">
+          <small>5 楼 · </small>
+          <a href="http://www.jianshu.com/p/225947454abe/comments/3383962#comment-3383962">2016.07.31 21:47</a></span>
+      </div>
+      <p>Github上面有一个框架SKTagView，你可以试试。</p>
+      <div class="comment-footer clearfix text-right">
+        <a data-id="3383962" class="like pull-left" href="javascript:void(0)">
+          <i class="fa fa-heart-o"></i>喜欢<span>(1)</span>
+</a>        <div class="dropdown report" data-commenter-id="1853274">
+          <a class="report_comment" href="javascript:void(0)" data-toggle="dropdown">举报</a>
+          <ul class="dropdown-menu arrow-top">
+            <li><a data-type="json" data-remote="true" rel="nofollow" data-method="post" href="http://www.jianshu.com/comments/3383962/abuse_reports?type=ad">广告及垃圾信息</a></li>
+            <li><a data-toggle="modal" data-url="/comments/3383962/abuse_reports" href="http://www.jianshu.com/p/225947454abe#report-modal">其他</a></li>
+          </ul>
+        </div>
+
+        <a data-id="3383962" data-nickname="LLVKS" class="reply" href="javascript:void(0)">回复</a>
+        
+        
+      </div>
+    <div class="child-comment-list ">
+        <div class="child-comment" id="comment-3384935" data-id="3384935">
+    <p>
+      <a class="blue-link" href="http://www.jianshu.com/users/80fadb71940d">chenfanfang</a>：
+      <a href="http://www.jianshu.com/users/535edd0efada" class="maleskine-author" target="_blank" data-user-slug="535edd0efada">@LLVKS</a> 好的，谢谢<img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/blush.png" alt=":blush:" title=":blush:" class="emoji" width="20" height="20">
+    </p>
+    <div class="child-comment-footer text-right clearfix">
+      <div class="dropdown report" data-commenter-id="1594675">
+        <a class="report_comment" href="javascript:void(0)" data-toggle="dropdown">举报</a>
+        <ul class="dropdown-menu arrow-top">
+          <li><a data-type="json" data-remote="true" rel="nofollow" data-method="post" href="http://www.jianshu.com/comments/3384935/abuse_reports?type=ad">广告及垃圾信息</a></li>
+          <li><a data-toggle="modal" data-url="/comments/3384935/abuse_reports" href="http://www.jianshu.com/p/225947454abe#report-modal">其他</a></li>
+        </ul>
+      </div>
+      <a data-id="3383962" data-nickname="chenfanfang" class="reply" href="javascript:void(null)">回复</a>
+      
+      
+      <span class="reply-time pull-left">
+        <a href="http://www.jianshu.com/p/225947454abe/comments/3384935#comment-3384935">2016.07.31 22:36</a></span>
+      
+    </div>
+  </div>
+  <div class="child-comment" id="comment-3390259" data-id="3390259">
+    <p>
+      <a class="blue-link" href="http://www.jianshu.com/users/2d5ee02f44e7">七月天熊</a>：
+      <a href="http://www.jianshu.com/users/535edd0efada" class="maleskine-author" target="_blank" data-user-slug="535edd0efada">@LLVKS</a> 并没有这个框架啊
+    </p>
+    <div class="child-comment-footer text-right clearfix">
+      <div class="dropdown report" data-commenter-id="1745494">
+        <a class="report_comment" href="javascript:void(0)" data-toggle="dropdown">举报</a>
+        <ul class="dropdown-menu arrow-top">
+          <li><a data-type="json" data-remote="true" rel="nofollow" data-method="post" href="http://www.jianshu.com/comments/3390259/abuse_reports?type=ad">广告及垃圾信息</a></li>
+          <li><a data-toggle="modal" data-url="/comments/3390259/abuse_reports" href="http://www.jianshu.com/p/225947454abe#report-modal">其他</a></li>
+        </ul>
+      </div>
+      <a data-id="3383962" data-nickname="七月天熊" class="reply" href="javascript:void(null)">回复</a>
+      
+      
+      <span class="reply-time pull-left">
+        <a href="http://www.jianshu.com/p/225947454abe/comments/3390259#comment-3390259">2016.08.01 10:32</a></span>
+      
+    </div>
+  </div>
+
+      <div data-state="remaining-child-comments"></div>
+        <div class="comment-toolbar clearfix">
+          <span class="pull-right">
+            <a data-id="3383962" class="reply" href="javascript:void(null)"><i class="fa fa-pencil"></i> 添加新回复</a>
+          </span>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="note-comment clearfix" id="comment-3388798">
+  <div class="content">
+      <div class="meta-top">
+        <a class="avatar" href="http://www.jianshu.com/users/bc3198cd42c4">
+          <img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/3de98a7ccfcd" alt="100">
+</a>        <p>
+          <a class="author-name" href="http://www.jianshu.com/users/bc3198cd42c4">我能忍受多少</a>
+        </p>
+        <span class="reply-time">
+          <small>6 楼 · </small>
+          <a href="http://www.jianshu.com/p/225947454abe/comments/3388798#comment-3388798">2016.08.01 08:57</a></span>
+      </div>
+      <p>mark</p>
+      <div class="comment-footer clearfix text-right">
+        <a data-id="3388798" class="like pull-left" href="javascript:void(0)">
+          <i class="fa fa-heart-o"></i>喜欢<span>(0)</span>
+</a>        <div class="dropdown report" data-commenter-id="1817494">
+          <a class="report_comment" href="javascript:void(0)" data-toggle="dropdown">举报</a>
+          <ul class="dropdown-menu arrow-top">
+            <li><a data-type="json" data-remote="true" rel="nofollow" data-method="post" href="http://www.jianshu.com/comments/3388798/abuse_reports?type=ad">广告及垃圾信息</a></li>
+            <li><a data-toggle="modal" data-url="/comments/3388798/abuse_reports" href="http://www.jianshu.com/p/225947454abe#report-modal">其他</a></li>
+          </ul>
+        </div>
+
+        <a data-id="3388798" data-nickname="我能忍受多少" class="reply" href="javascript:void(0)">回复</a>
+        
+        
+      </div>
+    <div class="child-comment-list hide">
+      
+      <div data-state="remaining-child-comments"></div>
+    </div>
+  </div>
+</div>
+
+<div class="note-comment clearfix" id="comment-3388815">
+  <div class="content">
+      <div class="meta-top">
+        <a class="avatar" href="http://www.jianshu.com/users/c57dddf3b833">
+          <img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/8-77a9d346e43ea9a5ea58086d74909362.jpg" alt="8">
+</a>        <p>
+          <a class="author-name" href="http://www.jianshu.com/users/c57dddf3b833">c57dd</a>
+        </p>
+        <span class="reply-time">
+          <small>7 楼 · </small>
+          <a href="http://www.jianshu.com/p/225947454abe/comments/3388815#comment-3388815">2016.08.01 08:58</a></span>
+      </div>
+      <p>自定义flowLayout，大概20行代码搞定</p>
+      <div class="comment-footer clearfix text-right">
+        <a data-id="3388815" class="like pull-left" href="javascript:void(0)">
+          <i class="fa fa-heart-o"></i>喜欢<span>(0)</span>
+</a>        <div class="dropdown report" data-commenter-id="1201613">
+          <a class="report_comment" href="javascript:void(0)" data-toggle="dropdown">举报</a>
+          <ul class="dropdown-menu arrow-top">
+            <li><a data-type="json" data-remote="true" rel="nofollow" data-method="post" href="http://www.jianshu.com/comments/3388815/abuse_reports?type=ad">广告及垃圾信息</a></li>
+            <li><a data-toggle="modal" data-url="/comments/3388815/abuse_reports" href="http://www.jianshu.com/p/225947454abe#report-modal">其他</a></li>
+          </ul>
+        </div>
+
+        <a data-id="3388815" data-nickname="c57dd" class="reply" href="javascript:void(0)">回复</a>
+        
+        
+      </div>
+    <div class="child-comment-list ">
+        <div class="child-comment" id="comment-3390276" data-id="3390276">
+    <p>
+      <a class="blue-link" href="http://www.jianshu.com/users/2d5ee02f44e7">七月天熊</a>：
+      <a href="http://www.jianshu.com/users/c57dddf3b833" class="maleskine-author" target="_blank" data-user-slug="c57dddf3b833">@c57dd</a> 有博客吗？
+    </p>
+    <div class="child-comment-footer text-right clearfix">
+      <div class="dropdown report" data-commenter-id="1745494">
+        <a class="report_comment" href="javascript:void(0)" data-toggle="dropdown">举报</a>
+        <ul class="dropdown-menu arrow-top">
+          <li><a data-type="json" data-remote="true" rel="nofollow" data-method="post" href="http://www.jianshu.com/comments/3390276/abuse_reports?type=ad">广告及垃圾信息</a></li>
+          <li><a data-toggle="modal" data-url="/comments/3390276/abuse_reports" href="http://www.jianshu.com/p/225947454abe#report-modal">其他</a></li>
+        </ul>
+      </div>
+      <a data-id="3388815" data-nickname="七月天熊" class="reply" href="javascript:void(null)">回复</a>
+      
+      
+      <span class="reply-time pull-left">
+        <a href="http://www.jianshu.com/p/225947454abe/comments/3390276#comment-3390276">2016.08.01 10:34</a></span>
+      
+    </div>
+  </div>
+  <div class="child-comment" id="comment-3391027" data-id="3391027">
+    <p>
+      <a class="blue-link" href="http://www.jianshu.com/users/c57dddf3b833">c57dd</a>：
+      <a href="http://www.jianshu.com/users/2d5ee02f44e7" class="maleskine-author" target="_blank" data-user-slug="2d5ee02f44e7">@七月天熊</a> <a href="http://dwz.cn/3SrAU3" rel="nofollow" target="_blank">http://dwz.cn/3SrAU3</a> 这有个小demo
+    </p>
+    <div class="child-comment-footer text-right clearfix">
+      <div class="dropdown report" data-commenter-id="1201613">
+        <a class="report_comment" href="javascript:void(0)" data-toggle="dropdown">举报</a>
+        <ul class="dropdown-menu arrow-top">
+          <li><a data-type="json" data-remote="true" rel="nofollow" data-method="post" href="http://www.jianshu.com/comments/3391027/abuse_reports?type=ad">广告及垃圾信息</a></li>
+          <li><a data-toggle="modal" data-url="/comments/3391027/abuse_reports" href="http://www.jianshu.com/p/225947454abe#report-modal">其他</a></li>
+        </ul>
+      </div>
+      <a data-id="3388815" data-nickname="c57dd" class="reply" href="javascript:void(null)">回复</a>
+      
+      
+      <span class="reply-time pull-left">
+        <a href="http://www.jianshu.com/p/225947454abe/comments/3391027#comment-3391027">2016.08.01 11:22</a></span>
+      
+    </div>
+  </div>
+
+      <div data-state="remaining-child-comments"></div>
+        <div class="comment-toolbar clearfix">
+          <span class="pull-right">
+            <a data-id="3388815" class="reply" href="javascript:void(null)"><i class="fa fa-pencil"></i> 添加新回复</a>
+          </span>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="note-comment clearfix" id="comment-3390232">
+  <div class="content">
+      <div class="meta-top">
+        <a class="avatar" href="http://www.jianshu.com/users/92e007ecb345">
+          <img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/15-57a3e97082943073824a3529187f31f9.jpg" alt="15">
+</a>        <p>
+          <a class="author-name" href="http://www.jianshu.com/users/92e007ecb345">心中的信念</a>
+        </p>
+        <span class="reply-time">
+          <small>8 楼 · </small>
+          <a href="http://www.jianshu.com/p/225947454abe/comments/3390232#comment-3390232">2016.08.01 10:30</a></span>
+      </div>
+      <p>如何进行点击操作呀</p>
+      <div class="comment-footer clearfix text-right">
+        <a data-id="3390232" class="like pull-left" href="javascript:void(0)">
+          <i class="fa fa-heart-o"></i>喜欢<span>(0)</span>
+</a>        <div class="dropdown report" data-commenter-id="1052057">
+          <a class="report_comment" href="javascript:void(0)" data-toggle="dropdown">举报</a>
+          <ul class="dropdown-menu arrow-top">
+            <li><a data-type="json" data-remote="true" rel="nofollow" data-method="post" href="http://www.jianshu.com/comments/3390232/abuse_reports?type=ad">广告及垃圾信息</a></li>
+            <li><a data-toggle="modal" data-url="/comments/3390232/abuse_reports" href="http://www.jianshu.com/p/225947454abe#report-modal">其他</a></li>
+          </ul>
+        </div>
+
+        <a data-id="3390232" data-nickname="心中的信念" class="reply" href="javascript:void(0)">回复</a>
+        
+        
+      </div>
+    <div class="child-comment-list ">
+        <div class="child-comment" id="comment-3390621" data-id="3390621">
+    <p>
+      <a class="blue-link" href="http://www.jianshu.com/users/80fadb71940d">chenfanfang</a>：
+      <a href="http://www.jianshu.com/users/92e007ecb345" class="maleskine-author" target="_blank" data-user-slug="92e007ecb345">@心中的信念</a> 将label替换成uibutton即可，或者给给label添加手势。由于上次写的冲忙，都没封装，后面会封装好，重新写一篇博客，并且将点击事件也添加进去
+    </p>
+    <div class="child-comment-footer text-right clearfix">
+      <div class="dropdown report" data-commenter-id="1594675">
+        <a class="report_comment" href="javascript:void(0)" data-toggle="dropdown">举报</a>
+        <ul class="dropdown-menu arrow-top">
+          <li><a data-type="json" data-remote="true" rel="nofollow" data-method="post" href="http://www.jianshu.com/comments/3390621/abuse_reports?type=ad">广告及垃圾信息</a></li>
+          <li><a data-toggle="modal" data-url="/comments/3390621/abuse_reports" href="http://www.jianshu.com/p/225947454abe#report-modal">其他</a></li>
+        </ul>
+      </div>
+      <a data-id="3390232" data-nickname="chenfanfang" class="reply" href="javascript:void(null)">回复</a>
+      
+      
+      <span class="reply-time pull-left">
+        <a href="http://www.jianshu.com/p/225947454abe/comments/3390621#comment-3390621">2016.08.01 10:56</a></span>
+      
+    </div>
+  </div>
+  <div class="child-comment" id="comment-3390635" data-id="3390635">
+    <p>
+      <a class="blue-link" href="http://www.jianshu.com/users/92e007ecb345">心中的信念</a>：
+      <a href="http://www.jianshu.com/users/80fadb71940d" class="maleskine-author" target="_blank" data-user-slug="80fadb71940d">@chenfanfang</a> 好的<img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/+1.png" alt=":+1:" title=":+1:" class="emoji" width="20" height="20">
+    </p>
+    <div class="child-comment-footer text-right clearfix">
+      <div class="dropdown report" data-commenter-id="1052057">
+        <a class="report_comment" href="javascript:void(0)" data-toggle="dropdown">举报</a>
+        <ul class="dropdown-menu arrow-top">
+          <li><a data-type="json" data-remote="true" rel="nofollow" data-method="post" href="http://www.jianshu.com/comments/3390635/abuse_reports?type=ad">广告及垃圾信息</a></li>
+          <li><a data-toggle="modal" data-url="/comments/3390635/abuse_reports" href="http://www.jianshu.com/p/225947454abe#report-modal">其他</a></li>
+        </ul>
+      </div>
+      <a data-id="3390232" data-nickname="心中的信念" class="reply" href="javascript:void(null)">回复</a>
+      
+      
+      <span class="reply-time pull-left">
+        <a href="http://www.jianshu.com/p/225947454abe/comments/3390635#comment-3390635">2016.08.01 10:57</a></span>
+      
+    </div>
+  </div>
+
+      <div data-state="remaining-child-comments"></div>
+        <div class="comment-toolbar clearfix">
+          <span class="pull-right">
+            <a data-id="3390232" class="reply" href="javascript:void(null)"><i class="fa fa-pencil"></i> 添加新回复</a>
+          </span>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="note-comment clearfix" id="comment-3391580">
+  <div class="content">
+      <div class="meta-top">
+        <a class="avatar" href="http://www.jianshu.com/users/bfa3e8165ec5">
+          <img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/ca3589b07fcf" alt="100">
+</a>        <p>
+          <a class="author-name" href="http://www.jianshu.com/users/bfa3e8165ec5">来宝</a>
+        </p>
+        <span class="reply-time">
+          <small>9 楼 · </small>
+          <a href="http://www.jianshu.com/p/225947454abe/comments/3391580#comment-3391580">2016.08.01 11:54</a></span>
+      </div>
+      <p>不错</p>
+      <div class="comment-footer clearfix text-right">
+        <a data-id="3391580" class="like pull-left" href="javascript:void(0)">
+          <i class="fa fa-heart-o"></i>喜欢<span>(0)</span>
+</a>        <div class="dropdown report" data-commenter-id="1281928">
+          <a class="report_comment" href="javascript:void(0)" data-toggle="dropdown">举报</a>
+          <ul class="dropdown-menu arrow-top">
+            <li><a data-type="json" data-remote="true" rel="nofollow" data-method="post" href="http://www.jianshu.com/comments/3391580/abuse_reports?type=ad">广告及垃圾信息</a></li>
+            <li><a data-toggle="modal" data-url="/comments/3391580/abuse_reports" href="http://www.jianshu.com/p/225947454abe#report-modal">其他</a></li>
+          </ul>
+        </div>
+
+        <a data-id="3391580" data-nickname="来宝" class="reply" href="javascript:void(0)">回复</a>
+        
+        
+      </div>
+    <div class="child-comment-list hide">
+      
+      <div data-state="remaining-child-comments"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+          <form class="new_comment" id="new_comment" data-type="json" action="http://www.jianshu.com/notes/5038455/comments" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓">
+    <div class="comment-text">
+      <textarea maxlength="2000" placeholder="写下你的评论…" class="mousetrap" name="comment[content]" id="comment_content"></textarea>
+      <div>
+        <input type="submit" name="commit" value="发 表" class="btn btn-info" data-disable-with="提交中...">
+          <div class="emoji">
+    <a href="http://www.jianshu.com/p/225947454abe#emoji-modal" data-toggle="modal"><i class="fa fa-smile-o"></i></a>
+    <div id="emoji-modal" class="emoji-modal arrow-top hide" tabindex="-1" aria-hidden="true">
+      <ul id="emojiTab" class="emoji-nav-tabs modal-header">
+          <li class="active"><a href="http://www.jianshu.com/p/225947454abe#emoji-pane-1" data-toggle="tab">1</a></li>
+          <li class=""><a href="http://www.jianshu.com/p/225947454abe#emoji-pane-2" data-toggle="tab">2</a></li>
+          <li class=""><a href="http://www.jianshu.com/p/225947454abe#emoji-pane-3" data-toggle="tab">3</a></li>
+          <li class=""><a href="http://www.jianshu.com/p/225947454abe#emoji-pane-4" data-toggle="tab">4</a></li>
+      </ul>
+      <div id="emojiTabContent" class="tab-content">
+          <div class="tab-pane fade active in" id="emoji-pane-1">
+          <ul>
+          </ul>
+        </div>
+          <div class="tab-pane fade  in" id="emoji-pane-2">
+          <ul>
+          </ul>
+        </div>
+          <div class="tab-pane fade  in" id="emoji-pane-3">
+          <ul>
+          </ul>
+        </div>
+          <div class="tab-pane fade  in" id="emoji-pane-4">
+          <ul>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+          <span class="hotkey">⌘+Return 发表</span>
+        <span class="warning" style="display: none"><i class="fa fa-exclamation-circle"></i><span class="warning-text"></span></span>
+      </div>
+    </div>
+</form>
+    </div>
+    <!-- -->
+
+  </div>
+
+  <script type="application/json" data-name="note">
+    {"id":5038455,"abbr":"这篇文章是用UILabel配合模型来实现不同宽度的标签、今后我会出一篇用UICollectionView来实现同样的效果源码地址：https://github.com/chenfanfang/CollectionsOfExample附上几张效果图gif效果图不同宽度的标签.gifpng效果图不同宽度的标签1.png不同宽度的标签2.png实现思路1、模型中的主要思路模型的属性如下：#import&lt;Foundation/Foundation.h&gt;/***不同...","slug":"225947454abe","url":"http://www.jianshu.com/p/225947454abe","image_url":"http://cwb.assets.jianshu.io/notes/images/5038455/weibo/image_5aa02c8a0411.jpg","wordage":2123,"has_further_readings":false,"views_count":1047,"likes_count":62,"comments_count":19,"rewards_total_count":0}
+  </script>
+
+  <script type="application/json" data-name="uuid">
+    {"uuid":"f8b2b195-c593-4a47-af3b-0f5294217b14"}
+  </script>
+
+  <script type="application/json" data-name="author">
+    {"id":1594675,"nickname":"chenfanfang","slug":"80fadb71940d","public_notes_count":4,"followers_count":59,"total_likes_count":135,"is_current_user":false,"is_signed_author":false}
+  </script>
+
+    <script type="application/json" data-name="current-user">
+      {"id":80164,"slug":"8237e1754864","nickname":"彼尔德丘","avatar_url":"http://upload.jianshu.io/users/upload_avatars/80164/a97d9a23365b?imageMogr/thumbnail/90x90/quality/100","blocked_by_author":false,"blocked_user_ids":[],"balance_in_cent":0,"is_a_collection_editor":false}
+    </script>
+
+    <script type="application/json" data-name="comment-participants">
+      []
+    </script>
+
+
+
+    <div class="include-collection">
+      <div class="content">
+        <h5>被以下专题收入，发现更多相似内容：</h5>
+        <ul id="all-collections" class="unstyled collections-list">
+            <li>
+              <a class="avatar" href="http://www.jianshu.com/collection/NEt52a"><img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/computer_guy.jpg" alt="180"></a>              <div class="collections-info">
+                <h5>
+                  <a href="http://www.jianshu.com/collection/NEt52a">程序员</a>
+                </h5>
+                
+  <div class="btn follow following" id="subscribe_collection_16">
+    <a data-type="json" data-collection-id="16" data-remote="true" rel="nofollow" data-method="post" href="http://www.jianshu.com/collections/16/unsubscribe">
+      <i class="fa fa-fw fa-check"></i>  <span>正在关注</span>
+</a>    <span>130.9K</span>
+  </div>
+
+                <p class="description">如果你是程序员，或者有一颗喜欢写程序的心，喜欢分享技术干货、项目经验、程序员日常囧事等等，欢迎投稿《程序员》专题。
+
+投稿须知：
+...</p>
+                <p>
+                  <a class="blue-link" href="http://www.jianshu.com/collection/NEt52a">19824篇文章</a> · 130999人关注
+                </p>
+              </div>
+            </li>
+            <li>
+              <a class="avatar" href="http://www.jianshu.com/collection/bDHhpK"><img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/rdn_4ddb18fddd2e9_(1).jpg" alt="180"></a>              <div class="collections-info">
+                <h5>
+                  <a href="http://www.jianshu.com/collection/bDHhpK">首页投稿</a>
+                </h5>
+                
+  <div class="btn btn-success follow" id="subscribe_collection_47">
+    <a data-type="json" data-collection-id="47" data-remote="true" rel="nofollow" data-method="post" href="http://www.jianshu.com/collections/47/subscribe">
+      <i class="fa fa-fw fa-plus"></i>  <span>添加关注</span>
+</a>    <span>118.7K</span>
+  </div>
+
+                <p class="description">玩转简书的第一步，从这个专题开始。
+
+想上首页热门榜么？好内容想被更多人看到么？来投稿吧！如果被拒也不要灰心哦～入选文章会进一个队...</p>
+                <p>
+                  <a class="blue-link" href="http://www.jianshu.com/collection/bDHhpK">83277篇文章</a> · 118759人关注
+                </p>
+              </div>
+            </li>
+            <li>
+              <a class="avatar" href="http://www.jianshu.com/collection/3233d1a249ca"><img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/162902612251cbd95971b82.png" alt="180"></a>              <div class="collections-info">
+                <h5>
+                  <a href="http://www.jianshu.com/collection/3233d1a249ca">iOS Developer</a>
+                </h5>
+                
+  <div class="btn follow following" id="subscribe_collection_1276">
+    <a data-type="json" data-collection-id="1276" data-remote="true" rel="nofollow" data-method="post" href="http://www.jianshu.com/collections/1276/unsubscribe">
+      <i class="fa fa-fw fa-check"></i>  <span>正在关注</span>
+</a>    <span>23.4K</span>
+  </div>
+
+                <p class="description">分享 iOS 开发的知识，解决大家遇到的问题，讨论iOS开发的前沿，欢迎大家投稿~</p>
+                <p>
+                  <a class="blue-link" href="http://www.jianshu.com/collection/3233d1a249ca">10215篇文章</a> · 23467人关注
+                </p>
+              </div>
+            </li>
+        </ul>
+      </div>
+    </div>
+
+  <!-- Modal -->
+    <div class="modal pay-modal text-center hide fade" id="pay-modal">
+  <div class="modal-header clearfix">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+  </div>
+  <form id="new_reward" class="new_reward" target="_blank" action="http://www.jianshu.com/notes/5038455/rewards" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="cvWfy398H+es7581RGUVvIJZhZ9ldfZq3nfnaen9BHmGUqXUM294kQPx5ft+Xszjk0FdwcvdpyHPfYnN5QWv2Q==">
+    <div class="modal-body">
+      <a href="http://www.jianshu.com/users/80fadb71940d">
+        <div class="avatar"><img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/b8c3a1f091e3.jpg" alt="100"></div>
+</a>      <p><i class="fa fa-quote-left pull-left"></i>如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作！<i class="fa fa-quote-right pull-right"></i></p>
+      <div class="main-inputs text-left">
+        <div class="control-group">
+          <label for="reward_amount">打赏金额</label><i class="fa fa-yen"></i>
+          <input value="2.00" type="text" name="reward[amount_in_yuan]" id="reward_amount_in_yuan">
+        </div>
+        <div class="control-group message">
+          <textarea placeholder="给Ta留言" name="reward[message]" id="reward_message"></textarea>
+        </div>
+      </div>
+      <div class="choose-pay text-left">
+        <h5>选择支付方式：</h5>
+        <div>
+          <label for="reward_channel_alipay">
+            <div class="iradio_minimal checked" style="position: relative;"><input type="radio" value="alipay" checked="checked" name="reward[channel]" id="reward_channel_alipay" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+            <span class="alipay-bg"></span>
+</label>
+          <label for="reward_channel_balance">
+            <div class="iradio_minimal" style="position: relative;"><input type="radio" value="balance" name="reward[channel]" id="reward_channel_balance" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+            简书余额（ 余额：¥ 0.00 ）
+</label>
+          <label for="reward_channel_wx_pub_qr">
+            <div class="iradio_minimal" style="position: relative;"><input type="radio" value="wx_pub_qr" name="reward[channel]" id="reward_channel_wx_pub_qr" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+            微信支付
+</label>        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button name="button" type="submit" class="btn btn-large btn-pay">立即支付</button>
+    </div>
+</form></div>
+
+    <div class="modal success-pay text-center hide fade" id="success-pay">
+  <div class="modal-header clearfix">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+  </div>
+  <div class="modal-body">
+    <h3><i class="icon-ok"></i>打赏成功</h3>
+    <img src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/complete-pay-25426877089eb23bd76d9d0e6aad89c1.png" alt="Complete pay">
+  </div>
+  <div class="modal-footer">
+    <a class="blue-link" href="http://www.jianshu.com/wallet">查看打赏记录</a>
+  </div>
+</div>
+
+</div>
+
+  <div class="imagebubble-backmask image-package" style="z-index: 1000;"><div class="image-caption">不同宽度的标签.gif</div><div class="image-caption">不同宽度的标签1.png</div><div class="image-caption">不同宽度的标签2.png</div><img class="imagebubble-ghost" src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/1594675-e44259ed3174464a.gif" style="top: 552px; left: 464.5px; width: 405px; height: 731px;"><img class="imagebubble-ghost" src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/1594675-d5e5924230307fc0(1).png" style="top: 1398px; left: 418px; width: 498px; height: 842px;"><img class="imagebubble-ghost" src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/1594675-3bd093a18ce5ed8b(1).png" style="top: 2303px; left: 418px; width: 498px; height: 842px;"></div></div>
+  <div id="flash" class="hide"></div>
+  
+  <div id="view-mode-modal" tabindex="-1" class="modal hide read-modal" aria-hidden="false" data-js-module="view-mode-modal">
+    <div class="btn-group change-background" data-toggle="buttons-radio">
+
+      <a class="btn btn-daytime active" data-mode="day" data-remote="true" rel="nofollow" data-method="put" href="http://www.jianshu.com/preferences?read_mode=day">
+        <i class="fa fa-sun-o"></i>
+</a>      <a class="btn btn-nighttime " data-mode="night" data-remote="true" rel="nofollow" data-method="put" href="http://www.jianshu.com/preferences?read_mode=night">
+        <i class="fa fa-moon-o"></i>
+</a>    </div>
+    <div class="btn-group change-font" data-toggle="buttons-radio">
+      <a class="btn font " data-font="font1" data-remote="true" rel="nofollow" data-method="put" href="http://www.jianshu.com/preferences?default_font=font1">宋体</a>
+      <a class="btn font hei active" data-font="font2" data-remote="true" rel="nofollow" data-method="put" href="http://www.jianshu.com/preferences?default_font=font2">黑体</a>
+    </div>
+    <div class="btn-group change-locale" data-toggle="buttons-radio">
+      <a class="btn font active" data-locale="zh-CN" data-remote="true" rel="nofollow" data-method="put" href="http://www.jianshu.com/preferences/set_locale?locale=zh-CN">简</a>
+      <a class="btn font hei " data-locale="zh-TW" data-remote="true" rel="nofollow" data-method="put" href="http://www.jianshu.com/preferences/set_locale?locale=zh-TW">繁</a>
+    </div>
+  </div>
+
+  <div id="report-modal" class="modal hide fade modal_report fullscreen" tabindex="-1" role="dialog" aria-labelledby="reportModal" aria-hidden="true" data-js-module="report-modal">
+  <form id="report-form" data-type="json" action="javascript:void(0)" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓">
+    <input type="hidden" name="type" id="type" value="other">
+
+    <div class="modal-header">
+      <b>举报原因</b>
+    </div>
+    <div class="modal-body">
+      <textarea name="content" id="content" maxlength="2000" placeholder="写下你的举报原因..."></textarea>
+    </div>
+    <div class="modal-footer">
+      <a class="btn" data-dismiss="modal" aria-hidden="true" href="javascript:void(0)">取消</a>
+      <input type="submit" name="commit" value="确认" class="btn btn-info">
+    </div>
+</form></div>
+
+
+  <script src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/base-ded41764c207f7ff545c28c670922d25.js"></script>
+  
+  <script src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/reading-base-06726ff5d69bf2b105271301958f5a0a.js"></script>
+  <script src="./iOS不同宽度的标签(用简单的UILabel来实现) - 简书_files/note_show-1805bf39f59948b52870922039360dbb.js"></script>
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35169517-1']);
+  _gaq.push(['_setCustomVar', 2, 'User Type', 'Member', 1 ]);
+  _gaq.push(['_trackPageview']);
+
+  
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+<div id="atwho-container"><div id="atwho-ground-comment_content"><div class="atwho-view" id="at-view-64"><ul class="atwho-view-ul"></ul></div></div><div id="atwho-ground-comment_content"><div class="atwho-view" id="at-view-58"><ul class="atwho-view-ul"></ul></div></div></div></body></html>

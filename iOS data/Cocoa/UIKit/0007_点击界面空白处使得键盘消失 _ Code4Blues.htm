@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<!-- saved from url=(0163)https://code4blues.github.io/2014/06/07/0007_%E7%82%B9%E5%87%BB%E7%95%8C%E9%9D%A2%E7%A9%BA%E7%99%BD%E5%A4%84%E4%BD%BF%E5%BE%97%E9%94%AE%E7%9B%98%E6%B6%88%E5%A4%B1/ -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  
+    <title>0007_点击界面空白处使得键盘消失 | Code4Blues</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="mrahmiao">
+    
+    <meta name="description" content="点击界面空白处使得键盘消失
+在输入内容之后，除了点击Return可以使得键盘消失之外，点击界面空白处让键盘消失也是非常方便的。
+使用UIGestureRecognizer
+一种方法是使用UIGestureRecognizer来实现，同时利用了UIGestureRecognizerDelegate中的">
+    
+    
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="mrahmiao">
+    <meta name="twitter:title" content="0007_点击界面空白处使得键盘消失 | Code4Blues">
+      
+    
+    
+    
+    <link rel="icon" href="https://code4blues.github.io/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="https://code4blues.github.io/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="https://code4blues.github.io/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="./0007_点击界面空白处使得键盘消失 _ Code4Blues_files/style.css" type="text/css">
+<script type="text/javascript" async="" src="./0007_点击界面空白处使得键盘消失 _ Code4Blues_files/embed.js" charset="UTF-8"></script><link type="text/css" rel="stylesheet" href="./0007_点击界面空白处使得键盘消失 _ Code4Blues_files/embed.default.css"></head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="https://code4blues.github.io/"><img src="./0007_点击界面空白处使得键盘消失 _ Code4Blues_files/logo.svg" alt="Code4Blues" title="Code4Blues"></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="https://code4blues.github.io/" title="Code4Blues">Code4Blues</a></h1>
+				<h2 class="blog-motto">Way back into code</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="https://code4blues.github.io/2014/06/07/0007_%E7%82%B9%E5%87%BB%E7%95%8C%E9%9D%A2%E7%A9%BA%E7%99%BD%E5%A4%84%E4%BD%BF%E5%BE%97%E9%94%AE%E7%9B%98%E6%B6%88%E5%A4%B1/#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="https://code4blues.github.io/">Home</a></li>
+					
+						<li><a href="https://code4blues.github.io/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="https://google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索">
+						<input type="hidden" name="q" value="site:code4blues.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</ul></nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope="" itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="https://code4blues.github.io/2014/06/07/0007_%E7%82%B9%E5%87%BB%E7%95%8C%E9%9D%A2%E7%A9%BA%E7%99%BD%E5%A4%84%E4%BD%BF%E5%BE%97%E9%94%AE%E7%9B%98%E6%B6%88%E5%A4%B1/" title="0007_点击界面空白处使得键盘消失" itemprop="url">0007_点击界面空白处使得键盘消失</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://code4blues.github.io/" title="mrahmiao">mrahmiao</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2014-06-07T14:17:25.000Z" itemprop="datePublished">6月 7 2014</time>
+    更新日期:<time datetime="2014-06-08T02:16:45.000Z" itemprop="dateModified">6月 8 2014</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="https://code4blues.github.io/2014/06/07/0007_%E7%82%B9%E5%87%BB%E7%95%8C%E9%9D%A2%E7%A9%BA%E7%99%BD%E5%A4%84%E4%BD%BF%E5%BE%97%E9%94%AE%E7%9B%98%E6%B6%88%E5%A4%B1/#-"><span class="toc-number">1.</span> <span class="toc-text">点击界面空白处使得键盘消失</span></a></li><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="https://code4blues.github.io/2014/06/07/0007_%E7%82%B9%E5%87%BB%E7%95%8C%E9%9D%A2%E7%A9%BA%E7%99%BD%E5%A4%84%E4%BD%BF%E5%BE%97%E9%94%AE%E7%9B%98%E6%B6%88%E5%A4%B1/#-uigesturerecognizer"><span class="toc-number">1.1.</span> <span class="toc-text">使用UIGestureRecognizer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="https://code4blues.github.io/2014/06/07/0007_%E7%82%B9%E5%87%BB%E7%95%8C%E9%9D%A2%E7%A9%BA%E7%99%BD%E5%A4%84%E4%BD%BF%E5%BE%97%E9%94%AE%E7%9B%98%E6%B6%88%E5%A4%B1/#-uicontrol"><span class="toc-number">1.2.</span> <span class="toc-text">使用UIControl</span></a></li></ol>
+		</ol></div>
+		
+		<h1 id="-">点击界面空白处使得键盘消失</h1>
+<p>在输入内容之后，除了点击Return可以使得键盘消失之外，点击界面空白处让键盘消失也是非常方便的。</p>
+<h2 id="-uigesturerecognizer">使用UIGestureRecognizer</h2>
+<p>一种方法是使用<em>UIGestureRecognizer</em>来实现，同时利用了<em>UIGestureRecognizerDelegate</em>中的<strong>-(BOOL)gestureRecognizer:shouldReceiveTouch:</strong>方法。</p>
+<p>这种方法首先要让界面的ViewController Confirm<em>UIGesutureRecognizerDelegate</em>，然后在界面初始化的时候添加一个<em>UITapGestureRecognizer</em>。在相应的Action中对self.view发送<em>endEditing:</em>消息：</p>
+<pre><code>- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+  self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+
+  if (self) {
+      UITapGestureRecognizer *backgroundTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(backgroundTapped:)];
+      backgroundTap.delegate = self;
+      [self.view addGestureRecognizer:backgroundTap];
+  }
+}
+
+- (void)backgroundTapped:(id)sender {
+  [self.view endEditing:YES];
+}
+</code></pre><p>一般情况下这样就可以保证键盘在我们点击界面其他地方的时候会消失。但是这会造成一个问题，如果我们在界面的下方有一个UIToolBar的时候，UIToolbar中的按钮（UIBarButtonItem）是不会响应其动作的。</p>
+<p>至于为什么没有响应，个人感觉是<em>UIBarButtonItem</em>虽然是被点击了，但是其响应得却是我们前面注册的手势的回调。</p>
+<p>具体是Responder Chain还是什么的原因，这里就不探究了。可以是说手势动作的优先级高于了按钮本身动作的优先级，这显然是个Bug（这个Bug是在iOS 7上出现的，低版本没试过，但是在iOS 8中被干掉了）。</p>
+<p>这时候我们就需要辨别Tap动作的作用对象，上面没有用到的<em>UIGestureRecognizerDelegate</em>就起到作用了。</p>
+<p>实现上面提到的<strong>-(BOOL)gestureRecognizer:shouldReceiveTouch:</strong>方法，我们需要在该方法中判断<code>touch.view</code>是不是工具栏按钮本身的View。</p>
+<p>如果我们在方法中加上断点观察点击到工具栏按钮时，<code>touch.view</code>的class，可以看到其类是<em>UIToolbarButton</em>，而这个类不是公开，我们是没有办法使用到它。只能退而求其次，判断<code>touch.view</code>是否是UIControl了。而为什么可以使用UIControl呢，因为<em>UIToolbarButton</em>的<em>superclass</em>就是UIControl。而对于UIControl来说，如果它能响应用户交互事件，则会自动响应本身的事件，而不是我们的手势事件。</p>
+<p>代码如下：</p>
+<pre><code>- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRegonizer shouldReceiveTouch:(UITouch *)touch {
+  if ([touch.view isKindOf:[UIControl class]]) {
+    return NO;
+  }
+  return YES;
+}
+</code></pre><p>这样，在iOS 7中，就能使得键盘在点击界面背景时消失了，副作用不大。。。</p>
+<h2 id="-uicontrol">使用UIControl</h2>
+<p><em>UIControl</em>是<em>UIView</em>的子类，如果界面的<em>UIView</em>也能像按钮那样设置Action，可以直接点击界面触发相关动作使得键盘消失，那就方便得多了。</p>
+<p>可惜是没有办法对直接加上Action的，要动用IB。选中界面所在的xib文件，然后选中view，在Utilities面板中选中Identity Inspector，可以看到Custom Section下面是Class一项的值是<em>UIView</em>，我们把它改成<em>UIControl</em>。</p>
+<p>接着打开Assistant Editor，按住option选中界面的实现，然后从view上面Control-drag到实现，这时就可以看到平时设置按钮动作一样的弹出框，Event类型为Touch Up Inside，在生成的IBAction方法中跟前面一样发送<code>endEditing:</code>方法就行了。</p>
+<p>这个法子比前面Gesture的方法要简单很多...</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="https://code4blues.github.io/tags/iOS/">iOS</a><a href="https://code4blues.github.io/tags/UI/">UI</a>
+  </div>
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://code4blues.github.io/2014/06/07/0007_点击界面空白处使得键盘消失/" data-title="0007_点击界面空白处使得键盘消失 | Code4Blues" data-tsina="null" class="share clearfix">
+  <a href="https://code4blues.github.io/2014/06/07/0007_%E7%82%B9%E5%87%BB%E7%95%8C%E9%9D%A2%E7%A9%BA%E7%99%BD%E5%A4%84%E4%BD%BF%E5%BE%97%E9%94%AE%E7%9B%98%E6%B6%88%E5%A4%B1/#" class="overlay" id="qrcode"></a><div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="https://code4blues.github.io/2014/06/07/0007_%E7%82%B9%E5%87%BB%E7%95%8C%E9%9D%A2%E7%A9%BA%E7%99%BD%E5%A4%84%E4%BD%BF%E5%BE%97%E9%94%AE%E7%9B%98%E6%B6%88%E5%A4%B1/#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=http%3A%2F%2Fcode4blues.github.io%2F2014%2F06%2F07%2F0007_%E7%82%B9%E5%87%BB%E7%95%8C%E9%9D%A2%E7%A9%BA%E7%99%BD%E5%A4%84%E4%BD%BF%E5%BE%97%E9%94%AE%E7%9B%98%E6%B6%88%E5%A4%B1%2F"></div><a href="https://code4blues.github.io/2014/06/07/0007_%E7%82%B9%E5%87%BB%E7%95%8C%E9%9D%A2%E7%A9%BA%E7%99%BD%E5%A4%84%E4%BD%BF%E5%BE%97%E9%94%AE%E7%9B%98%E6%B6%88%E5%A4%B1/#textlogo" class="article-back-to-top" title="Top"></a><a href="https://www.facebook.com/sharer.php?u=http%3A%2F%2Fcode4blues.github.io%2F2014%2F06%2F07%2F0007_%E7%82%B9%E5%87%BB%E7%95%8C%E9%9D%A2%E7%A9%BA%E7%99%BD%E5%A4%84%E4%BD%BF%E5%BE%97%E9%94%AE%E7%9B%98%E6%B6%88%E5%A4%B1%2F" class="article-share-facebook" target="_blank" title="Facebook"></a><a href="https://code4blues.github.io/2014/06/07/0007_%E7%82%B9%E5%87%BB%E7%95%8C%E9%9D%A2%E7%A9%BA%E7%99%BD%E5%A4%84%E4%BD%BF%E5%BE%97%E9%94%AE%E7%9B%98%E6%B6%88%E5%A4%B1/#qrcode" class="article-share-qrcode" title="QRcode"></a><a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fcode4blues.github.io%2F2014%2F06%2F07%2F0007_%E7%82%B9%E5%87%BB%E7%95%8C%E9%9D%A2%E7%A9%BA%E7%99%BD%E5%A4%84%E4%BD%BF%E5%BE%97%E9%94%AE%E7%9B%98%E6%B6%88%E5%A4%B1%2F" class="article-share-twitter" target="_blank" title="Twitter"></a><a href="http://service.weibo.com/share/share.php?title=0007_%E7%82%B9%E5%87%BB%E7%95%8C%E9%9D%A2%E7%A9%BA%E7%99%BD%E5%A4%84%E4%BD%BF%E5%BE%97%E9%94%AE%E7%9B%98%E6%B6%88%E5%A4%B1%20|%20Code4Blues&amp;url=http%3A%2F%2Fcode4blues.github.io%2F2014%2F06%2F07%2F0007_%E7%82%B9%E5%87%BB%E7%95%8C%E9%9D%A2%E7%A9%BA%E7%99%BD%E5%A4%84%E4%BD%BF%E5%BE%97%E9%94%AE%E7%9B%98%E6%B6%88%E5%A4%B1%2F&amp;ralateUid=null&amp;searchPic=true&amp;style=number" class="article-share-weibo" target="_blank" title="Weibo"></a><span title="Share to"></span></div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev">
+ <a href="https://code4blues.github.io/2014/06/08/0008_swift%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="0008_Swift学习笔记">
+  <strong>PREVIOUS:</strong><br>
+  <span>
+  0008_Swift学习笔记</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="https://code4blues.github.io/2014/06/02/0006_%E4%BD%BF%E7%94%A8navigationcontroller%E6%97%B6%EF%BC%8C%E5%9C%A8viewcontroller%E4%B9%8B%E9%97%B4%E4%BC%A0%E9%80%92%E6%95%B0%E6%8D%AE%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95/" title="0006_使用NavigationController时，在ViewController之间传递数据的几种方法">
+ <strong>NEXT:</strong><br> 
+ <span>0006_使用NavigationController时，在ViewController之间传递数据的几种方法
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread" id="ds-thread"><div id="ds-reset"><div class="ds-meta" style="display: none;"><a href="javascript:void(0)" class="ds-like-thread-button ds-rounded"><span class="ds-icon ds-icon-heart"></span> <span class="ds-thread-like-text">喜欢</span><span class="ds-thread-cancel-like">取消喜欢</span></a><span class="ds-like-panel"></span></div><div class="ds-comments-info"><div class="ds-sort"><a class="ds-order-desc">最新</a><a class="ds-order-asc ds-current">最早</a><a class="ds-order-hot">最热</a></div><ul class="ds-comments-tabs"><li class="ds-tab"><a class="ds-comments-tab-duoshuo ds-current" href="javascript:void(0);">0条评论</a></li>  </ul></div><ul class="ds-comments"><li class="ds-post ds-post-placeholder">还没有评论，沙发等你来抢</li></ul><div class="ds-paginator" style="display: none;"><div class="ds-border"></div><a data-page="1" href="javascript:void(0);" class="ds-current">1</a></div><a name="respond"></a><div class="ds-login-buttons"><p>社交帐号登录:</p><div class="ds-social-links"><ul class="ds-service-list"><li><a href="https://code4blues.duoshuo.com/login/weixin/" rel="nofollow" class="ds-service-link ds-weixin">微信</a></li><li><a href="https://code4blues.duoshuo.com/login/weibo/" rel="nofollow" class="ds-service-link ds-weibo">微博</a></li><li><a href="https://code4blues.duoshuo.com/login/qq/" rel="nofollow" class="ds-service-link ds-qq">QQ</a></li><li><a href="https://code4blues.duoshuo.com/login/renren/" rel="nofollow" class="ds-service-link ds-renren">人人</a></li><li><a class="ds-more-services" href="javascript:void(0)">更多»</a></li></ul><ul class="ds-service-list ds-additional-services"><li><a href="https://code4blues.duoshuo.com/login/douban/" rel="nofollow" class="ds-service-link ds-douban">豆瓣</a></li><li><a href="https://code4blues.duoshuo.com/login/kaixin/" rel="nofollow" class="ds-service-link ds-kaixin">开心</a></li><li><a href="https://code4blues.duoshuo.com/login/baidu/" rel="nofollow" class="ds-service-link ds-baidu">百度</a></li><li><a href="https://code4blues.duoshuo.com/login/google/" rel="nofollow" class="ds-service-link ds-google">谷歌</a></li></ul></div></div><div class="ds-replybox"><a class="ds-avatar" href="javascript:void(0);" onclick="return false"><img src="./0007_点击界面空白处使得键盘消失 _ Code4Blues_files/noavatar_default.png" alt=""></a><form method="post"><input type="hidden" name="thread_id" value="1182293858231255078">
+<input type="hidden" name="parent_id" value="">
+<input type="hidden" name="nonce" value="577de73750188"><div class="ds-textarea-wrapper ds-rounded-top"><textarea name="message" title="Ctrl+Enter快捷提交" placeholder="说点什么吧…"></textarea><pre class="ds-hidden-text"></pre></div><div class="ds-post-toolbar"><div class="ds-post-options ds-gradient-bg"><span class="ds-sync"></span></div><button class="ds-post-button" type="submit">发布</button><div class="ds-toolbar-buttons"><a class="ds-toolbar-button ds-add-emote" title="插入表情"></a></div></div></form></div><p class="ds-powered-by"><a href="http://duoshuo.com/" target="_blank" rel="nofollow">Code4Blues正在使用多说</a></p></div></div>
+</section>
+
+</div>  
+      <div class="openaside" style="top: 80px;"><a class="navbutton" href="https://code4blues.github.io/2014/06/07/0007_%E7%82%B9%E5%87%BB%E7%95%8C%E9%9D%A2%E7%A9%BA%E7%99%BD%E5%A4%84%E4%BD%BF%E5%BE%97%E9%94%AE%E7%9B%98%E6%B6%88%E5%A4%B1/#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside" style="top: 140px;">
+  <strong class="toc-title">文章目录</strong>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="https://code4blues.github.io/2014/06/07/0007_%E7%82%B9%E5%87%BB%E7%95%8C%E9%9D%A2%E7%A9%BA%E7%99%BD%E5%A4%84%E4%BD%BF%E5%BE%97%E9%94%AE%E7%9B%98%E6%B6%88%E5%A4%B1/#-"><span class="toc-number">1.</span> <span class="toc-text">点击界面空白处使得键盘消失</span></a></li><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="https://code4blues.github.io/2014/06/07/0007_%E7%82%B9%E5%87%BB%E7%95%8C%E9%9D%A2%E7%A9%BA%E7%99%BD%E5%A4%84%E4%BD%BF%E5%BE%97%E9%94%AE%E7%9B%98%E6%B6%88%E5%A4%B1/#-uigesturerecognizer"><span class="toc-number">1.1.</span> <span class="toc-text">使用UIGestureRecognizer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="https://code4blues.github.io/2014/06/07/0007_%E7%82%B9%E5%87%BB%E7%95%8C%E9%9D%A2%E7%A9%BA%E7%99%BD%E5%A4%84%E4%BD%BF%E5%BE%97%E9%94%AE%E7%9B%98%E6%B6%88%E5%A4%B1/#-uicontrol"><span class="toc-number">1.2.</span> <span class="toc-text">使用UIControl</span></a></li></ol>
+  </ol></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="https://code4blues.github.io/2014/06/07/0007_%E7%82%B9%E5%87%BB%E7%95%8C%E9%9D%A2%E7%A9%BA%E7%99%BD%E5%A4%84%E4%BD%BF%E5%BE%97%E9%94%AE%E7%9B%98%E6%B6%88%E5%A4%B1/#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="https://code4blues.github.io/tags/Animation/" title="Animation">Animation<sup>1</sup></a></li>
+		
+			<li><a href="https://code4blues.github.io/tags/App%20Extensions/" title="App Extensions">App Extensions<sup>1</sup></a></li>
+		
+			<li><a href="https://code4blues.github.io/tags/BDD/" title="BDD">BDD<sup>1</sup></a></li>
+		
+			<li><a href="https://code4blues.github.io/tags/Bookmarkz/" title="Bookmarkz">Bookmarkz<sup>1</sup></a></li>
+		
+			<li><a href="https://code4blues.github.io/tags/Cocoa/" title="Cocoa">Cocoa<sup>1</sup></a></li>
+		
+			<li><a href="https://code4blues.github.io/tags/CocoaPods/" title="CocoaPods">CocoaPods<sup>1</sup></a></li>
+		
+			<li><a href="https://code4blues.github.io/tags/CustomTransition/" title="CustomTransition">CustomTransition<sup>1</sup></a></li>
+		
+			<li><a href="https://code4blues.github.io/tags/Design/" title="Design">Design<sup>1</sup></a></li>
+		
+			<li><a href="https://code4blues.github.io/tags/El%20Capitan/" title="El Capitan">El Capitan<sup>1</sup></a></li>
+		
+			<li><a href="https://code4blues.github.io/tags/GCD/" title="GCD">GCD<sup>1</sup></a></li>
+		
+			<li><a href="https://code4blues.github.io/tags/HTTP/" title="HTTP">HTTP<sup>1</sup></a></li>
+		
+			<li><a href="https://code4blues.github.io/tags/JavaScript/" title="JavaScript">JavaScript<sup>1</sup></a></li>
+		
+			<li><a href="https://code4blues.github.io/tags/Karma/" title="Karma">Karma<sup>1</sup></a></li>
+		
+			<li><a href="https://code4blues.github.io/tags/Kiwi/" title="Kiwi">Kiwi<sup>1</sup></a></li>
+		
+			<li><a href="https://code4blues.github.io/tags/Notes/" title="Notes">Notes<sup>2</sup></a></li>
+		
+			<li><a href="https://code4blues.github.io/tags/OSX/" title="OSX">OSX<sup>1</sup></a></li>
+		
+			<li><a href="https://code4blues.github.io/tags/Reading%20Notes/" title="Reading Notes">Reading Notes<sup>1</sup></a></li>
+		
+			<li><a href="https://code4blues.github.io/tags/RequireJS/" title="RequireJS">RequireJS<sup>1</sup></a></li>
+		
+			<li><a href="https://code4blues.github.io/tags/Sketch/" title="Sketch">Sketch<sup>1</sup></a></li>
+		
+			<li><a href="https://code4blues.github.io/tags/Swift/" title="Swift">Swift<sup>4</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="https://code4blues.github.io/2014/06/07/0007_%E7%82%B9%E5%87%BB%E7%95%8C%E9%9D%A2%E7%A9%BA%E7%99%BD%E5%A4%84%E4%BD%BF%E5%BE%97%E9%94%AE%E7%9B%98%E6%B6%88%E5%A4%B1/null" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer">
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font">
+		
+		
+		<a href="https://twitter.com/mrahmiao" target="_blank" title="twitter"></a>
+		
+		
+		<a href="https://github.com/mrahmiao" target="_blank" title="github"></a>
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://zespia.tw/hexo/" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2015 
+		
+		<a href="http://code4blues.github.io/" target="_blank" title="mrahmiao">mrahmiao</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="./0007_点击界面空白处使得键盘消失 _ Code4Blues_files/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"code4blues"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+  
+
+</body></html>

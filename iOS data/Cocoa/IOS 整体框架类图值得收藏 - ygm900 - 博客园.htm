@@ -1,0 +1,754 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0044)http://www.cnblogs.com/ygm900/p/3599081.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>IOS 整体框架类图值得收藏 - ygm900 - 博客园</title>
+<link type="text/css" rel="stylesheet" href="./IOS 整体框架类图值得收藏 - ygm900 - 博客园_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./IOS 整体框架类图值得收藏 - ygm900 - 博客园_files/bundle-SimpleBlue.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/ygm900/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/ygm900/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/ygm900/wlwmanifest.xml">
+<script src="./IOS 整体框架类图值得收藏 - ygm900 - 博客园_files/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'ygm900', cb_enable_mathjax=false;</script>
+<script src="./IOS 整体框架类图值得收藏 - ygm900 - 博客园_files/blog-common.js" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+		
+<!--done-->
+<div class="title"><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/ygm900/">ygm900</a></div>
+<div class="subtitle"></div>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li id="nav_sitehome"></li>
+<li id="nav_myhome"><a id="MyLinks1_MyHomeLink" class="menu" href="http://www.cnblogs.com/ygm900/">首页</a></li>
+<li id="nav_newpost"></li>
+<li id="nav_contact"><a id="MyLinks1_ContactLink" class="menu" rel="nofollow" href="http://msg.cnblogs.com/send/ygm900">联系</a></li>
+<li id="nav_rss"><a id="MyLinks1_Syndication" class="menu" href="http://www.cnblogs.com/ygm900/rss">订阅</a>
+<!--<a id="MyLinks1_XMLLink" class="aHeaderXML" href="http://www.cnblogs.com/ygm900/rss"><img src="http://www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></li>
+<li id="nav_admin"><a id="MyLinks1_Admin" class="menu" rel="nofollow" href="https://i.cnblogs.com/">管理</a></li>
+</ul>
+
+		<div class="blogStats">
+			
+			
+<!--done-->
+随笔-815&nbsp;
+文章-1&nbsp;
+评论-60&nbsp;
+
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="http://www.cnblogs.com/ygm900/p/3599081.html">IOS 整体框架类图值得收藏</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body"><p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">Cocoa框架是iOS应用程序的基础，了解Cocoa框架，对开发iOS应用有很大的帮助。</p>
+<h2 style="margin: 0px; padding: 0px; font-family: Arial; line-height: 26px;"><a name="t0"></a><a style="color: #ff9900;" name="t0"></a><strong>1、Cocoa是什么？</strong></h2>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">Cocoa是OS X和 iOS操作系统的程序的运行环境。</p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">是什么因素使一个程序成为Cocoa程序呢？不是编程语言，因为在Cocoa开发中你可以使用各种语言；也不是开发工具，你可以在命令行上就可以创建 Cocoa程序。Cocoa程序可以这么说，它是由一些对象组成，而这些对象的类最后都是继承于它们的根类 ：NSObject。而且它们都是基于Objective-C运行环境的。</p>
+<h3 style="margin: 0px; padding: 0px; font-family: Arial; line-height: 26px;"><a name="t1"></a><a style="color: #ff9900;" name="t1"></a>1.1、Cocoa框架</h3>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">iOS中，Cocoa众多框架中最重要最基本的两个框架是：Foundation 和 UIKit。</p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;"> Foundation 和界面无关，也可以说和界面无关的类基本是Foundation框架的，和界面相关的是UIKit框架。<br>
+</p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">
+这两个框架在系统中处于的位置如图：</p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">
+<img style="border: none;" src="./IOS 整体框架类图值得收藏 - ygm900 - 博客园_files/1350459010_4309.jpg" alt=""></p>
+<h3 style="margin: 0px; padding: 0px; font-family: Arial; line-height: 26px;"><a name="t2"></a><a style="color: #ff9900;" name="t2"></a>1.2、Foundation框架</h3>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">
+好吧，那我们看看两个框架的类组织架构图，第一个先看Foundation的，三个图，包括了Foundation所以的类，图中灰色的是iOS不支持的，灰色部分是OS X系统的。<br>
+</p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">
+<img style="border: none;" src="./IOS 整体框架类图值得收藏 - ygm900 - 博客园_files/1350526881_2060.jpg" alt="">&nbsp;<img style="border: none;" src="./IOS 整体框架类图值得收藏 - ygm900 - 博客园_files/1350526897_3494.jpg" alt="">&nbsp;</p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">
+<img style="border: none;" src="./IOS 整体框架类图值得收藏 - ygm900 - 博客园_files/1350526913_6659.jpg" alt=""><br>
+</p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">
+将上图Foundation框架中的类进行逻辑分类如下：<br>
+</p>
+<ol style="font-family: Arial; font-size: 14px; line-height: 26px;">
+<li><span style="font-weight: bold;">值对象</span></li>
+<li><span style="font-weight: bold;">集合&nbsp;</span></li>
+<li><span style="font-weight: bold;">操作系统服务 包括下面三个：</span><span style="font-weight: bold;">文件系统和URL &nbsp;&nbsp;</span><strong>进程间通讯。</strong>&nbsp;这个范畴中的大部分类代表不同的系统端口、套接字、和名字服务器，对实现底层的IPC很有用。NSPipe代表一个BSD管道，即一种进程间的单向通讯通道。 &nbsp;&nbsp;<strong>线程和子任务。</strong>&nbsp;NSThread类使您可以创建多线程的程序，而各种锁（lock）类则为彼此竞争的线程在访问进程资源时提供各种控制机制。通过NSTask，您的程序可以分出
+ &nbsp; &nbsp; &nbsp;一个子进程来执行其它工作或进行进度监控。</li>
+<li><span style="font-weight: bold;">通知</span></li>
+<li><span style="font-weight: bold;">归档和序列化</span></li>
+<li><span style="font-weight: bold;">表达式和条件判断</span></li>
+<li><span style="font-weight: bold;">Objective-C语言服务</span></li>
+
+</ol>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">&nbsp;</p>
+<h3 style="margin: 0px; padding: 0px; font-family: Arial; line-height: 26px;"><a name="t3"></a><a style="color: #ff9900;" name="t3"></a>1.3 UIKit框架</h3>
+<div style="font-family: Arial; font-size: 14px; line-height: 26px;">应用程序可以通过三种方式使用UIKit创建界面</div>
+<div style="font-family: Arial; font-size: 14px; line-height: 26px;"><ol>
+<li>&nbsp; 在用户界面工具（interface Buidler）从对象库里 拖拽窗口，视图或者其他的对象使用。</li>
+<li>&nbsp; 用代码创建</li>
+<li>&nbsp; 通过继承UIView类或间接继承UIView类实现自定义用户界面</li>
+
+</ol>
+</div>
+<div style="font-family: Arial; font-size: 14px; line-height: 26px;"><br>
+</div>
+<div style="font-family: Arial; font-size: 14px; line-height: 26px;"><span style="font-weight: bold;">框架类组织架构图：</span></div>
+<div style="font-family: Arial; font-size: 14px; line-height: 26px;"><span style="font-weight: bold;"><img style="border: none;" src="./IOS 整体框架类图值得收藏 - ygm900 - 博客园_files/1350528267_1570.jpg" alt=""><br>
+</span></div>
+<div style="font-family: Arial; font-size: 14px; line-height: 26px;"><br>
+</div>
+<div style="font-family: Arial; font-size: 14px; line-height: 26px;"><br>
+</div>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">
+在图中可以看出，responder 类是图中最大分支的根类，UIResponder为处理响应事件和响应链 
+定义了界面和默认行为。当用户用手指滚动列表或者在虚拟键盘上输入时，UIKit就生成时间传送给UIResponder响应链，直到链中有对象处理这个
+事件。相应的核心对象，比如：UIApplication &nbsp;，UIWindow，UIView都直接或间接的从UIResponder继承。</p>
+<h2 style="margin: 0px; padding: 0px; font-family: Arial; line-height: 26px;"><a name="t4"></a><a style="color: #ff9900;" name="t4"></a>&nbsp;2、Cocoa对象</h2>
+<h3 style="margin: 0px; padding: 0px; font-family: Arial; line-height: 26px;"><a name="t5"></a><a style="color: #ff9900;" name="t5"></a>2.1 Objective-C是面向对象的语言</h3>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">
+Objective-C和Java C++一样，有封装，继承，多态，重用。但是它不像C++那样有重载操作法、模版和多继承，也没有Java的垃圾回收机制。<br>
+</p>
+<h3 style="margin: 0px; padding: 0px; font-family: Arial; line-height: 26px;"><a name="t6"></a><a style="color: #ff9900;" name="t6"></a>2.2&nbsp;Objective-C的优点</h3>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">
+Objective-C语言有C++ Java等面向对象的特点，那是远远不能体现它的优点的。Objective-C的优点是它是动态的。动态能力有三种：</p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">
+动态类-运行时确定类的对象</p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">
+动态绑定-运行时确定要调用的方法</p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">
+动态加载--运行时为程序加载新的模块</p>
+<h3 style="margin: 0px; padding: 0px; font-family: Arial; line-height: 26px;"><a name="t7"></a><a style="color: #ff9900;" name="t7"></a>2.3 动态能力相关的isa指针</h3>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">
+每个Objective-C对象都有一个隐藏的数据结构，这个数据结构是Objective-C对象的第一个成员变量，它就是isa指针。这个指针指向哪
+呢？它指向一个类对象(class object 
+&nbsp;记住它是个对象，是占用内存空间的一个变量，这个对象在编译的时候编译器就生成了，专门来描述某个类的定义)，这个类对象包含了Objective-C
+对象的一些信息（为了区分两个对象，我把前面提到的对象叫Objective-C对象），包括Objective-C对象的方法调度表，实现了什么协议等
+等。这个包含信息就是Objective-C动态能力的根源了。</p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">
+那我们看看isa指针类型的数据结构是什么样的？如果抛开NSObject对象的其他的成员数据和变量，NSObject可以看成这样：</p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">&nbsp;</p>
+<div class="dp-highlighter bg_cpp" style="font-family: Consolas,&#39;Courier New&#39;,Courier,mono,serif; background-color: #e7e5dc; width: 1038.5px; overflow: auto; padding-top: 1px; line-height: 26px; margin: 18px 0px!important;">
+<div class="bar" style="padding-left: 45px;">
+<div class="tools" style="padding: 3px 8px 10px 10px; font-size: 9px; line-height: normal; font-family: Verdana,Geneva,Arial,Helvetica,sans-serif; color: silver; background-color: #f8f8f8; border-left-width: 3px; border-left-style: solid; border-left-color: #6ce26c;">
+<strong>[cpp]</strong>&nbsp;<a class="ViewSource" style="color: #a0a0a0; text-decoration: none; background-color: inherit; border: none; padding: 1px; margin: 0px 10px 0px 0px; font-size: 9px; display: inline-block; width: 16px; height: 16px; text-indent: -2000px;" title="view plain" href="http://blog.csdn.net/totogo2010/article/details/8081253">view
+ plain</a><a class="CopyToClipboard" style="color: #a0a0a0; text-decoration: none; background-color: inherit; border: none; padding: 1px; margin: 0px 10px 0px 0px; font-size: 9px; display: inline-block; width: 16px; height: 16px; text-indent: -2000px;" title="copy" href="http://blog.csdn.net/totogo2010/article/details/8081253">copy</a>
+<div style="position: absolute; left: 377px; top: 4392px; width: 18px; height: 18px; z-index: 99;">&nbsp;</div>
+
+
+</div>
+
+
+</div>
+<ol class="dp-cpp" style="padding: 0px; border: none; list-style-position: initial; background-color: #ffffff; color: #5c5c5c; margin: 0px 0px 1px 45px!important;" start="1">
+<li class="alt" style="border-style: none none none solid; border-left-width: 3px; border-left-color: #6ce26c; list-style: decimal-leading-zero outside; color: inherit; line-height: 18px; margin: 0px!important; padding: 0px 3px 0px 10px!important;">
+<span style="margin: 0px; padding: 0px; border: none; color: black; background-color: inherit;"><span style="margin: 0px; padding: 0px; border: none; background-color: inherit;">@interface&nbsp;NSObject&nbsp;&lt;NSObject&gt;&nbsp;{&nbsp;&nbsp;</span></span></li>
+<li style="border-style: none none none solid; border-left-width: 3px; border-left-color: #6ce26c; list-style: decimal-leading-zero outside; background-color: #f8f8f8; line-height: 18px; margin: 0px!important; padding: 0px 3px 0px 10px!important;">
+<span style="margin: 0px; padding: 0px; border: none; color: black; background-color: inherit;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class&nbsp;&nbsp;&nbsp;&nbsp;isa;&nbsp;&nbsp;</span></li>
+<li class="alt" style="border-style: none none none solid; border-left-width: 3px; border-left-color: #6ce26c; list-style: decimal-leading-zero outside; color: inherit; line-height: 18px; margin: 0px!important; padding: 0px 3px 0px 10px!important;">
+<span style="margin: 0px; padding: 0px; border: none; color: black; background-color: inherit;">}&nbsp;&nbsp;&nbsp;</span></li>
+
+</ol>
+</div>
+<p>
+
+<span style="font-family: Arial; font-size: 14px; line-height: 26px;">不考虑@interface关键字在编译时的作用，可以把NSObject更接近C语言结构表示为：</span></p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">&nbsp;</p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">&nbsp;</p>
+<div class="dp-highlighter bg_cpp" style="font-family: Consolas,&#39;Courier New&#39;,Courier,mono,serif; background-color: #e7e5dc; width: 1038.5px; overflow: auto; padding-top: 1px; line-height: 26px; margin: 18px 0px!important;">
+<div class="bar" style="padding-left: 45px;">
+<div class="tools" style="padding: 3px 8px 10px 10px; font-size: 9px; line-height: normal; font-family: Verdana,Geneva,Arial,Helvetica,sans-serif; color: silver; background-color: #f8f8f8; border-left-width: 3px; border-left-style: solid; border-left-color: #6ce26c;">
+<strong>[cpp]</strong>&nbsp;<a class="ViewSource" style="color: #a0a0a0; text-decoration: none; background-color: inherit; border: none; padding: 1px; margin: 0px 10px 0px 0px; font-size: 9px; display: inline-block; width: 16px; height: 16px; text-indent: -2000px;" title="view plain" href="http://blog.csdn.net/totogo2010/article/details/8081253">view
+ plain</a><a class="CopyToClipboard" style="color: #a0a0a0; text-decoration: none; background-color: inherit; border: none; padding: 1px; margin: 0px 10px 0px 0px; font-size: 9px; display: inline-block; width: 16px; height: 16px; text-indent: -2000px;" title="copy" href="http://blog.csdn.net/totogo2010/article/details/8081253">copy</a>
+<div style="position: absolute; left: 377px; top: 4541px; width: 18px; height: 18px; z-index: 99;">&nbsp;</div>
+
+
+</div>
+
+
+</div>
+<ol class="dp-cpp" style="padding: 0px; border: none; list-style-position: initial; background-color: #ffffff; color: #5c5c5c; margin: 0px 0px 1px 45px!important;" start="1">
+<li class="alt" style="border-style: none none none solid; border-left-width: 3px; border-left-color: #6ce26c; list-style: decimal-leading-zero outside; color: inherit; line-height: 18px; margin: 0px!important; padding: 0px 3px 0px 10px!important;">
+<span style="margin: 0px; padding: 0px; border: none; color: black; background-color: inherit;"><span class="keyword" style="margin: 0px; padding: 0px; border: none; color: #006699; background-color: inherit; font-weight: bold;">struct</span><span style="margin: 0px; padding: 0px; border: none; background-color: inherit;">&nbsp;NSObject{&nbsp;&nbsp;</span></span></li>
+<li style="border-style: none none none solid; border-left-width: 3px; border-left-color: #6ce26c; list-style: decimal-leading-zero outside; background-color: #f8f8f8; line-height: 18px; margin: 0px!important; padding: 0px 3px 0px 10px!important;">
+<span style="margin: 0px; padding: 0px; border: none; color: black; background-color: inherit;">&nbsp;　　Class&nbsp;isa;&nbsp;&nbsp;</span></li>
+<li class="alt" style="border-style: none none none solid; border-left-width: 3px; border-left-color: #6ce26c; list-style: decimal-leading-zero outside; color: inherit; line-height: 18px; margin: 0px!important; padding: 0px 3px 0px 10px!important;">
+<span style="margin: 0px; padding: 0px; border: none; color: black; background-color: inherit;">&nbsp;}&nbsp;&nbsp;</span></li>
+
+</ol>
+</div>
+<p>
+
+<span style="font-family: Arial; font-size: 14px; line-height: 26px;">Class是用typedef 定义的</span></p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">&nbsp;</p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">&nbsp;</p>
+<div class="dp-highlighter bg_cpp" style="font-family: Consolas,&#39;Courier New&#39;,Courier,mono,serif; background-color: #e7e5dc; width: 1038.5px; overflow: auto; padding-top: 1px; line-height: 26px; margin: 18px 0px!important;">
+<div class="bar" style="padding-left: 45px;">
+<div class="tools" style="padding: 3px 8px 10px 10px; font-size: 9px; line-height: normal; font-family: Verdana,Geneva,Arial,Helvetica,sans-serif; color: silver; background-color: #f8f8f8; border-left-width: 3px; border-left-style: solid; border-left-color: #6ce26c;">
+<strong>[cpp]</strong>&nbsp;<a class="ViewSource" style="color: #a0a0a0; text-decoration: none; background-color: inherit; border: none; padding: 1px; margin: 0px 10px 0px 0px; font-size: 9px; display: inline-block; width: 16px; height: 16px; text-indent: -2000px;" title="view plain" href="http://blog.csdn.net/totogo2010/article/details/8081253">view
+ plain</a><a class="CopyToClipboard" style="color: #a0a0a0; text-decoration: none; background-color: inherit; border: none; padding: 1px; margin: 0px 10px 0px 0px; font-size: 9px; display: inline-block; width: 16px; height: 16px; text-indent: -2000px;" title="copy" href="http://blog.csdn.net/totogo2010/article/details/8081253">copy</a>
+<div style="position: absolute; left: 377px; top: 4690px; width: 18px; height: 18px; z-index: 99;">&nbsp;</div>
+
+
+</div>
+
+
+</div>
+<ol class="dp-cpp" style="padding: 0px; border: none; list-style-position: initial; background-color: #ffffff; color: #5c5c5c; margin: 0px 0px 1px 45px!important;" start="1">
+<li class="alt" style="border-style: none none none solid; border-left-width: 3px; border-left-color: #6ce26c; list-style: decimal-leading-zero outside; color: inherit; line-height: 18px; margin: 0px!important; padding: 0px 3px 0px 10px!important;">
+<span style="margin: 0px; padding: 0px; border: none; color: black; background-color: inherit;"><span class="keyword" style="margin: 0px; padding: 0px; border: none; color: #006699; background-color: inherit; font-weight: bold;">typedef</span><span style="margin: 0px; padding: 0px; border: none; background-color: inherit;">&nbsp;</span><span class="keyword" style="margin: 0px; padding: 0px; border: none; color: #006699; background-color: inherit; font-weight: bold;">struct</span><span style="margin: 0px; padding: 0px; border: none; background-color: inherit;">&nbsp;objc_class&nbsp;*Class;&nbsp;&nbsp;</span></span></li>
+
+</ol>
+</div>
+<p>
+
+<span style="font-family: Arial; font-size: 14px; line-height: 26px;">那NSObject可以这么写了</span></p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">&nbsp;</p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">&nbsp;</p>
+<div class="dp-highlighter bg_cpp" style="font-family: Consolas,&#39;Courier New&#39;,Courier,mono,serif; background-color: #e7e5dc; width: 1038.5px; overflow: auto; padding-top: 1px; line-height: 26px; margin: 18px 0px!important;">
+<div class="bar" style="padding-left: 45px;">
+<div class="tools" style="padding: 3px 8px 10px 10px; font-size: 9px; line-height: normal; font-family: Verdana,Geneva,Arial,Helvetica,sans-serif; color: silver; background-color: #f8f8f8; border-left-width: 3px; border-left-style: solid; border-left-color: #6ce26c;">
+<strong>[cpp]</strong>&nbsp;<a class="ViewSource" style="color: #a0a0a0; text-decoration: none; background-color: inherit; border: none; padding: 1px; margin: 0px 10px 0px 0px; font-size: 9px; display: inline-block; width: 16px; height: 16px; text-indent: -2000px;" title="view plain" href="http://blog.csdn.net/totogo2010/article/details/8081253">view
+ plain</a><a class="CopyToClipboard" style="color: #a0a0a0; text-decoration: none; background-color: inherit; border: none; padding: 1px; margin: 0px 10px 0px 0px; font-size: 9px; display: inline-block; width: 16px; height: 16px; text-indent: -2000px;" title="copy" href="http://blog.csdn.net/totogo2010/article/details/8081253">copy</a>
+<div style="position: absolute; left: 377px; top: 4803px; width: 18px; height: 18px; z-index: 99;">&nbsp;</div>
+
+
+</div>
+
+
+</div>
+<ol class="dp-cpp" style="padding: 0px; border: none; list-style-position: initial; background-color: #ffffff; color: #5c5c5c; margin: 0px 0px 1px 45px!important;" start="1">
+<li class="alt" style="border-style: none none none solid; border-left-width: 3px; border-left-color: #6ce26c; list-style: decimal-leading-zero outside; color: inherit; line-height: 18px; margin: 0px!important; padding: 0px 3px 0px 10px!important;">
+<span style="margin: 0px; padding: 0px; border: none; color: black; background-color: inherit;"><span class="keyword" style="margin: 0px; padding: 0px; border: none; color: #006699; background-color: inherit; font-weight: bold;">struct</span><span style="margin: 0px; padding: 0px; border: none; background-color: inherit;">&nbsp;NSObject{&nbsp;&nbsp;</span></span></li>
+<li style="border-style: none none none solid; border-left-width: 3px; border-left-color: #6ce26c; list-style: decimal-leading-zero outside; background-color: #f8f8f8; line-height: 18px; margin: 0px!important; padding: 0px 3px 0px 10px!important;">
+<span style="margin: 0px; padding: 0px; border: none; color: black; background-color: inherit;">　　objc_class&nbsp;*isa&nbsp;&nbsp;</span></li>
+<li class="alt" style="border-style: none none none solid; border-left-width: 3px; border-left-color: #6ce26c; list-style: decimal-leading-zero outside; color: inherit; line-height: 18px; margin: 0px!important; padding: 0px 3px 0px 10px!important;">
+<span style="margin: 0px; padding: 0px; border: none; color: black; background-color: inherit;">}&nbsp;&nbsp;</span></li>
+
+</ol>
+</div>
+<p>
+
+<span style="font-family: Arial; font-size: 14px; line-height: 26px;">那objc_class的结构是什么样的呢？大概是这样的：</span></p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">&nbsp;</p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">&nbsp;</p>
+<div class="dp-highlighter bg_cpp" style="font-family: Consolas,&#39;Courier New&#39;,Courier,mono,serif; background-color: #e7e5dc; width: 1038.5px; overflow: auto; padding-top: 1px; line-height: 26px; margin: 18px 0px!important;">
+<div class="bar" style="padding-left: 45px;">
+<div class="tools" style="padding: 3px 8px 10px 10px; font-size: 9px; line-height: normal; font-family: Verdana,Geneva,Arial,Helvetica,sans-serif; color: silver; background-color: #f8f8f8; border-left-width: 3px; border-left-style: solid; border-left-color: #6ce26c;">
+<strong>[cpp]</strong>&nbsp;<a class="ViewSource" style="color: #a0a0a0; text-decoration: none; background-color: inherit; border: none; padding: 1px; margin: 0px 10px 0px 0px; font-size: 9px; display: inline-block; width: 16px; height: 16px; text-indent: -2000px;" title="view plain" href="http://blog.csdn.net/totogo2010/article/details/8081253">view
+ plain</a><a class="CopyToClipboard" style="color: #a0a0a0; text-decoration: none; background-color: inherit; border: none; padding: 1px; margin: 0px 10px 0px 0px; font-size: 9px; display: inline-block; width: 16px; height: 16px; text-indent: -2000px;" title="copy" href="http://blog.csdn.net/totogo2010/article/details/8081253">copy</a>
+<div style="position: absolute; left: 377px; top: 4952px; width: 18px; height: 18px; z-index: 99;">&nbsp;</div>
+
+
+</div>
+
+
+</div>
+<ol class="dp-cpp" style="padding: 0px; border: none; list-style-position: initial; background-color: #ffffff; color: #5c5c5c; margin: 0px 0px 1px 45px!important;" start="1">
+<li class="alt" style="border-style: none none none solid; border-left-width: 3px; border-left-color: #6ce26c; list-style: decimal-leading-zero outside; color: inherit; line-height: 18px; margin: 0px!important; padding: 0px 3px 0px 10px!important;">
+<span style="margin: 0px; padding: 0px; border: none; color: black; background-color: inherit;"><span class="keyword" style="margin: 0px; padding: 0px; border: none; color: #006699; background-color: inherit; font-weight: bold;">struct</span><span style="margin: 0px; padding: 0px; border: none; background-color: inherit;">&nbsp;objc_class&nbsp;{&nbsp;&nbsp;</span></span></li>
+<li style="border-style: none none none solid; border-left-width: 3px; border-left-color: #6ce26c; list-style: decimal-leading-zero outside; background-color: #f8f8f8; line-height: 18px; margin: 0px!important; padding: 0px 3px 0px 10px!important;">
+<span style="margin: 0px; padding: 0px; border: none; color: black; background-color: inherit;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class&nbsp;isa;&nbsp;&nbsp;</span></li>
+<li class="alt" style="border-style: none none none solid; border-left-width: 3px; border-left-color: #6ce26c; list-style: decimal-leading-zero outside; color: inherit; line-height: 18px; margin: 0px!important; padding: 0px 3px 0px 10px!important;">
+<span style="margin: 0px; padding: 0px; border: none; color: black; background-color: inherit;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li>
+<li style="border-style: none none none solid; border-left-width: 3px; border-left-color: #6ce26c; list-style: decimal-leading-zero outside; background-color: #f8f8f8; line-height: 18px; margin: 0px!important; padding: 0px 3px 0px 10px!important;">
+<span style="margin: 0px; padding: 0px; border: none; color: black; background-color: inherit;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class&nbsp;super_class;&nbsp;&nbsp;</span></li>
+<li class="alt" style="border-style: none none none solid; border-left-width: 3px; border-left-color: #6ce26c; list-style: decimal-leading-zero outside; color: inherit; line-height: 18px; margin: 0px!important; padding: 0px 3px 0px 10px!important;">
+<span style="margin: 0px; padding: 0px; border: none; color: black; background-color: inherit;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li>
+<li style="border-style: none none none solid; border-left-width: 3px; border-left-color: #6ce26c; list-style: decimal-leading-zero outside; background-color: #f8f8f8; line-height: 18px; margin: 0px!important; padding: 0px 3px 0px 10px!important;">
+<span style="margin: 0px; padding: 0px; border: none; color: black; background-color: inherit;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword" style="margin: 0px; padding: 0px; border: none; color: #006699; background-color: inherit; font-weight: bold;">const</span><span style="margin: 0px; padding: 0px; border: none; background-color: inherit;">&nbsp;</span><span class="datatypes" style="margin: 0px; padding: 0px; border: none; color: #2e8b57; background-color: inherit; font-weight: bold;">char</span><span style="margin: 0px; padding: 0px; border: none; background-color: inherit;">&nbsp;*name;&nbsp;&nbsp;</span></span></li>
+<li class="alt" style="border-style: none none none solid; border-left-width: 3px; border-left-color: #6ce26c; list-style: decimal-leading-zero outside; color: inherit; line-height: 18px; margin: 0px!important; padding: 0px 3px 0px 10px!important;">
+<span style="margin: 0px; padding: 0px; border: none; color: black; background-color: inherit;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li>
+<li style="border-style: none none none solid; border-left-width: 3px; border-left-color: #6ce26c; list-style: decimal-leading-zero outside; background-color: #f8f8f8; line-height: 18px; margin: 0px!important; padding: 0px 3px 0px 10px!important;">
+<span style="margin: 0px; padding: 0px; border: none; color: black; background-color: inherit;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="datatypes" style="margin: 0px; padding: 0px; border: none; color: #2e8b57; background-color: inherit; font-weight: bold;">long</span><span style="margin: 0px; padding: 0px; border: none; background-color: inherit;">&nbsp;version;&nbsp;&nbsp;</span></span></li>
+<li class="alt" style="border-style: none none none solid; border-left-width: 3px; border-left-color: #6ce26c; list-style: decimal-leading-zero outside; color: inherit; line-height: 18px; margin: 0px!important; padding: 0px 3px 0px 10px!important;">
+<span style="margin: 0px; padding: 0px; border: none; color: black; background-color: inherit;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="datatypes" style="margin: 0px; padding: 0px; border: none; color: #2e8b57; background-color: inherit; font-weight: bold;">long</span><span style="margin: 0px; padding: 0px; border: none; background-color: inherit;">&nbsp;info;&nbsp;&nbsp;</span></span></li>
+<li style="border-style: none none none solid; border-left-width: 3px; border-left-color: #6ce26c; list-style: decimal-leading-zero outside; background-color: #f8f8f8; line-height: 18px; margin: 0px!important; padding: 0px 3px 0px 10px!important;">
+<span style="margin: 0px; padding: 0px; border: none; color: black; background-color: inherit;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li>
+<li class="alt" style="border-style: none none none solid; border-left-width: 3px; border-left-color: #6ce26c; list-style: decimal-leading-zero outside; color: inherit; line-height: 18px; margin: 0px!important; padding: 0px 3px 0px 10px!important;">
+<span style="margin: 0px; padding: 0px; border: none; color: black; background-color: inherit;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="datatypes" style="margin: 0px; padding: 0px; border: none; color: #2e8b57; background-color: inherit; font-weight: bold;">long</span><span style="margin: 0px; padding: 0px; border: none; background-color: inherit;">&nbsp;instance_size;&nbsp;&nbsp;</span></span></li>
+<li style="border-style: none none none solid; border-left-width: 3px; border-left-color: #6ce26c; list-style: decimal-leading-zero outside; background-color: #f8f8f8; line-height: 18px; margin: 0px!important; padding: 0px 3px 0px 10px!important;">
+<span style="margin: 0px; padding: 0px; border: none; color: black; background-color: inherit;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword" style="margin: 0px; padding: 0px; border: none; color: #006699; background-color: inherit; font-weight: bold;">struct</span><span style="margin: 0px; padding: 0px; border: none; background-color: inherit;">&nbsp;objc_ivar_list&nbsp;*ivars;&nbsp;&nbsp;</span></span></li>
+<li class="alt" style="border-style: none none none solid; border-left-width: 3px; border-left-color: #6ce26c; list-style: decimal-leading-zero outside; color: inherit; line-height: 18px; margin: 0px!important; padding: 0px 3px 0px 10px!important;">
+<span style="margin: 0px; padding: 0px; border: none; color: black; background-color: inherit;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword" style="margin: 0px; padding: 0px; border: none; color: #006699; background-color: inherit; font-weight: bold;">struct</span><span style="margin: 0px; padding: 0px; border: none; background-color: inherit;">&nbsp;objc_method_list&nbsp;**methodLists;&nbsp;&nbsp;&nbsp;</span></span></li>
+<li style="border-style: none none none solid; border-left-width: 3px; border-left-color: #6ce26c; list-style: decimal-leading-zero outside; background-color: #f8f8f8; line-height: 18px; margin: 0px!important; padding: 0px 3px 0px 10px!important;">
+<span style="margin: 0px; padding: 0px; border: none; color: black; background-color: inherit;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li>
+<li class="alt" style="border-style: none none none solid; border-left-width: 3px; border-left-color: #6ce26c; list-style: decimal-leading-zero outside; color: inherit; line-height: 18px; margin: 0px!important; padding: 0px 3px 0px 10px!important;">
+<span style="margin: 0px; padding: 0px; border: none; color: black; background-color: inherit;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword" style="margin: 0px; padding: 0px; border: none; color: #006699; background-color: inherit; font-weight: bold;">struct</span><span style="margin: 0px; padding: 0px; border: none; background-color: inherit;">&nbsp;objc_cache&nbsp;*cache;&nbsp;&nbsp;</span></span></li>
+<li style="border-style: none none none solid; border-left-width: 3px; border-left-color: #6ce26c; list-style: decimal-leading-zero outside; background-color: #f8f8f8; line-height: 18px; margin: 0px!important; padding: 0px 3px 0px 10px!important;">
+<span style="margin: 0px; padding: 0px; border: none; color: black; background-color: inherit;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword" style="margin: 0px; padding: 0px; border: none; color: #006699; background-color: inherit; font-weight: bold;">struct</span><span style="margin: 0px; padding: 0px; border: none; background-color: inherit;">&nbsp;objc_protocol_list&nbsp;*protocols;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li>
+<li class="alt" style="border-style: none none none solid; border-left-width: 3px; border-left-color: #6ce26c; list-style: decimal-leading-zero outside; color: inherit; line-height: 18px; margin: 0px!important; padding: 0px 3px 0px 10px!important;">
+<span style="margin: 0px; padding: 0px; border: none; color: black; background-color: inherit;">&nbsp;}&nbsp;&nbsp;</span></li>
+
+</ol>
+</div>
+<p>
+
+<span style="font-family: Arial; font-size: 14px; line-height: 26px;">这里会看到，
+在这个结构体里还有一个isa指针，又是一重指向，是不是有种到了盗梦空间的感觉。不用紧张，take 
+easy，不会有那么多层次的，这里的isa指针指向的是元类对象(metaclass 
+object)，带有元字，证明快到头了。那元对象有啥用呢？它用来存储的关于类的版本，名字，类方法等信息。所有的元类对象(metaclass 
+object)都指向 
+NSObject的元类对象，到头还是NSObject。一共三次：类对象-&gt;元类对象-&gt;NSObject元类对象。</span></p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">&nbsp;</p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">
+&nbsp; &nbsp;为了得到整个类组织架构的信息，objc_class结构里定义了第二个成员变量Class super_class，它指向父类的类对象。说了这么多，可能关系缕不清楚，有道是一张图胜过千言万语</p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">
+<img style="border: none;" src="./IOS 整体框架类图值得收藏 - ygm900 - 博客园_files/1350831500_2327.jpg" alt=""><br>
+</p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">
+图中可以看出，D3继承D2,D2继承D1,D1最终继承NSObject。下图从D3的一个对象开始，排列出D3 D2 D1 NSObject 类对象，元类对象等关系。</p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">
+<img style="border: none;" src="./IOS 整体框架类图值得收藏 - ygm900 - 博客园_files/1350831599_3230.png" alt=""><br>
+</p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">
+图中的箭头都是指针的指向。</p>
+<h3 style="margin: 0px; padding: 0px; font-family: Arial; line-height: 26px;"><a name="t8"></a><a style="color: #ff9900;" name="t8"></a>2.4 根类 NSObject</h3>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">
+NSObject是大部分Objective-C类的根类，它没有父类。其它类继承NSObject，访问Objective-C运行时系统的基本接口，这样其他类的实例可以获得运行时的能力。<br>
+</p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">
+<img style="border: none;" src="./IOS 整体框架类图值得收藏 - ygm900 - 博客园_files/1350871031_1713.jpg" alt=""><br>
+</p>
+<h4 style="margin: 0px; padding: 0px; font-family: Arial; font-size: 14px; line-height: 26px;"><a name="t9"></a>
+<a style="color: #ff9900;" name="t9"></a><strong>2.4.1 根类和根类协议</strong></h4>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">
+NSObject不但是个类名，NSObject也是个协议的名称，<a style="color: #ff9900; text-decoration: none;" href="http://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Protocols/NSObject_Protocol/Reference/NSObject.html" target="_blank">参考NSObject协议</a>&nbsp;，
+ NSObject协议指定了根类必须实现的接口。</p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">&nbsp;</p>
+<h4 style="margin: 0px; padding: 0px; font-family: Arial; font-size: 14px; line-height: 26px;"><a name="t10"></a>
+<a style="color: #ff9900;" name="t10"></a><strong>2.4.2 根类的主要方法：</strong></h4>
+<h5 style="font-family: Arial; line-height: 26px;"><a name="t11"></a><a style="color: #ff9900;" name="t11"></a></h5>
+<ul>
+<li>&nbsp; &nbsp; 分配、初始化、和复制：</li>
+
+</ul>
+<p>
+
+<span style="font-family: Arial; font-size: 14px; line-height: 26px;">alloc和allocWithZone:方法用于从某内存区域中分配一个对象内存，并使对象指向其运行时的类定义。</span><br style="font-family: Arial; font-size: 14px; line-height: 26px;">
+<span style="font-family: Arial; font-size: 14px; line-height: 26px;">init方法是对象初始化。</span><br style="font-family: Arial; font-size: 14px; line-height: 26px;">
+<span style="font-family: Arial; font-size: 14px; line-height: 26px;">new是一个将简单的内存分配和初始化结合起来的方法。</span><br style="font-family: Arial; font-size: 14px; line-height: 26px;">
+<span style="font-family: Arial; font-size: 14px; line-height: 26px;">copy和copyWithZone:</span></p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">&nbsp;</p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">&nbsp;</p>
+<h5 style="font-family: Arial; line-height: 26px;"><a name="t12"></a><a style="color: #ff9900;" name="t12"></a></h5>
+<ul>
+<li>对象的保持和清理：</li>
+
+</ul>
+<p>
+
+<span style="font-family: Arial; font-size: 14px; line-height: 26px;">retain方法增加对象的保持次数。</span><br style="font-family: Arial; font-size: 14px; line-height: 26px;">
+<span style="font-family: Arial; font-size: 14px; line-height: 26px;">release方法减少对象的保持次数。</span><br style="font-family: Arial; font-size: 14px; line-height: 26px;">
+<span style="font-family: Arial; font-size: 14px; line-height: 26px;">autorelease方法也是减少对象的保持次数，但是以推迟的方式。</span><br style="font-family: Arial; font-size: 14px; line-height: 26px;">
+<span style="font-family: Arial; font-size: 14px; line-height: 26px;">retainCount方法返回对当前的保持次数。</span><br style="font-family: Arial; font-size: 14px; line-height: 26px;">
+<span style="font-family: Arial; font-size: 14px; line-height: 26px;">dealloc方法由需要释放对象的实例变量以及释放动态分配的内存的类实现。</span></p>
+<h5 style="font-family: Arial; line-height: 26px;"><a name="t13"></a><a style="color: #ff9900;" name="t13"></a></h5>
+<ul>
+<li>内省和比较</li>
+
+</ul>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">&nbsp;</p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">
+NSObjec有很多方法可以查询对象的运行时信息。这些内省方法有助于找出对象在类层次中的位置，确定对象是否实现特定的方法，以及测试对象是否遵循某种协议。下面是部分方法&nbsp;<br>
+superclass和class方法（实现为类和实例方法）分别以Class对象的形式返回接收者的父类和类。<br>
+您可以通过isKindOfClass:和isMemberOfClass:方法来确定对象属于哪个类。后者用于测试接收者是否为指定类的实例。isSubclassOfClass:类方法则用于测试类的继承性。<br>
+respondsToSelector:方法用于测试接收者是否实现由选择器参数标识的方法。instancesRespondToSelector:类方法则用于测试给定类的实例是否实现指定的方法。<br>
+conformsToProtocol:方法用于测试接收者（对象或类）是否遵循给定的协议。<br>
+isEqual:和hash方法用于对象的比较。<br>
+description方法允许对象返回一个内容描述字符串；这个方法的输出经常用于调试（“print object”命令），以及在格式化字符串中和“%@”指示符一起表示对象。<br>
+</p>
+<h5 style="font-family: Arial; line-height: 26px;"><a name="t14"></a><a style="color: #ff9900;" name="t14"></a></h5>
+<ul>
+<li>对象的编码和解码</li>
+
+</ul>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">&nbsp;</p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">
+下面的方法和对象的编解码（作为归档过程的一部分）有关：<br>
+encodeWithCoder:和initWithCoder:是NSCoding协议仅有的方法。前者使对象可以对其实例变量进行编码，后者则使对象可以根据解码过的实例变量对自身进行初始化。<br>
+NSObject类中声明了一些于对象编码有关的方法：classForCoder:、replacementObjectForCoder:、和awakeAfterUsingCoder:。<br>
+</p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">&nbsp;</p>
+<h5 style="font-family: Arial; line-height: 26px;"><a name="t15"></a><a style="color: #ff9900;" name="t15"></a></h5>
+<ul>
+<li>消息的转发</li>
+
+</ul>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">&nbsp;</p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">
+<strong>&nbsp;</strong>forwardInvocation:允许一个对象将消息转发给另一个对象。<br>
+</p>
+<h5 style="font-family: Arial; line-height: 26px;"><a name="t16"></a><a style="color: #ff9900;" name="t16"></a></h5>
+<ul>
+<li>消息的派发&nbsp;</li>
+
+</ul>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">&nbsp;</p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">
+在performSelector开头的一些方法允许你延迟后派发指定消息，而且可以将消息（同步或异步的消息）从辅助线程派发到主线程。<br>
+</p>
+<h3 style="margin: 0px; padding: 0px; font-family: Arial; line-height: 26px;"><a name="t17"></a><a style="color: #ff9900;" name="t17"></a>2.5 Cocoa对象生命周期</h3>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">
+对象的四种内存管理方式，如下图所示</p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">&nbsp;</p>
+<ul style="font-family: Arial; font-size: 14px; line-height: 26px;">
+<li><strong>&nbsp;对象的生命周期—简化视图</strong></li>
+
+</ul>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">&nbsp;</p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">
+<img style="border: none;" src="./IOS 整体框架类图值得收藏 - ygm900 - 博客园_files/1350871223_8473.gif" alt=""><br>
+</p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">&nbsp;</p>
+<ul style="font-family: Arial; font-size: 14px; line-height: 26px;">
+<li><span style="font-family: &#39;Lucida Grande&#39;,Geneva,Helvetica,Arial,sans-serif;"><strong>保持接收到的对象</strong></span></li>
+
+</ul>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">&nbsp;</p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">
+<img style="border: none;" src="./IOS 整体框架类图值得收藏 - ygm900 - 博客园_files/1350871326_3857.gif" alt=""><br>
+</p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">&nbsp;</p>
+<ul style="font-family: Arial; font-size: 14px; line-height: 26px;">
+<li><span style="font-family: &#39;Lucida Grande&#39;,Geneva,Helvetica,Arial,sans-serif;"><strong>拷贝接收到的对象</strong></span></li>
+
+</ul>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">&nbsp;</p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">
+<img style="border: none;" src="./IOS 整体框架类图值得收藏 - ygm900 - 博客园_files/1350871361_2570.gif" alt=""><br>
+</p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">&nbsp;</p>
+<ul style="font-family: Arial; font-size: 14px; line-height: 26px;">
+<li><span style="font-family: &#39;Lucida Grande&#39;,Geneva,Helvetica,Arial,sans-serif;"><strong>自动释放池</strong></span></li>
+
+</ul>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">&nbsp;</p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">
+<img style="border: none;" src="./IOS 整体框架类图值得收藏 - ygm900 - 博客园_files/1350871395_7054.gif" alt=""><br>
+</p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">
+<br>
+</p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">
+<br>
+</p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">
+参考：</p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">
+<span style="color: #4b4b4b; font-family: Verdana,Geneva,Arial,Helvetica,sans-serif; font-size: 13px; line-height: 19px;">1、http://algorithm.com.au/downloads/talks/objective-c-internals/objective-c-internals.pdf</span><br>
+</p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">
+<span style="color: #4b4b4b; font-family: Verdana,Geneva,Arial,Helvetica,sans-serif; font-size: 13px; line-height: 19px;">2、http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/CocoaFundamentals/Introduction/Introduction.html</span></p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">
+<span style="color: #4b4b4b; font-family: Verdana,Geneva,Arial,Helvetica,sans-serif; font-size: 13px; line-height: 19px;">3、http://www.cnblogs.com/csutanyu/archive/2011/12/12/Objective-C_memory_layout.html</span></p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;">&nbsp;</p>
+<p style="margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; font-family: Arial; font-size: 14px; line-height: 26px;"><span style="color: #4b4b4b; font-family: Verdana,Geneva,Arial,Helvetica,sans-serif; font-size: 13px; line-height: 19px;">转：<a href="http://blog.csdn.net/fengsh998/article/details/8842885">http://blog.csdn.net/fengsh998/article/details/8842885</a></span></p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory">分类: <a href="http://www.cnblogs.com/ygm900/category/485917.html">14 苹果这样写代码</a></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info"><div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(3599081,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+            <a id="green_channel_follow" onclick="follow();" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./IOS 整体框架类图值得收藏 - ygm900 - 博客园_files/icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./IOS 整体框架类图值得收藏 - ygm900 - 博客园_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/ygm900/" target="_blank"><img src="./IOS 整体框架类图值得收藏 - ygm900 - 博客园_files/20140330154525.png" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/ygm900/">ygm900</a><br>
+            <a href="http://home.cnblogs.com/u/ygm900/followees">关注 - 6</a><br>
+            <a href="http://home.cnblogs.com/u/ygm900/followers">粉丝 - 168</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+                <a href="javascript:void(0);" onclick="follow();return false;">+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(3599081,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">4</span>
+    </div>
+    <div class="buryit" onclick="votePost(3599081,&#39;Bury&#39;)">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+            (请您对文章做出评价)
+    </div>
+</div>
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/ygm900/p/3598527.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/ygm900/p/3598527.html" title="发布于2014-03-13 14:28">［通俗易懂］理解“委托”</a><br><a href="http://www.cnblogs.com/ygm900/p/3599131.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/ygm900/p/3599131.html" title="发布于2014-03-13 18:22">Iphone控件大全</a><br></div>
+</div>
+
+
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2014-03-13 17:52</span> <a href="http://www.cnblogs.com/ygm900/">ygm900</a> 阅读(<span id="post_view_count">5226</span>) 评论(<span id="post_comment_count">0</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=3599081" rel="nofollow">编辑</a> <a href="http://www.cnblogs.com/ygm900/p/3599081.html#" onclick="AddToWz(3599081);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,isLogined=false,cb_blogId=134559,cb_entryId=3599081,cb_blogApp=currentBlogApp,cb_blogUserGuid='c5ad6261-7934-e211-aa8f-842b2b196315',cb_entryCreatedDate='2014/3/13 17:52:00';loadViewCount(cb_entryId);</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="http://www.cnblogs.com/ygm900/p/3599081.html#" onclick="return RefreshPage();">刷新页面</a><a href="http://www.cnblogs.com/ygm900/p/3599081.html#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"></div>
+<div id="opt_under_post"></div>
+<div id="ad_c1" class="c_ad_block"></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/551012/" target="_blank">周鸿祎：什么猪在天上飞？</a><br> ·  <a href="http://news.cnblogs.com/n/551011/" target="_blank">曾经勇于变革的诺基亚，在连接未来时为何掉线了？</a><br> ·  <a href="http://news.cnblogs.com/n/551010/" target="_blank">为什么创业者容易受“估值”误导？都是因为朋友圈看多了</a><br> ·  <a href="http://news.cnblogs.com/n/551009/" target="_blank">微信朋友圈是怎样让亲友反目的</a><br> ·  <a href="http://news.cnblogs.com/n/551008/" target="_blank">世界上第一个iPhone黑客开源了7小时的自动驾驶数据</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="ad_c2" class="c_ad_block"></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/540529/" target="_blank">可是姑娘，你为什么要编程呢？</a><br> ·  <a href="http://kb.cnblogs.com/page/549631/" target="_blank">知其所以然（以算法学习为例）</a><br> ·  <a href="http://kb.cnblogs.com/page/548394/" target="_blank">如何给变量取个简短且无歧义的名字</a><br> ·  <a href="http://kb.cnblogs.com/page/549080/" target="_blank">编程的智慧</a><br> ·  <a href="http://kb.cnblogs.com/page/549049/" target="_blank">写给初学前端工程师的一封信</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+$(function () {
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);    
+});
+</script>
+</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+			<div id="calendar"><div id="blog-calendar" style="display:none"></div><script type="text/javascript">loadBlogDefaultCalendar();</script></div>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+
+<div id="widget_my_google" class="div_my_zzk"><input type="text" name="google_q" id="google_q" onkeydown="return google_go_enter(event)" class="input_my_zzk">&nbsp;<input onclick="google_go()" type="button" value="谷歌搜索" class="btn_my_zzk"></div>
+</div>
+</div>
+
+</div><div id="sidebar_categories">
+<div class="catListPostCategory">
+<h3 class="catListTitle">随笔分类<span style="font-size:11px;font-weight:normal">(788)</span></h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/ygm900/category/531633.html">00 礼之用，和为贵(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/ygm900/category/549041.html">00A用金字塔原理解构「罗辑思维」-我的听读笔记(5)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/ygm900/category/567393.html">00B 科技脉搏(12)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_3" href="http://www.cnblogs.com/ygm900/category/494842.html">01A 精要概览(7)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_4" href="http://www.cnblogs.com/ygm900/category/483297.html">01B 常用网站(4)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_5" href="http://www.cnblogs.com/ygm900/category/496739.html">01C iOS 图表绘制(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_6" href="http://www.cnblogs.com/ygm900/category/540331.html">01D 适配iOS7(12)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_7" href="http://www.cnblogs.com/ygm900/category/548318.html">01E Android(12)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_8" href="http://www.cnblogs.com/ygm900/category/572538.html">01F Lua语言(3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_9" href="http://www.cnblogs.com/ygm900/category/586219.html">01G视频、流媒体(4)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_10" href="http://www.cnblogs.com/ygm900/category/437126.html">02 Object-C(80)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_11" href="http://www.cnblogs.com/ygm900/category/431396.html">03A Xcode 调试(67)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_12" href="http://www.cnblogs.com/ygm900/category/446292.html">03B 多线程(32)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_13" href="http://www.cnblogs.com/ygm900/category/446265.html">04 内存管理(54)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_14" href="http://www.cnblogs.com/ygm900/category/431395.html">05 地图(17)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_15" href="http://www.cnblogs.com/ygm900/category/446271.html">06 控件·UI(104)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_16" href="http://www.cnblogs.com/ygm900/category/446272.html">07 数据类型·NS(36)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_17" href="http://www.cnblogs.com/ygm900/category/492513.html">08 数据库(22)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_18" href="http://www.cnblogs.com/ygm900/category/436923.html">09 屠虫笔记(69)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_19" href="http://www.cnblogs.com/ygm900/category/446291.html">10 消息推送</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_20" href="http://www.cnblogs.com/ygm900/category/446273.html">11 视图层·View(15)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_21" href="http://www.cnblogs.com/ygm900/category/446274.html">12 数据层·Data(NS)(8)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_22" href="http://www.cnblogs.com/ygm900/category/484086.html">13 功能封装(8)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_23" href="http://www.cnblogs.com/ygm900/category/485917.html">14 苹果这样写代码(5)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_24" href="http://www.cnblogs.com/ygm900/category/494555.html">15 iOS“才知道”与总结(2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_25" href="http://www.cnblogs.com/ygm900/category/511119.html">16 发布到AppStore(11)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_26" href="http://www.cnblogs.com/ygm900/category/538781.html">17 越狱开发(8)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_27" href="http://www.cnblogs.com/ygm900/category/548862.html">18 产品设计手记(2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_28" href="http://www.cnblogs.com/ygm900/category/663054.html">19 objectc 与 js 交互(3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_29" href="http://www.cnblogs.com/ygm900/category/663753.html">20 互联网方法论(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_30" href="http://www.cnblogs.com/ygm900/category/666152.html">21 正则表达式(3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_31" href="http://www.cnblogs.com/ygm900/category/697889.html">22 reveal 界面调试(7)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_32" href="http://www.cnblogs.com/ygm900/category/698267.html">23 iOS应用逆向工程(2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_33" href="http://www.cnblogs.com/ygm900/category/787658.html">24 快捷键集合(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_34" href="http://www.cnblogs.com/ygm900/category/494048.html">A 基本元典(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_35" href="http://www.cnblogs.com/ygm900/category/580073.html">ASIHTTP(10)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_36" href="http://www.cnblogs.com/ygm900/category/699514.html">Axure(2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_37" href="http://www.cnblogs.com/ygm900/category/494060.html">B 百家杂钞</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_38" href="http://www.cnblogs.com/ygm900/category/682357.html">FMDB/SQLite(4)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_39" href="http://www.cnblogs.com/ygm900/category/474243.html">html标签、CSS样式</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_40" href="http://www.cnblogs.com/ygm900/category/480522.html">iOS 通用工具类(6)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_41" href="http://www.cnblogs.com/ygm900/category/687031.html">iphone适配ipad(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_42" href="http://www.cnblogs.com/ygm900/category/474244.html">Javascript及其常用的框架</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_43" href="http://www.cnblogs.com/ygm900/category/474249.html">java工具的使用(3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_44" href="http://www.cnblogs.com/ygm900/category/474241.html">java基本内容(3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_45" href="http://www.cnblogs.com/ygm900/category/474245.html">JSP技术</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_46" href="http://www.cnblogs.com/ygm900/category/474247.html">spring框架</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_47" href="http://www.cnblogs.com/ygm900/category/681784.html">SQL Server 2008(2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_48" href="http://www.cnblogs.com/ygm900/category/474242.html">WEB应用技术(2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_49" href="http://www.cnblogs.com/ygm900/category/453105.html">work(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_50" href="http://www.cnblogs.com/ygm900/category/494164.html">Z 读书原则/方法(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_51" href="http://www.cnblogs.com/ygm900/category/493520.html">Zend(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_52" href="http://www.cnblogs.com/ygm900/category/710101.html">工具(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_53" href="http://www.cnblogs.com/ygm900/category/432216.html">官方文档</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_54" href="http://www.cnblogs.com/ygm900/category/687011.html">后台下载(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_55" href="http://www.cnblogs.com/ygm900/category/433819.html">技术微博 · 电光石火(54)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_56" href="http://www.cnblogs.com/ygm900/category/431657.html">假如我是苹果</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_57" href="http://www.cnblogs.com/ygm900/category/667841.html">爬虫(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_58" href="http://www.cnblogs.com/ygm900/category/435768.html">趋势分析(7)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_59" href="http://www.cnblogs.com/ygm900/category/446290.html">委托(5)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_60" href="http://www.cnblogs.com/ygm900/category/431554.html">系统设计(23)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_61" href="http://www.cnblogs.com/ygm900/category/436987.html">项目管理(12)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_62" href="http://www.cnblogs.com/ygm900/category/449655.html">疑问(14)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_63" href="http://www.cnblogs.com/ygm900/category/431420.html">杂谈·扯淡(15)</a> </li>
+
+</ul>
+
+</div>
+
+<div class="catListImageCategory">
+<h3 class="catListTitle">相册<span style="font-size:11px;font-weight:normal">(1)</span></h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_1_Link_0" href="http://www.cnblogs.com/ygm900/gallery/565375.html" rel="nofollow">我的微信公众号(1)</a> </li>
+
+</ul>
+
+</div>
+
+<div class="catList">
+<h3 class="catListTitle">关注</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_2_Link_0" href="http://blog.itpub.net/29337971" rel="nofollow">Oracle大神Dylan</a> </li>
+<li class="c_b_p_link_desc">从事Oracle开发工作超过7年，已获得OCM认证并入选Oracle用户组年轻专家项目(Young Expert Program)。深入甲骨文的体系结构、物理存储、锁和锁机制和优化器,擅长SQL、PL / SQL、Oracle应用程序调优。</li>
+</ul>
+
+</div>
+
+</div><div id="sidebar_scorerank" class="sidebar-block">
+<div class="catListBlogRank">
+<h3 class="catListTitle">积分与排名</h3>
+<ul>
+	<li class="liScore">
+		积分 -	557743
+	</li>
+	<li class="liRank">
+		排名 -	161
+	</li>
+</ul>
+</div>
+
+
+</div></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2016 ygm900
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+</body></html>

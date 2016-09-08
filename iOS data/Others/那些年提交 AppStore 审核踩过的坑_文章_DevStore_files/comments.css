@@ -1,0 +1,118 @@
+@charset "utf-8";
+
+
+/*评论 公用*/
+.comments *, .comments *:before, .comments *:after { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box }
+.comments{ margin-top:20px;}
+.comments_total{ font-size:20px; line-height:40px; color:#333332; font-weight:800;}
+.comments .section02{ margin-top:10px;}
+
+/*评论输入*/
+.comments_input .textarea_bt{ border:1px solid #f1f4f6; height:120px; font-size:14px; line-height:24px; color:#768696; background:#f1f4f6; padding:5px 10px;}
+.comments_input .textarea_bt:focus{ border:1px solid #0085d0;}
+.comments .section03{ margin-top:20px;}
+
+/*表情提交组 公用*/
+.comments_btn_group{ height:36px;}
+.comments_btn_group .l{ float:left; display:inline; margin-left:0px; margin-top:0px;}
+.comments_btn_group .l a.a01{ display:inline-block; height:20px; line-height:20px; width:60px; padding-left:25px; background:url(/images/cssimg/main_sprite01.png) no-repeat -300px -96px;}
+.comments_btn_group .l a.a01:hover{background:url(/images/cssimg/main_sprite01.png) no-repeat -300px -125px;}
+.comments_btn_group .r{ float:right; display:inline; margin-right:0px; margin-top:0px;}
+.comments_btn_group .r a{ display:inline-block; width:100px; height:36px; text-align:center; color:#fff; font-size:16px; background:#0085d0; line-height:36px;}
+.comments_btn_group .r a:hover{ background:#0273b2;}
+
+.comments .section04{ margin-top:0px;}
+/*评论列表 公用*/
+.expert_comments_mark{ position:absolute; right:10px; top:20px; width:100px; height:40px; line-height:40px; padding-left:35px; 
+background:url(/images/cssimg/main_sprite02.png) no-repeat -100px -143px; color:#333332; font-size:14px;}
+.comments_list_box{ border-top:1px solid #e4e7ea; padding:30px 0px; position:relative;}
+.comments_list_box:first-child{ border-top:none;}
+.comments_list_box .comments_left_img{ position:absolute; left:0px; top:30px; width:51px; height:51px;}
+.comments_list_box .comments_left_img img{ width:51px; height:51px; border:1px solid #dadfea; border-radius:3px;}
+.comments_list_box .comments_content{ margin-left:70px; padding-top:0px;}
+.comments_list_box .comments_content h3 a{ line-height:26px; font-size:16px; font-weight:600; color:#333332;}
+.comments_list_box .comments_content h3 a:hover{ color:#8dc11e;}
+.comments_list_box .comments_content h3 span{ color:#768696; font-size:12px; font-weight:400; font-family:'Hiragino Sans GB',\5b8b\4f53,sans-serif; padding-left:20px;}
+
+/*已评论标签*/
+.pub_select_lable{ margin-top:5px; }
+.pub_select_lable{font-family:'Hiragino Sans GB',\5b8b\4f53,sans-serif; margin-left:-14px; padding:5px 0px; margin-top:5px;}
+.pub_select_lable span{ display:inline-block;  padding:0px 15px; height:24px; line-height:22px; border:1px solid #c5e4bf;
+ background: url(/images/cssimg/dp_label_b_icon.png) no-repeat right 24px; background-color:#e5f6dd; margin-left:8px; margin-top:2px; color:#43ab15;}
+ 
+.pub_select_lable i{ display:inline-block;  padding:0px 15px; height:24px; line-height:22px; border:1px solid #dfe4e7; 
+background-color:#eff3f6; margin-left:8px; margin-top:2px; color:#000000; font-style:normal;}
+
+
+.comments_list_box .comments_content .text{ line-height:24px; color:#333332; margin-top:5px; font-family:'Hiragino Sans GB',\5b8b\4f53,sans-serif; font-size:14px;}
+.comments_list_box .comments_content .reply_group{ margin-top:5px;}
+
+
+/*设为最佳答案*/
+.comments_list_box .comments_content .caina_btn{ float:right; position:absolute; right:30px; top:25px; display:block; height:32px; width:31px; overflow:hidden;}
+.comments_list_box .comments_content .caina_btn .span_icon{ position:absolute; z-index:10; left:0; top:0; display:inline-block; height:32px; width:31px; background:url(/images/cssimg/single/set_best_answer.png) no-repeat; background-color:#fff;}
+.comments_list_box .comments_content .caina_btn:hover{ float:right; position:absolute; right:0px; top:25px; display:block; height:32px; width:131px; overflow:hidden;}
+.comments_list_box .comments_content .caina_btn:hover .span_icon{ background:url(/images/cssimg/single/set_best_answer.png) no-repeat}
+.comments_list_box .comments_content .caina_btn .span_text{ display:block; height:32px; line-height:32px; padding-left:38px; font-family:'Hiragino Sans GB',\5b8b\4f53,sans-serif; background:url(/images/cssimg/single/best_answer_bg.png) no-repeat right center; color:#fff}
+
+.reply_box{ display:none;}
+
+/*回复点赞 公用*/
+.reply_group{ height:15px; text-align:right; font-family:'Hiragino Sans GB',\5b8b\4f53,sans-serif;}
+.reply_group a.del_bt{ display:none;}
+.comments_list_box .comments_content:hover .reply_group a.del_bt{ height:18px; line-height:18px; overflow:hidden; display:inline-block; background:url(/images/cssimg/delet_pl_icon.png) no-repeat 0px -4px;font-family:'Hiragino Sans GB',\5b8b\4f53,sans-serif; padding-left:20px; color:#0085d0; }
+.comments_list_box .comments_content:hover .reply_group a.del_bt:hover{ background:url(/images/cssimg/delet_pl_icon.png) no-repeat 0px -30px;  color:#ff0700;}
+
+.reply_group a.reply_bt{ height:18px; line-height:18px; overflow:hidden; display:inline-block; background:url(/images/cssimg/main_sprite01.png) no-repeat -100px -43px; padding-left:20px; color:#0085d0; }
+.reply_group a.reply_bt:hover{ background:url(/images/cssimg/main_sprite01.png) no-repeat -100px -69px;  color:#8dc11e;}
+.reply_group a.a02{ height:18px; line-height:18px; overflow:hidden; display:inline-block; background:url(/images/cssimg/main_sprite01.png) no-repeat -300px -42px; padding-left:20px; margin-left:10px; color:#0085d0;  }
+.reply_group a.a02:hover{ background:url(/images/cssimg/main_sprite01.png) no-repeat -300px -69px;  color:#8dc11e;}
+
+.reply_group span.yizan{ height:18px; line-height:18px; overflow:hidden; display:inline-block; background:url(/images/cssimg/main_icon05.png) no-repeat -10px -347px; padding-left:20px; margin-left:10px; color:#c6c6c6;  }
+
+
+.reply_input{ margin-top:20px;}
+.reply_input .textarea_bt{ border:1px solid #e4e7ea; height:60px; font-size:12px; line-height:22px; color:#768696; background:#f1f4f6; padding:5px 10px;}
+.reply_input .textarea_bt:focus{ border:1px solid #0085d0;}
+.reply_btn_group{ height:25px; margin-top:10px;}
+.reply_btn_group .l{ float:left; display:inline; margin-left:0px; margin-top:0px;}
+.reply_btn_group .l a.a01{ display:inline-block; height:20px; line-height:20px; width:60px; padding-left:25px; background:url(/images/cssimg/main_sprite01.png) no-repeat -300px -96px;}
+.reply_btn_group .l a.a01:hover{ display:inline-block; height:20px; line-height:20px; width:60px; padding-left:25px; background:url(/images/cssimg/main_sprite01.png) no-repeat -300px -125px;}
+
+.reply_btn_group .r{ float:right; display:inline; margin-right:0px; margin-top:0px;}
+.reply_btn_group .r a{ display:inline-block; width:73px; height:25px; text-align:center; color:#fff; font-size:12px; background:#0085d0; line-height:25px; font-family:'Hiragino Sans GB',\5b8b\4f53,sans-serif;}
+.reply_btn_group .r a:hover{ background:#0273b2;}
+
+/*回复列表 公用*/
+.reply_list{ position:relative; background:#f1f4f6;}
+.reply_list .sanjiao{ position:absolute; width:12px; height:6px; top:-6px; left:26px; line-height:5px; overflow:hidden; background:url(/images/cssimg/sanjiao_icon01.jpg) no-repeat;}
+.reply_list ul{ padding:10px 20px; margin-top:10px;}
+.reply_list ul li{ border-bottom:1px solid #dddfe1; padding:15px 0px; position:relative;}
+.reply_list ul li:last-child{ border-bottom:none;}
+.reply_list ul li .reply_left_img{ position:absolute; left:0px; top:15px; width:31px; height:31px; border:1px solid #fff; border-radius:2px;}
+.reply_list ul li .reply_left_img img{ width:30px; height:30px;}
+.reply_list ul li .reply_content{ margin-left:43px;font-family:'Hiragino Sans GB',\5b8b\4f53,sans-serif;}
+.reply_list ul li .reply_content .div01{}
+.reply_list ul li .reply_content .div01 i{ color:#0085d0; font-style:normal; line-height:14px;}
+.reply_list ul li .reply_content .div01 span{ color:#333332;}
+.reply_list ul li .reply_content .div02{ line-height:24px; color:#333332; margin-top:5px; font-family:'Hiragino Sans GB',\5b8b\4f53,sans-serif; font-size:14px;}
+.reply_list ul li .reply_content .div03{ color:#768696; margin-top:5px; line-height:22px;}
+.reply_list ul li .reply_content .div03 a{ float:right; color:#0085d0;}
+.reply_list ul li .reply_content .div03 a:hover{ float:right; color:#8dc11e;}
+.reply_list ul li .reply_content .div03 .reply_bt{ margin-left:15px; }
+.reply_list ul li .reply_content .div03 .del_bt{ display:none;}
+.reply_list ul li .reply_content:hover .div03 .del_bt{ display:inline;}
+.reply_list .textarea_bt{ border:1px solid #e4e7ea; height:60px; font-size:12px; line-height:22px; color:#768696; background:#fff; padding:5px 10px;}
+.reply_list .textarea_bt:focus{ border:1px solid #0085d0;}
+
+/*查看更多*/
+.glo_view_more{ height:40px; text-align:center;}
+.glo_view_more a{ display:inline-block; width:150px; height:40px; line-height:40px; color:#333332; text-align:center; padding-right:15px; font-size:14px; font-family:'Hiragino Sans GB',\5b8b\4f53,sans-serif;
+background:url(/images/cssimg/inner_project.png) 110px -203px; background-color:#f1f4f6; }
+.glo_view_more a:hover{color:#8dc11e}
+
+
+
+
+
+

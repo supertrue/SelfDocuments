@@ -1,0 +1,1 @@
+tableView不设置为group形式的话，直接设置section的的header和footer，最后一个section的footer会固定住，不随着tableView的滚动而滚动

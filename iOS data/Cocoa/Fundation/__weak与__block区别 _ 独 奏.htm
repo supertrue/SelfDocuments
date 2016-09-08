@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<!-- saved from url=(0065)http://honglu.me/2015/01/06/weak%E4%B8%8Eblock%E5%8C%BA%E5%88%AB/ -->
+<html class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  
+  <title>__weak与__block区别 | 独 奏</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="公司最近在招 iOS，我面试了几个人，问到 block 避免循环引用的问题时，发现好多人都说通过添加 __block 修饰词来避免。再加上我对__block和__weak也没有区分的太明确，搞得我都有点儿怀疑我自己以前是不是用错了。正好借这个机会来一探究竟~
+准备工作首先我定义了一个类 MyObject 继承 NSObject，并添加了一个属性 text，重写了description方法，返回 t">
+<meta property="og:type" content="article">
+<meta property="og:title" content="__weak与__block区别">
+<meta property="og:url" content="http://honglu.me/2015/01/06/weak与block区别/index.html">
+<meta property="og:site_name" content="独 奏">
+<meta property="og:description" content="公司最近在招 iOS，我面试了几个人，问到 block 避免循环引用的问题时，发现好多人都说通过添加 __block 修饰词来避免。再加上我对__block和__weak也没有区分的太明确，搞得我都有点儿怀疑我自己以前是不是用错了。正好借这个机会来一探究竟~
+准备工作首先我定义了一个类 MyObject 继承 NSObject，并添加了一个属性 text，重写了description方法，返回 t">
+<meta property="og:updated_time" content="2016-04-27T03:47:29.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="__weak与__block区别">
+<meta name="twitter:description" content="公司最近在招 iOS，我面试了几个人，问到 block 避免循环引用的问题时，发现好多人都说通过添加 __block 修饰词来避免。再加上我对__block和__weak也没有区分的太明确，搞得我都有点儿怀疑我自己以前是不是用错了。正好借这个机会来一探究竟~
+准备工作首先我定义了一个类 MyObject 继承 NSObject，并添加了一个属性 text，重写了description方法，返回 t">
+  
+    <link rel="alternative" href="http://honglu.me/atom.xml" title="独 奏" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="http://honglu.me/favicon.ico">
+  
+  <link rel="stylesheet" href="./__weak与__block区别 _ 独 奏_files/style.css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+<!-- Baidu Analytics -->
+<script async="" src="./__weak与__block区别 _ 独 奏_files/analytics.js"></script><script src="./__weak与__block区别 _ 独 奏_files/hm.js"></script><script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?ff2d4025fdadaba5944a656c7fdd681f";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!-- End Baidu Analytics -->
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-66673227-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+<script type="text/javascript" async="" src="./__weak与__block区别 _ 独 奏_files/embed.js" charset="UTF-8"></script><script src="./__weak与__block区别 _ 独 奏_files/share.js"></script><style type="text/css">.fancybox-margin{margin-right:15px;}</style><link type="text/css" rel="stylesheet" href="./__weak与__block区别 _ 独 奏_files/embed.default.css"><link href="./__weak与__block区别 _ 独 奏_files/bdshare.css" rel="styleSheet" type="text/css"></head>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="http://honglu.me/" id="logo">独 奏</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="http://honglu.me/" id="subtitle">道阻且长，行则将至</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="http://honglu.me/">首页</a>
+        
+          <a class="main-nav-link" href="http://honglu.me/archives">归档</a>
+        
+          <a class="main-nav-link" href="http://honglu.me/about">关于</a>
+        
+          <a class="main-nav-link" href="http://wiki.honglu.me/">Wiki</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="http://honglu.me/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name="tn" type="hidden" value="bds">
+          <input name="cl" type="hidden" value="3">
+          <input name="ct" type="hidden" value="2097152">
+          <input type="hidden" name="si" value="honglu.me">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main"><article id="post-weak与block区别" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="http://honglu.me/2015/01/06/weak%E4%B8%8Eblock%E5%8C%BA%E5%88%AB/" class="article-date">
+  <time datetime="2015-01-06T04:09:29.000Z" itemprop="datePublished">1月 6 2015</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="http://honglu.me/categories/iOS/">iOS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      __weak与__block区别
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>公司最近在招 iOS，我面试了几个人，问到 block 避免循环引用的问题时，发现好多人都说通过添加 <code>__block</code> 修饰词来避免。再加上我对<code>__block</code>和<code>__weak</code>也没有区分的太明确，搞得我都有点儿怀疑我自己以前是不是用错了。正好借这个机会来一探究竟~</p>
+<h2 id="准备工作"><a href="http://honglu.me/2015/01/06/weak%E4%B8%8Eblock%E5%8C%BA%E5%88%AB/#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>首先我定义了一个类 <code>MyObject</code> 继承 <code>NSObject</code>，并添加了一个属性 text，重写了<code>description</code>方法，返回 text 的值。这个主要是因为编译器本身对 NSString 是有优化的，创建的 string 对象有可能是静态存储区永不释放的，为了避免使用 NSString 引起一些问题，还是创建一个 NSObject 对象比较合适。</p>
+<p>另外我自定义了一个 TLog 方法输出对象相关值，定义如下：</p>
+<figure class="highlight objc"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">#define TLog(prefix,Obj) {NSLog(@<span class="meta-string">"变量内存地址：%p, 变量值：%p, 指向对象值：%@, --&gt; %@"</span>,&amp;Obj,Obj,Obj,prefix);}</span></span><br></pre></td></tr></tbody></table></figure>
+<a id="more"></a>
+<h2 id="weak"><a href="http://honglu.me/2015/01/06/weak%E4%B8%8Eblock%E5%8C%BA%E5%88%AB/#weak" class="headerlink" title="__weak"></a>__weak</h2><p>我们测试下面一段代码</p>
+<figure class="highlight objc"><table><tbody><tr><td class="code"><pre><span class="line">MyObject *obj = [[MyObject alloc]init];</span><br><span class="line">obj.text = <span class="string">@"my-object"</span>;</span><br><span class="line">TLog(<span class="string">@"obj"</span>, obj);</span><br><span class="line"></span><br><span class="line">__<span class="keyword">weak</span> MyObject *weakObj = obj;</span><br><span class="line">TLog(<span class="string">@"weakObj"</span>, weakObj);</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span>(^testBlock)() = ^(){</span><br><span class="line">    TLog(<span class="string">@"weakObj - block"</span>, weakObj);</span><br><span class="line">};</span><br><span class="line">testBlock();</span><br><span class="line">obj = <span class="literal">nil</span>;</span><br><span class="line">testBlock();</span><br></pre></td></tr></tbody></table></figure>
+<p>输出：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">变量内存地址：0x7fff58c8a9f0, 变量值：0x7f8e0307f1d0, 指向对象值：my-object, --&gt; obj</span><br><span class="line">变量内存地址：0x7fff58c8a9e8, 变量值：0x7f8e0307f1d0, 指向对象值：my-object, --&gt; weakObj</span><br><span class="line">变量内存地址：0x7f8e030804c0, 变量值：0x7f8e0307f1d0, 指向对象值：my-object, --&gt; weakObj - block</span><br><span class="line">变量内存地址：0x7f8e030804c0, 变量值：0x0, 指向对象值：(null), --&gt; weakObj - block</span><br></pre></td></tr></tbody></table></figure>
+<p>从上面的结果可以看到</p>
+<ul>
+<li>block 内的 weakObj 和外部的 weakObj 并不是同一个变量</li>
+<li>block 捕获了 weakObj 同时也是对 obj 进行了弱引用，当我在 block 外把 obj 释放了之后，block 内也读不到这个变量了</li>
+<li>当 obj 赋值 nil 时，block 内部的 weakObj 也为 nil 了，也就是说 obj 实际上是被释放了，可见 <code>__weak</code> 是可以避免循环引用问题的</li>
+</ul>
+<p>接下来我们再看第二段代码</p>
+<figure class="highlight objc"><table><tbody><tr><td class="code"><pre><span class="line">MyObject *obj = [[MyObject alloc]init];</span><br><span class="line">obj.text = <span class="string">@"my-object"</span>;</span><br><span class="line">TLog(<span class="string">@"obj"</span>, obj);</span><br><span class="line">    </span><br><span class="line">__<span class="keyword">weak</span> MyObject *weakObj = obj;</span><br><span class="line">TLog(<span class="string">@"weakObj-0"</span>, weakObj);</span><br><span class="line">    </span><br><span class="line"><span class="keyword">void</span>(^testBlock)() = ^(){</span><br><span class="line">   __<span class="keyword">strong</span> MyObject *strongObj = weakObj;</span><br><span class="line">   TLog(<span class="string">@"weakObj - block"</span>, weakObj);</span><br><span class="line">   TLog(<span class="string">@"strongObj - block"</span>, strongObj);</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line">TLog(<span class="string">@"weakObj-1"</span>, weakObj);</span><br><span class="line">testBlock();</span><br><span class="line">TLog(<span class="string">@"weakObj-2"</span>, weakObj);</span><br><span class="line">obj = <span class="literal">nil</span>;</span><br><span class="line">testBlock();</span><br><span class="line">TLog(<span class="string">@"weakObj-3"</span>, weakObj);</span><br></pre></td></tr></tbody></table></figure>
+<p>输出</p>
+<figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">变量内存地址：0x7fff5d7b2d18, 变量值：0x7fcf78c11e80, 指向对象值：my-object, --&gt; obj</span><br><span class="line">变量内存地址：0x7fff5d7b2d10, 变量值：0x7fcf78c11e80, 指向对象值：my-object, --&gt; weakObj-0</span><br><span class="line">变量内存地址：0x7fff5d7b2d10, 变量值：0x7fcf78c11e80, 指向对象值：my-object, --&gt; weakObj-1</span><br><span class="line">变量内存地址：0x7fcf78f0f520, 变量值：0x7fcf78c11e80, 指向对象值：my-object, --&gt; weakObj - block</span><br><span class="line">变量内存地址：0x7fff5d7b2bb8, 变量值：0x7fcf78c11e80, 指向对象值：my-object, --&gt; strongObj - block</span><br><span class="line">变量内存地址：0x7fff5d7b2d10, 变量值：0x7fcf78c11e80, 指向对象值：my-object, --&gt; weakObj-2</span><br><span class="line">变量内存地址：0x7fcf78f0f520, 变量值：0x0, 指向对象值：(null), --&gt; weakObj - block</span><br><span class="line">变量内存地址：0x7fff5d7b2bb8, 变量值：0x0, 指向对象值：(null), --&gt; strongObj - block</span><br><span class="line">变量内存地址：0x7fff5d7b2d10, 变量值：0x0, 指向对象值：(null), --&gt; weakObj-3</span><br></pre></td></tr></tbody></table></figure>
+<p>如果你看过 AFNetworking 的源码，会发现 AFN 中作者会把变量在 block 外面先用 <code>__weak</code> 声明，在 block 内把前面 weak 声明的变量赋值给 <code>__strong</code> 修饰的变量这种写法。</p>
+<p>从上面例子我们看到即使在 block 内部用 strong 强引用了外面的 weakObj ，但是一旦 obj 释放了之后，内部的 strongObj 同样会变成 nil，那么这种写法又有什么意义呢？</p>
+<p>下面再看一段代码：</p>
+<figure class="highlight objc"><table><tbody><tr><td class="code"><pre><span class="line">MyObject *obj = [[MyObject alloc]init];</span><br><span class="line">obj.text = <span class="string">@"my-object"</span>;</span><br><span class="line">TLog(<span class="string">@"obj"</span>, obj);</span><br><span class="line">    </span><br><span class="line">__<span class="keyword">weak</span> MyObject *weakObj = obj;</span><br><span class="line">TLog(<span class="string">@"weakObj-0"</span>, weakObj);</span><br><span class="line">    </span><br><span class="line"><span class="built_in">dispatch_async</span>(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, <span class="number">0</span>), ^{</span><br><span class="line">   __<span class="keyword">strong</span> MyObject *strongObj = weakObj;</span><br><span class="line">   TLog(<span class="string">@"weakObj - block"</span>, weakObj);</span><br><span class="line">   TLog(<span class="string">@"strongObj - block"</span>, strongObj);</span><br><span class="line">   </span><br><span class="line">   sleep(<span class="number">3</span>);</span><br><span class="line">   </span><br><span class="line">   TLog(<span class="string">@"weakObj - block"</span>, weakObj);</span><br><span class="line">   TLog(<span class="string">@"strongObj - block"</span>, strongObj);</span><br><span class="line">});</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"------ sleep 1s"</span>);</span><br><span class="line">sleep(<span class="number">1</span>);</span><br><span class="line">obj = <span class="literal">nil</span>;</span><br><span class="line">TLog(<span class="string">@"weakObj-1"</span>, weakObj);</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"------ sleep 5s"</span>);</span><br><span class="line">sleep(<span class="number">5</span>);</span><br><span class="line">TLog(<span class="string">@"weakObj-2"</span>, weakObj);</span><br></pre></td></tr></tbody></table></figure>
+<p>执行结果：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">变量内存地址：0x7fff58e2ad18, 变量值：0x7fa2b1e804e0, 指向对象值：my-object, --&gt; obj</span><br><span class="line">变量内存地址：0x7fff58e2ad10, 变量值：0x7fa2b1e804e0, 指向对象值：my-object, --&gt; weakObj-0</span><br><span class="line">变量内存地址：0x7fa2b1e80710, 变量值：0x7fa2b1e804e0, 指向对象值：my-object, --&gt; weakObj - block</span><br><span class="line">变量内存地址：0x700000093de8, 变量值：0x7fa2b1e804e0, 指向对象值：my-object, --&gt; strongObj - block</span><br><span class="line">------ sleep 1s</span><br><span class="line">变量内存地址：0x7fff58e2ad10, 变量值：0x7fa2b1e804e0, 指向对象值：my-object, --&gt; weakObj-1</span><br><span class="line">------ sleep 5s</span><br><span class="line">变量内存地址：0x7fa2b1e80710, 变量值：0x7fa2b1e804e0, 指向对象值：my-object, --&gt; weakObj - block</span><br><span class="line">变量内存地址：0x700000093de8, 变量值：0x7fa2b1e804e0, 指向对象值：my-object, --&gt; strongObj - block</span><br><span class="line">变量内存地址：0x7fff58e2ad10, 变量值：0x0, 指向对象值：(null), --&gt; weakObj-2</span><br></pre></td></tr></tbody></table></figure>
+<p>代码中使用 sleep 来保证代码执行的先后顺序。从结果中我们可以看到，只要 block 部分执行了，即使我们中途释放了 obj，block 内部依然会继续强引用它。对比上面代码，也就是说 block 内部的 __strong 会在执行期间进行强引用操作，保证在 block 内部 strongObj 始终是可用的。这种写法非常巧妙，既避免了循环引用的问题，又可以在 block 内部持有该变量。</p>
+<p>综合两部分代码，我们平时在使用时，常常先判断 strongObj 是否为空，然后再执行后续代码，如下方式：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{</span><br><span class="line">   __strong MyObject *strongObj = weakObj;</span><br><span class="line">   if (strongObj) {</span><br><span class="line">       // do something ...</span><br><span class="line">   }</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>这种方式先判断 Obj 是否被释放，如果未释放在执行我们的代码的时候保证其可用性。</p>
+<h2 id="block"><a href="http://honglu.me/2015/01/06/weak%E4%B8%8Eblock%E5%8C%BA%E5%88%AB/#block" class="headerlink" title="__block"></a>__block</h2><p>先上代码</p>
+<figure class="highlight objc"><table><tbody><tr><td class="code"><pre><span class="line">MyObject *obj = [[MyObject alloc]init];</span><br><span class="line">obj.text = <span class="string">@"my-object-1"</span>;</span><br><span class="line">TLog(<span class="string">@"obj"</span>,obj);</span><br><span class="line"></span><br><span class="line">__block MyObject *blockObj = obj;</span><br><span class="line">obj = <span class="literal">nil</span>;</span><br><span class="line">TLog(<span class="string">@"blockObj -1"</span>,blockObj);</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span>(^testBlock)() = ^(){</span><br><span class="line">    TLog(<span class="string">@"blockObj - block"</span>,blockObj);</span><br><span class="line">    MyObject *obj2 = [[MyObject alloc]init];</span><br><span class="line">    obj2.text = <span class="string">@"my-object-2"</span>;</span><br><span class="line">    TLog(<span class="string">@"obj2"</span>,obj2);</span><br><span class="line">    blockObj = obj2;</span><br><span class="line">    TLog(<span class="string">@"blockObj - block"</span>,blockObj);</span><br><span class="line">};</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,testBlock);</span><br><span class="line">TLog(<span class="string">@"blockObj -2"</span>,blockObj);</span><br><span class="line">testBlock();</span><br><span class="line">TLog(<span class="string">@"blockObj -3"</span>,blockObj);</span><br></pre></td></tr></tbody></table></figure>
+<p>结果</p>
+<figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">变量内存地址：0x7fff5021a9f0, 变量值：0x7ff6b48d8cd0, 指向对象值：my-object-1, --&gt; obj</span><br><span class="line">变量内存地址：0x7fff5021a9e8, 变量值：0x7ff6b48d8cd0, 指向对象值：my-object-1, --&gt; blockObj -1</span><br><span class="line">&lt;__NSMallocBlock__: 0x7ff6b48d8c20&gt;</span><br><span class="line">变量内存地址：0x7ff6b48da518, 变量值：0x7ff6b48d8cd0, 指向对象值：my-object-1, --&gt; blockObj -2</span><br><span class="line">变量内存地址：0x7ff6b48da518, 变量值：0x7ff6b48d8cd0, 指向对象值：my-object-1, --&gt; blockObj - block</span><br><span class="line">变量内存地址：0x7fff5021a7f8, 变量值：0x7ff6b48d9960, 指向对象值：my-object-2, --&gt; obj2</span><br><span class="line">变量内存地址：0x7ff6b48da518, 变量值：0x7ff6b48d9960, 指向对象值：my-object-2, --&gt; blockObj - block</span><br><span class="line">变量内存地址：0x7ff6b48da518, 变量值：0x7ff6b48d9960, 指向对象值：my-object-2, --&gt; blockObj -3</span><br></pre></td></tr></tbody></table></figure>
+<p>可以看到在 block 声明前后 blockObj 的内存地址是有所变化的，这涉及到 block 对外部变量的内存管理问题，大家可以看扩展阅读中的几篇文章，对此有较深入的分析。</p>
+<p>下面来看看 <code>__block</code> 能不能避免循环引用的问题</p>
+<figure class="highlight objc"><table><tbody><tr><td class="code"><pre><span class="line">MyObject *obj = [[MyObject alloc]init];</span><br><span class="line">obj.text = <span class="string">@"11111111111111"</span>;</span><br><span class="line">TLog(<span class="string">@"obj"</span>,obj);</span><br><span class="line"></span><br><span class="line">__block MyObject *blockObj = obj;</span><br><span class="line">obj = <span class="literal">nil</span>;</span><br><span class="line"><span class="keyword">void</span>(^testBlock)() = ^(){</span><br><span class="line">    TLog(<span class="string">@"blockObj - block"</span>,blockObj);</span><br><span class="line">};</span><br><span class="line">obj = <span class="literal">nil</span>;</span><br><span class="line">testBlock();</span><br><span class="line">TLog(<span class="string">@"blockObj"</span>,blockObj);</span><br></pre></td></tr></tbody></table></figure>
+<p>输出</p>
+<figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">变量内存地址：0x7fff57eef9f0, 变量值：0x7ff86a55a160, 指向对象值：11111111111111, --&gt; obj</span><br><span class="line">变量内存地址：0x7ff86c918a88, 变量值：0x7ff86a55a160, 指向对象值：11111111111111, --&gt; blockObj - block</span><br><span class="line">变量内存地址：0x7ff86c918a88, 变量值：0x7ff86a55a160, 指向对象值：11111111111111, --&gt; blockObj</span><br></pre></td></tr></tbody></table></figure>
+<p>当外部 obj 指向 nil 的时候，obj 理应被释放，但实际上 blockObj 依然强引用着 obj，obj 其实并没有被真正释放。因此使用 <code>__block</code> 并不能避免循环引用的问题。</p>
+<p>但是我们可以通过手动释放 blockObj 的方式来释放 obj，这就需要我们在 block 内部将要退出的时候手动释放掉 blockObj ，如下这种形式</p>
+<figure class="highlight objc"><table><tbody><tr><td class="code"><pre><span class="line">MyObject *obj = [[MyObject alloc]init];</span><br><span class="line">obj.text = <span class="string">@"11111111111111"</span>;</span><br><span class="line">TLog(<span class="string">@"obj"</span>,obj);</span><br><span class="line"></span><br><span class="line">__block MyObject *blockObj = obj;</span><br><span class="line">obj = <span class="literal">nil</span>;</span><br><span class="line"><span class="keyword">void</span>(^testBlock)() = ^(){</span><br><span class="line">    TLog(<span class="string">@"blockObj - block"</span>,blockObj);</span><br><span class="line">    blockObj = <span class="literal">nil</span>;</span><br><span class="line">};</span><br><span class="line">obj = <span class="literal">nil</span>;</span><br><span class="line">testBlock();</span><br><span class="line">TLog(<span class="string">@"blockObj"</span>,blockObj);</span><br></pre></td></tr></tbody></table></figure>
+<p>这种形式既能保证在 block 内部能够访问到 obj，又可以避免循环引用的问题，但是这种方法也不是完美的，其存在下面几个问题</p>
+<ul>
+<li>必须记住在 block 底部释放掉 block 变量，这其实跟 MRC 的形式有些类似了，不太适合 ARC</li>
+<li>当在 block 外部修改了 blockObj 时，block 内部的值也会改变，反之在 block 内部修改 blockObj 在外部再使用时值也会改变。这就需要在写代码时注意这个特性可能会带来的一些隐患</li>
+<li><code>__block</code> 其实提升了变量的作用域，在 block 内外访问的都是同一个 blockObj 可能会造成一些隐患</li>
+</ul>
+<h2 id="总结"><a href="http://honglu.me/2015/01/06/weak%E4%B8%8Eblock%E5%8C%BA%E5%88%AB/#总结" class="headerlink" title="总结"></a>总结</h2><p><code>__weak</code> 本身是可以避免循环引用的问题的，但是其会导致外部对象释放了之后，block 内部也访问不到这个对象的问题，我们可以通过在 block 内部声明一个 <code>__strong</code> 的变量来指向 weakObj，使外部对象既能在 block 内部保持住，又能避免循环引用的问题。</p>
+<p><code>__block</code> 本身无法避免循环引用的问题，但是我们可以通过在 block 内部手动把 blockObj 赋值为 nil 的方式来避免循环引用的问题。另外一点就是 <code>__block</code> 修饰的变量在 block 内外都是唯一的，要注意这个特性可能带来的隐患。</p>
+<h2 id="扩展阅读"><a href="http://honglu.me/2015/01/06/weak%E4%B8%8Eblock%E5%8C%BA%E5%88%AB/#扩展阅读" class="headerlink" title="扩展阅读"></a>扩展阅读</h2><p><a href="http://www.cnbluebox.com/?p=255" target="_blank" rel="external">block使用小结、在arc中使用block、如何防止循环引用</a><br><a href="http://www.dreamingwish.com/article/block%E6%95%99%E7%A8%8B%E7%B3%BB%E5%88%97.html" target="_blank" rel="external">Block教程系列</a><br><a href="http://www.samirchen.com/block-in-objc/" target="_blank" rel="external">Block</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://honglu.me/2015/01/06/weak与block区别/" data-id="cird7o8ms003nx0pvij2vg3jv" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://honglu.me/2015/01/06/weak%E4%B8%8Eblock%E5%8C%BA%E5%88%AB/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="http://honglu.me/tags/block/">__block</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="http://honglu.me/tags/block/">block</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="http://honglu.me/tags/weak/">weak</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="http://honglu.me/2015/03/02/%E8%A2%96%E6%89%8B%E6%97%81%E8%A7%82/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          袖手旁观
+        
+      </div>
+    </a>
+  
+  
+    <a href="http://honglu.me/2014/12/29/%E6%B5%85%E8%B0%88OC%E8%BF%90%E8%A1%8C%E6%97%B6-RunTime/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">浅谈OC运行时(RunTime)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2015/01/06/weak与block区别/" data-title="__weak与__block区别" data-url="http://honglu.me/2015/01/06/weak与block区别/"><div id="ds-reset"><div class="ds-meta" style="display: none;"><a href="javascript:void(0)" class="ds-like-thread-button ds-rounded"><span class="ds-icon ds-icon-heart"></span> <span class="ds-thread-like-text">喜欢</span><span class="ds-thread-cancel-like">取消喜欢</span></a><span class="ds-like-panel"><span class="ds-highlight">1</span> 人喜欢</span></div><div class="ds-rounded" id="ds-hot-posts"><div class="ds-header ds-gradient-bg">被顶起来的评论</div><ul><li class="ds-post" data-post-id="6260660072267907842"><div class="ds-post-self" data-post-id="6260660072267907842" data-thread-id="1366917253697634576" data-root-id="0" data-source="duoshuo"><div class="ds-avatar" data-user-id="6260659167061607169"><a rel="nofollow author" target="_blank" href="http://weibo.com/1562985822" onclick="this.href=&#39;http://duzou.duoshuo.com/user-url/?user_id=6260659167061607169&#39;;" title="纵横而乐"><img src="./__weak与__block区别 _ 独 奏_files/1" alt="纵横而乐"></a></div><div class="ds-comment-body"><div class="ds-comment-header"><a class="ds-user-name ds-highlight" data-qqt-account="" href="http://weibo.com/1562985822" onclick="this.href=&#39;http://duzou.duoshuo.com/user-url/?user_id=6260659167061607169&#39;;" rel="nofollow" target="_blank" data-user-id="6260659167061607169">纵横而乐</a></div><p>block捕获了__block变量之后会强引用它，但一旦block本身执行完毕，而且你的代码没有强引用这个block，那这时候就会执行block_dispose操作，随后即会进行block_object_dispose操作，释放想着的block变量</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2016-03-11T13:18:34+08:00" title="2016年3月11日 下午1:18:34">3月11日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶(1)</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li></ul></div><div class="ds-comments-info"><div class="ds-sort"><a class="ds-order-desc">最新</a><a class="ds-order-asc ds-current">最早</a><a class="ds-order-hot">最热</a></div><ul class="ds-comments-tabs"><li class="ds-tab"><a class="ds-comments-tab-duoshuo ds-current" href="javascript:void(0);"><span class="ds-highlight">17</span>条评论</a></li> <li class="ds-tab"><a class="ds-comments-tab-weibo" href="javascript:void(0);"><span class="ds-highlight">2</span>条新浪微博</a></li> </ul></div><ul class="ds-comments"><li class="ds-post" data-post-id="1366917253697634312"><div class="ds-post-self" data-post-id="1366917253697634312" data-thread-id="1366917253697634576" data-root-id="0" data-source="duoshuo"><div class="ds-avatar" data-user-id="10547699"><a rel="nofollow author" target="_blank" href="http://weibo.com/alvintangwei" onclick="this.href=&#39;http://duzou.duoshuo.com/user-url/?user_id=10547699&#39;;" title="陶唐浪迹_唐伟"><img src="./__weak与__block区别 _ 独 奏_files/1(1)" alt="陶唐浪迹_唐伟"></a></div><div class="ds-comment-body"><div class="ds-comment-header"><a class="ds-user-name ds-highlight" data-qqt-account="" href="http://weibo.com/alvintangwei" onclick="this.href=&#39;http://duzou.duoshuo.com/user-url/?user_id=10547699&#39;;" rel="nofollow" target="_blank" data-user-id="10547699">陶唐浪迹_唐伟</a></div><p>在你的博客看到你使用过WebViewJavascriptBridge，我现在对于WebViewJavascriptBridge的有很多问题，希望你能抽时间为我解答一下，万分感谢！<a href="http://www.zhihu.com/question/27730517" target="_blank">http://www.zhihu.com/question/27730517</a></p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2015-01-22T21:07:25+08:00" title="2015年1月22日 下午9:07:25">2015年1月22日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="1366917253697634315"><div class="ds-post-self" data-post-id="1366917253697634315" data-thread-id="1366917253697634576" data-root-id="0" data-source="duoshuo"><div class="ds-avatar" data-user-id="6626299"><a rel="nofollow author" target="_blank" href="http://t.qq.com/jickalice" onclick="this.href=&#39;http://duzou.duoshuo.com/user-url/?user_id=6626299&#39;;" title="乙"><img src="./__weak与__block区别 _ 独 奏_files/50" alt="乙"></a></div><div class="ds-comment-body"><div class="ds-comment-header"><a class="ds-user-name ds-highlight" data-qqt-account="" href="http://t.qq.com/jickalice" onclick="this.href=&#39;http://duzou.duoshuo.com/user-url/?user_id=6626299&#39;;" rel="nofollow" target="_blank" data-user-id="6626299">乙</a></div><p>我貌似重现不了你这个。。。</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2015-03-17T10:40:00+08:00" title="2015年3月17日 上午10:40:00">2015年3月17日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="1366917253697634316"><div class="ds-post-self" data-post-id="1366917253697634316" data-thread-id="1366917253697634576" data-root-id="1366917253697634315" data-source="duoshuo"><div class="ds-avatar" data-user-id="7717176"><a rel="nofollow author" target="_blank" href="http://honglu.me/" onclick="this.href=&#39;http://duzou.duoshuo.com/user-url/?user_id=7717176&#39;;" title="独奏"><img src="./__weak与__block区别 _ 独 奏_files/066f45178c37354ff55bdc04e013c790" alt="独奏"></a></div><div class="ds-comment-body"><div class="ds-comment-header"><a class="ds-user-name ds-highlight" data-qqt-account="" href="http://honglu.me/" onclick="this.href=&#39;http://duzou.duoshuo.com/user-url/?user_id=7717176&#39;;" rel="nofollow" target="_blank" data-user-id="7717176">独奏</a></div><p><a class="ds-comment-context" data-post-id="1366917253697634316" data-parent-id="1366917253697634315">回复 乙: </a>你是指哪部分重现不了呢？</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2015-03-31T17:11:16+08:00" title="2015年3月31日 下午5:11:16">2015年3月31日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="1366917253697634326"><div class="ds-post-self" data-post-id="1366917253697634326" data-thread-id="1366917253697634576" data-root-id="0" data-source="duoshuo"><div class="ds-avatar"><img src="./__weak与__block区别 _ 独 奏_files/174140.jpg" alt="王瑕"></div><div class="ds-comment-body"><div class="ds-comment-header"><span class="ds-user-name" data-qqt-account="">王瑕</span></div><p>在非arc下，__block是可以用来避免引用循环的</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2015-05-18T16:48:28+08:00" title="2015年5月18日 下午4:48:28">2015年5月18日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="1366917253697634327"><div class="ds-post-self" data-post-id="1366917253697634327" data-thread-id="1366917253697634576" data-root-id="1366917253697634326" data-source="duoshuo"><div class="ds-avatar" data-user-id="7717176"><a rel="nofollow author" target="_blank" href="http://honglu.me/" onclick="this.href=&#39;http://duzou.duoshuo.com/user-url/?user_id=7717176&#39;;" title="独奏"><img src="./__weak与__block区别 _ 独 奏_files/066f45178c37354ff55bdc04e013c790" alt="独奏"></a></div><div class="ds-comment-body"><div class="ds-comment-header"><a class="ds-user-name ds-highlight" data-qqt-account="" href="http://honglu.me/" onclick="this.href=&#39;http://duzou.duoshuo.com/user-url/?user_id=7717176&#39;;" rel="nofollow" target="_blank" data-user-id="7717176">独奏</a></div><p><a class="ds-comment-context" data-post-id="1366917253697634327" data-parent-id="1366917253697634326">回复 王瑕: </a>那 ARC 还在使用__block 的有可能是 MRC 带过来的习惯吧~</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2015-05-18T21:33:30+08:00" title="2015年5月18日 下午9:33:30">2015年5月18日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="1366917253697634329"><div class="ds-post-self" data-post-id="1366917253697634329" data-thread-id="1366917253697634576" data-root-id="1366917253697634326" data-source="duoshuo"><div class="ds-avatar"><img src="./__weak与__block区别 _ 独 奏_files/174140.jpg" alt="王瑕"></div><div class="ds-comment-body"><div class="ds-comment-header"><span class="ds-user-name" data-qqt-account="">王瑕</span></div><p><a class="ds-comment-context" data-post-id="1366917253697634329" data-parent-id="1366917253697634327">回复 独奏: </a>是滴~</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2015-05-19T09:45:30+08:00" title="2015年5月19日 上午9:45:30">2015年5月19日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="1366917253697634340"><div class="ds-post-self" data-post-id="1366917253697634340" data-thread-id="1366917253697634576" data-root-id="0" data-source="duoshuo"><div class="ds-avatar" data-user-id="12784131"><a rel="nofollow author" target="_blank" href="http://t.qq.com/swimming-_-fish" onclick="this.href=&#39;http://duzou.duoshuo.com/user-url/?user_id=12784131&#39;;" title="SwimmingFish"><img src="./__weak与__block区别 _ 独 奏_files/50(1)" alt="SwimmingFish"></a></div><div class="ds-comment-body"><div class="ds-comment-header"><a class="ds-user-name ds-highlight" data-qqt-account="" href="http://t.qq.com/swimming-_-fish" onclick="this.href=&#39;http://duzou.duoshuo.com/user-url/?user_id=12784131&#39;;" rel="nofollow" target="_blank" data-user-id="12784131">SwimmingFish</a></div><p>谢谢雨神</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2015-07-14T15:39:22+08:00" title="2015年7月14日 下午3:39:22">2015年7月14日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="6215509980552889089"><div class="ds-post-self" data-post-id="6215509980552889089" data-thread-id="1366917253697634576" data-root-id="0" data-source="duoshuo"><div class="ds-avatar"><img src="./__weak与__block区别 _ 独 奏_files/174140.jpg" alt="TOPIOS"></div><div class="ds-comment-body"><div class="ds-comment-header"><span class="ds-user-name" data-qqt-account="">TOPIOS</span></div><p>http://chun.tips/blog/2014/11/13/hei-mu-bei-hou-de-blockxiu-shi-fu/</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2015-11-10T21:13:09+08:00" title="2015年11月10日 下午9:13:09">2015年11月10日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="6241396191007867650"><div class="ds-post-self" data-post-id="6241396191007867650" data-thread-id="1366917253697634576" data-root-id="0" data-source="duoshuo"><div class="ds-avatar"><img src="./__weak与__block区别 _ 独 奏_files/174140.jpg" alt="董二千"></div><div class="ds-comment-body"><div class="ds-comment-header"><span class="ds-user-name" data-qqt-account="">董二千</span></div><p>在MAC环境下，__block可以防止循环引用，ARC环境下不行</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2016-01-19T15:24:52+08:00" title="2016年1月19日 下午3:24:52">1月19日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="6260659197977821954"><div class="ds-post-self" data-post-id="6260659197977821954" data-thread-id="1366917253697634576" data-root-id="0" data-source="duoshuo"><div class="ds-avatar" data-user-id="6260659167061607169"><a rel="nofollow author" target="_blank" href="http://weibo.com/1562985822" onclick="this.href=&#39;http://duzou.duoshuo.com/user-url/?user_id=6260659167061607169&#39;;" title="纵横而乐"><img src="./__weak与__block区别 _ 独 奏_files/1" alt="纵横而乐"></a></div><div class="ds-comment-body"><div class="ds-comment-header"><a class="ds-user-name ds-highlight" data-qqt-account="" href="http://weibo.com/1562985822" onclick="this.href=&#39;http://duzou.duoshuo.com/user-url/?user_id=6260659167061607169&#39;;" rel="nofollow" target="_blank" data-user-id="6260659167061607169">纵横而乐</a></div><p>用__block变量不会引发内存泄漏</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2016-03-11T13:15:10+08:00" title="2016年3月11日 下午1:15:10">3月11日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="6260660072267907842"><div class="ds-post-self" data-post-id="6260660072267907842" data-thread-id="1366917253697634576" data-root-id="0" data-source="duoshuo"><div class="ds-avatar" data-user-id="6260659167061607169"><a rel="nofollow author" target="_blank" href="http://weibo.com/1562985822" onclick="this.href=&#39;http://duzou.duoshuo.com/user-url/?user_id=6260659167061607169&#39;;" title="纵横而乐"><img src="./__weak与__block区别 _ 独 奏_files/1" alt="纵横而乐"></a></div><div class="ds-comment-body"><div class="ds-comment-header"><a class="ds-user-name ds-highlight" data-qqt-account="" href="http://weibo.com/1562985822" onclick="this.href=&#39;http://duzou.duoshuo.com/user-url/?user_id=6260659167061607169&#39;;" rel="nofollow" target="_blank" data-user-id="6260659167061607169">纵横而乐</a></div><p>block捕获了__block变量之后会强引用它，但一旦block本身执行完毕，而且你的代码没有强引用这个block，那这时候就会执行block_dispose操作，随后即会进行block_object_dispose操作，释放想着的block变量</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2016-03-11T13:18:34+08:00" title="2016年3月11日 下午1:18:34">3月11日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶(1)</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="6262920628735574786"><div class="ds-post-self" data-post-id="6262920628735574786" data-thread-id="1366917253697634576" data-root-id="6260660072267907842" data-source="duoshuo"><div class="ds-avatar" data-user-id="7717176"><a rel="nofollow author" target="_blank" href="http://honglu.me/" onclick="this.href=&#39;http://duzou.duoshuo.com/user-url/?user_id=7717176&#39;;" title="独奏"><img src="./__weak与__block区别 _ 独 奏_files/066f45178c37354ff55bdc04e013c790" alt="独奏"></a></div><div class="ds-comment-body"><div class="ds-comment-header"><a class="ds-user-name ds-highlight" data-qqt-account="" href="http://honglu.me/" onclick="this.href=&#39;http://duzou.duoshuo.com/user-url/?user_id=7717176&#39;;" rel="nofollow" target="_blank" data-user-id="7717176">独奏</a></div><p><a class="ds-comment-context" data-post-id="6262920628735574786" data-parent-id="6260660072267907842">回复 纵横而乐: </a>确实，这一点忘记说明了，感谢指正~</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2016-03-17T15:30:41+08:00" title="2016年3月17日 下午3:30:41">3月17日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="6276352820375454465"><div class="ds-post-self" data-post-id="6276352820375454465" data-thread-id="1366917253697634576" data-root-id="0" data-source="duoshuo"><div class="ds-avatar"><img src="./__weak与__block区别 _ 独 奏_files/174140.jpg" alt="李重阳"></div><div class="ds-comment-body"><div class="ds-comment-header"><span class="ds-user-name" data-qqt-account="">李重阳</span></div><p>对 你的这个总结 “__weak 本身是可以避免循环引用的问题的，但是其会导致外部对象释放了之后，block 内部也访问不到这个对象的问题，我们可以通过在 block 内部声明一个 __strong 的变量来指向 weakObj，使外部对象既能在 block 内部保持住，又能避免循环引用的问题”  这个说法 的“__strong 的变量来指向 weakObj” 你可以试试，没有作用照样释放掉了</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2016-04-22T20:14:26+08:00" title="2016年4月22日 下午8:14:26">4月22日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="6277708361743991554"><div class="ds-post-self" data-post-id="6277708361743991554" data-thread-id="1366917253697634576" data-root-id="0" data-source="duoshuo"><div class="ds-avatar"><img src="./__weak与__block区别 _ 独 奏_files/174140.jpg" alt="Shvier"></div><div class="ds-comment-body"><div class="ds-comment-header"><span class="ds-user-name" data-qqt-account="">Shvier</span></div><p>学习了。我的理解是：ARC环境下，__weak用来避免循环引用，__block用来在block中修改外部变量的值。</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2016-04-26T11:54:38+08:00" title="2016年4月26日 上午11:54:38">4月26日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="6278123842678293249"><div class="ds-post-self" data-post-id="6278123842678293249" data-thread-id="1366917253697634576" data-root-id="6276352820375454465" data-source="duoshuo"><div class="ds-avatar" data-user-id="7717176"><a rel="nofollow author" target="_blank" href="http://honglu.me/" onclick="this.href=&#39;http://duzou.duoshuo.com/user-url/?user_id=7717176&#39;;" title="独奏"><img src="./__weak与__block区别 _ 独 奏_files/066f45178c37354ff55bdc04e013c790" alt="独奏"></a></div><div class="ds-comment-body"><div class="ds-comment-header"><a class="ds-user-name ds-highlight" data-qqt-account="" href="http://honglu.me/" onclick="this.href=&#39;http://duzou.duoshuo.com/user-url/?user_id=7717176&#39;;" rel="nofollow" target="_blank" data-user-id="7717176">独奏</a></div><p><a class="ds-comment-context" data-post-id="6278123842678293249" data-parent-id="6276352820375454465">回复 李重阳: </a>block 内的 __strong 会在运行期间起作用，原文已更新~</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2016-04-27T14:46:55+08:00" title="2016年4月27日 下午2:46:55">4月27日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="6299306070531638017"><div class="ds-post-self" data-post-id="6299306070531638017" data-thread-id="1366917253697634576" data-root-id="0" data-source="duoshuo"><div class="ds-avatar" data-user-id="11840572"><a rel="nofollow author" target="_blank" href="http://www.objccn.com/" onclick="this.href=&#39;http://duzou.duoshuo.com/user-url/?user_id=11840572&#39;;" title="Gavin"><img src="./__weak与__block区别 _ 独 奏_files/170543.jpg" alt="Gavin"></a></div><div class="ds-comment-body"><div class="ds-comment-header"><a class="ds-user-name ds-highlight" data-qqt-account="" href="http://www.objccn.com/" onclick="this.href=&#39;http://duzou.duoshuo.com/user-url/?user_id=11840572&#39;;" rel="nofollow" target="_blank" data-user-id="11840572">Gavin</a></div><p>谢谢 雨神</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2016-06-23T16:44:46+08:00" title="2016年6月23日 下午4:44:46">6月23日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="6319441189628019457"><div class="ds-post-self" data-post-id="6319441189628019457" data-thread-id="1366917253697634576" data-root-id="0" data-source="duoshuo"><div class="ds-avatar"><img src="./__weak与__block区别 _ 独 奏_files/174140.jpg" alt="付寒宇"></div><div class="ds-comment-body"><div class="ds-comment-header"><span class="ds-user-name" data-qqt-account="">付寒宇</span></div><p>非常好的事例，解了我的疑惑</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2016-08-16T22:59:19+08:00" title="2016年8月16日 下午10:59:19">8月16日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li></ul><div class="ds-paginator" style="display: none;"><div class="ds-border"></div><a data-page="1" href="javascript:void(0);" class="ds-current">1</a></div><a name="respond"></a><div class="ds-login-buttons"><p>社交帐号登录:</p><div class="ds-social-links"><ul class="ds-service-list"><li><a href="http://duzou.duoshuo.com/login/weixin/" rel="nofollow" class="ds-service-link ds-weixin">微信</a></li><li><a href="http://duzou.duoshuo.com/login/weibo/" rel="nofollow" class="ds-service-link ds-weibo">微博</a></li><li><a href="http://duzou.duoshuo.com/login/qq/" rel="nofollow" class="ds-service-link ds-qq">QQ</a></li><li><a href="http://duzou.duoshuo.com/login/renren/" rel="nofollow" class="ds-service-link ds-renren">人人</a></li><li><a class="ds-more-services" href="javascript:void(0)">更多»</a></li></ul><ul class="ds-service-list ds-additional-services"><li><a href="http://duzou.duoshuo.com/login/douban/" rel="nofollow" class="ds-service-link ds-douban">豆瓣</a></li><li><a href="http://duzou.duoshuo.com/login/kaixin/" rel="nofollow" class="ds-service-link ds-kaixin">开心</a></li><li><a href="http://duzou.duoshuo.com/login/baidu/" rel="nofollow" class="ds-service-link ds-baidu">百度</a></li><li><a href="http://duzou.duoshuo.com/login/google/" rel="nofollow" class="ds-service-link ds-google">谷歌</a></li></ul></div></div><div class="ds-replybox"><a class="ds-avatar" href="javascript:void(0);" onclick="return false"><img src="./__weak与__block区别 _ 独 奏_files/174140.jpg" alt=""></a><form method="post"><input type="hidden" name="thread_id" value="1366917253697634576">
+<input type="hidden" name="parent_id" value="">
+<input type="hidden" name="nonce" value="577de73750188"><div class="ds-textarea-wrapper ds-rounded-top"><textarea name="message" title="Ctrl+Enter快捷提交" placeholder="说点什么吧…"></textarea><pre class="ds-hidden-text"></pre></div><div class="ds-post-toolbar"><div class="ds-post-options ds-gradient-bg"><span class="ds-sync"></span></div><button class="ds-post-button" type="submit">发布</button><div class="ds-toolbar-buttons"><a class="ds-toolbar-button ds-add-emote" title="插入表情"></a></div></div></form></div><p class="ds-powered-by"><a href="http://duoshuo.com/" target="_blank" rel="nofollow">多说</a></p></div></div>
+  </section>
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://honglu.me/2016/07/29/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E6%8E%A5%E5%8F%A3%E6%8C%87%E5%8D%97/">移动端接口指南</a>
+          </li>
+        
+          <li>
+            <a href="http://honglu.me/2016/06/22/Threejs%E5%85%A8%E6%99%AF%E6%8E%A2%E7%B4%A2/">Threejs 全景探索</a>
+          </li>
+        
+          <li>
+            <a href="http://honglu.me/2016/05/30/%E6%88%91%E7%9A%84%E4%B8%AA%E4%BA%BAWiki/">我的个人 Wiki</a>
+          </li>
+        
+          <li>
+            <a href="http://honglu.me/2016/04/30/%E6%88%91%E6%83%B3%E5%BF%B5%E4%BD%A0%E7%9A%84%E5%A4%9A%E7%A7%8D%E6%96%B9%E5%BC%8F/">我想念你的多种方式</a>
+          </li>
+        
+          <li>
+            <a href="http://honglu.me/2016/03/16/%E3%80%8A%E7%A6%85%E4%B8%8EObjective-C%E7%BC%96%E7%A8%8B%E8%89%BA%E6%9C%AF%E3%80%8B%E7%AC%94%E8%AE%B0/">《禅与Objective-C编程艺术》笔记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="http://honglu.me/categories/HTTP/">HTTP</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="http://honglu.me/categories/OSX/">OSX</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="http://honglu.me/categories/Swift/">Swift</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="http://honglu.me/categories/iOS/">iOS</a><span class="category-list-count">37</span></li><li class="category-list-item"><a class="category-list-link" href="http://honglu.me/categories/web/">web</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="http://honglu.me/categories/%E5%AE%89%E5%85%A8/">安全</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="http://honglu.me/categories/%E5%B7%A5%E5%85%B7%E5%85%9A/">工具党</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="http://honglu.me/categories/%E6%9C%89%E6%84%8F%E6%80%9D/">有意思</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="http://honglu.me/categories/%E9%97%B2%E8%81%8A/">闲聊</a><span class="category-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="http://honglu.me/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://honglu.me/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://honglu.me/archives/2016/05/">五月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://honglu.me/archives/2016/04/">四月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://honglu.me/archives/2016/03/">三月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://honglu.me/archives/2016/02/">二月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://honglu.me/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://honglu.me/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://honglu.me/archives/2015/10/">十月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://honglu.me/archives/2015/09/">九月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://honglu.me/archives/2015/08/">八月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://honglu.me/archives/2015/07/">七月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://honglu.me/archives/2015/06/">六月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://honglu.me/archives/2015/05/">五月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://honglu.me/archives/2015/04/">四月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://honglu.me/archives/2015/03/">三月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://honglu.me/archives/2015/01/">一月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://honglu.me/archives/2014/12/">十二月 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://honglu.me/archives/2014/11/">十一月 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://honglu.me/archives/2014/10/">十月 2014</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://honglu.me/archives/2014/09/">九月 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://honglu.me/archives/2014/08/">八月 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="http://honglu.me/archives/2014/07/">七月 2014</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="http://honglu.me/tags/AFNetworking/" style="font-size: 10px;">AFNetworking</a> <a href="http://honglu.me/tags/APPStore/" style="font-size: 10px;">APPStore</a> <a href="http://honglu.me/tags/ARC/" style="font-size: 10px;">ARC</a> <a href="http://honglu.me/tags/Autolayout/" style="font-size: 10px;">Autolayout</a> <a href="http://honglu.me/tags/Cocoa/" style="font-size: 10px;">Cocoa</a> <a href="http://honglu.me/tags/CocoaPods/" style="font-size: 10px;">CocoaPods</a> <a href="http://honglu.me/tags/CollectionViewLayout/" style="font-size: 10px;">CollectionViewLayout</a> <a href="http://honglu.me/tags/Content-Type/" style="font-size: 10px;">Content-Type</a> <a href="http://honglu.me/tags/CoreData/" style="font-size: 10px;">CoreData</a> <a href="http://honglu.me/tags/CoreText/" style="font-size: 10px;">CoreText</a> <a href="http://honglu.me/tags/GFWList/" style="font-size: 10px;">GFWList</a> <a href="http://honglu.me/tags/Git/" style="font-size: 10px;">Git</a> <a href="http://honglu.me/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="http://honglu.me/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="http://honglu.me/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="http://honglu.me/tags/NSAttributedString/" style="font-size: 10px;">NSAttributedString</a> <a href="http://honglu.me/tags/OSX/" style="font-size: 12.5px;">OSX</a> <a href="http://honglu.me/tags/Objective-C/" style="font-size: 10px;">Objective-C</a> <a href="http://honglu.me/tags/RESTAPI/" style="font-size: 10px;">RESTAPI</a> <a href="http://honglu.me/tags/RSA/" style="font-size: 12.5px;">RSA</a> <a href="http://honglu.me/tags/RunTime/" style="font-size: 10px;">RunTime</a> <a href="http://honglu.me/tags/ShadowSocks/" style="font-size: 10px;">ShadowSocks</a> <a href="http://honglu.me/tags/SizeClasses/" style="font-size: 10px;">SizeClasses</a> <a href="http://honglu.me/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="http://honglu.me/tags/Threejs/" style="font-size: 10px;">Threejs</a> <a href="http://honglu.me/tags/UITableView/" style="font-size: 10px;">UITableView</a> <a href="http://honglu.me/tags/UITextField/" style="font-size: 10px;">UITextField</a> <a href="http://honglu.me/tags/UIView/" style="font-size: 17.5px;">UIView</a> <a href="http://honglu.me/tags/UIViewController/" style="font-size: 10px;">UIViewController</a> <a href="http://honglu.me/tags/UIWebView/" style="font-size: 10px;">UIWebView</a> <a href="http://honglu.me/tags/VCard/" style="font-size: 10px;">VCard</a> <a href="http://honglu.me/tags/Waterdrop/" style="font-size: 10px;">Waterdrop</a> <a href="http://honglu.me/tags/WormHole/" style="font-size: 10px;">WormHole</a> <a href="http://honglu.me/tags/XIB/" style="font-size: 12.5px;">XIB</a> <a href="http://honglu.me/tags/block/" style="font-size: 10px;">__block</a> <a href="http://honglu.me/tags/api-HTTP/" style="font-size: 10px;">api.HTTP</a> <a href="http://honglu.me/tags/autorelease/" style="font-size: 10px;">autorelease</a> <a href="http://honglu.me/tags/block/" style="font-size: 10px;">block</a> <a href="http://honglu.me/tags/bounds/" style="font-size: 10px;">bounds</a> <a href="http://honglu.me/tags/crash/" style="font-size: 10px;">crash</a> <a href="http://honglu.me/tags/frame/" style="font-size: 10px;">frame</a> <a href="http://honglu.me/tags/gitignore/" style="font-size: 10px;">gitignore</a> <a href="http://honglu.me/tags/header/" style="font-size: 10px;">header</a> <a href="http://honglu.me/tags/http/" style="font-size: 17.5px;">http</a> <a href="http://honglu.me/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="http://honglu.me/tags/iOSHelper/" style="font-size: 10px;">iOSHelper</a> <a href="http://honglu.me/tags/iTerm/" style="font-size: 10px;">iTerm</a> <a href="http://honglu.me/tags/isa/" style="font-size: 10px;">isa</a> <a href="http://honglu.me/tags/json/" style="font-size: 10px;">json</a> <a href="http://honglu.me/tags/lipo/" style="font-size: 10px;">lipo</a> <a href="http://honglu.me/tags/pod/" style="font-size: 10px;">pod</a> <a href="http://honglu.me/tags/protocol/" style="font-size: 10px;">protocol</a> <a href="http://honglu.me/tags/proxy/" style="font-size: 10px;">proxy</a> <a href="http://honglu.me/tags/runtime/" style="font-size: 10px;">runtime</a> <a href="http://honglu.me/tags/tips/" style="font-size: 10px;">tips</a> <a href="http://honglu.me/tags/weak/" style="font-size: 10px;">weak</a> <a href="http://honglu.me/tags/web/" style="font-size: 15px;">web</a> <a href="http://honglu.me/tags/xcode/" style="font-size: 10px;">xcode</a> <a href="http://honglu.me/tags/xib/" style="font-size: 10px;">xib</a> <a href="http://honglu.me/tags/%E4%B8%89%E4%BD%93/" style="font-size: 10px;">三体</a> <a href="http://honglu.me/tags/%E5%8A%A0%E5%AF%86/" style="font-size: 10px;">加密</a> <a href="http://honglu.me/tags/%E5%A5%87%E6%8A%80%E6%B7%AB%E5%B7%A7/" style="font-size: 10px;">奇技淫巧</a> <a href="http://honglu.me/tags/%E5%AE%89%E5%85%A8/" style="font-size: 12.5px;">安全</a> <a href="http://honglu.me/tags/%E5%AE%8F/" style="font-size: 10px;">宏</a> <a href="http://honglu.me/tags/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/" style="font-size: 10px;">定时任务</a> <a href="http://honglu.me/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="http://honglu.me/tags/%E6%94%AF%E4%BB%98%E5%AE%9D/" style="font-size: 12.5px;">支付宝</a> <a href="http://honglu.me/tags/%E6%9D%8E%E5%81%A5/" style="font-size: 10px;">李健</a> <a href="http://honglu.me/tags/%E6%AD%A3%E5%88%99/" style="font-size: 10px;">正则</a> <a href="http://honglu.me/tags/%E6%B7%98%E5%AE%9D/" style="font-size: 10px;">淘宝</a> <a href="http://honglu.me/tags/%E7%A8%8B%E5%BA%8F%E7%8C%BF/" style="font-size: 10px;">程序猿</a> <a href="http://honglu.me/tags/%E8%A2%96%E6%89%8B%E6%97%81%E8%A7%82/" style="font-size: 10px;">袖手旁观</a> <a href="http://honglu.me/tags/%E8%A3%85B/" style="font-size: 10px;">装B</a> <a href="http://honglu.me/tags/%E8%B0%83%E8%AF%95/" style="font-size: 10px;">调试</a> <a href="http://honglu.me/tags/%E8%B4%B1%E4%BA%BA%E6%9B%BE/" style="font-size: 10px;">贱人曾</a> <a href="http://honglu.me/tags/%E8%BF%90%E8%A1%8C%E6%97%B6/" style="font-size: 10px;">运行时</a> <a href="http://honglu.me/tags/%E9%80%82%E9%85%8D/" style="font-size: 10px;">适配</a> <a href="http://honglu.me/tags/%E9%97%B2%E8%81%8A/" style="font-size: 12.5px;">闲聊</a> <a href="http://honglu.me/tags/%E9%9A%90%E7%A7%81/" style="font-size: 10px;">隐私</a> <a href="http://honglu.me/tags/%E9%BB%91%E5%AE%A2/" style="font-size: 10px;">黑客</a>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      © 2016 独 奏<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="http://honglu.me/" class="mobile-nav-link">首页</a>
+  
+    <a href="http://honglu.me/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="http://honglu.me/about" class="mobile-nav-link">关于</a>
+  
+    <a href="http://wiki.honglu.me/" class="mobile-nav-link">Wiki</a>
+  
+</nav>
+
+  <!-- totop start -->
+<div id="totop" style="opacity: 0; display: block;">
+<a title="返回顶部"><img src="./__weak与__block区别 _ 独 奏_files/scrollup.png"></a>
+</div>
+
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"duzou"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links bdshare-button-style0-16" data-bd-bind="1471743652039">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>window._bd_share_config={"common":{},"share":{"bdCustomStyle":"/css/bdshare.css"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+<!-- 百度分享 end -->
+
+<script src="./__weak与__block区别 _ 独 奏_files/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="./__weak与__block区别 _ 独 奏_files/jquery.fancybox.css">
+  <script src="./__weak与__block区别 _ 独 奏_files/jquery.fancybox.pack.js"></script>
+
+
+
+<script src="./__weak与__block区别 _ 独 奏_files/script.js"></script>
+
+</div>
+
+
+</body></html>

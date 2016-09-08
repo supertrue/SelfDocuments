@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)http://crash.163.com/#news/!newsId=18 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <!-- 优先使用极速模式（双核）浏览 -->
+    <meta name="renderer" content="webkit">
+    <!-- 优先使用IE最新版浏览 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="keywords" content="网易云捕,云捕,Android崩溃,iOS崩溃,App崩溃,ANR,卡顿,APP异常,应用性能监控,APM应用性能管理,APM应用性能监控">
+    <meta name="description" content="网易云捕面向移动开发者提供专业的Crash（崩溃）、Android ANR(应用无响应)、iOS卡顿的数据分析和解决方案。帮助开发者迅速定位问题的原因。支持个性化报警，根据上报的信息快速定位和解决问题，助力开发者打造高品质的APP。">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>网易云捕 - Android Crash(崩溃)_iOS Crash(崩溃)_ANR_卡顿的监控分析及解决方案</title>
+    <link rel="shortcut icon" href="http://crash.163.com/favicon.ico">
+    <link rel="bookmark" href="http://crash.163.com/favicon.ico">
+
+    <link href="./网易云捕 - Android Crash(崩溃)_iOS Crash(崩溃)_ANR_卡顿的监控分析及解决方案_files/apkpack-d8e948dc15.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./网易云捕 - Android Crash(崩溃)_iOS Crash(崩溃)_ANR_卡顿的监控分析及解决方案_files/index.min.css">
+    <link rel="stylesheet" href="./网易云捕 - Android Crash(崩溃)_iOS Crash(崩溃)_ANR_卡顿的监控分析及解决方案_files/slick.css">
+    <!-- curs -->
+    <link rel="stylesheet" type="text/css" href="./网易云捕 - Android Crash(崩溃)_iOS Crash(崩溃)_ANR_卡顿的监控分析及解决方案_files/cloudstyle.css">
+
+    <script type="text/javascript" async="" src="./网易云捕 - Android Crash(崩溃)_iOS Crash(崩溃)_ANR_卡顿的监控分析及解决方案_files/ga.js"></script><script src="./网易云捕 - Android Crash(崩溃)_iOS Crash(崩溃)_ANR_卡顿的监控分析及解决方案_files/require.js"></script>
+    <script>require(['dist/js/main.js?bust=1471917607606'])</script>
+<script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="dist/js/main.js?bust=1471917607606" src="./网易云捕 - Android Crash(崩溃)_iOS Crash(崩溃)_ANR_卡顿的监控分析及解决方案_files/main.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="jquery" src="./网易云捕 - Android Crash(崩溃)_iOS Crash(崩溃)_ANR_卡顿的监控分析及解决方案_files/jquery.min.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="MobileAppSafety" src="./网易云捕 - Android Crash(崩溃)_iOS Crash(崩溃)_ANR_卡顿的监控分析及解决方案_files/MobileAppSafety.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="apkpack/widget/nav" src="./网易云捕 - Android Crash(崩溃)_iOS Crash(崩溃)_ANR_卡顿的监控分析及解决方案_files/nav.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="apkpack/utils/router" src="./网易云捕 - Android Crash(崩溃)_iOS Crash(崩溃)_ANR_卡顿的监控分析及解决方案_files/router.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="apkpack/utils/utils" src="./网易云捕 - Android Crash(崩溃)_iOS Crash(崩溃)_ANR_卡顿的监控分析及解决方案_files/utils.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="apkpack/utils/listener" src="./网易云捕 - Android Crash(崩溃)_iOS Crash(崩溃)_ANR_卡顿的监控分析及解决方案_files/listener.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="doT" src="./网易云捕 - Android Crash(崩溃)_iOS Crash(崩溃)_ANR_卡顿的监控分析及解决方案_files/doT.min.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="apkpack/utils/renderer" src="./网易云捕 - Android Crash(崩溃)_iOS Crash(崩溃)_ANR_卡顿的监控分析及解决方案_files/renderer.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="apkpack/utils/renderUtils" src="./网易云捕 - Android Crash(崩溃)_iOS Crash(崩溃)_ANR_卡顿的监控分析及解决方案_files/renderUtils.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="apkpack/module/news" src="./网易云捕 - Android Crash(崩溃)_iOS Crash(崩溃)_ANR_卡顿的监控分析及解决方案_files/news.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="text" src="./网易云捕 - Android Crash(崩溃)_iOS Crash(崩溃)_ANR_卡顿的监控分析及解决方案_files/text.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="moment" src="./网易云捕 - Android Crash(崩溃)_iOS Crash(崩溃)_ANR_卡顿的监控分析及解决方案_files/moment.min.js"></script></head>
+<body>
+<!--[if lte IE 8]>
+<link rel="stylesheet" href="css/iePatch.css?bust=1457337217152">
+<div id="upgradeBrowse">
+    <p> 为了完整的体验网易云捕提供的全部服务，建议您 <a href="http://browsehappy.com/?locale=zh_CN" target="_blank"> 升级您的浏览器 </a> <i
+            id="close-upgrade-btn">&times;</i></p>
+</div>
+<script>
+    document.getElementById("close-upgrade-btn").onclick = function () {
+        var upgradeEle = document.getElementById("upgradeBrowse");
+        var step = 0;
+
+        var dismissInterval = setInterval(function () {
+            if (step >= 100) {
+                clearInterval(dismissInterval);
+                upgradeEle.style.display = "none";
+                return;
+            }
+
+            upgradeEle.style.marginTop = 0 - (step / 10) * (step / 10) * (step / 10) + "px";
+            step = step + 1;
+        }, 25)
+    }
+</script>
+<![endif]-->
+<!--[if IE 9]>
+<style>
+    .header.index .ban .phone {
+        background: url("../image/index/v2/banner-phone-bg-old.png");
+        width: 276px;
+        height: 490px;
+    }
+    .header.index .ban .phone * {
+        display: none;
+    }
+
+    .page.page-1 .phone {
+        background: url("../image/index/v2/app-issue-bg-old.jpg");
+    }
+    .page.page-1 .phone * {
+        display: none;
+    }
+</style>
+<![endif]-->
+<div class="doc">
+    <!-- 云账号顶通 -->
+    <div id="cursTopNav" class="f-cb">
+        <div class="curs-nav-ctn">
+            <div class="f-fl"><a href="http://www.163yun.com/" target="_blank">网易云</a></div>
+            <div class="f-fr">
+                <ul>
+                    <li><a target="_blank" href="http://c.163yun.com/">网易蜂巢</a></li>
+                    <li><a target="_blank" href="http://yunxin.163yun.com/">网易云信</a></li>
+                    <li><a target="_blank" href="http://vcloud.163yun.com/">网易视频云</a></li>
+                    <li><a href="http://crash.163.com/">网易云捕</a></li>
+                    <li><a target="_blank" href="http://et.163yun.com/">网易易测</a></li>
+                    <li><a target="_blank" href="http://kf.163yun.com/">网易七鱼</a></li>
+                    <li><a target="_blank" href="http://dun.163yun.com/">网易易盾</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 导航栏和首屏banner -->
+    <div class="header default">
+        <div class="top fixed">
+            <div class="mnt f-ov-important">
+                <h3 class="logo">
+                    <a href="http://crash.163.com/index.do"><img src="./网易云捕 - Android Crash(崩溃)_iOS Crash(崩溃)_ANR_卡顿的监控分析及解决方案_files/banner-logo-blue-v2.png" alt="云捕"></a>
+                </h3>
+                <div class="m-login">
+                                    <div class="login-container">
+                        <a href="javascript:void(0)" id="loginButton">登录</a>
+                        <a href="https://yun.reg.163.com/czc/cregindex?pd=crash&amp;pkid=RMADhVc&amp;pkht=crash.163.com&amp;default=2" target="_blank">注册</a>
+                    </div>
+                    <script>
+                        function login() {
+                            $(function () {
+                                var $loginDialog = $(".m-dialog-login"),
+                                        $mask = $(".m-mask"),
+                                        width = document.body.scrollWidth,
+                                        height = document.body.scrollHeight;
+                                $mask.css({height: height, width: width}).show();
+                                $loginDialog.show();
+
+                                $loginDialog.find(".dlclose").off().on("click", function () {
+                                    $loginDialog.fadeOut();
+                                    $mask.fadeOut();
+
+                                    if(location.hash.indexOf("#userCenter") >= 0 || location.hash.indexOf("#dumply/solution/input") >= 0) {
+                                        location.href = "/";
+                                    }
+                                });
+
+                                var host = location.protocol + "//" + location.host;
+                                $loginDialog.find("input[name=url]").val(host + "/ursLogin.do?currentHash=" + location.hash);
+                            });
+                        }
+                    </script>
+                </div>
+                <div class="menu-button"></div>
+                <div class="m-nav">
+                    <ul class="nav f-cb">
+                                    <li><a href="http://crash.163.com/#feature">产品介绍</a></li>
+                                    <li class="act"><a href="http://crash.163.com/#news">资讯公告</a></li>
+                        <li><a href="http://crash.163.com/#dumply/downloadSDK">SDK下载<i class="arr default" style="background: url(&quot;../../image/newStyle/icons/icon_subnav_fixed.png&quot;) center center no-repeat;"></i></a>
+
+                            <div class="subnav" style="display: none;">
+                                <ul>
+                                    <li><a href="http://crash.163.com/#dumply/downloadSDK">SDK下载</a></li>
+                                    <li><a href="http://crash.163.com/#dumply/faq/">集成说明</a></li>
+                                    <li><a href="http://crash.163.com/#dumply/q&amp;a/read">常见问题</a></li>
+                                    <li><a href="http://crash.163.com/#dumply/crashLog/crash/#id=A001099276/">DEMO</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><a href="http://crash.163.com/#userCenter">用户中心</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="ban">
+            <div class="mnt">
+                <div class="actions">
+                    <h1>高效的质量跟踪平台</h1>
+                    <p>精准捕捉APP的每一次质量问题</p>
+                    <p>助力开发者打造高品质APP</p>
+                    <div class="action-btn">
+                        <a href="http://crash.163.com/#userCenter/addApp" class="add-btn">免费接入</a>
+                        <a href="http://crash.163.com/#dumply/crashLog/crash/#id=A001099276/" class="demo-btn">DEMO演示</a>
+                    </div>
+                </div>
+
+
+                <div class="background">
+                    <div class="phone">
+                        <div class="ring-outer ring-outer1"></div>
+                        <div class="ring-outer ring-outer2 "></div>
+                        <div class="ring-outer ring-outer3"></div>
+                        <div class="ring-outer ring-outer4"></div>
+
+                        <div class="ring-inner ring-inner1"></div>
+                        <div class="ring-inner ring-inner2"></div>
+                        <div class="ring-inner ring-inner3"></div>
+                        <div class="ring-inner ring-inner4"></div>
+
+                        <div class="ring-logo"></div>
+                    </div>
+                </div>
+                <div class="bigtitle">
+                    <div class="title">
+                        <h3></h3>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="g-bd">
+        <div class="">
+            <noscript>
+                &lt;div class="page page-1"&gt;
+                    &lt;h2&gt;你的APP是否遇到这些问题？&lt;/h2&gt;
+                    &lt;p&gt;APP卡顿、崩溃，异常，用户体验减分，让你一筹莫展？&lt;/p&gt;
+                    &lt;div class="phone"&gt;
+                        &lt;div class="visibility"&gt;
+                            &lt;div class="anr"&gt;&lt;div class="app-issue-anr"&gt;APP 卡顿&lt;/div &gt;&lt;/div&gt;
+                            &lt;div class="crash"&gt;&lt;div class="app-issue-crash"&gt;APP 崩溃&lt;/div&gt;&lt;/div&gt;
+                            &lt;div class="endless-load"&gt;&lt;div class="app-issue-endless-load"&gt;无限加载&lt;/div&gt;&lt;/div&gt;
+                            &lt;div class="img-fail"&gt;&lt;div class="app-issue-img-fail"&gt;图片加载失败&lt;/div&gt;&lt;/div&gt;
+
+                            &lt;div class="ring ring4"&gt;&lt;/div&gt;
+                            &lt;div class="ring ring3"&gt;&lt;/div&gt;
+                            &lt;div class="ring ring2"&gt;&lt;/div&gt;
+                            &lt;div class="ring ring1"&gt;&lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class="page page-2"&gt;
+                    &lt;h2&gt;我们提供什么服务？&lt;/h2&gt;
+                    &lt;p&gt;云捕助你轻松解决这些质量问题&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/p&gt;
+
+                    &lt;ul&gt;
+                        &lt;li&gt;
+                            &lt;div class="service-platform"&gt;
+                                &lt;h3&gt;全面的平台覆盖&lt;/h3&gt;
+                                &lt;p&gt;支持Android、iOS两大平台，JS,U3D,Cocos等游戏引擎及脚本&lt;/p&gt;
+                            &lt;/div&gt;
+                        &lt;/li&gt;
+                        &lt;li&gt;
+                            &lt;div class="service-stack"&gt;
+                                &lt;h3&gt;清晰的崩溃、卡顿信息&lt;/h3&gt;
+                                &lt;p&gt;崩溃、卡顿堆栈自动还原&lt;br&gt;机型和系统分布一目了然&lt;/p&gt;
+                            &lt;/div&gt;
+                        &lt;/li&gt;
+                        &lt;li&gt;
+                            &lt;div class="service-trend"&gt;
+                                &lt;h3&gt;多方位质量问题趋势图&lt;/h3&gt;
+                                &lt;p&gt;质量问题次数、比率等多方位趋势图，及时了解质量动态&lt;/p&gt;
+                            &lt;/div&gt;
+                        &lt;/li&gt;
+                        &lt;li&gt;
+                            &lt;div class="service-realtime"&gt;
+                                &lt;h3&gt;24小时实时监控&lt;/h3&gt;
+                                &lt;p&gt;实时统计、分析各类崩溃、卡顿信息，全面掌握产品质量状况&lt;/p&gt;
+                            &lt;/div&gt;
+                        &lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+                &lt;div class="page page-3"&gt;
+                    &lt;h2&gt;我们的优势&lt;/h2&gt;
+                    &lt;p&gt;网易云捕积累了多年的质量跟踪技术经验，拥有强大的品牌保障&lt;/p&gt;
+                    &lt;div class="advantage advantage-solution visibility"&gt;
+                        &lt;h3&gt;解决方案匹配和推荐&lt;/h3&gt;
+                        &lt;p&gt;帮助开发者快速解决线上质量问题，告别漫长无助的原因查找过程&lt;/p&gt;
+                    &lt;/div&gt;
+                    &lt;div class="advantage advantage-alert visibility"&gt;
+                        &lt;h3&gt;个性化报警机制&lt;/h3&gt;
+                        &lt;p&gt;支持全天候报警功能，开发者可根据需求自定义各种报警选项，帮助开发者实时掌控产品质量状况&lt;/p&gt;
+                    &lt;/div&gt;
+                    &lt;div class="advantage advantage-performance visibility"&gt;
+                        &lt;h3&gt;完美性能&lt;/h3&gt;
+                        &lt;p&gt;云捕SDK经过安全性、稳定性、性能监测等多方面测试验证保证产品的完美性能&lt;/p&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class="page page-4"&gt;
+                    &lt;h2&gt;简单的接入方式&lt;/h2&gt;
+                    &lt;p&gt;只需三步，从此APP质量轻松掌握&lt;/p&gt;
+                    &lt;ul&gt;
+                        &lt;li class="step1"&gt;
+                            &lt;h3&gt;1.注册&lt;/h3&gt;
+                            &lt;p&gt;登录云捕官网，添加APP后自动获取APP ID&lt;/p&gt;
+                        &lt;/li&gt;
+                        &lt;li class="next"&gt; &lt;img src="image/index/v2/step-arrow-right.jpg" alt="下一步"&gt; &lt;/li&gt;
+                        &lt;li class="step2"&gt;
+                            &lt;h3&gt;2.集成&lt;/h3&gt;
+                            &lt;p&gt;支持Gradle、插件、CocoaPods等集成，自动导入代码&lt;/p&gt;
+                        &lt;/li&gt;
+                        &lt;li class="next"&gt; &lt;img src="image/index/v2/step-arrow-right.jpg" alt="下一步"&gt; &lt;/li&gt;
+                        &lt;li class="step3"&gt;
+                            &lt;h3&gt;3.上传&lt;/h3&gt;
+                            &lt;p&gt;自动上传符号表，智能匹配还原堆栈, 从此APP质量轻松掌握&lt;/p&gt;
+                        &lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+                &lt;div class="page apps"&gt;
+                    &lt;h2&gt;部分合作应用&lt;/h2&gt;
+                    &lt;p&gt;云捕的服务已涵盖各个领域，用户队伍在不断壮大&lt;/p&gt;
+                    &lt;div class="app-marquee-container f-usn"&gt;
+                        &lt;div class="app-marquee-prev"&gt;&lt;/div&gt;
+                        &lt;div class="inline-container"&gt;
+                            &lt;div class="app-marquee"&gt;
+                                &lt;div&gt;&lt;img src="image/index/apps/mailMaster.jpg" alt=""&gt;&lt;/div&gt;
+                                &lt;div&gt;&lt;img src="image/index/apps/youdao.jpg?0805" alt=""&gt;&lt;/div&gt;
+                                &lt;div&gt;&lt;img src="image/index/apps/qiannvyouhun.jpg" alt=""&gt;&lt;/div&gt;
+                                &lt;div&gt;&lt;img src="image/index/apps/neteaseMusic.jpg" alt=""&gt;&lt;/div&gt;
+                                &lt;div&gt;&lt;img src="image/index/apps/babyBus.jpg" alt=""&gt;&lt;/div&gt;
+                                &lt;div&gt;&lt;img src="image/index/apps/kaola.jpg" alt=""&gt;&lt;/div&gt;
+                                &lt;div&gt;&lt;img src="image/index/apps/lofter.jpg" alt=""&gt;&lt;/div&gt;
+                                &lt;div&gt;&lt;img src="image/index/apps/yiYuanDuoBao.png" alt=""&gt;&lt;/div&gt;
+                                &lt;div&gt;&lt;img src="image/index/apps/huaTian.png" alt=""&gt;&lt;/div&gt;
+                                &lt;div&gt;&lt;img src="image/index/apps/baiWanMA.png" alt=""&gt;&lt;/div&gt;
+                                &lt;div&gt;&lt;img src="image/index/apps/youqian.jpg" alt=""&gt;&lt;/div&gt;
+                                &lt;div&gt;&lt;img src="image/index/apps/juedaishuangjiao.jpg" alt=""&gt;&lt;/div&gt;
+                                &lt;div&gt;&lt;img src="image/index/apps/jiJieHao.jpg" alt=""&gt;&lt;/div&gt;
+                                &lt;div&gt;&lt;img src="image/index/apps/neteaseCloudReader.jpg" alt=""&gt;&lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div class="app-marquee-next"&gt;&lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class="page footer-banner"&gt;
+                    &lt;h2&gt;从今天开始，接入网易云捕，助力产品质量的腾飞&lt;/h2&gt;
+                    &lt;p&gt;网易云捕已经成功帮助数千款应用改善了产品质量，APP用户满意度大幅提升
+                        &lt;br&gt;
+                        您只需专心研发产品功能，让我们为您的产品质量保驾护航&lt;/p&gt;
+                    &lt;div&gt;
+                        &lt;a href="#userCenter/addApp" class="btn-add"&gt;免费接入&lt;/a&gt;
+                        &lt;a href="#dumply/crashLog/crash/#id=A001099276/" class="btn-demo"&gt;DEMO演示&lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;div class="mobile-fixed-bottom"&gt;
+                    &lt;a href="http://wpa.qq.com/msgrd?v=3&amp;uin=2929155840&amp;site=qq&amp;menu=yes" target="_blank" class="contact"&gt;QQ咨询&lt;/a&gt;
+                    &lt;a href="#userCenter/addApp" target="_blank" class="add-app"&gt;免费接入&lt;/a&gt;
+                &lt;/div&gt;
+            </noscript>
+            <div class="content home"></div>
+            <div class="content feature">
+                <div class="loading"></div>
+                <div class="detail-ctn"></div>
+            </div>
+            <div class="g-ctn content news visible"><link rel="stylesheet" href="./网易云捕 - Android Crash(崩溃)_iOS Crash(崩溃)_ANR_卡顿的监控分析及解决方案_files/github-gist.css">
+<script src="./网易云捕 - Android Crash(崩溃)_iOS Crash(崩溃)_ANR_卡顿的监控分析及解决方案_files/highlight.pack.js" type="text/javascript"></script>
+
+<div class="" id="newsDetailContainer">
+    <div class="news-detail"> <div class="breadcrumb"><h2> <a href="http://crash.163.com/#news/!newsType=skill" class="breadcrumb-title">技术分享</a>&nbsp;/&nbsp;<span class="breadcrumb-detail">聊聊 "-ObjC" 的故事</span> </h2></div> <div class="newsctn"> <div class="news-header f-cb"> <h1 class="title">聊聊 "-ObjC" 的故事</h1> <div> <span class="author">skylin</span> <span class="date">发布于 2016-07-22 </span> <span class="tag-list"></span> </div> </div> <div class="news-body ckeditor-file"><span style="font-family:helvetica,helvetica neue， 微软雅黑,microsoft yahei,wenquanyi micro hei"><span style="font-size:16px">&nbsp; &nbsp; &nbsp;"民之失德，乾糇以愆；他山之石，可以攻玉。" &nbsp; - 《诗经》</span></span>
+
+<div style="text-align:center"><span style="font-family:helvetica,helvetica neue， 微软雅黑,microsoft yahei,wenquanyi micro hei"><span style="font-size:16px"><img alt="" src="./网易云捕 - Android Crash(崩溃)_iOS Crash(崩溃)_ANR_卡顿的监控分析及解决方案_files/59231e018c9849a18ff763c16a895ff6.png" style="height:131px; width:79px"></span></span></div>
+<br>
+<span style="font-family:helvetica,helvetica neue， 微软雅黑,microsoft yahei,wenquanyi micro hei"><span style="font-size:16px">&nbsp; &nbsp; &nbsp; &nbsp;在开发 iOS 应用时，可能遇见这样的情况：你想实现的某种功能（比如崩溃收集），已经有成熟的产品提供，可行的方案就是集成这个使用了很久，且有专业人员维护，最重要的是“免费”的产品。一番折腾之后，运行时有可能出现"selector not recognized"错误，最后发现是少了如下的配置(</span><strong><span style="font-size:14px">Build Settings -&gt; "-ObjC"</span></strong><span style="font-size:16px">):</span></span>
+
+<div style="text-align:center"><span style="font-family:helvetica,helvetica neue， 微软雅黑,microsoft yahei,wenquanyi micro hei"><img alt="" src="./网易云捕 - Android Crash(崩溃)_iOS Crash(崩溃)_ANR_卡顿的监控分析及解决方案_files/45eed87171c24ca8a3d38bfe93495274.png" style="height:101px; width:447px"></span></div>
+<br>
+<span style="font-family:helvetica,helvetica neue， 微软雅黑,microsoft yahei,wenquanyi micro hei"><span style="font-size:16px">&nbsp; &nbsp; &nbsp; &nbsp; 那么这个"–ObjC" 到底是个什么鬼？ 我们来扒一扒。</span></span>
+
+<h1><br>
+<span style="font-family:helvetica,helvetica neue， 微软雅黑,microsoft yahei,wenquanyi micro hei"><span style="font-size:18px"><strong>&nbsp; &nbsp; &nbsp; &nbsp;"-ObjC" 的使用场景</strong></span></span></h1>
+<span style="font-family:helvetica,helvetica neue， 微软雅黑,microsoft yahei,wenquanyi micro hei"><span style="font-size:16px">&nbsp; &nbsp; &nbsp; &nbsp; 据坊间说：如果你集成了有 category 的静态库，有可能出现上述错误。原因就是：<a href="https://developer.apple.com/library/mac/qa/qa1490/_index.html">Technical Q&amp;A QA1490</a></span></span>&nbsp;&nbsp;<br>
+<span style="font-family:helvetica,helvetica neue， 微软雅黑,microsoft yahei,wenquanyi micro hei; font-size:16px">&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span><span style="font-size:16px">"<span style="color:rgb(119, 119, 119)">An impedance mismatch between UNIX static libraries and the dynamic nature of Objective-C can cause category methods in static libraries to not be linked into an app, resulting in "selector not recognized" exceptions when the methods aren't found at runtime."</span></span><span style="font-family:helvetica,helvetica neue， 微软雅黑,microsoft yahei,wenquanyi micro hei; font-size:16px">&nbsp; </span><br>
+<br>
+<span style="font-family:helvetica,helvetica neue， 微软雅黑,microsoft yahei,wenquanyi micro hei"><span style="font-size:16px">&nbsp; &nbsp; &nbsp; &nbsp; 这段话的意思就是：链接器在处理包含Category方法的UNIX的静态库时，没有将Category的方法链接到APP中，造成这个错误。具体的细节在本文的补充部分展开。&nbsp; &nbsp; &nbsp;&nbsp;<br>
+&nbsp; &nbsp; &nbsp; &nbsp; 可以看出，解决这个错误的方法就是：将Category的方法链接到APP中，这样APP运行时，就能够找到对应的selector。而 –ObjC就可以完成这个任务。&nbsp; &nbsp; &nbsp;&nbsp;<br>
+&nbsp; &nbsp; &nbsp; &nbsp; "-ObjC"的作用是：将静态库中任何Objective-C代码都链接到APP中。任何Objective-C代码当然也包括Category的方法。可以看出，使用-ObjC可能会链接很多静态库中未被使用的Objective-C代码，极大的增加APP的代码体积。</span></span>
+
+<h1><br>
+<span style="font-size:18px"><span style="font-family:helvetica,helvetica neue， 微软雅黑,microsoft yahei,wenquanyi micro hei"><strong>&nbsp; &nbsp; &nbsp; "-ObjC" 的兄弟</strong></span></span></h1>
+
+<div style="text-align:center">&nbsp;<img alt="" src="./网易云捕 - Android Crash(崩溃)_iOS Crash(崩溃)_ANR_卡顿的监控分析及解决方案_files/1057ffb2d537461ca85504d05b714f53.png" style="height:474px; width:568px"><br>
+<span style="font-family:helvetica,helvetica neue， 微软雅黑,microsoft yahei,wenquanyi micro hei"><span style="font-size:16px">&nbsp; &nbsp; &nbsp;&nbsp;</span></span></div>
+<span style="font-family:helvetica,helvetica neue， 微软雅黑,microsoft yahei,wenquanyi micro hei"><span style="font-size:16px">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;和 "-ObjC"作用类似的有以上的五种方案。可以看出，从增加APP代码体积来看，伪符号方案增加得最少"Perform Single-Object Prelink"、 "-force_load" 和 "–ObjC" 次之，"-all_load" 增加得最多。<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;在开发iOS SDK时，为了方便使用者手动集成，最好是减少使用者需要配置的信息，所以"伪符号"方案和 "Perform Single-Object Prelink"方案是推荐的。另外，第三方SDK常常是闭源的，对于使用者来说，伪符号是透明的，所以从简便性角度看，推荐"Perform Single-Object Prelink"方案。</span></span>
+
+<h1><br>
+<span style="font-size:18px"><strong><span style="font-family:helvetica,helvetica neue， 微软雅黑,microsoft yahei,wenquanyi micro hei">&nbsp; &nbsp; &nbsp; &nbsp; "selector not recognized"错误的产生根源</span></strong></span></h1>
+<span style="font-family:helvetica,helvetica neue， 微软雅黑,microsoft yahei,wenquanyi micro hei"><span style="font-size:16px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;iOS工程，从源文件到生成最终的APP文件，通常要经过如下步骤：</span></span>
+
+<div style="text-align:center"><span style="font-family:helvetica,helvetica neue， 微软雅黑,microsoft yahei,wenquanyi micro hei"><span style="font-size:16px"><img alt="" src="./网易云捕 - Android Crash(崩溃)_iOS Crash(崩溃)_ANR_卡顿的监控分析及解决方案_files/4cfe51db89774e13868ab3db6f2fe6b2.png" style="height:227px; width:472px"></span></span></div>
+<br>
+<span style="font-family:helvetica,helvetica neue， 微软雅黑,microsoft yahei,wenquanyi micro hei"><span style="font-size:16px">&nbsp; &nbsp; &nbsp; &nbsp; 源文件经过编译和优化后，会生成目标代码。目标代码中包括符号表，标示了此代码中的全局符号和静态符号，还标示了导入符号等，链接器会根据符号表分析各个目标代码之间的调用关系，然后将使用到的代码进行链接和重定位，最后生成可执行文件。&nbsp; &nbsp; &nbsp;&nbsp;<br>
+&nbsp; &nbsp; &nbsp; &nbsp; 在编译Objective-C源文件到目标文件时，编译器并不知道方法的对应实现，只能在运行时才知道，所以编译器只会为类生成链接符号，对类中的方法不会生成链接符号。由于Category方法并不对应一个新类，所以不会生成链接符号，链接器也不会将Category方法合并到原始的类中，最终导致链接器忽略了Category方法，不会将其链接到可执行文件中。</span></span>
+
+<p style="text-align:center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;更多资讯请关注网易云捕微信公众号，网易云捕官方微博~~</p>
+
+<p style="text-align:center"><span style="font-family:helvetica,helvetica neue， 微软雅黑,microsoft yahei,wenquanyi micro hei"><span style="font-size:16px"><img alt="" src="./网易云捕 - Android Crash(崩溃)_iOS Crash(崩溃)_ANR_卡顿的监控分析及解决方案_files/73a9e34b9c2946fe9dc38715f87fc95d.png" style="height:331px; width:336px"></span></span>&nbsp;<br>
+<img alt="" src="./网易云捕 - Android Crash(崩溃)_iOS Crash(崩溃)_ANR_卡顿的监控分析及解决方案_files/362df9ec8096491bbd45716b67625ea5.png"><a href="http://weibo.com/p/1006065771715337/home?from=page_100606&amp;mod=TAB#place" target="_blank"><strong>网易云捕微博</strong></a></p>
+
+<h1><span style="font-family:helvetica,helvetica neue， 微软雅黑,microsoft yahei,wenquanyi micro hei"><strong><span style="font-size:18px">&nbsp; &nbsp; &nbsp; &nbsp;参考</span></strong></span></h1>
+<span style="font-size:16px"><span style="font-family:helvetica,helvetica neue， 微软雅黑,microsoft yahei,wenquanyi micro hei">&nbsp; &nbsp; &nbsp; &nbsp;1、<a href="https://developer.apple.com/library/mac/qa/qa1490/_index.html">Technical Q&amp;A QA1490</a><br>
+&nbsp; &nbsp; &nbsp; &nbsp;2、<a href="http://stackoverflow.com/questions/2567498/objective-c-categories-in-static-library">Objective-C categories in static library</a></span></span></div> </div> </div>
+    <script type="text/x-dot-template" id="newsCtnTpl">
+        <div class="breadcrumb"><h2>
+            <a href="#news/!newsType={{=it.newsType}}" class="breadcrumb-title">{{?it.type==0}}资讯公告{{?? it.type===1}}技术分享{{?}}</a>&nbsp;/&nbsp;<span class="breadcrumb-detail">{{=it.title}}</span>
+        </h2></div>
+        <div class="newsctn">
+            <div class="news-header f-cb">
+                <h1 class="title">{{=it.title}}</h1>
+                <div>
+                    <span class="author">{{=it.creator}}</span>
+                    <span class="date">发布于 {{=it.createDate}} </span>
+                    <span class="tag-list"></span>
+                </div>
+            </div>
+
+            <div class="news-body ckeditor-file">{{=it.content}}</div>
+        </div>
+    </script>
+</div>
+
+<div class="m-tabview no-border pd20 hidden" id="newsListContainer">
+    <div class="tvhd">
+        <ul>
+            <!--<li class="newest">最新</li>-->
+            <li data-tab-index="news">资讯公告</li>
+            <li data-tab-index="skill">技术分享</li>
+        </ul>
+    </div>
+    <div class="tvbd">
+        <ul>
+            <li class="news loading"></li>
+            <li class="skill loading"></li>
+        </ul>
+    </div>
+</div>
+<script type="text/x-dot-template" id="newsListTpl">
+    <table class="m-table m-table-row news-list-table ">
+    {{?it.newsList && it.newsList.length > 0 }}
+    {{~it.newsList :news:index}}
+
+    {{?it.newsType === "news" }}
+    <tr class="{{?news.isTop}}fixed-top{{?}} {{=it.newsType}}">
+        <td class="news-title"><a href="#news/!newsId={{=news.id}}">{{=news.title}}</a></td>
+        <td class="date">{{=news.createDate}}</td>
+    </tr>
+    {{??it.newsType === "skill" }}
+        <tr class="{{?news.isTop}}fixed-top{{?}} {{=it.newsType}}"><td><div>
+            <h1 class="news-title"><a href="#news/!newsId={{=news.id}}">{{=news.title}}</a></h1>
+            <p class="abstract"> {{?news.abstractContent}}{{=news.abstractContent}}{{?}} </p>
+            <div>
+                <span class="author">{{=news.creator}}</span>
+                <span class="date">发布于 {{=news.createDate}} </span>
+                <span class="tag-list"></span>
+            </div>
+        </div></td></tr>
+    {{?}}
+    {{~}}
+    {{??}}
+        <tr><td class="date"></td><td class="news-title">暂无资讯公告。</td></tr>
+    {{?}}
+    </table>
+
+    <div class="m-paginator">
+        <a href="javascript: void(0)" class="prev" {{?it.page - 1 <= 0}}disabled{{?}} data-page={{=it.page-1}}></a>
+        <input type="text" class="u-ipt u-ipt-mini current-page" value="{{?it.page >= 1}}{{=it.page}}{{??}}1{{?}}">&nbsp;&nbsp; / <span class="total-page" data-total-page={{=it.totalPage}}>{{=it.totalPage}}</span>
+        <a href="javascript: void(0)" class="next" {{?it.page + 1 > it.totalPage}}disabled{{?}} data-page={{=it.page+1}}></a>
+    </div>
+</script>
+</div>
+            <div class="g-ctn content apkpack"></div>
+            <div class="g-ctn content dumply"></div>
+            <div class="g-ctn content download"></div>
+            <div class="g-ctn content userCenter"></div>
+            <div class="g-ctn content errorPage"></div>
+
+            <div class="g-rside" style="">
+                <!-- TODO 小分辨率下的显示 -->
+                <a class="btn-contact-rside" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2929155840&amp;site=qq&amp;menu=yes" target="_blank"><div class="rside-tip-text">有任何技术问题，请联系我哦</div><div class="rside-tip-arr"></div></a>
+                <a class="btn-report-rside" href="javascript: void(0);"><div class="rside-tip-text">意见反馈</div><div class="rside-tip-arr"></div></a>
+                <a class="btn-go-top-rside isShown" href="javascript:void(0);"></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="g-ft">
+        <div class="footer">
+            <div>
+                <div class="links">
+                    <dl>
+                        <dt>友情链接</dt>
+                        <dd><a href="http://dun.163.com/" target="_blank">网易易盾</a></dd>
+                        <dd><a href="http://netease.im/" target="_blank">网易云信</a></dd>
+                        <dd><a href="http://qiyukf.com/" target="_blank">网易七鱼</a></dd>
+                        <dd><a href="https://c.163.com/" target="_blank">网易蜂巢</a></dd>
+                        <dd><a href="http://vcloud.163.com/" target="_blank">网易视频云</a></dd>
+                        <dd><a href="http://bbs.netease.im/" target="_blank">易云社区</a></dd>
+                    </dl>
+                </div>
+                <div class="contact">
+                    <dl>
+                        <dt>联系我们</dt>
+                        <dd><span class="qq">2929155840</span></dd>
+                        <dd><span class="email"><a href="mailto:yunbu@service.netease.com" target="_blank">yunbu@service.netease.com</a></span></dd>
+                        <dd><span class="address">杭州市滨江区网商路599号网易大厦</span></dd>
+                    </dl>
+                </div>
+                <div class="certification">
+                    <dl>
+                        <dt>权威认证</dt>
+                        <dd><span class="csa">CSA STAR Certification国际认证</span></dd>
+                        <dd><span class="iso">ISO27001信息安全管理体系国际认证</span></dd>
+                    </dl>
+                </div>
+                <div class="follow">
+                    <dl>
+                        <dt>关注我们</dt>
+                        <dd><span class="qrcode"><img src="./网易云捕 - Android Crash(崩溃)_iOS Crash(崩溃)_ANR_卡顿的监控分析及解决方案_files/qrCode.jpg" alt="微信公众号：网易云捕"></span></dd>
+                        <dd><span class="weibo"><a href="http://weibo.com/u/5771715337" target="_blank">微博关注网易云捕</a></span></dd>
+                    </dl>
+                </div>
+            </div>
+            <div class="copyright">
+                <span>网易公司版权所有 © 1997-2016</span>
+            </div>
+        </div>
+    </div>
+    <!--
+    <div class="fixed">
+        <a href="#" class="top"></a>
+        <a href="#" class="email"></a>
+    </div>
+    -->
+</div>
+
+<!-- 遮罩层 -->
+<div class="m-mask"></div>
+<!-- 弹出层 -->
+<div class="m-dialog m-dialog-login">
+    <div class="dlctn">
+        <div class="dlhd">
+            <h3 class="dltitle f-tac">通行证账号登录</h3>
+            <a class="dlclose" href="javascript:void(0);"></a>
+        </div>
+        <div class="dlbd">
+            <form action="https://reg.163.com/logins.jsp" autocomplete="off" method="post">
+                <!--
+                <div class="account-type">
+                    <span><a href="javascript:void(0);" id="neteaseCloudAccount">网易云帐号</a></span>
+                    <em>|</em>
+                    <span><a class="active" href="javascript:void(0);" id="neteaseUrsAccount">网易通行证</a></span>
+                    --
+                        <em>|</em>
+                        <span><a href="" id="neteaseOpenIdAccount">OPEN ID</a></span>
+                    --
+                </div>
+                -->
+                <div class="input-container">
+                    <input type="text" name="username" placeholder="网易通行证账号" autocomplete="off" autofocus="">
+                </div>
+                <div class="error-tip-container">
+                    <span class="login-tip error-reason hidden">格式不正确</span>
+                </div>
+                <div class="input-container">
+                    <input type="password" style="display:none">
+                    <input type="password" name="password" placeholder="密码">
+                </div>
+                <div class="error-tip-container">
+                    <span class="login-tip error-reason hidden">请填写正确的密码</span>
+                </div>
+
+                <div>
+                    <span class="login-tip common-error hidden">帐号密码错误</span>
+                    <label><input type="hidden" name="savelogin" value="1"></label>
+                </div>
+                <div>
+                    <label class="lab"></label>
+
+                    <div class="control">
+                        <button type="submit" class="u-btn u-btn-login">登录</button>
+                    </div>
+                </div>
+                <div class="f-cb register">
+                    <span class="f-fl"><a href="http://reg.163.com/resetpwd/index.do" id="forgetPwdUrl">忘记密码？</a></span>
+                    <span class="f-fr"><a href="http://reg.163.com/reg/reg.jsp?product=apkpack_apk_aq" id="registerUrl">没有帐号？免费注册</a></span>
+                </div>
+                <input type="hidden" name="type" value="1">
+                <input type="hidden" name="url" value="http://apk.aq.163.com:8181/ursLogin.do?currentHash=">
+                <input type="hidden" name="product" value="apkpack_apk_aq">
+
+                <div class="suggest">
+                    <ul></ul>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="m-dialog m-dialog-report">
+    <div class="dlctn">
+        <div class="dlhd">
+            <h3 class="dltitle f-tac">意见反馈</h3>
+            <a class="dlclose" href="javascript:void(0);"></a>
+        </div>
+        <div class="dlbd">
+            <form id="reportForm" class="m-form" action="http://crash.163.com/feedback/report.do" autocomplete="off" method="post" enctype="multipart/form-data">
+                <!--
+                <div class="fitem">
+                    <label class="lab">反馈类别：</label>
+                    <div class="control">
+                        <div class="m-radio">
+                            <label><input type="radio" name="type" value="0" checked><i></i>建议</label>
+                            <label><input type="radio" name="type" value="1"><i></i>投诉</label>
+                        </div>
+                    </div>
+                </div>
+                -->
+                <div class="fitem">
+                    <label class="lab required">反馈内容：</label>
+                    <div class="control">
+                        <textarea name="content" id="reportContent" cols="30" rows="10" placeholder="欢迎提出您的建议或在使用过程中遇到的问题，建议上传相关截图，以便我们第一时间帮您解决问题。感谢您对网易云捕的支持！"></textarea>
+                        <p class="report-tip">反馈内容为必填项，且不超过1000个字符</p>
+                    </div>
+                </div>
+                <div class="fitem">
+                    <label class="lab" for="reportEmail">联系方式：</label>
+                    <div class="control">
+                        <input type="text" id="reportEmail" class="u-ipt3" name="reportEmail" placeholder="Email / QQ / 手机等" value="">
+                    </div>
+                </div>
+                <div class="fitem">
+                    <label class="lab">相关图片：</label>
+                    <div class="control">
+                        <span class="u-btn btn-upload">添加</span>
+                        <span class="image-number"><span class="selected-number">0</span>/5</span>
+                        <p class="report-tip">支持gif、jpg、png格式，且单个文件不超过500KB, 总计不超过5张图片</p>
+                        <div class="preview-container"></div>
+                    </div>
+                </div>
+                <input type="submit" class="u-btn" id="submitReportBtn" value="确定">
+            </form>
+            <input type="file" name="reportFile" multiple="" accept="image/gif, image/jpeg, image/png, image/jpg" class="hidden">
+        </div>
+    </div>
+</div>
+
+<script id="niceAlertTpl" type="text/x-dot-template">
+    <div class="m-dialog m-dialog-niceAlert niceAlert">
+        <div class="dlctn">
+            <div class="dlbd">
+                <div class="msg">
+                    <p class="main-text">{{=it.str.alertContent || "一定是点击姿势不对，请您换个姿势再点击"}}</p>
+                    <p class="sub-text">{{=it.str.subContent || "如有问题请联系技术支持"}}</p>
+                </div>
+                <div class="input-group"></div>
+            </div>
+            <div class="dlft">
+                <div class="btns">
+                    {{?it.btns.ok}}
+                    <a href="javascript:;" class="u-btn btn-ok">{{=it.btns.okStr || '确定'}}</a>
+                    {{?}}
+
+                    {{?it.btns.cancel}}
+                    <a href="javascript:;" class="u-btn btn-cancel">{{=it.btns.cancelStr || '取消'}}</a>
+                    {{?}}
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<div class="m-dialog m-dialog-upload-sdk">
+    <div class="dlctn">
+        <div class="dlhd">
+            <h3 class="dltitle">更新 SDK</h3>
+            <a class="dlclose" href="javascript:void(0);"></a>
+        </div>
+        <div class="dlbd">
+            <form class="m-form" action="http://crash.163.com/uploadsdkfile.do" method="post" enctype="multipart/form-data">
+                <div class="fitem">
+                    <label class="lab">SDK 类型</label>
+
+                    <div class="control">
+                        <div class="m-select3">
+                            <input class="hidden" type="text" name="sdkType">
+                                <span class="f-ib u-ipt3 show-select-ctn">
+                                    <span class="selected-ctn">请选择</span>
+                                    <span class="iarr"></span>
+                                </span>
+
+                            <div class="m-select-ctn hidden">
+                                <ul>
+                                    <li data-option-index="java">Java SDK</li>
+                                    <li data-option-index="ndk">NDK SDK</li>
+                                    <li data-option-index="android_demo">Android Demo</li>
+                                    <li data-option-index="ios">iOS SDK</li>
+                                    <li data-option-index="ios_extension">iOS Extension SDK</li>
+                                    <li data-option-index="watch">watchOS SDK</li>
+                                    <li data-option-index="ios_symbol">iOS 符号表工具</li>
+                                    <li data-option-index="u3d">Unity 3D SDK</li>
+                                    <li data-option-index="cocos">Cocos 2D SDK</li>
+                                    <li data-option-index="iOS_demo">iOS Demo</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fitem">
+                    <label class="lab">Version</label>
+                    <div class="control">
+                        <input name="version" class="u-ipt3" type="text" placeholder="SDK 版本">
+                    </div>
+                </div>
+                <div class="fitem">
+                    <label class="lab">SDK</label>
+
+                    <div class="control">
+                        <input type="file" name="file" class="hidden" accept="application/zip">
+                        <span class="f-ib file-upload-group"><a href="javascript:;" class="file-trigger">选择文件</a><span class="file-info"></span><span class="progress"></span></span>
+                    </div>
+                </div>
+                <input type="hidden" name="token">
+                <div class="fitem">
+                    <label class="lab"></label>
+
+                    <div class="control">
+                        <a class="u-btn u-btn-lg u-btn-c1" id="btnUploadSdkOK">确定</a>
+                        <span class="form-tip"></span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="m-dialog m-dialog-upload-sys-symbol">
+    <div class="dlctn">
+        <div class="dlhd">
+            <h3 class="dltitle">更新系统符号表</h3>
+            <a class="dlclose" href="javascript:void(0);"></a>
+        </div>
+        <div class="dlbd">
+            <form class="m-form" action="http://crash.163.com/.do" method="post" enctype="multipart/form-data">
+                <div class="fitem">
+                    <label class="lab">系统类型</label>
+
+                    <div class="control">
+                        <div class="m-select3">
+                            <input class="hidden" type="text" name="osType">
+                            <span class="f-ib u-ipt3 show-select-ctn">
+                                <span class="selected-ctn">请选择</span>
+                                <span class="iarr"></span>
+                            </span>
+
+                            <div class="m-select-ctn hidden">
+                                <ul>
+                                    <li data-option-index="iOS">iOS</li>
+                                    <li data-option-index="android">android</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fitem">
+                    <label class="lab">系统版本</label>
+                    <div class="control">
+                        <div class="m-select3">
+                            <input class="hidden" type="text" name="osVersion">
+                            <span class="f-ib u-ipt3 show-select-ctn">
+                                <span class="selected-ctn">请选择</span>
+                                <span class="iarr"></span>
+                            </span>
+
+                            <div class="m-select-ctn hidden">
+                                <ul></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fitem">
+                    <label class="lab">符号表</label>
+
+                    <div class="control">
+                        <input type="file" name="file" class="hidden" accept="application/zip">
+                        <span class="f-ib file-upload-group"><a href="javascript:;" class="file-trigger">选择文件</a><span class="file-info"></span><span class="progress"></span></span>
+                    </div>
+                </div>
+                <input type="hidden" name="token">
+                <div class="fitem">
+                    <label class="lab"></label>
+
+                    <div class="control">
+                        <a class="u-btn u-btn-lg u-btn-c1" id="btnUploadSysSymbolOK">确定</a>
+                        <span class="form-tip">符号表文件不能为空</span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- curs -->
+<script type="text/javascript" src="./网易云捕 - Android Crash(崩溃)_iOS Crash(崩溃)_ANR_卡顿的监控分析及解决方案_files/ucmsg.js"></script>
+<!-- DA -->
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA1457422485373'], ['_setLocalGifPath', '/UA1457422485373/__utm.gif'], ['_setLocalServerMode']);
+    _gaq.push(['_addOrganic', 'baidu', 'word']);
+    _gaq.push(['_addOrganic', 'soso', 'w']);
+    _gaq.push(['_addOrganic', 'youdao', 'q']);
+    _gaq.push(['_addOrganic', 'sogou', 'query']);
+    _gaq.push(['_addOrganic', 'so.360.cn', 'q']);
+    _gaq.push(['_trackPageview']);
+    _gaq.push(['trackPageLoadTime']);
+    (function () {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = '/ga.js?bust=1462247727835';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+
+</body></html>

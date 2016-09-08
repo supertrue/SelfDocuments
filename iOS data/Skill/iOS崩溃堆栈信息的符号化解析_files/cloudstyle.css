@@ -1,0 +1,78 @@
+#C-URS-LOGIN .curs-lg-bd,#C-URS-LOGIN .uc-tlt,#C-URS-LOGIN .curs-m-bd,#C-URS-LOGIN .curs-m-form,#C-URS-LOGIN .curs-m-ipt{margin:0;padding:0;outline:none;font-family:"Microsoft YaHei","微软雅黑","宋体",helvetica,"Hiragino Sans GB";}
+#C-URS-LOGIN img{border:0;}
+#C-URS-LOGIN label{cursor:default;}
+#C-URS-LOGIN input::-ms-clear,#C-URS-LOGIN input::-ms-reveal{display:none;}
+#C-URS-LOGIN input{font:14px "Microsoft YaHei","微软雅黑","宋体",helvetica,"Hiragino Sans GB";outline:0;width:290px;height:45px;color:#333;border:none;line-height:50px;*border:0;background-color:#fcfdff;padding-left:11px;}
+#C-URS-LOGIN input::-webkit-input-placeholder{font-weight:normal;color:#cccccc;font-size:14px;}
+#C-URS-LOGIN input:-moz-placeholder{font-weight:normal;color:#cccccc;font-size:14px;}
+#C-URS-LOGIN input:-ms-input-placeholder{font-weight:normal;color:#cccccc;font-size:14px;}
+#C-URS-LOGIN input::-moz-placeholder{font-weight:normal;color:#cccccc;font-size:14px;}
+#C-URS-LOGIN input:-webkit-autofill,textarea:-webkit-autofill,select:-webkit-autofill{-webkit-box-shadow:0 0 0 999px #fff inset;}
+#C-URS-LOGIN input::-ms-clear{display:none;}
+#C-URS-LOGIN input::-ms-reveal{display:none;}
+#C-URS-LOGIN .curs-input:focus{border:none;outline:none;*border:0;*outline:0;}
+#C-URS-LOGIN a,#C-URS-LOGIN a:active,#C-URS-LOGIN a:hover,#C-URS-LOGIN a:visited{color:#538edb;text-decoration:none;outline:none;}
+#C-URS-LOGIN .clearboth{clear:both;}
+#C-URS-LOGIN .f-cb{zoom:1;}
+#C-URS-LOGIN .f-cb:after{display:block;clear:both;visibility:hidden;height:0;overflow:hidden;content:".";}
+#C-URS-LOGIN .curs-u-logo-img1,.curs-u-logo-img2,.curs-u-close{height:21px;width:21px;background:url("https://yun.reg.163.com/cloud/out/img/sprite_yun_20160531.png") -9999px -9999px no-repeat;_background:url("https://yun.reg.163.com/cloud/out/img/sprite_yun_20160531.png") -9999px -9999px no-repeat;}
+#C-URS-LOGIN .f-dn{display:none !important;}
+#C-URS-LOGIN .f-ib{display:inline-block !important;}
+#C-URS-LOGIN .curs-lg-cover{position:fixed;_position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;background:#000;-moz-opacity:0.4;-khtml-opacity:0.4;filter:alpha(opacity = 40);opacity:0.4;z-index:1000;}
+#C-URS-LOGIN .curs-lg-bd{position:fixed;z-index:10000;left:50%;top:0;margin-left:-217px;margin-top:120px;border-radius:2px;background-color:#fcfdff;width:434px;min-height:431px;}
+#C-URS-LOGIN .curs-lg-inbd{position:relative;width:434px;min-height:431px;background-color:#fcfdff;}
+#C-URS-LOGIN  .curs-m-toast{position:absolute;width:100%;top:-20px;text-align:center;}
+#C-URS-LOGIN  .curs-m-toast .curs-txt{display:inline-block;*display:inline-block;*zoom:1;height:auto;width:315px;padding-top:14px;padding-bottom:12px;color:#fff;font-size:14px;text-align:center;line-height:18px;background:#4c5359;}
+#C-URS-LOGIN  .curs-m-tlt{padding-top:25px;}
+#C-URS-LOGIN  .curs-m-tlt .uc-tlt{color:#333;font-size:20px;text-align:center;text-shadow:0px 0px 1px #aaa;font-weight:normal;}
+#C-URS-LOGIN  .curs-m-tlt .curs-u-close{position:absolute;height:13px;width:13px;background-position:-26px -41px;top:13px;right:13px;cursor:pointer;transition:transform .5s;}
+#C-URS-LOGIN  .curs-m-tlt .curs-u-close:hover{
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);   
+}
+#C-URS-LOGIN .curs-m-bd{padding-top:16px;}
+#C-URS-LOGIN .curs-m-form .curs-b-btn{height:48px;width:350px;margin:0 auto;}
+#C-URS-LOGIN .curs-m-form .curs-m-ipt{zoom:1;height:50px;line-height:50px;margin-top:19px;}
+#C-URS-LOGIN .curs-m-form .curs-m-ipt:after{display:block;clear:both;visibility:hidden;height:0;overflow:hidden;content:".";}
+#C-URS-LOGIN .curs-m-form .curs-m-ipt .curs-u-logo{float:left;margin-left:15px;margin-top:14px;}
+#C-URS-LOGIN .curs-m-form .curs-m-ipt .curs-u-logo .curs-u-logo-img1{background-position:0 -3px;}
+#C-URS-LOGIN .curs-m-form .curs-m-ipt .curs-u-logo .curs-u-logo-img2{background-position:-23px -3px;}
+#C-URS-LOGIN .curs-m-form .curs-m-ipt .curs-u-ipt{position:relative;border:1px solid #d8e1f0;border-radius:2px;margin:0 auto;height:100%;width:350px;}
+
+#C-URS-LOGIN .curs-m-form .curs-m-ipt .curs-u-ipt .placeholder{position:absolute;color:#999;left:46px;font-size:14px;}
+#C-URS-LOGIN .curs-m-form .curs-m-ipt .curs-u-ipt-error{border:1px solid #ff5c57;}
+#C-URS-LOGIN .curs-m-form .curs-m-ipt .curs-u-ipt-active{border:1px solid #58a2f7;}
+#C-URS-LOGIN .curs-m-form .curs-m-ipt .curs-u-tip{position:absolute;z-index:11;background:#fff;right:10px;top:14px;}
+#C-URS-LOGIN .curs-m-form .curs-m-ipt .curs-u-tip .curs-u-clear{background:url("https://yun.reg.163.com/cloud/out/img/sprite_yun_20160531.png") -9999px -9999px no-repeat;_background:url("https://yun.reg.163.com/cloud/out/img/sprite_yun_20160531.png") -9999px -9999px no-repeat;position:absolute;width:20px;height:20px;top:0;right:0;cursor:pointer;background-position:0 -27px;opacity:0.7;}
+#C-URS-LOGIN .curs-m-form .curs-m-ipt .curs-u-tip .curs-u-clear:hover{opacity:1;}
+#C-URS-LOGIN .curs-m-form .curs-m-ipt .curs-u-ipt-small{position:relative;}
+#C-URS-LOGIN .curs-m-form .curs-m-ipt .curs-u-ipt-small input{width:145px;padding-left:16px;}
+#C-URS-LOGIN .curs-m-form .curs-m-ipt .curs-u-ipt-small .curs-u-tip{right:110px;}
+#C-URS-LOGIN .curs-m-form .curs-m-ipt .xx-curs-i-vcode{float:right;height:36px;width:97px;margin-top:6px;margin-right:8px;cursor:pointer;}
+#C-URS-LOGIN .curs-m-form .xx-curs-m-ipt .xx-curs-i-vcode img{height:36px;width:97px;}
+#C-URS-LOGIN .curs-m-form .curs-m-pop{height:16px;width:350px;margin:20px auto;}
+#C-URS-LOGIN .curs-m-form .curs-m-pop .curs-i{display:block;float:left;height:17px;width:16px;float:left;background:url("https://yun.reg.163.com/cloud/out/img/sprite_yun_20160531.png") -9999px -9999px no-repeat;_background:url("https://yun.reg.163.com/cloud/out/img/sprite_yun_20160531.png") -9999px -9999px no-repeat;background-position:-25px -25px;}
+#C-URS-LOGIN .curs-m-form .curs-m-pop .curs-u-info{display:block;float:left;padding-left:4px;font-size:12px;color:#ff5c57;}
+#C-URS-LOGIN .curs-m-form .curs-m-btn{cursor:pointer;}
+#C-URS-LOGIN .curs-m-form .curs-m-btn .curs-b-btn{display:block;line-height:50px;text-align:center;font-size:18px;}
+#C-URS-LOGIN .curs-m-form .curs-m-btn .curs-btn-blue:hover{background-color:#4079b3;}
+#C-URS-LOGIN .curs-m-form .curs-m-btn .curs-btn-blue{background-color:#5494db;color:#fff;}
+#C-URS-LOGIN .curs-m-form .curs-m-btn .curs-btn-blue-dis{background-color:#b5d6f7;color:#fff;}
+#C-URS-LOGIN .curs-m-form .curs-m-btn .curs-btn-blue-dis:hover{background-color:#b5d6f7;color:#fff;}
+#C-URS-LOGIN .curs-m-link{height:auto;width:350px;margin:0 auto;text-align:center;padding-top:10px;padding-bottom:20px;}
+#C-URS-LOGIN .curs-m-link .curs-u-link{font-size:14px;color:#999;zoom:1;}
+#C-URS-LOGIN .curs-m-link .curs-u-link {color:#538edb;}
+#C-URS-LOGIN .curs-m-link .curs-u-link .curs-lk-left{display:block;float:left;cursor:pointer;}
+#C-URS-LOGIN .curs-m-link .curs-u-link .curs-lk-right{display:block;float:right;cursor:pointer;}
+#C-URS-LOGIN .curs-m-link .curs-u-link:after{display:block;clear:both;visibility:hidden;height:0;overflow:hidden;content:".";}
+#C-URS-LOGIN .curs-m-ft .curs-u-split{height:1px;width:368px;background-color:#f5f8fb;margin:0 auto;margin-top:33px;}
+#C-URS-LOGIN .curs-m-form .xx-curs-m-check{height:28px;width:350px;margin:0 auto;font-size:12px;color:#ccc;line-height:1.14;}
+#C-URS-LOGIN .curs-m-form .xx-curs-m-check .xx-curs-u-agr{height:13px;width:13px;opacity:0;filter:alpha(opacity = 0);cursor:pointer;}
+#C-URS-LOGIN .curs-m-form .xx-curs-m-check .xx-curs-u-checkbox,#C-URS-LOGIN .curs-m-form .xx-curs-m-check .xx-curs-u-tip{display:block;float:left;}
+#C-URS-LOGIN .curs-m-form .xx-curs-m-check .xx-curs-u-checkbox{margin-top:2px;background:url("https://yun.reg.163.com/cloud/out/img/sprite_yunreg_20160627.png") -9999px -9999px no-repeat;height:13px;width:13px;border-radius:2px;background-color:#fff;border:1px solid #bec4cc;border-radius:2px;}
+#C-URS-LOGIN .curs-m-form .xx-curs-m-check .xx-curs-u-checkbox-selected{background-position:-6px -84px;background-color:#4d92d6;border:1px solid #4d92d6;border-radius:2px;}
+#C-URS-LOGIN .curs-m-form .xx-curs-m-check .xx-curs-u-tip{padding-left:4px;padding-top:3px;}
+#C-URS-LOGIN .curs-m-form .xx-curs-m-check .xx-curs-u-tip a{color:#538edb;}

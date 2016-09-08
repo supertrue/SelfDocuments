@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)http://www.jianshu.com/p/bedf090f1416 -->
+<html class=" js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="description" content="一、UITabBarController的初印象UITabBarController和UINavigationController类似,UITabBarController也可以轻松地管理多个控制器,轻松完成控制器之间的切换,典型的例子就是QQ、微信等应⽤。但是.前者其管理的视图一直存在,而后者在pop后会销毁掉,释放内存.注意:UITabBarController通常作为整个程序的rootViewController，而且不能添加到别的containerviewController中。.二、UITabBarController的使用​：​1、使用步骤：...">
+  <meta property="wb:webmaster" content="294ec9de89e7fadb">
+  <meta property="qc:admins" content="104102651453316562112116375">
+  <meta property="qc:admins" content="11635613706305617">
+  <meta property="qc:admins" content="1163561616621163056375">
+  <meta name="google-site-verification" content="cV4-qkUJZR6gmFeajx_UyPe47GW9vY6cnCrYtCHYNh4">
+  <meta name="google-site-verification" content="HF7lfF8YEGs1qtCE-kPml8Z469e2RHhGajy6JPVy5XI">
+  <meta http-equiv="mobile-agent" content="format=html5; url=http://www.jianshu.com/p/bedf090f1416">
+    <!--  Meta for Smart App Banner -->
+  <meta name="apple-itunes-app" content="app-id=888237539, app-argument=jianshu://notes/4952231">
+  <!-- End -->
+
+  <!--  Meta for Twitter Card -->
+  <meta content="summary" property="twitter:card">
+  <meta content="@jianshucom" property="twitter:site">
+  <meta content="iOS-UITabBarViewController大总结" property="twitter:title">
+  <meta content="一、UITabBarController的初印象UITabBarController和UINavigationController类似,UITabBarController也可以轻松地管理多个控制器,轻松完成控制器之间的切换,典型的例子就是QQ、微信等应⽤。但是.前者其管理的视图一直存在,而后者在pop后会销毁掉,释放内存.注意:UITabBarController通常作为整个程序的rootViewController，而且不能添加到别的containerviewController中。.二、UITabBarController的使用​：​1、使用步骤：..." property="twitter:description">
+  <meta content="http://www.jianshu.com/p/bedf090f1416" property="twitter:url">
+  <!-- End -->
+
+  <!--  Meta for OpenGraph -->
+  <meta property="fb:app_id" content="865829053512461">
+  <meta property="og:site_name" content="简书">
+  <meta property="og:title" content="iOS-UITabBarViewController大总结">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="http://www.jianshu.com/p/bedf090f1416">
+  <meta property="og:description" content="一、UITabBarController的初印象UITabBarController和UINavigationController类似,UITabBarController也可以轻松地管理多个控...">
+  <!-- End -->
+
+  <!--  Meta for Facebook Applinks -->
+  <meta property="al:ios:url" content="jianshu://notes/4952231">
+  <meta property="al:ios:app_store_id" content="888237539">
+  <meta property="al:ios:app_name" content="简书">
+
+  <meta property="al:android:url" content="jianshu://notes/4952231">
+  <meta property="al:android:package" content="com.jianshu.haruki">
+  <meta property="al:android:app_name" content="简书">
+  <!-- End -->
+
+  <title>iOS-UITabBarViewController大总结 - 简书</title>
+  <meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="7sagIGHsB5Wo3CIq8SumCxp+bdI8JNoZoQTMMT1XvjkaYZo/Lf9g4wfCWOTLEH9UC2a1jJKMi1KwDqKVMa8VmQ==">
+  <!--[if lte IE 8]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <link rel="stylesheet" media="all" href="./iOS-UITabBarViewController大总结 - 简书_files/base-28859e35d389885d08837bc971ff742c.css">
+
+    <link rel="stylesheet" media="all" href="./iOS-UITabBarViewController大总结 - 简书_files/reading-note-cc35f3caf1b79498ea4800b856bcf8a6.css">
+  <link rel="stylesheet" media="all" href="./iOS-UITabBarViewController大总结 - 简书_files/base-read-mode-64acccf6966299cfa3d580140a2582fe.css">
+  <script type="text/javascript" async="" src="./iOS-UITabBarViewController大总结 - 简书_files/ga.js"></script><script type="text/javascript" async="" src="./iOS-UITabBarViewController大总结 - 简书_files/vds.js"></script><script src="./iOS-UITabBarViewController大总结 - 简书_files/modernizr-613ea63b5aa2f0e2a1946e9c28c8eedb.js"></script>
+  <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+  <!--[if IE 8]><link rel="stylesheet" media="all" href="http://cdn-qn0.jianshu.io/assets/scaffolding/for_ie-7f1c477ffedc13c11315103e8787dc6c.css" /><![endif]-->
+  <!--[if lt IE 9]><link rel="stylesheet" media="all" href="http://cdn-qn0.jianshu.io/assets/scaffolding/for_ie-7f1c477ffedc13c11315103e8787dc6c.css" /><![endif]-->
+  <link href="http://baijii-common.b0.upaiyun.com/icons/favicon.ico" rel="icon">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn-qn0.jianshu.io/assets/apple-touch-icons/57-b426758a1fcfb30486f20fd073c3b8ec.png" sizes="57x57">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn-qn0.jianshu.io/assets/apple-touch-icons/72-feca4b183b9d29fd188665785dc7a7f1.png" sizes="72x72">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn-qn0.jianshu.io/assets/apple-touch-icons/76-ba757f1ad3421192ce7192170393d2b0.png" sizes="76x76">
+      <link rel="apple-touch-icon-precomposed" href="./iOS-UITabBarViewController大总结 - 简书_files/114-8dae53b3bcea3f06bb139e329d1edab3.png" sizes="114x114">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn-qn0.jianshu.io/assets/apple-touch-icons/120-fa315ee0177dba4c55d4f66d4129b47f.png" sizes="120x120">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn-qn0.jianshu.io/assets/apple-touch-icons/152-052f5799bec8fb3aa624bdc72ef5bd1d.png" sizes="152x152">
+
+    <meta id="current_user_id" value="80164">
+    <meta id="current_user_slug" value="8237e1754864">
+
+  <!-- Growing.io -->
+    <script type="text/javascript">
+    var _vds = _vds || [];
+    window._vds = _vds;
+    (function(){
+      _vds.push(['setAccountId', '81aa392bc97abf45']);
+      (function() {
+        var vds = document.createElement('script');
+        vds.type='text/javascript';
+        vds.async = true;
+        vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(vds, s);
+      })();
+    })();
+  </script>
+
+<style type="text/css"></style></head>
+
+<body class="post output zh cn mac reader-day-mode reader-font2" data-js-module="note-show" data-locale="zh-CN">
+  
+  <div class="navbar navbar-jianshu shrink" style="">
+  <div class="dropdown">
+    <a class="dropdown-toggle logo" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="javascript:void(0)">
+      简
+    </a>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+      <li><a href="http://www.jianshu.com/"><i class="fa fa-home"></i> 首页</a></li>
+      <li><a href="http://www.jianshu.com/collections"><i class="fa fa-th"></i> 专题</a></li>
+      <li><a href="http://www.jianshu.com/user_invitations"><i class="fa fa-money"></i> 发钱啦</a></li>
+        <li><a href="http://www.jianshu.com/timeline"><i class="fa fa-users"></i> 简友圈</a></li>
+        <li><a href="http://www.jianshu.com/writer#/"><i class="fa fa-pencil"></i> 写文章</a></li>
+    </ul>
+  </div>
+</div>
+<div class="navbar-user">
+    <a class="user avatar" data-toggle="dropdown" href="javascript:void(0)">
+      <img src="./iOS-UITabBarViewController大总结 - 简书_files/a97d9a23365b" alt="100"> <b class="caret"></b>
+</a>    <ul class="dropdown-menu arrow-top" role="menu" aria-labelledby="dLabel">
+      <li>
+  <a href="http://www.jianshu.com/writer#/"><i class="fa fa-pencil"></i> 写文章</a>
+</li>
+<li>
+  <a target="_blank" href="http://www.jianshu.com/users/8237e1754864"><i class="fa fa-user"></i> 我的主页</a>
+</li>
+  <li>
+    <a href="http://www.jianshu.com/favourites">
+      <i class="fa fa-heart"></i> 我喜欢的
+</a>  </li>
+  <li>
+    <a href="http://www.jianshu.com/bookmarks">
+      <i class="fa fa-bookmark"></i> 我的收藏
+</a>  </li>
+  <li>
+    <a href="http://www.jianshu.com/notifications">
+      <i class="fa fa-bell"></i> 提醒
+</a>  </li>
+  <li>
+    <a href="http://www.jianshu.com/chats">
+      <i class="fa fa-envelope"></i> 简信
+</a>  </li>
+  <li><a href="http://www.jianshu.com/settings"><i class="fa fa-cogs"></i> 设置</a></li>
+  <li>
+    <a href="http://www.jianshu.com/wallet">
+      <i class="fa fa-credit-card"></i> 钱包
+</a>  </li>
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="http://www.jianshu.com/p/bedf090f1416#"><i class="fa fa-question-circle"></i> 帮助</a>
+    <ul class="dropdown-menu">
+      <li><a href="http://www.jianshu.com/notebooks/547/latest" target="_blank">帮助中心</a></li>
+      <li><a target="_blank" href="http://www.jianshu.com/contact">联系我们</a></li>
+    </ul>
+  </li>
+  <li>
+    <a rel="nofollow" data-method="DELETE" href="http://www.jianshu.com/sign_out">
+      <i class="fa fa-sign-out"></i> 登 出
+</a>  </li>
+
+    </ul>
+    <a class="daytime set-view-mode pull-right" href="javascript:void(0)"><i class="fa fa-moon-o"></i></a>
+</div>
+<div class="navbar navbar-jianshu expanded">
+  <div class="dropdown">
+      <a class="active logo" role="button" data-original-title="个人主页" data-container="div.expanded" href="http://www.jianshu.com/">
+        <b>简</b><i class="fa fa-home"></i><span class="title">首页</span>
+</a>      <a data-toggle="tooltip" data-placement="right" data-original-title="专题" data-container="div.expanded" href="http://www.jianshu.com/collections">
+        <i class="fa fa-th"></i><span class="title">专题</span>
+</a>        <a data-toggle="tooltip" data-placement="right" data-original-title="简友圈" data-container="div.expanded" href="http://www.jianshu.com/timeline">
+          <i class="fa fa-users"></i><span class="title">简友圈</span>
+</a>        <a data-toggle="tooltip" data-placement="right" data-original-title="写文章" data-container="div.expanded" href="http://www.jianshu.com/writer#/">
+          <i class="fa fa-pencil"></i><span class="title">写文章</span>
+</a>    <a class="ad-selector" href="http://www.jianshu.com/apps">
+      <i class="fa fa-mobile"></i><span class="title">下载手机应用</span>
+</a>    <div class="ad-container ad-container-signed">
+      <div class="ad-pop">
+        <img class="ad-logo" src="./iOS-UITabBarViewController大总结 - 简书_files/114-8dae53b3bcea3f06bb139e329d1edab3.png" alt="114">
+        <p class="ad-title">简书</p>
+        <p class="ad-subtitle">交流故事，沟通想法</p>
+        <img class="ad-qrcode" src="./iOS-UITabBarViewController大总结 - 简书_files/download-app-qrcode-053849fa25f9b44573ef8dd3c118a20f.png" alt="Download app qrcode">
+        <div>
+          <a class="ad-link" href="https://itunes.apple.com/cn/app/jian-shu/id888237539?ls=1&amp;mt=8">iOS</a>·
+          <a class="ad-link" href="http://downloads.jianshu.io/apps/haruki/JianShu-1.11.1.apk">Android</a>
+        </div>
+      </div> 
+    </div>
+  </div>
+  <div class="nav-user">
+      <a data-toggle="tooltip" data-placement="right" data-original-title="我的主页" data-container="div.expanded" href="http://www.jianshu.com/users/8237e1754864">
+        <i class="fa fa-user"></i><span class="title">我的主页</span>
+</a>
+        <a data-toggle="tooltip" data-placement="right" data-original-title="我的收藏" data-container="div.expanded" href="http://www.jianshu.com/bookmarks">
+          <i class="fa fa-bookmark"></i><span class="title">我的收藏</span>
+</a>
+        <a data-toggle="tooltip" data-placement="right" data-original-title="提醒" data-container="div.expanded" href="http://www.jianshu.com/notifications">
+
+          <i id="notify-icon" class="fa fa-bell"></i><span class="title">提醒</span>
+</a>
+        <a data-toggle="tooltip" data-placement="right" data-original-title="简信" data-container="div.expanded" href="http://www.jianshu.com/chats">
+            <i id="chat-message-icon" class="fa fa-envelope"></i><span class="title">简信</span>
+</a>
+        <a href="http://www.jianshu.com/p/bedf090f1416#view-mode-modal" data-toggle="modal"><i class="fa fa-font"></i><span class="title">显示模式</span></a>
+
+        <a data-toggle="tooltip" data-placement="right" data-original-title="设置" data-container="div.expanded" href="http://www.jianshu.com/settings">
+          <i class="fa fa-cogs"></i><span class="title">设置</span>
+</a>
+        <a data-toggle="tooltip" data-placement="right" data-original-title="登 出" data-container="div.expanded" rel="nofollow" data-method="delete" href="http://www.jianshu.com/sign_out">
+          <i class="fa fa-sign-out"></i><span class="title">登 出</span>
+</a>
+          </div>
+  </div>
+
+  
+    <div class="fixed-btn">
+    <a class="go-top" href="http://www.jianshu.com/p/bedf090f1416#"> <i class="fa fa-angle-up"></i></a>
+    <a class="qrcode" data-target="#bottom-qrcode" data-toggle="modal" href="javascript:void(0)"><i class="fa fa-qrcode"></i></a>
+    <a class="writer" href="http://www.jianshu.com/writer#/" data-toggle="tooltip" data-placement="left" title="" data-original-title="写篇文章"><i class="fa fa-pencil"></i></a>
+    <!-- qrcode modal -->
+    <div id="bottom-qrcode" class="modal panel-modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+      <h4>下载简书移动应用</h4>
+      <div class="panel-body"><img src="./iOS-UITabBarViewController大总结 - 简书_files/download-app-qrcode-053849fa25f9b44573ef8dd3c118a20f.png" alt="Download app qrcode"></div>
+    </div>
+  </div>
+
+
+  <div id="show-note-container">
+    
+<div class="post-bg" id="flag">
+  <div class="wrap-btn" style="top: -1px;">
+    <!-- Notebook and collections button upper left -->
+      <div class="article-related pull-left">
+          <a class="collection-menu-btn" data-toggle="modal" data-target="#collection-menu" href="javascript:void(null);">
+            <i class="fa fa-th"></i>
+</a>          <a class="notebooks-menu-btn" data-toggle="modal" data-target="#notebooks-menu" href="javascript:void(null);"><i class="fa fa-list-ul"></i></a>
+        <div class="related-avatar-group activities"></div>
+      </div>
+    <!-- ******* -->
+
+      <a class="user avatar" data-toggle="dropdown" href="javascript:void(0)">
+    <img src="./iOS-UITabBarViewController大总结 - 简书_files/a97d9a23365b" alt="100"> <b class="caret"></b>
+</a>  <ul class="dropdown-menu arrow-top" role="menu" aria-labelledby="dLabel">
+    <li>
+  <a href="http://www.jianshu.com/writer#/"><i class="fa fa-pencil"></i> 写文章</a>
+</li>
+<li>
+  <a target="_blank" href="http://www.jianshu.com/users/8237e1754864"><i class="fa fa-user"></i> 我的主页</a>
+</li>
+  <li>
+    <a href="http://www.jianshu.com/favourites">
+      <i class="fa fa-heart"></i> 我喜欢的
+</a>  </li>
+  <li>
+    <a href="http://www.jianshu.com/bookmarks">
+      <i class="fa fa-bookmark"></i> 我的收藏
+</a>  </li>
+  <li>
+    <a href="http://www.jianshu.com/notifications">
+      <i class="fa fa-bell"></i> 提醒
+</a>  </li>
+  <li>
+    <a href="http://www.jianshu.com/chats">
+      <i class="fa fa-envelope"></i> 简信
+</a>  </li>
+  <li><a href="http://www.jianshu.com/settings"><i class="fa fa-cogs"></i> 设置</a></li>
+  <li>
+    <a href="http://www.jianshu.com/wallet">
+      <i class="fa fa-credit-card"></i> 钱包
+</a>  </li>
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="http://www.jianshu.com/p/bedf090f1416#"><i class="fa fa-question-circle"></i> 帮助</a>
+    <ul class="dropdown-menu">
+      <li><a href="http://www.jianshu.com/notebooks/547/latest" target="_blank">帮助中心</a></li>
+      <li><a target="_blank" href="http://www.jianshu.com/contact">联系我们</a></li>
+    </ul>
+  </li>
+  <li>
+    <a rel="nofollow" data-method="DELETE" href="http://www.jianshu.com/sign_out">
+      <i class="fa fa-sign-out"></i> 登 出
+</a>  </li>
+
+  </ul>
+
+
+    <!-- Buttons upper right -->
+      <div class="btn-group editor-article">
+                  <a class="daytime set-view-mode" href="javascript:void(0)"><i class="fa fa-moon-o"></i></a>
+        <span>
+          
+          
+          
+
+            <a data-type="json" data-mcomponent="easy-bookmark" class="bookmark" data-remote="true" rel="nofollow" data-method="post" href="http://www.jianshu.com/notes/4952231/bookmark" data-original-title="" title="">
+    <i class="fa fa-bookmark-o"></i><span>收藏文章</span>
+</a>
+        <a href="javascript:void(null)" data-toggle="dropdown" id="top-share-button" data-original-title="" title=""><i class="fa fa-share-square-o"></i></a><ul class="dropdown-menu top-share-dropdown arrow-top"><li><a data-toggle="modal" href="http://www.jianshu.com/p/bedf090f1416#share-weixin-modal"><img src="./iOS-UITabBarViewController大总结 - 简书_files/weixin.png"> 分享到微信</a></li><li><a href="javascript:void((function(s,d,e,r,l,p,t,z,c){var%20f=&#39;http://v.t.sina.com.cn/share/share.php?appkey=1881139527&#39;,u=z||d.location,p=[&#39;&amp;url=&#39;,e(u),&#39;&amp;title=&#39;,e(t||d.title),&#39;&amp;source=&#39;,e(r),&#39;&amp;sourceUrl=&#39;,e(l),&#39;&amp;content=&#39;,c||&#39;gb2312&#39;,&#39;&amp;pic=&#39;,e(p||&#39;&#39;)].join(&#39;&#39;);function%20a(){if(!window.open([f,p].join(&#39;&#39;),&#39;mb&#39;,[&#39;toolbar=0,status=0,resizable=1,width=440,height=430,left=&#39;,(s.width-440)/2,&#39;,top=&#39;,(s.height-430)/2].join(&#39;&#39;)))u.href=[f,p].join(&#39;&#39;);};if(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else%20a();})(screen,document,encodeURIComponent,&#39;&#39;,&#39;&#39;,&#39;http://cwb.assets.jianshu.io/notes/images/4952231/weibo/image_5ac562df13aa.jpg&#39;, &#39;推荐 你好自己 的文章《iOS-UITabBarViewController大总结》（ 分享自 @简书 ）&#39;,&#39;http://www.jianshu.com/p/bedf090f1416&#39;,&#39;页面编码gb2312|utf-8默认gb2312&#39;));"><img src="./iOS-UITabBarViewController大总结 - 简书_files/weibo.png"> 分享到微博</a></li><li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;http://share.v.t.qq.com/index.php?c=share&amp;a=index&amp;url=&#39;+e(&#39;http://www.jianshu.com/p/bedf090f1416&#39;)+&#39;&amp;title=&#39;+e(&#39;推荐 你好自己 的文章《iOS-UITabBarViewController大总结》（ 分享自 @jianshuio ）&#39;),x=function(){if(!window.open(r,&#39;tweibo&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();"><img src="./iOS-UITabBarViewController大总结 - 简书_files/tweibo.png"> 分享到腾讯微博</a></li><li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=&#39;+e(&#39;http://www.jianshu.com/p/bedf090f1416&#39;)+&#39;&amp;title=&#39;+e(&#39;推荐 你好自己 的文章《iOS-UITabBarViewController大总结》&#39;),x=function(){if(!window.open(r,&#39;qzone&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();"><img src="./iOS-UITabBarViewController大总结 - 简书_files/qzone.png"> 分享到QQ空间</a></li><li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;https://twitter.com/share?url=&#39;+e(&#39;http://www.jianshu.com/p/bedf090f1416&#39;)+&#39;&amp;text=&#39;+e(&#39;推荐 你好自己 的文章《iOS-UITabBarViewController大总结》（ 分享自 @jianshucom ）&#39;)+&#39;&amp;related=&#39;+e(&#39;jianshucom&#39;),x=function(){if(!window.open(r,&#39;twitter&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();"><img src="./iOS-UITabBarViewController大总结 - 简书_files/twitter.png"> 分享到Twitter</a></li><li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,s1=window.getSelection,s2=d.getSelection,s3=d.selection,s=s1?s1():s2?s2():s3?s3.createRange().text:&#39;&#39;,r=&#39;http://www.douban.com/recommend/?url=&#39;+e(&#39;http://www.jianshu.com/p/bedf090f1416&#39;)+&#39;&amp;title=&#39;+e(&#39;iOS-UITabBarViewController大总结&#39;)+&#39;&amp;sel=&#39;+e(s)+&#39;&amp;v=1&#39;,x=function(){if(!window.open(r,&#39;douban&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330&#39;))location.href=r+&#39;&amp;r=1&#39;};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})()"><img src="./iOS-UITabBarViewController大总结 - 简书_files/douban.png"> 分享到豆瓣</a></li><li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;https://www.facebook.com/dialog/share?app_id=483126645039390&amp;display=popup&amp;href=http://www.jianshu.com/p/bedf090f1416&#39;,x=function(){if(!window.open(r,&#39;facebook&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();"><img src="./iOS-UITabBarViewController大总结 - 简书_files/facebook.png"> 分享到Facebook</a></li><li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;https://plus.google.com/share?url=&#39;+e(&#39;http://www.jianshu.com/p/bedf090f1416&#39;),x=function(){if(!window.open(r,&#39;google_plus&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();"><img src="./iOS-UITabBarViewController大总结 - 简书_files/google_plus.png"> 分享到Google+</a></li><li><a href="http://cwb.assets.jianshu.io/notes/images/4952231/weibo/image_5ac562df13aa.jpg" target="_blank"><i class="fa fa-arrow-circle-o-down"></i>下载长微博图片</a></li></ul></span>
+      </div>
+    <!-- ******* -->
+  </div>
+
+  <div class="container">
+    <!-- Article activities for width under 768px -->
+    <div class="related-avatar-group activities"></div>
+      <div class="article">
+        <div class="preview">
+          <div class="author-info">
+              <div class="btn btn-small btn-success follow" id="follow_user_639412">
+    <a data-type="json" data-user-slug="5f7143127114" data-remote="true" rel="nofollow" data-method="post" href="http://www.jianshu.com/users/5f7143127114/toggle_like"><i class="fa fa-plus"></i>  <span>添加关注</span></a>
+  </div>
+
+            <a class="avatar" href="http://www.jianshu.com/users/5f7143127114">
+              <img src="./iOS-UITabBarViewController大总结 - 简书_files/8cdb684f0b4c.jpg" alt="100">
+</a>            <span class="label">
+                作者
+            </span>
+            <a class="author-name blue-link" href="http://www.jianshu.com/users/5f7143127114">
+              <span>你好自己</span>
+</a>              <span>2016.07.25 14:13</span>
+            <div>
+              <span>写了22704字</span>，<span>被35人关注</span>，<span>获得了54个喜欢</span>
+            </div>
+          </div>
+          <h1 class="title">iOS-UITabBarViewController大总结</h1>
+          <div class="meta-top">
+            <span class="wordage">字数1646</span>
+            <span class="views-count">阅读670</span>
+            <span class="comments-count">评论4</span>
+            <span class="likes-count">喜欢29</span>
+          </div>
+
+          <!-- Collection/Bookmark/Share for width under 768px -->
+          <div class="article-share"></div>
+          <!-- -->
+
+          <div class="show-content"><h1>一、UITabBarController的初印象</h1>
+<p>UITabBarController和UINavigationController类似,UITabBarController也可以轻松地管理多个控制器,轻松完成控制器之间的切换,典型的例子就是QQ、微信等应⽤。但是.前者其管理的视图一直存在,而后者在pop后会销毁掉,释放内存.</p>
+<p><strong>注意:UITabBarController通常作为整个程序的rootViewController，而且不能添加到别的container viewController中。</strong>.</p>
+<h1>二、UITabBarController的使用​：</h1>
+<p>​1、使用步骤：</p>
+<p>（1）初始化UITabBarController</p>
+<p>（2）设置UIWindow的rootViewController为UITabBarController</p>
+<p>（3）创建相应的子控制器（viewcontroller）</p>
+<p>（4）把子控制器添加到UITabBarController</p>
+<p>2、代码示例</p>
+<p>新建一个空的UITabBarController，在控制器中编码</p>
+<pre class="hljs objectivec"><code class="objectivec">-(<span class="hljs-keyword">void</span>) viewDidLoad {​
+
+    MapViewController *v1 = [MapViewControllernew];
+
+    v1<span class="hljs-variable">.tabBarItem</span><span class="hljs-variable">.image</span> = [<span class="hljs-built_in">UIImageimageNamed</span>:<span class="hljs-string">@"icon_map"</span>];
+
+    v1<span class="hljs-variable">.tabBarItem</span><span class="hljs-variable">.title</span> = <span class="hljs-string">@"地图"</span>;
+
+    v1<span class="hljs-variable">.view</span><span class="hljs-variable">.backgroundColor</span> = [<span class="hljs-built_in">UIColororangeColor</span>];
+
+    CycleViewController *v2 = [CycleViewControllernew];
+
+    v2<span class="hljs-variable">.tabBarItem</span><span class="hljs-variable">.image</span> = [<span class="hljs-built_in">UIImageimageNamed</span>:<span class="hljs-string">@"icon_cycle"</span>];
+
+    v2<span class="hljs-variable">.tabBarItem</span><span class="hljs-variable">.title</span> = <span class="hljs-string">@"运动"</span>;
+
+    v2<span class="hljs-variable">.view</span><span class="hljs-variable">.backgroundColor</span> = [<span class="hljs-built_in">UIColorgreenColor</span>];
+
+    OtherViewController *v3 = [OtherViewControllernew];
+
+    v3<span class="hljs-variable">.tabBarItem</span><span class="hljs-variable">.image</span> = [<span class="hljs-built_in">UIImageimageNamed</span>:<span class="hljs-string">@"icon_other"</span>];
+
+    v3<span class="hljs-variable">.tabBarItem</span><span class="hljs-variable">.title</span> = <span class="hljs-string">@"活动"</span>;
+
+    v3<span class="hljs-variable">.view</span><span class="hljs-variable">.backgroundColor</span> = [<span class="hljs-built_in">UIColoryellowColor</span>];
+
+    MineViewController *v4 = [MineViewControllernew];
+
+    v4<span class="hljs-variable">.tabBarItem</span><span class="hljs-variable">.image</span> = [<span class="hljs-built_in">UIImageimageNamed</span>:<span class="hljs-string">@"icon_user"</span>];
+
+    v4<span class="hljs-variable">.tabBarItem</span><span class="hljs-variable">.title</span> = <span class="hljs-string">@"我的"</span>;
+
+    v4<span class="hljs-variable">.view</span><span class="hljs-variable">.backgroundColor</span> = [<span class="hljs-built_in">UIColorredColor</span>];
+
+<span class="hljs-built_in">UINavigationController</span> *n1 = [[<span class="hljs-built_in">UINavigationControlleralloc</span>] initWithRootViewController:v1];
+
+​<span class="hljs-built_in">UINavigationController</span> *n2 = [[<span class="hljs-built_in">UINavigationControlleralloc</span>] initWithRootViewController:v2];
+
+<span class="hljs-built_in">UINavigationController</span> *n3 = [[<span class="hljs-built_in">UINavigationControlleralloc</span>] initWithRootViewController:v3];
+
+<span class="hljs-built_in">UINavigationController</span> *n4 = [[<span class="hljs-built_in">UINavigationControlleralloc</span>] initWithRootViewController:v4];
+
+<span class="hljs-built_in">NSArray</span> *array = @[n1,n2,n3,n4];
+
+<span class="hljs-keyword">self</span><span class="hljs-variable">.viewControllers</span> = array;
+
+}</code></pre>
+<p>这样就把四个带有导航控制器的tabBarController创建好了，只需在Appdelegate里面把该UITbarBarcontroller控制器​设置为跟视图控制器。</p>
+<pre class="hljs objectivec"><code class="objectivec"><span class="hljs-keyword">self</span><span class="hljs-variable">.window</span><span class="hljs-variable">.rootViewController</span> = [[<span class="hljs-built_in">UITbarBarcontroller</span> alloc]​  init];</code></pre>
+<h1>三、重要说明​</h1>
+<p>1、UITabBar ​</p>
+<p>下方的工具条称为UITabBar ，如果UITabBarController有N个子控制器,那么UITabBar内部就会有N 个UITabBarButton作为子控件与之对应(不过最下边最多显示5个，多了就是隐藏在最后一栏里面，可以点开查看)。</p>
+<p><strong>注意：UITabBarButton在UITabBar中得位置是均分的，UITabBar的高度为49。</strong></p>
+<p>2、UITabBarButton </p>
+<p>UITabBarButton⾥面显⽰什么内容,由对应子控制器的tabBarItem属性来决定 </p>
+<pre class="hljs objectivec"><code class="objectivec">c1<span class="hljs-variable">.tabBarItem</span><span class="hljs-variable">.title</span>=<span class="hljs-string">@"消息"</span>; 
+c1<span class="hljs-variable">.tabBarItem</span><span class="hljs-variable">.image</span>=[<span class="hljs-built_in">UIImage</span> imageNamed:<span class="hljs-string">@"tab_recent_nor"</span>];​</code></pre>
+<p>UITabBarItem有以下属性影响UITabBarButton的内容:</p>
+<p><strong>title（标题）、image（图标）、selectImage（选中时的图标）、badgeValue（提醒数字）</strong></p>
+<p>​3、有两种方式可以往UITabBarController中添加子控制器 </p>
+<p>（1）[tb addChildViewController:c1];</p>
+<p>（2）tb.viewControllers=@[c1,c2,c3,c4];</p>
+<p><strong>注意：展示的顺序和添加的顺序一致，和导航控制器中不同，展现在眼前的是第一个添加的控制器对应的View。</strong></p>
+<p>​3、UITabBarItem<br>​- </p>
+<ul>
+<li>
+<p>UITabBarItemUITabBar上面显示的每一个Tab都对应着一个ViewController，我们可以通过设置viewcontroller.tabBarItem属性来改变tabbar上对应的tab显示内容。</p>
+</li>
+<li>
+<p><strong>否则系统将会根据viewController的title自动创建一个，该tabBarItem只显示文字，没有图像,但是图像的位置会预留出来</strong>。</p>
+</li>
+<li>当我们自己创建UITabBarItem的时候，我们可以显示的指定显示的图像和对应的文字描述。</li>
+<li>当然还可以通过setFinishedSelectedImage:withFinishedUnselectedImage:方法给选中状态和飞选中状态指定不同的图片。​</li>
+</ul>
+<pre class="hljs objectivec"><code class="objectivec"><span class="hljs-built_in">UITabBarItem</span> *item = [[<span class="hljs-built_in">UITabBarItem</span> alloc] initWithTitle:<span class="hljs-string">@"Second"</span> image:<span class="hljs-literal">nil</span> tag:<span class="hljs-number">2</span>];  
+​[item setFinishedSelectedImage:[<span class="hljs-built_in">UIImage</span> imageNamed:<span class="hljs-string">@"second"</span>] withFinishedUnselectedImage:[<span class="hljs-built_in">UIImage</span> imageNamed:<span class="hljs-string">@"first"</span>]];  
+viewController2<span class="hljs-variable">.tabBarItem</span> = item;</code></pre>
+<h1>​四、Change SelectedViewcontroller（改变当前选中的控制器）</h1>
+<p>​改变UITabBarController中当前显示的viewController，可以通过一下两种方法：</p>
+<p>​1、selectedIndex属性</p>
+<ul>
+<li>通过该属性可以获得当前选中的viewController，设置该属性，可以显示viewControllers中对应的index的viewController。</li>
+<li>如果当前选中的是MoreViewController的话，该属性获取出来的值是NSNotFound，而且通过该属性也不能设置选中MoreViewController。<strong>设置index超出viewControllers的范围，将会被忽略。</strong>
+</li>
+</ul>
+<p>2、selectedViewController属性</p>
+<ul>
+<li>通过该属性可以获取到当前显示的viewController，通过设置该属性可以设置当前选中的viewController，同时更新selectedIndex。</li>
+<li>可以通过给该属性赋值tabBarController.moreNavigationController可以选中moreViewController。</li>
+</ul>
+<p>​3、viewControllers属性</p>
+<p>设置viewControllers属性也会影响当前选中的viewController，设置该属性时UITabBarController首先会清空所有旧的viewController，然后部署新的viewController，接着尝试重新选中上一次显示的viewController，如果该viewController已经不存在的话，会接着尝试选中index和selectedIndex相同的viewController，如果该index无效的话，则默认选中第一个viewController。</p>
+<h1>五、 moreNavigationController</h1>
+<ul>
+<li>UITabBar上最多可以显示5个Tab，当我们往UITabBarController中添加的viewController超过5个时候，最后一个就会自动变成 <code>more</code> ，按照设置的viewControlles的顺序，显示前四个viewController的tabBarItem，后面的tabBarItem将不再显示。当点击more时候将会弹出一个标准的<strong>navigationViewController</strong>，里面放有其它未显示的的viewController，并且带有一个edit按钮，通过点击该按钮可以进入类似与ipod程序中设置tabBar的编辑界面。</li>
+<li>编辑界面中默认所有的viewController都是可以编辑的，我们可以通过设置UITabBarController的customizableViewControllers属性来指定viewControllers的一个子集，即只允许一部分viewController是可以放到tabBar中显示的。但是这块儿要注意一个问题就是每当UITabBarController的viewControllers属性发生变化的时候，customizableViewControllers就会自动设置成跟viewControllers一致，即默认的所有的viewController都是可以编辑的，如果我们要始终限制只是某一部分可编辑的话，记得在每次viewControlles发生改变的时候，重新设置一次customizableViewControllers。</li>
+</ul>
+<h1>六、UITabBarController的Rotation</h1>
+<ul>
+<li>UITabBarController默认只支持竖屏，当设备方向放生变化时候，它会查询viewControllers中包含的所有ViewController，仅当所有的viewController都支持该方向时，UITabBarController才会发生旋转，否则默认的竖向。</li>
+<li>此处需要注意当UITabBarController支持旋转，而且发生旋转的时候，只有当前显示的viewController会接收到旋转的消息。</li>
+</ul>
+<h1>七、UITabBarControllerDelegate</h1>
+<ul>
+<li>这两个方法我之前在项目中做过 每次打开APP时,根据后台数据,改变指定的tabbar的image, 点击后改变其image.</li>
+</ul>
+<pre class="hljs markdown"><code class="markdown"><span class="hljs-bullet">- </span>tabBarController:shouldSelectViewController:
+<span class="hljs-bullet">- </span>tabBarController:didSelectViewController:</code></pre>
+<ul>
+<li>下面这三个方法主要用于监测对moreViewController中对view controller的edit操作</li>
+</ul>
+<pre class="hljs objectivec"><code class="objectivec">- (<span class="hljs-keyword">void</span>)tabBarController:(<span class="hljs-built_in">UITabBarController</span> *)tabBarController willBeginCustomizingViewControllers:(<span class="hljs-built_in">NSArray</span> *)viewControllers;
+
+- (<span class="hljs-keyword">void</span>)tabBarController:(<span class="hljs-built_in">UITabBarController</span> *)tabBarController willEndCustomizingViewControllers:(<span class="hljs-built_in">NSArray</span> *)viewControllers changed:(<span class="hljs-built_in">BOOL</span>)changed;
+
+- (<span class="hljs-keyword">void</span>)tabBarController:(<span class="hljs-built_in">UITabBarController</span> *)tabBarController didEndCustomizingViewControllers:(<span class="hljs-built_in">NSArray</span> *)viewControllers changed:(<span class="hljs-built_in">BOOL</span>)changed;</code></pre>
+</div>
+        </div>
+      </div>
+
+      <div class="visitor_edit">
+        <!-- further readings -->
+        <div id="further-readings" data-user-slug="c49454e0ae54" data-user-nickname="Cyandev">
+          <div id="further-reading-line" class="hide further-reading-line"></div>
+          <ul id="further-readings-list" class="reading-list unstyled"></ul>
+          <div id="further-reading-new" class="reading-edit">
+              <a id="further-reading-new-prompt" href="javascript:void(null)">
+                <i class="fa fa-plus-circle"></i> 推荐拓展阅读
+</a>            <div id="further-reading-form"></div>
+          </div>
+        </div>
+        <div class="pull-right">
+          <!-- abuse report -->
+          <div id="abuse-report" class="report_article dropdown pull-right" data-js-module="report">
+              <a data-toggle="dropdown" href="http://www.jianshu.com/p/bedf090f1416#"><i class="fa fa-flag-o"></i> 举报文章</a>
+              <ul class="dropdown-menu arrow-top">
+                <li><a data-type="json" data-remote="true" rel="nofollow" data-method="post" href="http://www.jianshu.com/notes/4952231/abuse_reports?type=ad">广告及垃圾信息</a></li>
+                <li><a data-type="json" data-remote="true" rel="nofollow" data-method="post" href="http://www.jianshu.com/notes/4952231/abuse_reports?type=plagiarism">抄袭或未授权转载</a></li>
+                <li><a data-toggle="modal" data-url="/notes/4952231/abuse_reports" href="http://www.jianshu.com/p/bedf090f1416#report-modal">其他</a></li>
+              </ul>
+          </div>
+          <!-- copyright -->
+          <div class="author-copyright pull-right" data-toggle="tooltip" data-html="true" title="" data-original-title="转载请联系作者获得授权，并标注“简书作者”。">
+            <a><i class="fa fa-copyright"></i> 著作权归作者所有</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reward / Support Author -->
+        <div class="support-author">
+          <p>如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作！</p>
+            <a class="btn btn-pay" data-toggle="modal" href="http://www.jianshu.com/p/bedf090f1416#pay-modal">¥ 打赏支持</a>
+          <div class="avatar-list"></div>
+        </div>
+
+      <!-- article meta bottom -->
+      <div class="meta-bottom clearfix">
+        <!--  Like Button -->
+        <div class="like ">
+            <div class="like-button">
+              <a class="like-content" data-remote="true" rel="nofollow" data-method="post" href="http://www.jianshu.com/notes/4952231/like">
+                <i class="fa fa-heart-o"></i>  喜欢
+</a></div>          <span id="likes-count" data-toggle="tooltip" data-placement="right" title="" data-original-title="查看所有喜欢的用户">29</span>        </div>
+        <!--  share group -->
+        <div class="share-group pull-right">
+          <a href="javascript:void((function(s,d,e,r,l,p,t,z,c){var%20f=&#39;http://v.t.sina.com.cn/share/share.php?appkey=1881139527&#39;,u=z||d.location,p=[&#39;&amp;url=&#39;,e(u),&#39;&amp;title=&#39;,e(t||d.title),&#39;&amp;source=&#39;,e(r),&#39;&amp;sourceUrl=&#39;,e(l),&#39;&amp;content=&#39;,c||&#39;gb2312&#39;,&#39;&amp;pic=&#39;,e(p||&#39;&#39;)].join(&#39;&#39;);function%20a(){if(!window.open([f,p].join(&#39;&#39;),&#39;mb&#39;,[&#39;toolbar=0,status=0,resizable=1,width=440,height=430,left=&#39;,(s.width-440)/2,&#39;,top=&#39;,(s.height-430)/2].join(&#39;&#39;)))u.href=[f,p].join(&#39;&#39;);};if(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else%20a();})(screen,document,encodeURIComponent,&#39;&#39;,&#39;&#39;,&#39;http://cwb.assets.jianshu.io/notes/images/4952231/weibo/image_5ac562df13aa.jpg&#39;, &#39;推荐 你好自己 的文章《iOS-UITabBarViewController大总结》（ 分享自 @简书 ）&#39;,&#39;http://www.jianshu.com/p/bedf090f1416&#39;,&#39;页面编码gb2312|utf-8默认gb2312&#39;));" data-name="weibo">
+            <i class="fa fa-weibo"></i><span>分享到微博</span>
+          </a>
+          <a data-toggle="modal" href="http://www.jianshu.com/p/bedf090f1416#share-weixin-modal" data-name="weixin">
+            <i class="fa fa-weixin"></i><span>分享到微信</span>
+          </a>
+          <div class="more">
+            <a href="javascript:void(0)" data-toggle="dropdown">更多分享<i class="fa fa-caret-down"></i></a>
+            <ul class="dropdown-menu arrow-top">
+                <li><a href="http://cwb.assets.jianshu.io/notes/images/4952231/weibo/image_5ac562df13aa.jpg" target="_blank" data-name="changweibo"><i class="fa fa-arrow-circle-o-down"></i> 下载长微博图片</a></li>
+                <li>
+                  <a data-name="tweibo" href="javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;http://share.v.t.qq.com/index.php?c=share&amp;a=index&amp;url=&#39;+e(&#39;http://www.jianshu.com/p/bedf090f1416&#39;)+&#39;&amp;title=&#39;+e(&#39;推荐 你好自己 的文章《iOS-UITabBarViewController大总结》（ 分享自 @jianshuio ）&#39;),x=function(){if(!window.open(r,&#39;tweibo&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();">
+                    <img src="./iOS-UITabBarViewController大总结 - 简书_files/tweibo.png" alt="Tweibo"> 分享到腾讯微博
+</a>                </li>
+                <li>
+                  <a data-name="qzone" href="javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=&#39;+e(&#39;http://www.jianshu.com/p/bedf090f1416&#39;)+&#39;&amp;title=&#39;+e(&#39;推荐 你好自己 的文章《iOS-UITabBarViewController大总结》&#39;),x=function(){if(!window.open(r,&#39;qzone&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();">
+                    <img src="./iOS-UITabBarViewController大总结 - 简书_files/qzone.png" alt="Qzone"> 分享到QQ空间
+</a>                </li>
+                <li>
+                  <a data-name="twitter" href="javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;https://twitter.com/share?url=&#39;+e(&#39;http://www.jianshu.com/p/bedf090f1416&#39;)+&#39;&amp;text=&#39;+e(&#39;推荐 你好自己 的文章《iOS-UITabBarViewController大总结》（ 分享自 @jianshucom ）&#39;)+&#39;&amp;related=&#39;+e(&#39;jianshucom&#39;),x=function(){if(!window.open(r,&#39;twitter&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();">
+                    <img src="./iOS-UITabBarViewController大总结 - 简书_files/twitter.png" alt="Twitter"> 分享到Twitter
+</a>                </li>
+                <li>
+                  <a data-name="facebook" href="javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;https://www.facebook.com/dialog/share?app_id=483126645039390&amp;display=popup&amp;href=http://www.jianshu.com/p/bedf090f1416&#39;,x=function(){if(!window.open(r,&#39;facebook&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();">
+                    <img src="./iOS-UITabBarViewController大总结 - 简书_files/facebook.png" alt="Facebook"> 分享到Facebook
+</a>                </li>
+                <li>
+                  <a data-name="google_plus" href="javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;https://plus.google.com/share?url=&#39;+e(&#39;http://www.jianshu.com/p/bedf090f1416&#39;),x=function(){if(!window.open(r,&#39;google_plus&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();">
+                    <img src="./iOS-UITabBarViewController大总结 - 简书_files/google_plus.png" alt="Google plus"> 分享到Google+
+</a>                </li>
+                <li>
+                  <a data-name="douban" href="javascript:void(function(){var d=document,e=encodeURIComponent,s1=window.getSelection,s2=d.getSelection,s3=d.selection,s=s1?s1():s2?s2():s3?s3.createRange().text:&#39;&#39;,r=&#39;http://www.douban.com/recommend/?url=&#39;+e(&#39;http://www.jianshu.com/p/bedf090f1416&#39;)+&#39;&amp;title=&#39;+e(&#39;iOS-UITabBarViewController大总结&#39;)+&#39;&amp;sel=&#39;+e(s)+&#39;&amp;v=1&#39;,x=function(){if(!window.open(r,&#39;douban&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330&#39;))location.href=r+&#39;&amp;r=1&#39;};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})()">
+                    <img src="./iOS-UITabBarViewController大总结 - 简书_files/douban.png" alt="Douban"> 分享到豆瓣
+</a>                </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modals -->
+      <div id="share-weixin-modal" class="modal hide fade share-weixin-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+  </div>
+  <div class="modal-body" title="http://www.jianshu.com/p/bedf090f1416?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=weixin">
+    <h5>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</h5>
+  <canvas width="170" height="170" style="display: none;"></canvas><img src="data:image/png;base64,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" style="display: block;"></div>
+</div>
+
+      <div id="contribute-modal" tabindex="-1" class="arrow-top user-editor-actions modal hide fade">
+  <div class="modal-header">
+    <b>
+      添加到我管理的专题
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    </b>
+  </div>
+  <div class="modal-body">
+    <div class="search">
+      <input type="text" name="search_term" id="search_term" class="input-large search-query" placeholder="搜索我管理的专题" data-search-collections-url="/collections/search?note_id=4952231">
+    </div>
+    <ul class="add-list"></ul>
+  </div>
+</div>
+
+      <div id="notebooks-menu" class="panel notebooks-menu arrow-top modal hide fade"><img class="loader-tiny" src="./iOS-UITabBarViewController大总结 - 简书_files/tiny.gif" alt="Tiny"></div>
+      <div id="collection-menu" class="panel collection-menu arrow-top modal hide fade"><img class="loader-tiny" src="./iOS-UITabBarViewController大总结 - 简书_files/tiny.gif" alt="Tiny"></div>
+      
+      <div id="likes-modal" class="modal modal_new support_list-modal fullscreen hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3>喜欢的用户</h3>
+      </div>
+      <div class="modal-body">
+        <ul class="unstyled users">
+        <li data-user-id="1999734"> <a class="avatar" href="http://www.jianshu.com/users/e3f7c55a0de7"> <img src="./iOS-UITabBarViewController大总结 - 简书_files/3f50ac573ceb.jpg"> </a> <a class="blue-link" href="http://www.jianshu.com/users/e3f7c55a0de7">单单这样</a> <span class="time">2016.08.01 19:26</span></li><li data-user-id="1828365"> <a class="avatar" href="http://www.jianshu.com/users/e663938ca4f4"> <img src="./iOS-UITabBarViewController大总结 - 简书_files/534a8ba63a18"> </a> <a class="blue-link" href="http://www.jianshu.com/users/e663938ca4f4">烟尘尽繁花落</a> <span class="time">2016.08.01 13:47</span></li><li data-user-id="2596383"> <a class="avatar" href="http://www.jianshu.com/users/a28b35237d4a"> <img src="./iOS-UITabBarViewController大总结 - 简书_files/46ce6d008e4d.jpg"> </a> <a class="blue-link" href="http://www.jianshu.com/users/a28b35237d4a">arrfu</a> <span class="time">2016.08.01 11:25</span></li><li data-user-id="1608607"> <a class="avatar" href="http://www.jianshu.com/users/afd5e54bf773"> <img src="./iOS-UITabBarViewController大总结 - 简书_files/758d3b3c2cee"> </a> <a class="blue-link" href="http://www.jianshu.com/users/afd5e54bf773">我爱学习iOS</a> <span class="time">2016.07.29 02:11</span></li><li data-user-id="1976231"> <a class="avatar" href="http://www.jianshu.com/users/51707eacf496"> <img src="./iOS-UITabBarViewController大总结 - 简书_files/133858092b30.JPG"> </a> <a class="blue-link" href="http://www.jianshu.com/users/51707eacf496">gavincarter</a> <span class="time">2016.07.29 01:11</span></li><li data-user-id="667926"> <a class="avatar" href="http://www.jianshu.com/users/0ac35a54a491"> <img src="./iOS-UITabBarViewController大总结 - 简书_files/3275dc964eaf.jpg"> </a> <a class="blue-link" href="http://www.jianshu.com/users/0ac35a54a491">小楼东风</a> <span class="time">2016.07.27 09:07</span></li><li data-user-id="253603"> <a class="avatar" href="http://www.jianshu.com/users/bc2373652f08"> <img src="./iOS-UITabBarViewController大总结 - 简书_files/3c8de181b313"> </a> <a class="blue-link" href="http://www.jianshu.com/users/bc2373652f08">鸡说狗是猪</a> <span class="time">2016.07.27 08:59</span></li><li data-user-id="2228008"> <a class="avatar" href="http://www.jianshu.com/users/7aaba8adcb9a"> <img src="./iOS-UITabBarViewController大总结 - 简书_files/b6bbaf7d5e57"> </a> <a class="blue-link" href="http://www.jianshu.com/users/7aaba8adcb9a">那位客官</a> <span class="time">2016.07.27 08:59</span></li><li data-user-id="2202326"> <a class="avatar" href="http://www.jianshu.com/users/0222f7f1f191"> <img src="./iOS-UITabBarViewController大总结 - 简书_files/b81ed8cfc38f.jpg"> </a> <a class="blue-link" href="http://www.jianshu.com/users/0222f7f1f191">loohoo</a> <span class="time">2016.07.27 08:47</span></li><li data-user-id="728182"> <a class="avatar" href="http://www.jianshu.com/users/014f97555b69"> <img src="./iOS-UITabBarViewController大总结 - 简书_files/e86bf74adacf.jpg"> </a> <a class="blue-link" href="http://www.jianshu.com/users/014f97555b69">Tieria</a> <span class="time">2016.07.27 08:46</span></li><li data-user-id="1350034"> <a class="avatar" href="http://www.jianshu.com/users/489251214d9a"> <img src="./iOS-UITabBarViewController大总结 - 简书_files/13-8072fce67829ce128ba5df823205516c.jpg"> </a> <a class="blue-link" href="http://www.jianshu.com/users/489251214d9a">xiacheng</a> <span class="time">2016.07.27 08:38</span></li><li data-user-id="1687826"> <a class="avatar" href="http://www.jianshu.com/users/da86280a277e"> <img src="./iOS-UITabBarViewController大总结 - 简书_files/3d196edd528f"> </a> <a class="blue-link" href="http://www.jianshu.com/users/da86280a277e">赖世昌</a> <span class="time">2016.07.27 08:30</span></li><li data-user-id="2393294"> <a class="avatar" href="http://www.jianshu.com/users/263d13fa604d"> <img src="./iOS-UITabBarViewController大总结 - 简书_files/6ecc2b4b9ed1.jpg"> </a> <a class="blue-link" href="http://www.jianshu.com/users/263d13fa604d">xx紫紫xx</a> <span class="time">2016.07.26 23:27</span></li><li data-user-id="1912049"> <a class="avatar" href="http://www.jianshu.com/users/613b69562e4f"> <img src="./iOS-UITabBarViewController大总结 - 简书_files/12-07a584b5038a24cbb23b81dc673c18fd.jpg"> </a> <a class="blue-link" href="http://www.jianshu.com/users/613b69562e4f">亚日时代</a> <span class="time">2016.07.26 20:50</span></li><li data-user-id="1722799"> <a class="avatar" href="http://www.jianshu.com/users/316b98129b68"> <img src="./iOS-UITabBarViewController大总结 - 简书_files/13-8072fce67829ce128ba5df823205516c.jpg"> </a> <a class="blue-link" href="http://www.jianshu.com/users/316b98129b68">巷子里的童年Cc</a> <span class="time">2016.07.26 14:28</span></li><a class="more hidden" data-max-id="26109829" href="javascript:void(null);"><i class="fa fa-ellipsis-h"></i></a></ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+    <!-- Comments -->
+    <div id="comments" class="comment-list clearfix">
+        <div class="comment-head clearfix">
+          4条评论
+          <span class="order">
+            （
+            <a data-order="asc" class="active" href="javascript:void(0)">按时间正序</a>·
+            <a data-order="desc" href="javascript:void(0)">按时间倒序</a>·
+            <a data-order="likes_count" href="javascript:void(0)">按喜欢排序</a>
+            ）
+          </span>
+            <a href="javascript:void(null)" class="goto-comment pull-right"><i class="fa fa-pencil"></i>添加新评论</a>
+        </div>
+        <div id="comment-list">
+
+
+<div class="note-comment clearfix" id="comment-3279172">
+  <div class="content">
+      <div class="meta-top">
+        <a class="avatar" href="http://www.jianshu.com/users/5f7143127114">
+          <img src="./iOS-UITabBarViewController大总结 - 简书_files/8cdb684f0b4c.jpg" alt="100">
+</a>        <p>
+          <a class="author-name" href="http://www.jianshu.com/users/5f7143127114">你好自己</a>
+        </p>
+        <span class="reply-time">
+          <small>2 楼 · </small>
+          <a href="http://www.jianshu.com/p/bedf090f1416/comments/3279172#comment-3279172">2016.07.25 16:40</a></span>
+      </div>
+      <p>自我鼓励</p>
+      <div class="comment-footer clearfix text-right">
+        <a data-id="3279172" class="like pull-left" href="javascript:void(0)">
+          <i class="fa fa-heart-o"></i>喜欢<span>(0)</span>
+</a>        <div class="dropdown report" data-commenter-id="639412">
+          <a class="report_comment" href="javascript:void(0)" data-toggle="dropdown">举报</a>
+          <ul class="dropdown-menu arrow-top">
+            <li><a data-type="json" data-remote="true" rel="nofollow" data-method="post" href="http://www.jianshu.com/comments/3279172/abuse_reports?type=ad">广告及垃圾信息</a></li>
+            <li><a data-toggle="modal" data-url="/comments/3279172/abuse_reports" href="http://www.jianshu.com/p/bedf090f1416#report-modal">其他</a></li>
+          </ul>
+        </div>
+
+        <a data-id="3279172" data-nickname="你好自己" class="reply" href="javascript:void(0)">回复</a>
+        
+        
+      </div>
+    <div class="child-comment-list ">
+        <div class="child-comment" id="comment-3283907" data-id="3283907">
+    <p>
+      <a class="blue-link" href="http://www.jianshu.com/users/95b731acef7e">志城</a>：
+      <a href="http://www.jianshu.com/users/5f7143127114" class="maleskine-author" target="_blank" data-user-slug="5f7143127114">@月下恋芳</a> 可以的
+    </p>
+    <div class="child-comment-footer text-right clearfix">
+      <div class="dropdown report" data-commenter-id="442591">
+        <a class="report_comment" href="javascript:void(0)" data-toggle="dropdown">举报</a>
+        <ul class="dropdown-menu arrow-top">
+          <li><a data-type="json" data-remote="true" rel="nofollow" data-method="post" href="http://www.jianshu.com/comments/3283907/abuse_reports?type=ad">广告及垃圾信息</a></li>
+          <li><a data-toggle="modal" data-url="/comments/3283907/abuse_reports" href="http://www.jianshu.com/p/bedf090f1416#report-modal">其他</a></li>
+        </ul>
+      </div>
+      <a data-id="3279172" data-nickname="志城" class="reply" href="javascript:void(null)">回复</a>
+      
+      
+      <span class="reply-time pull-left">
+        <a href="http://www.jianshu.com/p/bedf090f1416/comments/3283907#comment-3283907">2016.07.25 21:43</a></span>
+      
+    </div>
+  </div>
+
+      <div data-state="remaining-child-comments"></div>
+        <div class="comment-toolbar clearfix">
+          <span class="pull-right">
+            <a data-id="3279172" class="reply" href="javascript:void(null)"><i class="fa fa-pencil"></i> 添加新回复</a>
+          </span>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="note-comment clearfix" id="comment-3391111">
+  <div class="content">
+      <div class="meta-top">
+        <a class="avatar" href="http://www.jianshu.com/users/a28b35237d4a">
+          <img src="./iOS-UITabBarViewController大总结 - 简书_files/46ce6d008e4d.jpg" alt="100">
+</a>        <p>
+          <a class="author-name" href="http://www.jianshu.com/users/a28b35237d4a">arrfu</a>
+        </p>
+        <span class="reply-time">
+          <small>3 楼 · </small>
+          <a href="http://www.jianshu.com/p/bedf090f1416/comments/3391111#comment-3391111">2016.08.01 11:27</a></span>
+      </div>
+      <p>非常有用，感谢楼主！😁</p>
+      <div class="comment-footer clearfix text-right">
+        <a data-id="3391111" class="like pull-left" href="javascript:void(0)">
+          <i class="fa fa-heart-o"></i>喜欢<span>(0)</span>
+</a>        <div class="dropdown report" data-commenter-id="2596383">
+          <a class="report_comment" href="javascript:void(0)" data-toggle="dropdown">举报</a>
+          <ul class="dropdown-menu arrow-top">
+            <li><a data-type="json" data-remote="true" rel="nofollow" data-method="post" href="http://www.jianshu.com/comments/3391111/abuse_reports?type=ad">广告及垃圾信息</a></li>
+            <li><a data-toggle="modal" data-url="/comments/3391111/abuse_reports" href="http://www.jianshu.com/p/bedf090f1416#report-modal">其他</a></li>
+          </ul>
+        </div>
+
+        <a data-id="3391111" data-nickname="arrfu" class="reply" href="javascript:void(0)">回复</a>
+        
+        
+      </div>
+    <div class="child-comment-list ">
+        <div class="child-comment" id="comment-3392735" data-id="3392735">
+    <p>
+      <a class="blue-link" href="http://www.jianshu.com/users/5f7143127114">你好自己</a>：
+      <a href="http://www.jianshu.com/users/a28b35237d4a" class="maleskine-author" target="_blank" data-user-slug="a28b35237d4a">@arrfu</a> 共同努力
+    </p>
+    <div class="child-comment-footer text-right clearfix">
+      <div class="dropdown report" data-commenter-id="639412">
+        <a class="report_comment" href="javascript:void(0)" data-toggle="dropdown">举报</a>
+        <ul class="dropdown-menu arrow-top">
+          <li><a data-type="json" data-remote="true" rel="nofollow" data-method="post" href="http://www.jianshu.com/comments/3392735/abuse_reports?type=ad">广告及垃圾信息</a></li>
+          <li><a data-toggle="modal" data-url="/comments/3392735/abuse_reports" href="http://www.jianshu.com/p/bedf090f1416#report-modal">其他</a></li>
+        </ul>
+      </div>
+      <a data-id="3391111" data-nickname="你好自己" class="reply" href="javascript:void(null)">回复</a>
+      
+      
+      <span class="reply-time pull-left">
+        <a href="http://www.jianshu.com/p/bedf090f1416/comments/3392735#comment-3392735">2016.08.01 13:01</a></span>
+      
+    </div>
+  </div>
+
+      <div data-state="remaining-child-comments"></div>
+        <div class="comment-toolbar clearfix">
+          <span class="pull-right">
+            <a data-id="3391111" class="reply" href="javascript:void(null)"><i class="fa fa-pencil"></i> 添加新回复</a>
+          </span>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+          <form class="new_comment" id="new_comment" data-type="json" action="http://www.jianshu.com/notes/4952231/comments" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓">
+    <div class="comment-text">
+      <textarea maxlength="2000" placeholder="写下你的评论…" class="mousetrap" name="comment[content]" id="comment_content"></textarea>
+      <div>
+        <input type="submit" name="commit" value="发 表" class="btn btn-info" data-disable-with="提交中...">
+          <div class="emoji">
+    <a href="http://www.jianshu.com/p/bedf090f1416#emoji-modal" data-toggle="modal"><i class="fa fa-smile-o"></i></a>
+    <div id="emoji-modal" class="emoji-modal arrow-top hide" tabindex="-1" aria-hidden="true">
+      <ul id="emojiTab" class="emoji-nav-tabs modal-header">
+          <li class="active"><a href="http://www.jianshu.com/p/bedf090f1416#emoji-pane-1" data-toggle="tab">1</a></li>
+          <li class=""><a href="http://www.jianshu.com/p/bedf090f1416#emoji-pane-2" data-toggle="tab">2</a></li>
+          <li class=""><a href="http://www.jianshu.com/p/bedf090f1416#emoji-pane-3" data-toggle="tab">3</a></li>
+          <li class=""><a href="http://www.jianshu.com/p/bedf090f1416#emoji-pane-4" data-toggle="tab">4</a></li>
+      </ul>
+      <div id="emojiTabContent" class="tab-content">
+          <div class="tab-pane fade active in" id="emoji-pane-1">
+          <ul>
+          </ul>
+        </div>
+          <div class="tab-pane fade  in" id="emoji-pane-2">
+          <ul>
+          </ul>
+        </div>
+          <div class="tab-pane fade  in" id="emoji-pane-3">
+          <ul>
+          </ul>
+        </div>
+          <div class="tab-pane fade  in" id="emoji-pane-4">
+          <ul>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+          <span class="hotkey">⌘+Return 发表</span>
+        <span class="warning" style="display: none"><i class="fa fa-exclamation-circle"></i><span class="warning-text"></span></span>
+      </div>
+    </div>
+</form>
+    </div>
+    <!-- -->
+
+  </div>
+
+  <script type="application/json" data-name="note">
+    {"id":4952231,"abbr":"一、UITabBarController的初印象UITabBarController和UINavigationController类似,UITabBarController也可以轻松地管理多个控制器,轻松完成控制器之间的切换,典型的例子就是QQ、微信等应⽤。但是.前者其管理的视图一直存在,而后者在pop后会销毁掉,释放内存.注意:UITabBarController通常作为整个程序的rootViewController，而且不能添加到别的containerviewController中。.二、UITabBarController的使用​：​1、使用步骤：...","slug":"bedf090f1416","url":"http://www.jianshu.com/p/bedf090f1416","image_url":"http://cwb.assets.jianshu.io/notes/images/4952231/weibo/image_5ac562df13aa.jpg","wordage":1646,"has_further_readings":false,"views_count":670,"likes_count":29,"comments_count":4,"rewards_total_count":0}
+  </script>
+
+  <script type="application/json" data-name="uuid">
+    {"uuid":"72a0184b-25ea-4834-ae0a-5a8bdf53ad64"}
+  </script>
+
+  <script type="application/json" data-name="author">
+    {"id":639412,"nickname":"你好自己","slug":"5f7143127114","public_notes_count":9,"followers_count":35,"total_likes_count":54,"is_current_user":false,"is_signed_author":false}
+  </script>
+
+    <script type="application/json" data-name="current-user">
+      {"id":80164,"slug":"8237e1754864","nickname":"彼尔德丘","avatar_url":"http://upload.jianshu.io/users/upload_avatars/80164/a97d9a23365b?imageMogr/thumbnail/90x90/quality/100","blocked_by_author":false,"blocked_user_ids":[],"balance_in_cent":0,"is_a_collection_editor":false}
+    </script>
+
+    <script type="application/json" data-name="comment-participants">
+      []
+    </script>
+
+
+
+    <div class="include-collection">
+      <div class="content">
+        <h5>被以下专题收入，发现更多相似内容：</h5>
+        <ul id="all-collections" class="unstyled collections-list">
+            <li>
+              <a class="avatar" href="http://www.jianshu.com/collection/NEt52a"><img src="./iOS-UITabBarViewController大总结 - 简书_files/computer_guy.jpg" alt="180"></a>              <div class="collections-info">
+                <h5>
+                  <a href="http://www.jianshu.com/collection/NEt52a">程序员</a>
+                </h5>
+                
+  <div class="btn follow following" id="subscribe_collection_16">
+    <a data-type="json" data-collection-id="16" data-remote="true" rel="nofollow" data-method="post" href="http://www.jianshu.com/collections/16/unsubscribe">
+      <i class="fa fa-fw fa-check"></i>  <span>正在关注</span>
+</a>    <span>130.9K</span>
+  </div>
+
+                <p class="description">如果你是程序员，或者有一颗喜欢写程序的心，喜欢分享技术干货、项目经验、程序员日常囧事等等，欢迎投稿《程序员》专题。
+
+投稿须知：
+...</p>
+                <p>
+                  <a class="blue-link" href="http://www.jianshu.com/collection/NEt52a">19824篇文章</a> · 130999人关注
+                </p>
+              </div>
+            </li>
+            <li>
+              <a class="avatar" href="http://www.jianshu.com/collection/bDHhpK"><img src="./iOS-UITabBarViewController大总结 - 简书_files/rdn_4ddb18fddd2e9_(1).jpg" alt="180"></a>              <div class="collections-info">
+                <h5>
+                  <a href="http://www.jianshu.com/collection/bDHhpK">首页投稿</a>
+                </h5>
+                
+  <div class="btn btn-success follow" id="subscribe_collection_47">
+    <a data-type="json" data-collection-id="47" data-remote="true" rel="nofollow" data-method="post" href="http://www.jianshu.com/collections/47/subscribe">
+      <i class="fa fa-fw fa-plus"></i>  <span>添加关注</span>
+</a>    <span>118.7K</span>
+  </div>
+
+                <p class="description">玩转简书的第一步，从这个专题开始。
+
+想上首页热门榜么？好内容想被更多人看到么？来投稿吧！如果被拒也不要灰心哦～入选文章会进一个队...</p>
+                <p>
+                  <a class="blue-link" href="http://www.jianshu.com/collection/bDHhpK">83277篇文章</a> · 118759人关注
+                </p>
+              </div>
+            </li>
+            <li>
+              <a class="avatar" href="http://www.jianshu.com/collection/3233d1a249ca"><img src="./iOS-UITabBarViewController大总结 - 简书_files/162902612251cbd95971b82.png" alt="180"></a>              <div class="collections-info">
+                <h5>
+                  <a href="http://www.jianshu.com/collection/3233d1a249ca">iOS Developer</a>
+                </h5>
+                
+  <div class="btn follow following" id="subscribe_collection_1276">
+    <a data-type="json" data-collection-id="1276" data-remote="true" rel="nofollow" data-method="post" href="http://www.jianshu.com/collections/1276/unsubscribe">
+      <i class="fa fa-fw fa-check"></i>  <span>正在关注</span>
+</a>    <span>23.4K</span>
+  </div>
+
+                <p class="description">分享 iOS 开发的知识，解决大家遇到的问题，讨论iOS开发的前沿，欢迎大家投稿~</p>
+                <p>
+                  <a class="blue-link" href="http://www.jianshu.com/collection/3233d1a249ca">10215篇文章</a> · 23467人关注
+                </p>
+              </div>
+            </li>
+        </ul>
+      </div>
+    </div>
+
+  <!-- Modal -->
+    <div class="modal pay-modal text-center hide fade" id="pay-modal">
+  <div class="modal-header clearfix">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+  </div>
+  <form id="new_reward" class="new_reward" target="_blank" action="http://www.jianshu.com/notes/4952231/rewards" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="7sagIGHsB5Wo3CIq8SumCxp+bdI8JNoZoQTMMT1XvjkaYZo/Lf9g4wfCWOTLEH9UC2a1jJKMi1KwDqKVMa8VmQ==">
+    <div class="modal-body">
+      <a href="http://www.jianshu.com/users/5f7143127114">
+        <div class="avatar"><img src="./iOS-UITabBarViewController大总结 - 简书_files/8cdb684f0b4c.jpg" alt="100"></div>
+</a>      <p><i class="fa fa-quote-left pull-left"></i>如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作！<i class="fa fa-quote-right pull-right"></i></p>
+      <div class="main-inputs text-left">
+        <div class="control-group">
+          <label for="reward_amount">打赏金额</label><i class="fa fa-yen"></i>
+          <input value="2.00" type="text" name="reward[amount_in_yuan]" id="reward_amount_in_yuan">
+        </div>
+        <div class="control-group message">
+          <textarea placeholder="给Ta留言" name="reward[message]" id="reward_message"></textarea>
+        </div>
+      </div>
+      <div class="choose-pay text-left">
+        <h5>选择支付方式：</h5>
+        <div>
+          <label for="reward_channel_alipay">
+            <div class="iradio_minimal checked" style="position: relative;"><input type="radio" value="alipay" checked="checked" name="reward[channel]" id="reward_channel_alipay" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+            <span class="alipay-bg"></span>
+</label>
+          <label for="reward_channel_balance">
+            <div class="iradio_minimal" style="position: relative;"><input type="radio" value="balance" name="reward[channel]" id="reward_channel_balance" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+            简书余额（ 余额：¥ 0.00 ）
+</label>
+          <label for="reward_channel_wx_pub_qr">
+            <div class="iradio_minimal" style="position: relative;"><input type="radio" value="wx_pub_qr" name="reward[channel]" id="reward_channel_wx_pub_qr" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+            微信支付
+</label>        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button name="button" type="submit" class="btn btn-large btn-pay">立即支付</button>
+    </div>
+</form></div>
+
+    <div class="modal success-pay text-center hide fade" id="success-pay">
+  <div class="modal-header clearfix">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+  </div>
+  <div class="modal-body">
+    <h3><i class="icon-ok"></i>打赏成功</h3>
+    <img src="./iOS-UITabBarViewController大总结 - 简书_files/complete-pay-25426877089eb23bd76d9d0e6aad89c1.png" alt="Complete pay">
+  </div>
+  <div class="modal-footer">
+    <a class="blue-link" href="http://www.jianshu.com/wallet">查看打赏记录</a>
+  </div>
+</div>
+
+</div>
+
+  </div>
+  <div id="flash" class="hide"></div>
+  
+  <div id="view-mode-modal" tabindex="-1" class="modal hide read-modal" aria-hidden="false" data-js-module="view-mode-modal">
+    <div class="btn-group change-background" data-toggle="buttons-radio">
+
+      <a class="btn btn-daytime active" data-mode="day" data-remote="true" rel="nofollow" data-method="put" href="http://www.jianshu.com/preferences?read_mode=day">
+        <i class="fa fa-sun-o"></i>
+</a>      <a class="btn btn-nighttime " data-mode="night" data-remote="true" rel="nofollow" data-method="put" href="http://www.jianshu.com/preferences?read_mode=night">
+        <i class="fa fa-moon-o"></i>
+</a>    </div>
+    <div class="btn-group change-font" data-toggle="buttons-radio">
+      <a class="btn font " data-font="font1" data-remote="true" rel="nofollow" data-method="put" href="http://www.jianshu.com/preferences?default_font=font1">宋体</a>
+      <a class="btn font hei active" data-font="font2" data-remote="true" rel="nofollow" data-method="put" href="http://www.jianshu.com/preferences?default_font=font2">黑体</a>
+    </div>
+    <div class="btn-group change-locale" data-toggle="buttons-radio">
+      <a class="btn font active" data-locale="zh-CN" data-remote="true" rel="nofollow" data-method="put" href="http://www.jianshu.com/preferences/set_locale?locale=zh-CN">简</a>
+      <a class="btn font hei " data-locale="zh-TW" data-remote="true" rel="nofollow" data-method="put" href="http://www.jianshu.com/preferences/set_locale?locale=zh-TW">繁</a>
+    </div>
+  </div>
+
+  <div id="report-modal" class="modal hide fade modal_report fullscreen" tabindex="-1" role="dialog" aria-labelledby="reportModal" aria-hidden="true" data-js-module="report-modal">
+  <form id="report-form" data-type="json" action="javascript:void(0)" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓">
+    <input type="hidden" name="type" id="type" value="other">
+
+    <div class="modal-header">
+      <b>举报原因</b>
+    </div>
+    <div class="modal-body">
+      <textarea name="content" id="content" maxlength="2000" placeholder="写下你的举报原因..."></textarea>
+    </div>
+    <div class="modal-footer">
+      <a class="btn" data-dismiss="modal" aria-hidden="true" href="javascript:void(0)">取消</a>
+      <input type="submit" name="commit" value="确认" class="btn btn-info">
+    </div>
+</form></div>
+
+
+  <script src="./iOS-UITabBarViewController大总结 - 简书_files/base-ded41764c207f7ff545c28c670922d25.js"></script>
+  
+  <script src="./iOS-UITabBarViewController大总结 - 简书_files/reading-base-06726ff5d69bf2b105271301958f5a0a.js"></script>
+  <script src="./iOS-UITabBarViewController大总结 - 简书_files/note_show-1805bf39f59948b52870922039360dbb.js"></script>
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35169517-1']);
+  _gaq.push(['_setCustomVar', 2, 'User Type', 'Member', 1 ]);
+  _gaq.push(['_trackPageview']);
+
+  
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+<div id="atwho-container"><div id="atwho-ground-comment_content"><div class="atwho-view" id="at-view-64"><ul class="atwho-view-ul"></ul></div></div><div id="atwho-ground-comment_content"><div class="atwho-view" id="at-view-58"><ul class="atwho-view-ul"></ul></div></div></div></body></html>

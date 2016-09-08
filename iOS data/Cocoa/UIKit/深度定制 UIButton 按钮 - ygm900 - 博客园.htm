@@ -1,0 +1,576 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0061)http://www.cnblogs.com/ygm900/archive/2013/05/28/3104169.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>深度定制 UIButton  按钮 - ygm900 - 博客园</title>
+<link type="text/css" rel="stylesheet" href="./深度定制 UIButton 按钮 - ygm900 - 博客园_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./深度定制 UIButton 按钮 - ygm900 - 博客园_files/bundle-SimpleBlue.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/ygm900/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/ygm900/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/ygm900/wlwmanifest.xml">
+<script type="text/javascript" src="./深度定制 UIButton 按钮 - ygm900 - 博客园_files/encoder.js"></script><script src="./深度定制 UIButton 按钮 - ygm900 - 博客园_files/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'ygm900', cb_enable_mathjax=false;</script>
+<script src="./深度定制 UIButton 按钮 - ygm900 - 博客园_files/blog-common.js" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+		
+<!--done-->
+<div class="title"><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/ygm900/">ygm900</a></div>
+<div class="subtitle"></div>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li id="nav_sitehome"></li>
+<li id="nav_myhome"><a id="MyLinks1_MyHomeLink" class="menu" href="http://www.cnblogs.com/ygm900/">首页</a></li>
+<li id="nav_newpost"></li>
+<li id="nav_contact"><a id="MyLinks1_ContactLink" class="menu" rel="nofollow" href="http://msg.cnblogs.com/send/ygm900">联系</a></li>
+<li id="nav_rss"><a id="MyLinks1_Syndication" class="menu" href="http://www.cnblogs.com/ygm900/rss">订阅</a>
+<!--<a id="MyLinks1_XMLLink" class="aHeaderXML" href="http://www.cnblogs.com/ygm900/rss"><img src="http://www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></li>
+<li id="nav_admin"><a id="MyLinks1_Admin" class="menu" rel="nofollow" href="https://i.cnblogs.com/">管理</a></li>
+</ul>
+
+		<div class="blogStats">
+			
+			
+<!--done-->
+随笔-815&nbsp;
+文章-1&nbsp;
+评论-60&nbsp;
+
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="http://www.cnblogs.com/ygm900/archive/2013/05/28/3104169.html">深度定制 UIButton  按钮</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body"><p><span>UIButton</span><span> *btnTemp = [</span><span>UIButton</span>buttonWithType<span>:</span>UIButtonTypeCustom<span>];</span></p>
+<p><span style="font-size: 16px;"><strong><span style="color: #ff0000;">深度定制一个按钮</span></strong></span></p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./深度定制 UIButton 按钮 - ygm900 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>UIButton *btn1 =<span style="color: #000000;"> [UIButton buttonWithType:UIButtonTypeCustom];
+    btn1.frame </span>= CGRectMake(<span style="color: #800080;">0</span>, <span style="color: #800080;">0</span>, <span style="color: #800080;">200</span>, <span style="color: #800080;">140</span><span style="color: #000000;">);
+    btn1.center </span>= CGPointMake(<span style="color: #800080;">180</span>, <span style="color: #800080;">215</span><span style="color: #000000;">);
+    btn1.autoresizingMask </span>= UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin |<span style="color: #000000;"> UIViewAutoresizingFlexibleRightMargin;
+    [btn1 setTitle:</span><span style="color: #800000;">@""</span><span style="color: #000000;"> forState:UIControlStateNormal];
+    [btn1 addTarget:self action:@selector(btnTest) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn1];<br><br><span style="color: #ff0000;"><strong>注意：</strong></span>通过 </span>[UIButton buttonWithType:UIButtonTypeCustom] 创建的按钮不能手动release，交给系统好了。<span>不能写 </span>[button release];</pre>
+<pre></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./深度定制 UIButton 按钮 - ygm900 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>&nbsp;</p>
+<p><span style="color: #ff0000;"><strong>疑问 &amp; 发现</strong></span></p>
+<p><span style="color: #000080;"><span style="color: #ff0000;">两种不同的创建方式，其中一种button 可以显示titile，但是另外一种不能显示。如下所示；</span></span></p>
+<p>&nbsp;</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./深度定制 UIButton 按钮 - ygm900 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008000;">//</span><span style="color: #008000;">            UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];    //使用这种创建方式，button 不能显示 titile
+</span><span style="color: #008000;">//</span><span style="color: #008000;">            button.frame = CGRectMake(10+(Screen_width*schemeCount)+30+100, 20+(j*30), 130, 40);</span>
+<span style="color: #000000;">            <br>            //使用alloc的方式创建，button 可以显示title
+            UIButton </span>*button = [[UIButton alloc]initWithFrame:CGRectMake(<span style="color: #800080;">10</span>+(Screen_width*schemeCount)+<span style="color: #800080;">30</span>+<span style="color: #800080;">100</span>, <span style="color: #800080;">20</span>+(j*<span style="color: #800080;">30</span>), <span style="color: #800080;">130</span>, <span style="color: #800080;">40</span><span style="color: #000000;">)];
+            [button setTitle:</span><span style="color: #800000;">@"</span><span style="color: #800000;">1</span><span style="color: #800000;">"</span><span style="color: #000000;"> forState:UIControlStateNormal];
+            [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            [button setBackgroundColor:[UIColor whiteColor]];
+            [self.uisv_bottomView addSubview:button];
+            [button release];</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./深度定制 UIButton 按钮 - ygm900 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>&nbsp;</p>
+<p><img src="./深度定制 UIButton 按钮 - ygm900 - 博客园_files/242234548588707.png" alt=""></p>
+<p>找到狗血的原因了！使用如下方法创建button时，不能使用［button release]; 否则，button 不能显示标题</p>
+<div class="cnblogs_code">
+<pre></pre>
+<pre><span>UIButton *button = </span><span>buttonWithType:UIButtonTypeRoundedRect]; <br>button.frame </span>= CGRectMake(<span style="color: #800080;">10</span>+(Screen_width*schemeCount)+<span style="color: #800080;">30</span>+<span style="color: #800080;">100</span>, <span style="color: #800080;">20</span>+(j*<span style="color: #800080;">30</span>), <span style="color: #800080;">130</span>, <span style="color: #800080;">40</span>);</pre>
+</div>
+<p>&nbsp;</p>
+<p><span style="color: #ff0000;"><strong>疑问：</strong></span>经过实践发现，当把一个button 依附到一个 imageview时，button按钮没有按下去的效果，而且，不能够设置背景图片。只能设置颜色。下面代码，在［imageView addSubView:button]; 不起作用。为什么？ 难道button 只能add到view上？而不是imageView上？（是不是也因为狗血的 release 啊）</p>
+<div class="cnblogs_code">
+<pre>[button setBackgroundImage:[UIImage imageNamed:<span style="color: #800000;">@"</span><span style="color: #800000;">button_anpai.png</span><span style="color: #800000;">"</span>] forState:UIControlStateNormal];</pre>
+</div>
+<p>&nbsp;</p>
+<p><span style="font-size: 18pt;"><a href="http://blog.csdn.net/chengyingzhilian/article/details/8363855">&nbsp;设置UIButton的文字显示位置、字体的大小、字体的颜色</a></span></p>
+<p>btn.frame = CGRectMake(x, y, width, height);</p>
+<p>[btn setTitle: @"search" forState: UIControlStateNormal];</p>
+<p>//<span>设置按钮上的自体的大小</span></p>
+<p>//[btn setFont: [UIFont systemFontSize: 14.0]];&nbsp;&nbsp;&nbsp; //这种可以用来设置字体的大小，但是可能会在将来的SDK版本中去除改方法</p>
+<p>//应该使用</p>
+<p><span style="color: #ff0000;">btn.titleLabel.font = [UIFont systemFontOfSize: 14.0];</span></p>
+<p><span>[btn seBackgroundColor: [UIColor blueColor]];</span></p>
+<p>//最后将按钮加入到指定视图superView</p>
+<p><span style="color: #ff0000;">[superView addSubview: btn]; &nbsp; &nbsp; &nbsp; &nbsp;//为什么要指定到superview？</span></p>
+<p>==========================================================</p>
+<p>tvnamelabel=[[UIButton alloc]initWithFrame:CGRectMake(5,5,200,40)];</p>
+<p>这样初始化的button，文字默认颜色是白色的，所有如果背景也是白色的话，是看不到文字的，</p>
+<p><span style="color: #ff0000;">btn.contentHorizontalAlignment=UIControlContentHorizontalAlignmentLeft ;//设置文字位置，现设为居左，默认的是居中</span></p>
+<p><span>但是问题又出来，此时文字会紧贴到做边框，我们可以设置</span></p>
+<p><span style="color: #ff0000;">btn.contentEdgeInsets = UIEdgeInsetsMake(0,10, 0, 0);</span></p>
+<p><span>使文字距离做边框保持10个像素的距离。</span></p>
+<p>=======================================================</p>
+<p><span>设置UIButton上字体的颜色设置UIButton上字体的颜色</span>，不是用：</p>
+<p>[btn.titleLabel setTextColor:[UIColorblackColor]];</p>
+<p>btn.titleLabel.textColor=[UIColor redColor];</p>
+<p>而是用：</p>
+<p><span style="color: #ff0000;">[btn setTitleColor:[UIColor blackColor]forState:UIControlStateNormal];</span></p>
+<p>&nbsp;</p>
+<p><span style="color: #ff0000; font-size: 18pt;">长按按钮响应事件</span></p>
+<p>&nbsp;</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./深度定制 UIButton 按钮 - ygm900 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #000000;">{
+
+ </span><span style="color: #008000;">//</span><span style="color: #008000;">长按删除按钮</span>
+    UILongPressGestureRecognizer *longPress =<span style="color: #000000;"> [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(deleteLongPressed)];
+</span><span style="color: #008000;">//</span><span style="color: #008000;">    longPress.minimumPressDuration = 0.5;    </span><span style="color: #008000;">//</span><span style="color: #008000;">最短按压时间,一般地，此句不写也可以</span>
+<span style="color: #000000;">    [uib_delete addGestureRecognizer:longPress];
+    
+}
+
+</span><span style="color: #008000;">//</span><span style="color: #008000;">长按删除按钮，删除所有输入的号码</span>
+-(<span style="color: #0000ff;">void</span><span style="color: #000000;">)deleteLongPressed
+{
+    uil_phoneNumber.text </span>= <span style="color: #800000;">@""</span><span style="color: #000000;">;
+    nsms_phoneNumber </span>= [[NSMutableString alloc]initWithFormat:<span style="color: #800000;">@""</span><span style="color: #000000;">];
+}</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./深度定制 UIButton 按钮 - ygm900 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>&nbsp;</p>
+<p><span style="font-size: 16px; color: #ff0000;">UIButton 两种设置背景图片方式的区别</span></p>
+<p>第一种：setBackGroudImage &nbsp; ：图片被拉伸</p>
+<p>第二种：setImage &nbsp; &nbsp; : &nbsp;图片保持原大小</p>
+<p>&nbsp;</p>
+<p>参考：<a href="http://my.oschina.net/joanfen/blog/160843">http://my.oschina.net/joanfen/blog/160843&nbsp;</a>&nbsp; &nbsp; 讲图片进行拉伸设置为button的背景。</p>
+<p>&nbsp;</p>
+<p><span style="font-size: 14pt; color: #ff6600;">非alloc 的button 都不要release ，否则button 显示不出来。虽然button的 retaincount 还是1 。如下</span></p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./深度定制 UIButton 按钮 - ygm900 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>        <span style="color: #008000;">//</span><span style="color: #008000;">button 剧集</span>
+        button =<span style="color: #000000;"> [UIButton buttonWithType:UIButtonTypeCustom];
+        button.frame </span>= CGRectMake(<span style="color: #800080;">0</span>, k_headImageView_height, SCREEN_WIDTH/<span style="color: #800080;">2</span>-<span style="color: #800080;">1</span>, <span style="color: #800080;">84</span>/<span style="color: #800080;">2</span>-<span style="color: #800080;">1</span><span style="color: #000000;">);
+        [button setBackgroundImage:[ImageUtilities createImageWithColor:[UIColor whiteColor]] forState:UIControlStateNormal];
+        [button setBackgroundImage:[ImageUtilities createImageWithColor:[ColorUtils colorWithHexString:k_buttonSelect_backGroudColor]] forState:UIControlStateSelected];
+        [button setTitle:</span><span style="color: #800000;">@"</span><span style="color: #800000;">剧集</span><span style="color: #800000;">"</span><span style="color: #000000;"> forState:UIControlStateNormal];
+        [button.titleLabel setFont:[UIFont systemFontOfSize:k_introduceInfo_fontSize]];
+        [button setTitleColor:[ColorUtils colorWithHexString:k_introduceInfo_textColor] forState:UIControlStateNormal];
+        [button setTitleColor:[ColorUtils colorWithHexString:k_buttonSelect_textColor] forState:UIControlStateSelected];
+        [button addTarget:self action:@selector(btnEpisodeClicked:) forControlEvents:UIControlEventTouchUpInside];
+        episodeButton </span>=<span style="color: #000000;"> button;
+        [self.view addSubview:episodeButton];
+        </span><span style="color: #008000;">//</span><span style="color: #008000;">[button release];    //   若此处添加 release， button 将显示不出来。</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./深度定制 UIButton 按钮 - ygm900 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>&nbsp;</p>
+<h1><span style="color: #ff6600;">如何设置能让UIButton点一下，保持按下去的状态，再点一下弹起来？</span></h1>
+<p><span>方法：做一个判断修改selected属性如：&nbsp;&nbsp;&nbsp;&nbsp;[_tmpBtn setSelected:YES]; OR [_tmpBtn setSelected:NO];</span></p>
+<p>&nbsp;</p>
+<p><span style="color: #ff6600; font-size: 18px;"><strong>UIButton 的的对象 button 有三种 状态，分贝是normal &nbsp; selected &nbsp;highlighted ，他们之间有什么区别？</strong></span></p>
+<p class="p1">UIControlStateNormal &nbsp;指按钮的正常状态，这个没有异议吧。</p>
+<p class="p1">UIControlStateHighlighted &nbsp; 指按钮被<span style="font-size: 16px; color: #ff6600;">按下去时</span>的状态！</p>
+<p class="p1">UIControlStateSelected &nbsp; &nbsp; &nbsp; 指按钮<span style="font-size: 16px; color: #ff6600;">被选中时</span>的状态！</p>
+<p><span style="color: #ff0000;"><strong>“按下去”和“选中”有什么区别？“按下去时状态”指被手指按压时的状态。“选中时状态”指手指按压已经完毕，并离开。按钮呈现的状态。所以，设置一个按钮被按下去时的图片变化时，要用UIControlStateHighlighted而不是UIControlStateSelected。</strong></span></p>
+<p><strong><span>&nbsp;参考：<a href="http://blog.csdn.net/scy411082514/article/details/7689851">关于UIButton的highlighted状态的总结</a></span></strong></p>
+<h1 class="title"><span style="color: #ff6600;">UIButton的一个小陷阱——注意：titleLabel是readonly的！</span></h1>
+<div class="entry">
+<p>在使用UIButton的时候，有时需要在运行时动态改变按钮的文字、样式。但iOS SDK的文档说得不是很清楚，使用错误的API经常会产生诡异的结果，如点击UIButton后，text变回默认值。</p>
+<p>这问题我遇到过三回了，每回都要重新google一下才解决。以前觉得这些不起眼的小问题，不值得单独写一篇文章，但往往这些问题现常见。以后会持续把遇到的一些小问题作为Tips的形式分享出来，希望也可以帮助到其它的开发者。</p>
+<h3>错误的方式</h3>
+<table>
+<tbody>
+<tr>
+<td class="gutter">
+<pre>1
+2
+</pre>
+</td>
+<td class="code">
+<pre><span class="comment">/* Wrong way */</span>
+yourButton<span class="preprocessor">.titleLabel</span><span class="preprocessor">.text</span> = @<span class="string">"SampleText"</span><span class="comment">;</span>
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+<p>这里titleLabel是readonly的，但我们可以改变titleLabel的property。问题出在UIButton是有<code>Default, Highlighted, Selected, Disabled</code>几种状态的。这种方式会改变当前状态的text，但一旦状态改变（如tap一下）,则会变成默认的设置。</p>
+<h3>正确的方式</h3>
+<table>
+<tbody>
+<tr>
+<td class="gutter">
+<pre>1
+2
+</pre>
+</td>
+<td class="code">
+<pre><span class="comment">/* Right way */</span>
+[yourButton setTitle:<span class="string">@"SampleText"</span> forState:UIControlStateNormal];
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+<p>如果其它状态没有特别设置的话，设置<code>UIControlStateNormal</code>这个状态，会自动设置其它状态。</p>
+</div>
+<p>参考：<a href="http://www.iwangke.me/2012/09/05/caveat-for-uibutton/">&nbsp;http://www.iwangke.me/2012/09/05/caveat-for-uibutton/</a></p>
+<p>&nbsp;</p>
+<h1 class="postTitle"><span style="color: #ff6600;">让UIButton在按下时没有高亮效果</span></h1>
+<p>方法一：</p>
+<div class="cnblogs_code">
+<pre>button1.adjustsImageWhenHighlighted = NO;     <span style="color: #008000;">//</span><span style="color: #008000;">取消按钮高亮状态（有些时候，我们并不想要系统给的那个状态）</span></pre>
+</div>
+<p>参考：<a href="http://www.cocoachina.com/bbs/simple/?t106229.html">http://www.cocoachina.com/bbs/simple/?t106229.html</a></p>
+<p>方法二：为UIButton所有状态设置一张透明的图片。详情请看：<a id="cb_post_title_url" class="postTitle2" href="http://www.cnblogs.com/ihojin/p/uicontrolstate.html">让UIButton在按下时没有高亮效果</a></p>
+<h3><span style="font-size: 18pt; color: #ff6600;">设置按钮被点中的高亮光晕效果</span></h3>
+<div class="cnblogs_code">
+<pre>[cancelButton setShowsTouchWhenHighlighted:YES];</pre>
+</div>
+<p>&nbsp;</p>
+<p><span style="font-size: 18pt; color: #ff6600;">按钮扩大触摸响应区域</span></p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./深度定制 UIButton 按钮 - ygm900 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>原来代码如下：menuBtn.frame = CGRectMake(<span style="color: #800080;">4</span>, <span style="color: #800080;">8</span>, <span style="color: #800080;">44</span>, <span style="color: #800080;">28</span><span style="color: #000000;">);
+扩大触摸区域代码如下：
+[menuBtn setImage:[PYUtiles imageFromFile:</span><span style="color: #800000;">@"</span><span style="color: #800000;">MenuBtn.png</span><span style="color: #800000;">"</span><span style="color: #000000;">] forState:UIControlStateNormal];
+[menuBtn setFrame:CGRectMake(</span><span style="color: #800080;">0</span>, <span style="color: #800080;">0</span>, <span style="color: #800080;">48</span>, <span style="color: #800080;">44</span><span style="color: #000000;">)];
+[menuBtn setContentMode:UIViewContentModeCenter];
+原理，扩大button的frame rect，并且将图片设置成居中即可
+注意，这边要是setImage，setBackgroundImage不行，会扩大图片到整个响应区域</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./深度定制 UIButton 按钮 - ygm900 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>参考：<a href="http://www.myexception.cn/mobile/550219.html">http://www.myexception.cn/mobile/550219.html&nbsp;</a></p>
+<p><span style="font-size: 18pt; color: #ff6600;">&nbsp;<strong>设置UIButton 的字体阴影</strong></span></p>
+<div class="cnblogs_code">
+<pre><span style="color: #000000;">[[rightButton titleLabel] setShadowColor:[UIColor blackColor]];
+[[rightButton titleLabel] setShadowOffset:CGSizeMake(</span>-<span style="color: #800080;">0.5</span>, -<span style="color: #800080;">0.5</span>)];</pre>
+</div>
+<p>&nbsp;</p>
+<p><span style="font-size: 18pt; color: #ff6600;"><strong>调整Button内部内容的边距(Padding)</strong></span></p>
+<div class="cnblogs_code">
+<pre>[self.userNameButton setContentEdgeInsets:UIEdgeInsetsMake(<span style="color: #800080;">0</span>, <span style="color: #800080;">3</span>, <span style="color: #800080;">0</span>, <span style="color: #800080;">0</span>)];  </pre>
+</div>
+<p>参考：<a href="http://blog.csdn.net/ysy441088327/article/details/7660183">http://blog.csdn.net/ysy441088327/article/details/7660183</a></p>
+<p><strong><span style="font-size: 18pt; color: #ff6600;"><a href="http://blog.csdn.net/yinyignfenlei/article/details/17277551"><span style="color: #ff6600;">保持UIButton高亮状态</span></a></span>&nbsp; （点击进入）</strong></p>
+<p><strong>参考：<a href="http://blog.csdn.net/scy411082514/article/details/7689851">关于UIButton的highlighted状态的总结</a>&nbsp;（<span>在按钮up的时候button的highlighted状态会被clear,</span>）</strong></p>
+<p>&nbsp;</p>
+<p><strong><span style="color: #ff6600; font-size: 18pt;"><a id="viewpost1_TitleUrl" class="postTitle2" href="http://www.cppblog.com/longjun-9/articles/204838.html"><span style="color: #ff6600;">关于UIButton选中和高亮状态下的图片切换</span></a></span>&nbsp;（点击进入）</strong></p>
+<p><strong><span>总结：</span><span>当button的状态为selected的时候，高亮时对应的状态应该是selected|highlighted，这与normal下高亮的状态</span><span><span>highlighted</span>不同。</span></strong></p>
+<p><strong>代码如下：</strong></p>
+<div class="cnblogs_code">
+<pre>[myButton setImage:imageSelectedHover forState:(UIControlStateSelected | UIControlStateHighlighted)];</pre>
+</div>
+<p>&nbsp;</p>
+<p><span style="color: #ff6600; font-size: 18pt;">UIButtonTypeCustom 和 &nbsp;UIButtonTypeRoundedRect &nbsp;的区别</span></p>
+<p>&nbsp;<span>UIButtonTypeCustom ：是一个背景透明的按钮。 &nbsp;如果想做按钮中图片切换（不同状态），必须使用两张图片进行设置。</span></p>
+<p><span><span>UIButtonTypeRoundedRect ：是一个圆角矩形按钮。方便之处：系统会自动为这种按钮设置高亮状态（半透明状态）。即，通过一张图片，就可以做出按钮交互的效果。 不方便的地方：如果你想自定义不同状态下，按钮显示的背景，这种类型的按钮就支持的不好。</span></span></p>
+<p>建议：快速开发，每个按钮只有一张图片，建议使用UIButtonTypeRoundedRect。按钮高度自定义，建议使用UIButtonTypeCustom。</p>
+<p>&nbsp;</p>
+<p><span style="background-color: #ffffff; color: #ff6600; font-size: 18pt;">titleEdgeInsets &nbsp;imageEdgeInsets 的使用</span></p>
+<p><span>&nbsp; [myButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0)]; 4个参数是上边界，左边界，下边界，右边界。</span></p>
+<p>&nbsp;</p>
+<p><span style="color: #ff6600; font-size: 18pt;">使用UIButton和UIImageView时的坑</span></p>
+<p>－》使用将UIButton设置为透明，然后使用UIImage 或者UIImageView作为UIButton的父view，可能会使UImage覆盖的那片UIButton区域失去事件响应。解决方案：设置UIimage或者UIImageView的人机交互属性为YES. &nbsp; &nbsp; ***.userInteractionEnabled&nbsp;=&nbsp;YES;</p>
+<p>2、同理，如果将一个imageview作为uibutton的子view赋给uibutton，那么uibutton被覆盖的区域将失去事件响应能力。解决方案：让uibutton在上层，imageview在下层即可。注意，此处设置人机交互属性为YES也是没用的哦。<span style="line-height: 1.5;">&nbsp;</span></p>
+<p>&nbsp;</p>
+<h1 class="mb-5"><span class="ask-title  " style="color: #ff6600;">uibutton增加长按事件之后怎么识别自己uibutton.tag</span></h1>
+<h1 class="mb-5"><span style="font-size: 15px;">UIButton *btn =(UIButton*)gesture.view;NSLog(@"%d",btn.tag);</span></h1>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;<img src="./深度定制 UIButton 按钮 - ygm900 - 博客园_files/131604260753908.png" alt=""></p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory">分类: <a href="http://www.cnblogs.com/ygm900/category/446271.html">06 控件·UI</a></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info"><div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(3104169,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+            <a id="green_channel_follow" onclick="follow();" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./深度定制 UIButton 按钮 - ygm900 - 博客园_files/icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./深度定制 UIButton 按钮 - ygm900 - 博客园_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/ygm900/" target="_blank"><img src="./深度定制 UIButton 按钮 - ygm900 - 博客园_files/20140330154525.png" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/ygm900/">ygm900</a><br>
+            <a href="http://home.cnblogs.com/u/ygm900/followees">关注 - 6</a><br>
+            <a href="http://home.cnblogs.com/u/ygm900/followers">粉丝 - 168</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+                <a href="javascript:void(0);" onclick="follow();return false;">+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(3104169,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">2</span>
+    </div>
+    <div class="buryit" onclick="votePost(3104169,&#39;Bury&#39;)">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+            (请您对文章做出评价)
+    </div>
+</div>
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/ygm900/archive/2013/05/28/3104072.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/ygm900/archive/2013/05/28/3104072.html" title="发布于2013-05-28 17:26">iOS 播放声音 最简单的方法</a><br><a href="http://www.cnblogs.com/ygm900/archive/2013/05/28/3104185.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/ygm900/archive/2013/05/28/3104185.html" title="发布于2013-05-28 18:33">转：  Xcode提示“expression is not assignable”</a><br></div>
+</div>
+
+
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2013-05-28 18:21</span> <a href="http://www.cnblogs.com/ygm900/">ygm900</a> 阅读(<span id="post_view_count">20856</span>) 评论(<span id="post_comment_count">0</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=3104169" rel="nofollow">编辑</a> <a href="http://www.cnblogs.com/ygm900/archive/2013/05/28/3104169.html#" onclick="AddToWz(3104169);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,isLogined=false,cb_blogId=134559,cb_entryId=3104169,cb_blogApp=currentBlogApp,cb_blogUserGuid='c5ad6261-7934-e211-aa8f-842b2b196315',cb_entryCreatedDate='2013/5/28 18:21:00';loadViewCount(cb_entryId);</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="http://www.cnblogs.com/ygm900/archive/2013/05/28/3104169.html#" onclick="return RefreshPage();">刷新页面</a><a href="http://www.cnblogs.com/ygm900/archive/2013/05/28/3104169.html#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"></div>
+<div id="opt_under_post"></div>
+<div id="ad_c1" class="c_ad_block"></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/551012/" target="_blank">周鸿祎：什么猪在天上飞？</a><br> ·  <a href="http://news.cnblogs.com/n/551011/" target="_blank">曾经勇于变革的诺基亚，在连接未来时为何掉线了？</a><br> ·  <a href="http://news.cnblogs.com/n/551010/" target="_blank">为什么创业者容易受“估值”误导？都是因为朋友圈看多了</a><br> ·  <a href="http://news.cnblogs.com/n/551009/" target="_blank">微信朋友圈是怎样让亲友反目的</a><br> ·  <a href="http://news.cnblogs.com/n/551008/" target="_blank">世界上第一个iPhone黑客开源了7小时的自动驾驶数据</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="ad_c2" class="c_ad_block"></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/540529/" target="_blank">可是姑娘，你为什么要编程呢？</a><br> ·  <a href="http://kb.cnblogs.com/page/549631/" target="_blank">知其所以然（以算法学习为例）</a><br> ·  <a href="http://kb.cnblogs.com/page/548394/" target="_blank">如何给变量取个简短且无歧义的名字</a><br> ·  <a href="http://kb.cnblogs.com/page/549080/" target="_blank">编程的智慧</a><br> ·  <a href="http://kb.cnblogs.com/page/549049/" target="_blank">写给初学前端工程师的一封信</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+$(function () {
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);    
+});
+</script>
+</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+			<div id="calendar"><div id="blog-calendar" style="display:none"></div><script type="text/javascript">loadBlogDefaultCalendar();</script></div>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+
+<div id="widget_my_google" class="div_my_zzk"><input type="text" name="google_q" id="google_q" onkeydown="return google_go_enter(event)" class="input_my_zzk">&nbsp;<input onclick="google_go()" type="button" value="谷歌搜索" class="btn_my_zzk"></div>
+</div>
+</div>
+
+</div><div id="sidebar_categories">
+<div class="catListPostCategory">
+<h3 class="catListTitle">随笔分类<span style="font-size:11px;font-weight:normal">(788)</span></h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/ygm900/category/531633.html">00 礼之用，和为贵(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/ygm900/category/549041.html">00A用金字塔原理解构「罗辑思维」-我的听读笔记(5)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/ygm900/category/567393.html">00B 科技脉搏(12)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_3" href="http://www.cnblogs.com/ygm900/category/494842.html">01A 精要概览(7)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_4" href="http://www.cnblogs.com/ygm900/category/483297.html">01B 常用网站(4)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_5" href="http://www.cnblogs.com/ygm900/category/496739.html">01C iOS 图表绘制(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_6" href="http://www.cnblogs.com/ygm900/category/540331.html">01D 适配iOS7(12)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_7" href="http://www.cnblogs.com/ygm900/category/548318.html">01E Android(12)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_8" href="http://www.cnblogs.com/ygm900/category/572538.html">01F Lua语言(3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_9" href="http://www.cnblogs.com/ygm900/category/586219.html">01G视频、流媒体(4)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_10" href="http://www.cnblogs.com/ygm900/category/437126.html">02 Object-C(80)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_11" href="http://www.cnblogs.com/ygm900/category/431396.html">03A Xcode 调试(67)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_12" href="http://www.cnblogs.com/ygm900/category/446292.html">03B 多线程(32)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_13" href="http://www.cnblogs.com/ygm900/category/446265.html">04 内存管理(54)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_14" href="http://www.cnblogs.com/ygm900/category/431395.html">05 地图(17)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_15" href="http://www.cnblogs.com/ygm900/category/446271.html">06 控件·UI(104)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_16" href="http://www.cnblogs.com/ygm900/category/446272.html">07 数据类型·NS(36)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_17" href="http://www.cnblogs.com/ygm900/category/492513.html">08 数据库(22)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_18" href="http://www.cnblogs.com/ygm900/category/436923.html">09 屠虫笔记(69)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_19" href="http://www.cnblogs.com/ygm900/category/446291.html">10 消息推送</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_20" href="http://www.cnblogs.com/ygm900/category/446273.html">11 视图层·View(15)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_21" href="http://www.cnblogs.com/ygm900/category/446274.html">12 数据层·Data(NS)(8)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_22" href="http://www.cnblogs.com/ygm900/category/484086.html">13 功能封装(8)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_23" href="http://www.cnblogs.com/ygm900/category/485917.html">14 苹果这样写代码(5)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_24" href="http://www.cnblogs.com/ygm900/category/494555.html">15 iOS“才知道”与总结(2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_25" href="http://www.cnblogs.com/ygm900/category/511119.html">16 发布到AppStore(11)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_26" href="http://www.cnblogs.com/ygm900/category/538781.html">17 越狱开发(8)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_27" href="http://www.cnblogs.com/ygm900/category/548862.html">18 产品设计手记(2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_28" href="http://www.cnblogs.com/ygm900/category/663054.html">19 objectc 与 js 交互(3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_29" href="http://www.cnblogs.com/ygm900/category/663753.html">20 互联网方法论(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_30" href="http://www.cnblogs.com/ygm900/category/666152.html">21 正则表达式(3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_31" href="http://www.cnblogs.com/ygm900/category/697889.html">22 reveal 界面调试(7)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_32" href="http://www.cnblogs.com/ygm900/category/698267.html">23 iOS应用逆向工程(2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_33" href="http://www.cnblogs.com/ygm900/category/787658.html">24 快捷键集合(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_34" href="http://www.cnblogs.com/ygm900/category/494048.html">A 基本元典(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_35" href="http://www.cnblogs.com/ygm900/category/580073.html">ASIHTTP(10)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_36" href="http://www.cnblogs.com/ygm900/category/699514.html">Axure(2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_37" href="http://www.cnblogs.com/ygm900/category/494060.html">B 百家杂钞</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_38" href="http://www.cnblogs.com/ygm900/category/682357.html">FMDB/SQLite(4)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_39" href="http://www.cnblogs.com/ygm900/category/474243.html">html标签、CSS样式</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_40" href="http://www.cnblogs.com/ygm900/category/480522.html">iOS 通用工具类(6)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_41" href="http://www.cnblogs.com/ygm900/category/687031.html">iphone适配ipad(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_42" href="http://www.cnblogs.com/ygm900/category/474244.html">Javascript及其常用的框架</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_43" href="http://www.cnblogs.com/ygm900/category/474249.html">java工具的使用(3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_44" href="http://www.cnblogs.com/ygm900/category/474241.html">java基本内容(3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_45" href="http://www.cnblogs.com/ygm900/category/474245.html">JSP技术</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_46" href="http://www.cnblogs.com/ygm900/category/474247.html">spring框架</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_47" href="http://www.cnblogs.com/ygm900/category/681784.html">SQL Server 2008(2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_48" href="http://www.cnblogs.com/ygm900/category/474242.html">WEB应用技术(2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_49" href="http://www.cnblogs.com/ygm900/category/453105.html">work(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_50" href="http://www.cnblogs.com/ygm900/category/494164.html">Z 读书原则/方法(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_51" href="http://www.cnblogs.com/ygm900/category/493520.html">Zend(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_52" href="http://www.cnblogs.com/ygm900/category/710101.html">工具(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_53" href="http://www.cnblogs.com/ygm900/category/432216.html">官方文档</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_54" href="http://www.cnblogs.com/ygm900/category/687011.html">后台下载(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_55" href="http://www.cnblogs.com/ygm900/category/433819.html">技术微博 · 电光石火(54)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_56" href="http://www.cnblogs.com/ygm900/category/431657.html">假如我是苹果</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_57" href="http://www.cnblogs.com/ygm900/category/667841.html">爬虫(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_58" href="http://www.cnblogs.com/ygm900/category/435768.html">趋势分析(7)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_59" href="http://www.cnblogs.com/ygm900/category/446290.html">委托(5)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_60" href="http://www.cnblogs.com/ygm900/category/431554.html">系统设计(23)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_61" href="http://www.cnblogs.com/ygm900/category/436987.html">项目管理(12)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_62" href="http://www.cnblogs.com/ygm900/category/449655.html">疑问(14)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_63" href="http://www.cnblogs.com/ygm900/category/431420.html">杂谈·扯淡(15)</a> </li>
+
+</ul>
+
+</div>
+
+<div class="catListImageCategory">
+<h3 class="catListTitle">相册<span style="font-size:11px;font-weight:normal">(1)</span></h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_1_Link_0" href="http://www.cnblogs.com/ygm900/gallery/565375.html" rel="nofollow">我的微信公众号(1)</a> </li>
+
+</ul>
+
+</div>
+
+<div class="catList">
+<h3 class="catListTitle">关注</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_2_Link_0" href="http://blog.itpub.net/29337971" rel="nofollow">Oracle大神Dylan</a> </li>
+<li class="c_b_p_link_desc">从事Oracle开发工作超过7年，已获得OCM认证并入选Oracle用户组年轻专家项目(Young Expert Program)。深入甲骨文的体系结构、物理存储、锁和锁机制和优化器,擅长SQL、PL / SQL、Oracle应用程序调优。</li>
+</ul>
+
+</div>
+
+</div><div id="sidebar_scorerank" class="sidebar-block">
+<div class="catListBlogRank">
+<h3 class="catListTitle">积分与排名</h3>
+<ul>
+	<li class="liScore">
+		积分 -	557743
+	</li>
+	<li class="liRank">
+		排名 -	161
+	</li>
+</ul>
+</div>
+
+
+</div></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2016 ygm900
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+</body></html>
